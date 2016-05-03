@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tidodd" default="rng" basedir=".">
+    <description>TIDO ODD</description>
+
+    <property file="build.properties"/>
+    <property file="build.default.properties"/>
+
+    <property name="schemaIdent" value="tido"/>
+    <property name="rngAntFile" value="${basedir}/dependencies/Stylesheets/relaxng/build-to.xml"/>
+    <property name="htmlAntFile" value="${basedir}/dependencies/Stylesheets/html/build-to.xml"/>
+    <property name="pdfAntFile" value="${basedir}/dependencies/Stylesheets/pdf/build-to.xml"/>
+    <property name="defaultSource" value="${basedir}/dependencies/music-encoding/source/driver.xml"/>
+    <property name="oddPath" value="${basedir}/odd/customizations/tido.xml"/>
+    <property name="schemaOutputPath" value="${basedir}/odd/schemata"/>
+    <property name="guidelinesOutputPath" value="${basedir}/odd/docs"/>
+    <property name="tmpPath" value="${basedir}/odd/tmp"/>
+
+    <property name="schematronStylesheets" value="${basedir}/dependencies/iso-schematron-xslt2"/>
+
+    <macrodef name="createRNG">
+        <attribute name="schemaIdent"/>
+        <sequential>
+            <ant antfile="${rngAntFile}"
+                dir="odd/customizations"
+                usenativebasedir="true">
+                <property name="defaultSource" value="${defaultSource}"/>
+                <property name="selectedSchema" value="@{schemaIdent}"/>
+                <property name="inputFile" value="${oddPath}"/>
+                <property name="outputFile" value="${schemaOutputPath}/@{schemaIdent}.rng"/>
+            </ant>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="createSchematronXSL">
+        <attribute name="schemaIdent"/>
+        <sequential>
+            <xslt in="${schemaOutputPath}/@{schemaIdent}.rng"
+                out="${tmpPath}/@{schemaIdent}.01.extracted.sch"
+                style="${schematronStylesheets}/ExtractSchFromRNG-2.xsl"
+                processor="trax">
+                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            </xslt>
+
+            <xslt in="${tmpPath}/@{schemaIdent}.01.extracted.sch"
+                out="${tmpPath}/@{schemaIdent}.02.combined.sch"
+                style="${schematronStylesheets}/iso_dsdl_include.xsl"
+                processor="trax">
+                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            </xslt>
+
+            <xslt in="${tmpPath}/@{schemaIdent}.02.combined.sch"
+                out="${tmpPath}/@{schemaIdent}.03.expanded.sch"
+                style="${schematronStylesheets}/iso_abstract_expand.xsl"
+                processor="trax">
+                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            </xslt>
+
+            <xslt in="${tmpPath}/@{schemaIdent}.03.expanded.sch"
+                out="${schemaOutputPath}/@{schemaIdent}.xsl"
+                style="${basedir}/odd/xsl/schematronToXSL.xsl"
+                processor="trax">
+                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            </xslt>
+        </sequential>
+    </macrodef>
+
+    <target name="rng">
+        <createRNG schemaIdent="${schemaIdent}"/>
+    </target>
+
+    <target name="xsl">
+        <createSchematronXSL schemaIdent="${schemaIdent}"/>
+    </target>
+
+    <target name="html-guidelines">
+      <ant antfile="${htmlAntFile}"
+           dir="odd/customizations"
+           usenativebasedir="true">
+        <property name="defaultSource" value="${defaultSource}"/>
+        <property name="selectedSchema" value="tido"/>
+        <property name="inputFile" value="${oddPath}"/>
+        <property name="processODD" value="true"/>
+        <property name="summaryDoc" value="false"/>
+        <property name="lang" value="en"/>
+        <property name="institution" value="TIDO"/>
+        <property name="profiledir" value="${basedir}/odd/xsl/profiles"/>
+        <property name="profile" value="tido"/>
+        <property name="outputFile" value="${guidelinesOutputPath}/tido-guidelines.html"/>
+      </ant>
+    </target>
+
+    <target name="pdf-guidelines">
+      <ant antfile="${pdfAntFile}"
+           dir="odd/customizations"
+           usenativebasedir="true">
+        <property name="defaultSource" value="${defaultSource}"/>
+        <property name="selectedSchema" value="tido"/>
+        <property name="inputFile" value="${oddPath}"/>
+        <property name="processODD" value="false"/>
+        <property name="summaryDoc" value="true"/>
+        <property name="lang" value="en"/>
+        <property name="institution" value="TIDO"/>
+        <property name="profile" value="default"/>
+        <property name="outputFile" value="${guidelinesOutputPath}/tido-guidelines.pdf"/>
+      </ant>
+    </target>
+
+    <target name="schemata">
+        <createRNG schemaIdent="tido"/>
+        <createSchematronXSL schemaIdent="tido"/>
+        <createRNG schemaIdent="tido.enriched"/>
+        <createSchematronXSL schemaIdent="tido.enriched"/>
+        <createRNG schemaIdent="tido.multistart"/>
+        <createSchematronXSL schemaIdent="tido.multistart"/>
+    </target>
+
+</project>
