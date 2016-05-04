@@ -1,36 +1,75 @@
-# notation-odd
-ODD specification and documentation for Tido music notation
+# Tido MEI Customization
+ODD specification and documentation of the Tido MEI Customization.
 
 # Setup
 
 ```bash
-git clone https://github.com/tido/notation-odd.git
-cd notation-odd
+git clone https://github.com/tido/mei-customization.git
+cd mei-customization
 npm install
 ```
 
 # Update git dependencies
 
-The Tido MEI Customization project contains copies of `https://github.com/music-encoding/music-encoding` and `https://github.com/TEIC/Stylesheets` in the `vendor` folder. In case these dependencies need to get updated, run `./update-git-dependencies.sh` and commit the updated project.
+The Tido MEI Customization project contains copies of `https://github.com/music-encoding/music-encoding` and `https://github.com/TEIC/Stylesheets` in the `vendor` folder. In case these dependencies need to be updated, run `./update-git-dependencies.sh` and commit the updated project.
 
-# Modifying the Tido MEI Customization ODD
 
-Tido's customization ODD of the MEI guidelines is located at
-`src/tido.xml`. In addition to the specifications, this file should
-contain valid and invalid test cases for the specified features. Each test case
-must be wrapped in an `<egXML>` element. Typically, the test cases should get
-append to the `<elementSpec>`, `<classSpec>` etc. they refer to (as a child of
+# Overview
+
+This section provides an overview of the project
+
+## The source
+
+Tido ODD customization file is located at `src/tido.xml`.
+In addition to the schema specifications, this file contains examples of
+valid and invalid fragments.
+
+
+## Usage - Schemata and Guidelines
+
+The `build` folder contains output schema and documentation.
+
+### Build
+
+In order to build the schemata, build the HTML guidelines and run the tests with a single command run:
+
+```
+npm run refresh
+```
+
+## Test environment
+
+In addition to providing documentation, the provided examples also serve validation
+test for the schema. A `nodejs` test environment is included in order to make sure
+the provided examples (or counter-examples) are indeed validated (or invalidated)
+by the compiled schema.
+
+
+# Modifying the Customization
+
+When modifying the schema it is expected that for each feature there are valid and invalid
+examples provided. Each of these examples then serve as a test case for the test environment
+to check whether the examples actually conform to the compiled schemata.
+
+In order to instruct the test environment, each example within the documentation
+is wrapped in a `<egXML>` and the expected validation outcome is given in the '@valid'
+attribute. E.g. an `<egXML valid="true"/>` element specifies a test case where the expected result is `valid`.
+
+Typically, test cases are appended to `<elementSpec>`,
+`<classSpec>` etc. elements they refer to (as a child of
 `<exemplum>`), but `<egXML>` may appear anywhere in the ODD, for example in the
 initial prose descriptions of the features. If the content of `<egXML>` is
-supposed to be valid against the Tido schema, add the attribute
-`@valid="true"`, if it is supposed to be invalid, add `@valid="false"`.
-Incomplete examples which are in fact invalid but could be made valid by
-providing additional attributes should be marked with `@valid="feasible"`.
+supposed to be valid against the Tido schema, it will have an attribute
+`@valid="true"`, if it is supposed to be invalid, it will have `@valid="false"`.
+Incomplete examples, which are in fact invalid but could be made valid by
+providing additional attributes are marked with `@valid="feasible"`.
 In that case, its content will be skipped when running the validation tests.
 
-In addition to `@valid`, each `<egXML>` element to get validated must contain a
-reference to one of the wrappers located at `resources/templates/wrappers`.
-Specify the wrapper by providing its filename in `@tido:wrapper`.
+The test environment uses the `jade` template library to construct complete MEI fragments.
+`test/jade` folder contains wrappers and mixins that help to contextualise the provided
+examples. In order to do this, the `<egXML>` element refer to a wrappers, this instructs the
+test environment to insert the provided example into the appropriate context, thus
+providing a valid MEI document.
 
 Here's a full example of a class specification with a single test case:
 
@@ -58,6 +97,7 @@ Here's a full example of a class specification with a single test case:
 </classSpec>
 ```
 
+
 In order to check if all test cases provided in the ODD yield the expected
 validation result, first make sure that the schemata are up to date:
 
@@ -69,10 +109,4 @@ and run the schema tests:
 
 ```
 npm test
-```
-
-In order to build the schemata, build the HTML guidelines and run the tests with a single command run:
-
-```
-npm run refresh
 ```
