@@ -1,0 +1,64 @@
+include ./chord
+include ./mRest
+include ./note
+include ./clef
+include ./keySig
+include ./meterSig
+
+
+mixin beam(data)
+  -
+    childData = data.$has
+    data = _.omit(data, ['$', '$has']);
+    data = _.assign({}, {
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  beam()&attributes(data)
+    if _.isString(childData)
+      != childData
+    else if _.isArray(childData)
+      +beamTupletItems(childData)
+    else
+      +beamTupletItem(childData)
+
+
+mixin tuplet(data)
+  -
+    childData = data.$has
+    data = _.omit(data, ['$', '$has']);
+    data = _.assign({}, {
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  tuplet()&attributes(data)
+    if _.isString(childData)
+      != childData
+    else if _.isArray(childData)
+      +beamTupletItems(childData)
+    else
+      +beamTupletItem(childData)
+
+
+mixin beamTupletItems(data)
+  each attrs in data
+    +beamTupletItem(attrs)
+
+
+mixin beamTupletItem(attrs)
+  if attrs['$'] == 'note'
+    +note(attrs)
+  else if attrs['$'] == 'mRest'
+    +mRest(attrs)
+  else if attrs['$'] == 'chord'
+    +chord(attrs)
+  else if attrs['$'] == 'clef'
+    +clef(attrs)
+  else if attrs['$'] == 'keySig'
+    +keySig(attrs)
+  else if attrs['$'] == 'meterSig'
+    +meterSig(attrs)
+  else if attrs['$'] == 'beam'
+    +beam(attrs)
+  else if attrs['$'] == 'tuplet'
+    +tuplet(attrs)

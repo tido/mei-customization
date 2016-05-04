@@ -1,0 +1,43 @@
+include ./note
+
+mixin chord(data)
+  -
+    childData = data.$has
+    data = _.omit(data, ['$', '$has']);
+    data = _.assign({}, {
+      dur: 4,
+      'stem.dir': 'down',
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  chord()&attributes(data)
+    if _.isString(childData)
+      != childData
+    else if _.isArray(childData)
+      +childNotes(childData)
+    else
+      +childNote(childData)
+
+
+mixin childNotes(data)
+  each attrs in data
+    +childNote(attrs)
+
+
+mixin childNote(data)
+  -
+    childData = data.$has
+    data = _.omit(data, '$', '$has')
+    data = _.assign({}, {
+      pname: 'c',
+      oct: 4,
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  note()&attributes(data)
+    if _.isString(childData)
+      != childData
+    else if _.isArray(childData)
+      +noteItems(childData)
+    else if childData
+      +noteItem(childData)

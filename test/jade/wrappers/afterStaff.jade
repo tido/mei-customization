@@ -1,0 +1,26 @@
+extends ../mei
+
+include ../mixins/dynam
+
+block section
+  measure(n=1, xml:id=_.uniqueId('j'))
+    staff(n=1, xml:id=_.uniqueId('j'))
+      layer(n=1, xml:id=_.uniqueId('j'))
+    if _.isString(data)
+      != data
+    else if _.isArray(data)
+      +afterStaffItems(data)
+    else if data
+      +afterStaffItem(data)
+
+
+mixin afterStaffItems(data)
+  each attrs in data
+    +afterStaffItem(attrs)
+
+
+mixin afterStaffItem(data)
+  if _.isString(data)
+    != data
+  else if data['$'] == 'dynam'
+    +dynam(data)

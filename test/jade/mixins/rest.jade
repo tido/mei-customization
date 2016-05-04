@@ -1,0 +1,10 @@
+
+mixin rest(data)
+  -
+    data = _.omit(data, ['$'])
+    data = _.assign({}, {
+      dur: 4,
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  rest()&attributes(data)

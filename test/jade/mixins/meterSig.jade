@@ -1,0 +1,11 @@
+
+mixin meterSig(data)
+  -
+    data = _.omit(data, '$')
+    data = _.assign({}, {
+      count: 4,
+      unit: 4,
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  meterSig()&attributes(data)

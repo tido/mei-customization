@@ -1,0 +1,15 @@
+extends ../mei
+
+include ../mixins/layer
+include ../mixins/staffDef
+
+block section
+  measure(n=1, xml:id=_.uniqueId('j'))
+    staff(n=1, xml:id=_.uniqueId('j'))
+      +layer({ $has: { $: 'note', dur: 1 } })
+
+  +staffDef({ n:1, $has: data })
+
+  measure(n=2, xml:id=_.uniqueId('j'))
+    staff(n=1, xml:id=_.uniqueId('j'))
+      +layer({ $has: { $: 'note', dur: 1 } })

@@ -10,13 +10,14 @@
   },
   "private": true,
   "scripts": {
-    "test": "mocha 'src/**/__tests__/*.js' --compilers js:babel-core/register --require babel-polyfill",
-    "schema": "ant -lib dependencies/Stylesheets/lib/saxon9he.jar schemata",
-    "html-guidelines": "ant -lib dependencies/Stylesheets/lib/saxon9he.jar html-guidelines",
-    "pdf-guidelines": "ant -lib dependencies/Stylesheets/lib/saxon9he.jar pdf-guidelines"
+    "test": "mocha --compilers js:babel-core/register --require babel-polyfill",
+    "schema": "ant -lib vendor/stylesheets/lib/saxon9he.jar schema",
+    "html-guidelines": "ant -lib vendor/stylesheets/lib/saxon9he.jar html-guidelines",
+    "pdf-guidelines": "ant -lib vendor/stylesheets/lib/saxon9he.jar pdf-guidelines",
+    "refresh": "npm run schema && npm run html-guidelines && npm run test"
   },
   "dependencies": {
-    "lodash": "^3.10.1"
+    "lodash": "4.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -35,8 +36,10 @@
     "eslint": "^2.5.3",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-react": "^4.2.0",
+    "jade": "^1.11.0",
     "mocha": "^2.2.5",
-    "mei-validation-js": "git+ssh://github.com/tido/mei-validation-js"
+    "mei-validation-js": "git+ssh://github.com/tido/mei-validation-js",
+    "xmldom": "^0.1.22"
   },
   "bugs": {
     "url": "https://github.com/tido/notation-schema/issues"

@@ -1,0 +1,12 @@
+
+mixin keySig(data)
+  -
+    data = _.omit(data, '$')
+    data = _.assign({}, {
+      pname: 'c',
+      accid: 'n',
+      mode: 'major',
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  keySig()&attributes(data)

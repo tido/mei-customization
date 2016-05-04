@@ -1,0 +1,9 @@
+
+mixin mRest(data)
+  -
+    data = _.omit(data, '$')
+    data = _.assign({}, {
+        'xml:id': _.uniqueId('j')
+      }, data);
+
+  mRest()&attributes(data)

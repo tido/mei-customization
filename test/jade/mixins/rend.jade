@@ -1,0 +1,31 @@
+
+mixin rend(data)
+  -
+    childData = data.$has
+    data = _.omit(data, ['$', '$has'])
+    data = _.assign({}, {
+      tstamp: 1,
+      staff: 1,
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+
+  rend()&attributes(data)
+    if _.isString(childData)
+      != childData
+    else if _.isArray(childData)
+      +rendItems(childData)
+    else if childData
+      +rendItem(childData)
+
+
+mixin rendItems(data)
+  each attrs in data
+    +rendItem(attrs)
+
+
+mixin rendItem(data)
+  if _.isString(data)
+    != data
+  else if data['$'] == 'rend'
+    +rend(data)

@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="tidodd" default="rng" basedir=".">
-    <description>TIDO ODD</description>
+<project name="tido-mei-customization" default="rng" basedir=".">
+    <description>TIDO MEI customization</description>
 
     <property file="build.properties"/>
     <property file="build.default.properties"/>
 
     <property name="schemaIdent" value="tido"/>
-    <property name="rngAntFile" value="${basedir}/dependencies/Stylesheets/relaxng/build-to.xml"/>
-    <property name="htmlAntFile" value="${basedir}/dependencies/Stylesheets/html/build-to.xml"/>
-    <property name="pdfAntFile" value="${basedir}/dependencies/Stylesheets/pdf/build-to.xml"/>
-    <property name="defaultSource" value="${basedir}/dependencies/music-encoding/source/driver.xml"/>
-    <property name="oddPath" value="${basedir}/odd/customizations/tido.xml"/>
-    <property name="schemaOutputPath" value="${basedir}/odd/schemata"/>
-    <property name="guidelinesOutputPath" value="${basedir}/odd/docs"/>
-    <property name="tmpPath" value="${basedir}/odd/tmp"/>
+    <property name="rngAntFile" value="${basedir}/vendor/stylesheets/relaxng/build-to.xml"/>
+    <property name="htmlAntFile" value="${basedir}/vendor/stylesheets/html/build-to.xml"/>
+    <property name="pdfAntFile" value="${basedir}/vendor/stylesheets/pdf/build-to.xml"/>
+    <property name="defaultSource" value="${basedir}/vendor/music-encoding/source/driver.xml"/>
+    <property name="oddPath" value="${basedir}/src/tido.xml"/>
+    <property name="profileDir" value="${basedir}/xsl/profiles"/>
+    <property name="schematronToXslPath" value="${basedir}/xsl/schematronToXSL.xsl"/>
+    <property name="fixXslPath" value="${basedir}/xsl/fixXSL.xsl"/>
+    <property name="schemaOutputPath" value="${basedir}/build/schema"/>
+    <property name="guidelinesOutputPath" value="${basedir}/build/guidelines"/>
+    <property name="tmpPath" value="${basedir}/tmp"/>
 
-    <property name="schematronStylesheets" value="${basedir}/dependencies/iso-schematron-xslt2"/>
+    <property name="schematronStylesheets" value="${basedir}/vendor/iso-schematron-xslt2"/>
 
     <macrodef name="createRNG">
         <attribute name="schemaIdent"/>
@@ -56,11 +59,20 @@
             </xslt>
 
             <xslt in="${tmpPath}/@{schemaIdent}.03.expanded.sch"
-                out="${schemaOutputPath}/@{schemaIdent}.xsl"
-                style="${basedir}/odd/xsl/schematronToXSL.xsl"
+                out="${tmpPath}/@{schemaIdent}.04.xslWithWarnings.xsl"
+                style="${schematronToXslPath}"
                 processor="trax">
                 <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             </xslt>
+
+            <xslt in="${tmpPath}/@{schemaIdent}.04.xslWithWarnings.xsl"
+                out="${schemaOutputPath}/@{schemaIdent}.xsl"
+                style="${fixXslPath}"
+                processor="trax">
+                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            </xslt>
+
+            <delete dir="${tmpPath}"/>
         </sequential>
     </macrodef>
 
@@ -83,7 +95,7 @@
         <property name="summaryDoc" value="false"/>
         <property name="lang" value="en"/>
         <property name="institution" value="TIDO"/>
-        <property name="profiledir" value="${basedir}/odd/xsl/profiles"/>
+        <property name="profiledir" value="${profileDir}"/>
         <property name="profile" value="tido"/>
         <property name="outputFile" value="${guidelinesOutputPath}/tido-guidelines.html"/>
       </ant>
@@ -105,13 +117,15 @@
       </ant>
     </target>
 
-    <target name="schemata">
+    <target name="clean-schema">
+      <delete dir="${schemaOutputPath}"/>
+    </target>
+
+    <target name="schema" depends="clean-schema">
         <createRNG schemaIdent="tido"/>
         <createSchematronXSL schemaIdent="tido"/>
-        <createRNG schemaIdent="tido.enriched"/>
-        <createSchematronXSL schemaIdent="tido.enriched"/>
-        <createRNG schemaIdent="tido.multistart"/>
-        <createSchematronXSL schemaIdent="tido.multistart"/>
+        <createRNG schemaIdent="tido.sibelius"/>
+        <createSchematronXSL schemaIdent="tido.sibelius"/>
     </target>
 
 </project>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  © 2012 by the Music Encoding Initiative (MEI) Council.
+  © 2015 by the Music Encoding Initiative (MEI).
   Licensed under the Educational Community License, Version 2.0 (the "License"); you may
   not use this file except in compliance with the License. You may obtain a copy of the License
-  at http://www.osedu.org/licenses/ECL-2.0.
+  at http://opensource.org/licenses/ECL-2.0.
   
   Unless required by applicable law or agreed to in writing, software distributed under the
   License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
@@ -1050,7 +1050,7 @@
           <foreign>Phrasierungsbogen</foreign>), whereas the <gi scheme="MEI">slur</gi> element is
         used as a generic element for all curved lines (in German: <foreign>Bogensetzung</foreign>)
         except ties. All three elements have nearly identical models.</p>
-      <p>Aother reason for using elements instead of attributes for ties, slurs, and phrase marks is
+      <p>Another reason for using elements instead of attributes for ties, slurs, and phrase marks is
         that only elements may be combined with the functionality provided in chapters <ptr
           target="#editTrans"/> and <ptr target="#critApp"/> of these Guidelines.</p>
       <p>Although these elements are allowed within a <gi scheme="MEI">layer</gi> to accommodate
@@ -1657,9 +1657,9 @@
         <p>The meaning of the mark is captured using the <att>dir</att> attribute, which provides
           the following values:</p>
         <list type="gloss">
-          <label>up</label>
-          <item> - depress the pedal</item>
           <label>down</label>
+          <item> - depress the pedal</item>
+          <label>up</label>
           <item> - release the pedal</item>
           <label>bounce</label>
           <item> - release, then immediately depress the pedal again</item>

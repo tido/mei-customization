@@ -7,7 +7,7 @@
     exclude-result-prefixes="tei html"
     version="2.0">
 
-    <xsl:import href="../../../../../../vendor/stylesheets/html/html.xsl"/>
+    <xsl:import href="../../../../vendor/stylesheets/html/html.xsl"/>
 
     <xsl:param name="institution"></xsl:param>
     <xsl:param name="homeLabel">TIDO</xsl:param>

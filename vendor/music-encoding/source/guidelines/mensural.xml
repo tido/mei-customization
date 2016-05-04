@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  © 2012 by the Music Encoding Initiative (MEI) Council.
+  © 2015 by the Music Encoding Initiative (MEI).
   Licensed under the Educational Community License, Version 2.0 (the "License"); you may
   not use this file except in compliance with the License. You may obtain a copy of the License
-  at http://www.osedu.org/licenses/ECL-2.0.
+  at http://opensource.org/licenses/ECL-2.0.
   
   Unless required by applicable law or agreed to in writing, software distributed under the
   License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
@@ -19,11 +19,11 @@
 
 <div xmlns="http://www.tei-c.org/ns/1.0" type="div1" xml:id="mensural" n="0">
   <head>Mensural Notation</head>
-  <p>This chapter describes the module for encoding mensural notation from late 13th century to
-    about 1600. Historically, mensural notation preceded the development of CMN and it included a
-    wide range of features that persist in CMN and that can be encoded in a standard manner in MEI.
-    In mensural notation, pitches are notated as in CMN, leaving out here the major exception of
-      <emph>musica ficta</emph>. The pitch is given by the position of the note on the staff and the
+  <p>This chapter describes the module for encoding mensural notation from the late 13th century to
+    about 1600. Historically, mensural notation preceded the development of Common Music Notation (CMN)
+    and it included a wide range of features that persist in CMN and that can be encoded in a standard
+    manner in MEI. In mensural notation, pitches are notated as in CMN, leaving out here the major exception of
+    <emph>musica ficta</emph>. The pitch is given by the position of the note on the staff and the
     current clef as in CMN, and the mensural module introduces no modification to MEI regarding how
     pitches are encoded.</p>
 

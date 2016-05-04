@@ -6,6 +6,6 @@
                 exclude-result-prefixes="tei m"
                 version="2.0">
 
-  <xsl:import href="../../../../../../vendor/stylesheets/latex/latex.xsl"/>
+  <xsl:import href="../../../../vendor/stylesheets/latex/latex.xsl"/>
 
 </xsl:stylesheet>

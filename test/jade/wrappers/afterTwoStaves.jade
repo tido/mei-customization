@@ -1,0 +1,12 @@
+extends ../mei
+
+block scoreDef
+  +scoreDef({ staffCount: 2 })
+
+block section
+  measure(n=1, xml:id=_.uniqueId('j'))
+    staff(n=1, xml:id=_.uniqueId('j'))
+      layer(n=1, xml:id=_.uniqueId('j'))
+    staff(n=2, xml:id=_.uniqueId('j'))
+      layer(n=1, xml:id=_.uniqueId('j'))
+    != data

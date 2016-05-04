@@ -1,0 +1,11 @@
+
+mixin clef(data)
+  -
+    data = _.omit(data, '$')
+    data = _.assign({}, {
+      shape: 'G',
+      line: 2,
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  clef()&attributes(data)

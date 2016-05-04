@@ -1,0 +1,37 @@
+
+include ./clef
+include ./keySig
+include ./meterSig
+
+mixin staffDef(data)
+  -
+    childData = data.$has
+    data = _.omit(data, ['$', '$has']);
+    data = _.assign({}, {
+      n: 1,
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  staffDef()&attributes(data)
+    if _.isString(childData)
+      != childData
+    else if _.isArray(childData)
+      +layerItems(childData)
+    else
+      +layerItem(childData)
+
+
+mixin layerItems(data)
+  each attrs in data
+    +layerItem(attrs)
+
+
+mixin layerItem(attrs)
+  if attrs['$'] == 'note'
+    +note(attrs)
+  else if attrs['$'] == 'clef'
+    +clef(attrs)
+  else if attrs['$'] == 'keySig'
+    +keySig(attrs)
+  else if attrs['$'] == 'meterSig'
+    +meterSig(attrs)

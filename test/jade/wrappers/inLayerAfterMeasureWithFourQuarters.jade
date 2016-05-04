@@ -1,0 +1,12 @@
+extends ../mei
+
+include ../mixins/layer
+
+block section
+  measure(n=1, xml:id=_.uniqueId('j'))
+    staff(n=1, xml:id=_.uniqueId('j'))
+      +layer({ $has: [{$: 'note', dur: 4}, {$: 'note', dur: 4}, {$: 'note', dur: 4}, {$: 'note', dur: 4}] })
+
+  measure(n=2, xml:id=_.uniqueId('j'))
+    staff(n=1, xml:id=_.uniqueId('j'))
+      +layer({ $has: data })

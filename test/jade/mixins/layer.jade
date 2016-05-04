@@ -1,0 +1,54 @@
+include ./chord
+include ./mRest
+include ./note
+include ./rest
+include ./clef
+include ./keySig
+include ./meterSig
+include ./beamTuplet
+
+
+mixin layer(data)
+  -
+    childData = data.$has
+    data = _.omit(data, ['$', '$has']);
+    data = _.assign({}, {
+      n: 1,
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+  layer()&attributes(data)
+    if _.isString(childData)
+      != childData
+    else if _.isArray(childData)
+      +layerItems(childData)
+    else if childData
+      +layerItem(childData)
+
+
+mixin layerItems(data)
+  each attrs in data
+    +layerItem(attrs)
+
+
+mixin layerItem(attrs)
+  if _.isString(attrs)
+    != attrs
+  else if attrs['$'] == 'note'
+    +note(attrs)
+  else if attrs['$'] == 'rest'
+    +rest(attrs)
+  else if attrs['$'] == 'mRest'
+    +mRest(attrs)
+  else if attrs['$'] == 'chord'
+    +chord(attrs)
+  else if attrs['$'] == 'clef'
+    +clef(attrs)
+  else if attrs['$'] == 'keySig'
+    +keySig(attrs)
+  else if attrs['$'] == 'meterSig'
+    +meterSig(attrs)
+  else if attrs['$'] == 'beam'
+    +beam(attrs)
+  else if attrs['$'] == 'tuplet'
+    +tuplet(attrs)

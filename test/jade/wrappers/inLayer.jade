@@ -1,0 +1,8 @@
+extends ../mei
+
+include ../mixins/layer
+
+block section
+  measure(n=1, xml:id=_.uniqueId('j'))
+    staff(n=1, xml:id=_.uniqueId('j'))
+      +layer({ $has: data })

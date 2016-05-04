@@ -1,0 +1,32 @@
+include ./accid
+
+mixin note(data)
+  -
+    childData = data.$has
+    data = _.omit(data, ['$', '$has'])
+    data = _.assign({}, {
+      pname: 'c',
+      oct: 4,
+      dur: 4,
+      'stem.dir': 'down',
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+
+  note()&attributes(data)
+    if _.isString(childData)
+      != childData
+    else if _.isArray(childData)
+      +noteItems(childData)
+    else if childData
+      +noteItem(childData)
+
+
+mixin noteItems(data)
+  each attrs in data
+    +noteItem(attrs)
+
+
+mixin noteItem(attrs)
+  if attrs['$'] == 'accid'
+    +accid(attrs)

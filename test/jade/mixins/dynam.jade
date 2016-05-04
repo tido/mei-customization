@@ -1,0 +1,33 @@
+
+include ./rend
+
+mixin dynam(data)
+  -
+    childData = data.$has
+    data = _.omit(data, ['$', '$has'])
+    data = _.assign({}, {
+      tstamp: 1,
+      staff: 1,
+      'xml:id': _.uniqueId('j')
+    }, data);
+
+
+  dynam()&attributes(data)
+    if _.isString(childData)
+      != childData
+    else if _.isArray(childData)
+      +dynamItems(childData)
+    else if childData
+      +dynamItem(childData)
+
+
+mixin dynamItems(data)
+  each attrs in data
+    +dynamItem(attrs)
+
+
+mixin dynamItem(data)
+  if _.isString(data)
+    != data
+  else if data['$'] == 'rend'
+    +rend(data)
