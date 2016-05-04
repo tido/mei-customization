@@ -1,17 +1,21 @@
-/* @flow */
-
 import path from 'path';
 import {
-  flow, property, forEach, invokeMap, join, find, map, flatten,
+  flow, property, forEach, invokeMap, join, find, map, flatten, curry, toArray,
 } from 'lodash/fp';
 
-import { wrapFragment, parseXML } from '../../../../util/test';
-import { read } from '../../validation/util/fileReader';
-import { getElementsByTagName } from 'mei-traversals';
-import { getAttribute } from 'mei-traverslas';
+import { wrapFragment, parseXML } from 'mei-validation-js/lib/util';
+import { read } from 'mei-validation-js/lib/util/fileReader';
 
 const oddPath = path.resolve(__dirname, '../tido.xml');
 const wrapperAttributeName = 'tido:wrapper';
+
+const getElementsByTagName = curry(
+  (tagName, domElement) =>
+    toArray(domElement.getElementsByTagName(tagName)));
+
+const getAttribute = curry((attributeName, domElement) =>
+  domElement.getAttribute(attributeName)
+);
 
 const getSchemaPaths = (schemaSpecName) => ({
   rng: path.resolve(__dirname, `../../../../build/dist/schema/${schemaSpecName}.rng`),
