@@ -1,4 +1,3 @@
-/* @flow */
 
 import { validateSync } from 'mei-validation-js';
 
