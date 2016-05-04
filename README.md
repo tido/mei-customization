@@ -5,7 +5,7 @@ ODD specification and documentation for Tido music notation
 
 ```bash
 git clone https://github.com/tido/notation-odd.git
-cd notation-core
+cd notation-odd
 npm install
 ```
 
