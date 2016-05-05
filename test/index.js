@@ -8,7 +8,7 @@ import {
 import { wrapFragment, parseXML } from './util';
 
 const oddPath = path.resolve(__dirname, '../src/tido.xml');
-const wrapperAttributeName = 'tido:wrapper';
+const renditionAttributeName = 'rendition';
 
 const getElementsByTagName = (tagName) =>
   (domElement) => toArray(domElement.getElementsByTagName(tagName));
@@ -79,7 +79,7 @@ const validateElement = (schemaSpecName) => (element) => {
   const schemaPaths = getSchemaPaths(schemaSpecName);
   const fragment = getInnerXMLString(element);
   const validAttribute = getAttribute('valid')(element);
-  const wrapperName = getAttribute(wrapperAttributeName)(element);
+  const wrapperName = getAttribute('rendition')(element).substr(1);
 
   describe(fragment, () => {
     switch (validAttribute) {

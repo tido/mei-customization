@@ -124,8 +124,6 @@
     <target name="schema" depends="clean-schema">
         <createRNG schemaIdent="tido"/>
         <createSchematronXSL schemaIdent="tido"/>
-        <createRNG schemaIdent="tido.sibelius"/>
-        <createSchematronXSL schemaIdent="tido.sibelius"/>
     </target>
 
 </project>

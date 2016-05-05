@@ -36,7 +36,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <author xml:id="AE">Alexander Erhard</author>
       </titleStmt>
       <publicationStmt>
-        <publisher>Tido Ltd.</publisher>
+        <publisher>Tido (UK) Ltd.</publisher>
         <availability status="restricted">
           <p>Copyright 2014-2016 Tido Ltd.</p>
           <p>All rights reserved.</p>
@@ -46,6 +46,49 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <p>Born digital.</p>
       </sourceDesc>
     </fileDesc>
+    <encodingDesc>
+      <tagsDecl>
+        <rendition xml:id="afterStaff">
+          <ptr target="../test/jade/wrappers/afterStaff.jade"/>
+        </rendition>
+        <rendition xml:id="afterTwoStaves">
+          <ptr target="../test/jade/wrappers/afterTwoStaves.jade"/>
+        </rendition>
+        <rendition xml:id="inInitialScoreDef">
+          <ptr target="../test/jade/wrappers/inInitialScoreDef.jade"/>
+        </rendition>
+        <rendition xml:id="inInitialStaffGrp">
+          <ptr target="../test/jade/wrappers/inInitialStaffGrp.jade"/>
+        </rendition>
+        <rendition xml:id="inLayer">
+          <ptr target="../test/jade/wrappers/inLayer.jade"/>
+        </rendition>
+        <rendition xml:id="inLayerAfterMeasureWithFourQuarters">
+          <ptr target="../test/jade/wrappers/inLayerAfterMeasureWithFourQuarters.jade"/>
+        </rendition>
+        <rendition xml:id="inLayerBeforeMeasureWithFourQuarters">
+          <ptr target="../test/jade/wrappers/inLayerBeforeMeasureWithFourQuarters.jade"/>
+        </rendition>
+        <rendition xml:id="inMeasure">
+          <ptr target="../test/jade/wrappers/inMeasure.jade"/>
+        </rendition>
+        <rendition xml:id="inScore">
+          <ptr target="../test/jade/wrappers/inScore.jade"/>
+        </rendition>
+        <rendition xml:id="inScoreDef">
+          <ptr target="../test/jade/wrappers/inScoreDef.jade"/>
+        </rendition>
+        <rendition xml:id="inScoreinSection">
+          <ptr target="../test/jade/wrappers/inScoreinSection.jade"/>
+        </rendition>
+        <rendition xml:id="inStaffDefAfterLastMeasure">
+          <ptr target="../test/jade/wrappers/inStaffDefAfterLastMeasure.jade"/>
+        </rendition>
+        <rendition xml:id="twoStavesInSection">
+          <ptr target="../test/jade/wrappers/twoStavesInSection.jade"/>
+        </rendition>
+      </tagsDecl>
+    </encodingDesc>
   </teiHeader>
   <text>
     <front>
@@ -100,7 +143,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <p>To define a time signature, tido uses <att>unit</att> and <att>count</att> on
               <gi>meterSig</gi>. They <emph>must</emph> occur together: </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
-            tido:wrapper="inInitialStaffGrp">
+            rendition="#inInitialStaffGrp">
             <staffDef xml:id="d001">
               <meterSig count="4" unit="4" xml:id="d002"/>
             </staffDef>
@@ -116,7 +159,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               <att>mode</att> attributes of <gi>keySig</gi>. <att>pname</att> and <att>mode</att>
             <emph>must</emph> occur together, <att>accid</att> is optional. </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
-            tido:wrapper="inInitialStaffDefGrp">
+            rendition="#inInitialStaffDefGrp">
             <staffDef xml:id="d003">
               <keySig pname="f" accid="s" mode="major" xml:id="d004"/>
             </staffDef>
@@ -130,7 +173,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <p>To define a clef, tido uses <att>shape</att> and <att>line</att>, which
               <emph>must</emph> occur together. </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
-            tido:wrapper="inInitialStaffGrp">
+            rend="#inInitialStaffGrp">
             <staffDef lines="5" xml:id="d005" n="2">
               <clef shape="G" line="2" xml:id="d006"/>
             </staffDef>
@@ -148,7 +191,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <p>Notes must either have an octave and a pitch name or a <att>loc</att> attribute. Stem direction remains optional,
             but is recommended. When notes are in a chord they must not express stem information. </p>
           <p>This is a typical note:</p>
-          <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
             <note pname="a" oct="4" dur="4" stem.dir="up" xml:id="d007"/>
           </egXML>
         </div>
@@ -172,7 +215,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               expressed on the chord. The following are valid examples:</p>
             <list>
               <item>Duration on chord: <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-                  tido:wrapper="inLayer">
+                  rendition="#inLayer">
                   <chord dur="4" xml:id="d008">
                     <note pname="a" oct="4" xml:id="d009"/>
                     <note pname="f" oct="4" xml:id="d010"/>
@@ -180,7 +223,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 </egXML>
               </item>
               <item>Duration on both chord and notes (must match): <egXML
-                  xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+                  xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                   <chord dur="4" xml:id="d011">
                     <note pname="a" oct="4" xml:id="d012"/>
                     <note pname="f" oct="4" xml:id="d013"/>
@@ -209,7 +252,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               particularly useful for events stopping at an event without beat (e.g. during a
               cadenza), or for complex slurs spanning multiple staves. </p>
             <p>This is a typical slur: </p>
-            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
               <slur xml:id="d014" layer="1" staff="1" tstamp="1" tstamp2="0m+2"/>
             </egXML>
             <p>Partial slurs (as they appear, for example, in <gi>ending</gi> elements) need to be
@@ -224,7 +267,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <head>Pedals</head>
             <p> The form of pedal marks indicating to depress and release must be consistent. </p>
             <p>Here is an example:</p>
-            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
               <pedal dir="down" tstamp="1" form="line" xml:id="d015"/>
               <pedal dir="bounce" tstamp="1" form="line" xml:id="d016"/>
               <pedal dir="up" tstamp="2" form="line" xml:id="d017"/>
@@ -287,7 +330,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <gi>orig</gi> and the expanded version wrapped in a <gi>reg</gi> element. The
           corresponding ornament must be encoded likewise, with <gi>choice</gi> wrapping an
             <gi>orig</gi> element containing the ornament and an empty <gi>reg</gi> element.</p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inSection">
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inSection">
           <measure n="22" xml:id="d018">
             <staff n="1" xml:id="d019">
               <layer n="1" xml:id="d020">
@@ -316,33 +359,33 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         </egXML>
         <p>Trill. In MEI trills are agnostic about the starting note (i.e. written or
           ornamenting).</p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
           <trill tstamp="1" altsym="#ornamentTrill" xml:id="d035"/>
         </egXML>
         <p>Turn. Begins on the note above the written note.</p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
           <turn form="norm" tstamp="1" altsym="#ornamentTurn" xml:id="d036"/>
         </egXML>
         <p>Turn with slash. Begins on the note below the written note. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
           <turn form="inv" tstamp="1" altsym="#ornamentTurnSlash" xml:id="d037"/>
         </egXML>
         <p>Mordent. Performed as the written note, followed by its lower neighbor, with a return to
           the written note. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
           <mordent form="norm" tstamp="1" altsym="#ornamentMordent" xml:id="d038"/>
         </egXML>
         <p>Inverted mordent. Performed as the principal note, followed by its upper neighbor, with a
           return to the principal note. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
           <mordent form="inv" tstamp="1" altsym="#ornamentMordentInverted" xml:id="d039"/>
         </egXML>
         <p>Tremblement. Equivalent to a trill. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
           <trill tstamp="1" altsym="#ornamentTremblement" xml:id="d040"/>
         </egXML>
         <p>Haydn ornament. Same as inverted mordent. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
           <mordent form="inv" tstamp="1" altsym="#ornamentMordentInverted" xml:id="d041"/>
         </egXML>
       </div>
@@ -369,513 +412,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <!-- Schema specification for TIDO MEI files -->
         <schemaSpec ident="tido" ns="http://www.music-encoding.org/ns/mei"
           start="mei music body mdiv" prefix="tido_">
-          <specGrpRef target="#tidoCommonGrp"/>
-          <specGrpRef target="#tidoStrictGrp"/>
-        </schemaSpec>
-        <!-- Schema specification for MEI files output by the Sibelius Converter to prepare 'golden' MEI -->
-        <schemaSpec ident="tido.sibelius" ns="http://www.music-encoding.org/ns/mei"
-          start="mei music body mdiv" prefix="tido_">
-          <specGrpRef target="#tidoCommonGrp"/>
-          <specGrpRef target="#tidoSibeliusGrp"/>
-        </schemaSpec>
-        <specGrp xml:id="tidoStrictGrp">
-          <!--
-            the scope of elements reflects the usage of elements in our latest test files,
-            with 2 exceptions: the schema permits <space> and <pedal> elements to be implemented soon
-          -->
-          <moduleRef key="MEI"/>
-          <moduleRef key="MEI.shared"
-            except=" actor annot arranger artic author barLine bibl biblList biblScope caption
-            castGrp castItem castList clefGrp composer creation custos date depth dir distributor
-            div dot edition editor ending event eventList expansion extent funder genre group grpSym
-            head height identifier imprint incip keyAccid label layerDef lb librettist lyricist name
-            num pad part parts pb pgDesc pgFoot pgFoot2 pgHead pgHead2 phrase physLoc publisher
-            pubPlace recipient relatedItem repository resp role roleDesc sb series sponsor stack
-            tempo textLang titlePage width"/>
-          <moduleRef key="MEI.header"
-            except=" accessRestrict acqSource altId appInfo application audience byline captureMode
-            carrierForm change changeDesc classCode classification condition contentItem contents
-            context correction dimensions editionStmt editorialDecl exhibHist fileChar fingerprint
-            hand handList history incipCode incipText inscription interpretation key language langUsage
-            mensuration meter normalization notesStmt otherChar perfDuration perfMedium perfRes
-            perfResList physDesc physMedium plateNum playingSpeed price provenance revisionDesc
-            samplingDecl scoreFormat segmentation soundChan source sourceDesc specRepro stdVals
-            sysReq term termList trackConfig treatHist treatSched unpub watermark work workDesc"/>
-          <moduleRef key="MEI.cmn"
-            except=" arpeg beamSpan beatRpt bend breath bTrem fermata fTrem gliss halfmRpt harpPedal
-            meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt octave ossia reh tuplet tupletSpan"/>
-          <moduleRef key="MEI.cmnOrnaments"/>
-          <moduleRef key="MEI.critapp" except="app lem rdg"/>
-          <moduleRef key="MEI.edittrans"
-            except=" abbr add corr damage del expan gap handShift restore sic subst supplied unclear"/>
-          <moduleRef key="MEI.externalsymbols"/>
-          <moduleRef key="MEI.fingering"/>
-          <moduleRef key="MEI.lyrics" except="lyrics"/>
-          <moduleRef key="MEI.namesdates" except="geogName periodName persName styleName"/>
-          <moduleRef key="MEI.ptrref" except="ptr ref"/>
-          <moduleRef key="MEI.text" except="back front l lg li list quote"/>
-          <moduleRef key="MEI.usersymbols"
-            except="anchoredText curve line mapping propName propValue symbolDef symName symProp symbolTable"/>
-          <classSpec ident="att.notationtype" module="MEI" type="atts" mode="delete"/>
-          <classSpec ident="att.accid.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.accid.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.accid.log" module="MEI.shared" type="atts" mode="change">
-            <classes mode="change">
-              <memberOf key="att.controlevent" mode="delete"/>
-            </classes>
-            <attList>
-              <attDef ident="func" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.accid.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.altsym" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.articulation.performed" module="MEI.shared" type="atts"
-            mode="delete"/>
-          <classSpec ident="att.authorized" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.barplacement" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.bibl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.canonical" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.chord.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.chord.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <!-- <classSpec ident="att.chord.vis" module="MEI.shared" type="atts" mode="delete"/> -->
-          <classSpec ident="att.clef.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.clef.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.clef.log" module="MEI.shared" type="atts" mode="change">
-            <attList>
-              <attDef ident="cautionary" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.clef.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.cleffing.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.cleffing.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.color" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.coloration" module="MEI.shared" type="atts" mode="delete"/>
-
-          <classSpec ident="att.common" module="MEI.shared" type="atts" mode="change">
-            <attList>
-              <attDef ident="n" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.commonPart" module="MEI.shared" type="atts" mode="change">
-            <attList>
-              <attDef ident="xml:base" usage="opt" mode="delete"/>
-              <attDef ident="label" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.curvature" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.curverend" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.datable" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.datapointing" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.declaring" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.distances" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.duration.additive" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.duration.default" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.duration.performed" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.dynam.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.dynam.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.enclosingchars" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.endings" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.extender" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.fermatapresent" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.filing" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.horizontalalign" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.id" module="MEI.shared" type="atts" mode="change">
-            <attList>
-              <attDef ident="xml:id" usage="req" mode="change">
-                <datatype>
-                  <rng:data type="ID"/>
-                </datatype>
-              </attDef>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.instrumentident" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.joined" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.keySig.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.keySig.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.keySig.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.keySigDefault.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.keySigDefault.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.labels.addl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.lang" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.layer.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.layer.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.layer.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.layer.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.linerend" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.linerend.base" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.lyricstyle" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.measure.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.measure.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.measurement" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.measurenumbers" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.meterSig.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.meterSig.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.meterSig.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.meterSigDefault.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.meterSigDefault.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.meterconformance" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.meterconformance.bar" module="MEI.shared" type="atts" mode="change">
-            <attList>
-              <attDef ident="control" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.mmtempo" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.multinummeasures" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.notationstyle" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.note.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.note.ges" module="MEI.shared" type="atts" mode="change">
-            <classes mode="change">
-              <memberOf key="att.articulation.performed" mode="delete"/>
-              <memberOf key="att.duration.performed" mode="delete"/>
-              <memberOf key="att.instrumentident" mode="delete"/>
-              <memberOf key="att.midivelocity" mode="delete"/>
-              <memberOf key="att.note.ges.mensural" mode="delete"/>
-              <memberOf key="att.note.ges.tablature" mode="delete"/>
-            </classes>
-            <attList>
-              <attDef ident="oct.ges" usage="opt" mode="delete"/>
-              <attDef ident="pname.ges" usage="opt" mode="delete"/>
-              <attDef ident="pnum" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <!-- <classSpec ident="att.note.vis" module="MEI.shared" type="atts" mode="delete"/> -->
-          <classSpec ident="att.noteheads" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.octavedefault" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.octavedisplacement" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.onelinestaff" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.optimization" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.ornam.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.ornam.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.pages" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.plist" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.pointing" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.relativesize" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.responsibility" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.rest.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.rest.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <!-- <classSpec ident="att.rest.vis" module="MEI.shared" type="atts" mode="delete"/> -->
-          <classSpec ident="att.scalable" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.score.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.score.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.score.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.score.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.scoreDef.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.scoreDef.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.scoreDef.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.scoreDef.log.mensural" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.scoreDef.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.section.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.section.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.section.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.section.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.slurpresent" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.space.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.space.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.space.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.spacing" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staff.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staff.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staff.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staff.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffDef.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffDef.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffDef.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffDef.vis" module="MEI.shared" type="atts" mode="change">
-            <attList>
-              <attDef ident="grid.show" usage="opt" mode="delete"/>
-              <attDef ident="layerscheme" usage="opt" mode="delete"/>
-              <attDef ident="lines.color" usage="opt" mode="delete"/>
-              <attDef ident="lines.visible" usage="opt" mode="delete"/>
-              <attDef ident="spacing" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.staffGrp.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffGrp.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffGrp.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffGrp.vis" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffloc.pitched" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.stems" module="MEI.shared" type="atts" mode="change">
-            <attList>
-              <attDef ident="stem.len" usage="opt" mode="delete"/>
-              <attDef ident="stem.mod" usage="opt" mode="delete"/>
-              <attDef ident="stem.pos" usage="opt" mode="delete"/>
-              <attDef ident="stem.x" usage="opt" mode="delete"/>
-              <attDef ident="stem.y" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.syl.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.syl.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.syltext" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.systems" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.textstyle" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.tiepresent" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.timestamp.performed" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.transposition" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.tupletpresent" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.visibility" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.visualoffset" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.visualoffset.ho" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.visualoffset.to" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.visualoffset.vo" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.visualoffset2" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.visualoffset2.ho" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.visualoffset2.to" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.visualoffset2.vo" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.whitespace" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.width" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.xy" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.xy2" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.beam.anl" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.beam.ges" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.beam.log" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.beam.vis" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.beamed" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.beamedwith" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.beaming.log" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.beaming.vis" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.beamrend" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.beamsecondary" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.chord.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.chord.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.graced" module="MEI.cmn" type="atts" mode="change">
-            <attList>
-              <attDef ident="grace.time" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.hairpin.anl" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.hairpin.ges" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.hairpin.vis" module="MEI.cmn" type="atts" mode="change">
-            <classes mode="change">
-              <memberOf key="att.color" mode="delete"/>
-              <memberOf key="att.linerend.base" mode="delete"/>
-              <memberOf key="att.visualoffset" mode="delete"/>
-              <memberOf key="att.visualoffset2" mode="delete"/>
-              <memberOf key="att.xy" mode="delete"/>
-              <memberOf key="att.xy2" mode="delete"/>
-            </classes>
-            <attList>
-              <attDef ident="opening" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.lvpresent" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.measure.vis" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.note.ges.cmn" module="MEI.cmn" type="atts" mode="change">
-            <attList>
-              <attDef ident="gliss" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.note.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.note.vis.cmn" module="MEI.cmn" type="atts" mode="change"/>
-          <classSpec ident="att.pedal.anl" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.pedal.ges" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.pianopedals" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.rehearsal" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.rest.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.rest.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.scoreDef.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.scoreDef.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.slur.anl" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.slur.ges" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.slur.vis" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.slurrend" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.space.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.staffDef.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.staffDef.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.stems.cmn" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.tie.anl" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.tie.ges" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.tie.vis" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.tierend" module="MEI.cmn" type="atts" mode="delete"/>
-          <classSpec ident="att.mordent.anl" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
-          <classSpec ident="att.mordent.ges" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
-          <classSpec ident="att.ornam" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
-          <classSpec ident="att.ornamentaccid" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
-          <classSpec ident="att.trill.anl" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
-          <classSpec ident="att.trill.ges" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
-          <classSpec ident="att.turn.anl" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
-          <classSpec ident="att.turn.ges" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
-          <classSpec ident="att.source" module="MEI.critapp" type="atts" mode="delete"/>
-          <classSpec ident="att.edit" module="MEI.edittrans" type="atts" mode="delete"/>
-          <classSpec ident="att.evidence" module="MEI.edittrans" type="atts" mode="delete"/>
-          <classSpec ident="att.extsym" module="MEI.externalsymbols" type="atts" mode="delete"/>
-          <classSpec ident="att.fing.anl" module="MEI.fingering" type="atts" mode="delete"/>
-          <classSpec ident="att.fing.ges" module="MEI.fingering" type="atts" mode="delete"/>
-          <classSpec ident="att.fingGrp.anl" module="MEI.fingering" type="atts" mode="delete"/>
-          <classSpec ident="att.fingGrp.ges" module="MEI.fingering" type="atts" mode="delete"/>
-          <classSpec ident="att.fingGrp.vis" module="MEI.fingering" type="atts" mode="change">
-            <classes mode="change">
-              <memberOf key="att.altsym" mode="delete"/>
-              <memberOf key="att.extender" mode="delete"/>
-              <memberOf key="att.visualoffset" mode="delete"/>
-              <memberOf key="att.xy" mode="delete"/>
-            </classes>
-            <attList>
-              <attDef ident="orient" usage="opt" mode="delete"/>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.verse.anl" module="MEI.lyrics" type="atts" mode="delete"/>
-          <classSpec ident="att.verse.ges" module="MEI.lyrics" type="atts" mode="delete"/>
-          <classSpec ident="att.verse.log" module="MEI.lyrics" type="atts" mode="delete"/>
-          <classSpec ident="att.verse.vis" module="MEI.lyrics" type="atts" mode="delete"/>
-          <classSpec ident="att.enumeration" module="MEI.shared" type="atts" mode="add">
-            <attList>
-              <attDef ident="n" usage="opt">
-                <desc>Provides a number-like designation for an element.</desc>
-                <datatype>
-                  <rng:ref name="token"/>
-                </datatype>
-              </attDef>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.label" module="MEI.shared" type="atts" mode="add">
-            <attList>
-              <attDef ident="label" usage="opt">
-                <desc>Provides a name or label for an element. The value may be any string.</desc>
-                <datatype>
-                  <rng:data type="string"/>
-                </datatype>
-              </attDef>
-            </attList>
-          </classSpec>
-          <elementSpec ident="measure" module="MEI.cmn" mode="change">
-            <classes mode="change">
-              <memberOf key="att.enumeration"/>
-            </classes>
-          </elementSpec>
-          <elementSpec ident="scoreDef" module="MEI.shared" mode="change">
-            <content>
-              <rng:choice>
-                <rng:optional>
-                  <rng:ref name="model.staffGrpLike"/>
-                </rng:optional>
-              </rng:choice>
-            </content>
-          </elementSpec>
-          <elementSpec ident="verse" module="MEI.lyrics" mode="change">
-            <classes mode="change">
-              <memberOf key="att.label" mode="add"/>
-            </classes>
-            <attList>
-              <attDef ident="n" usage="req">
-                <desc>provides a name or number designation for an element. While the value need not
-                  be unique, it is required to be a single token. Must be an integer.</desc>
-                <datatype>
-                  <rng:data type="positiveInteger"/>
-                </datatype>
-              </attDef>
-            </attList>
-          </elementSpec>
-          <!-- we need to override the content model of macro.availabilityPart to avoid a schema error resulting from a bug in the TEI-C schema transformation -->
-          <macroSpec ident="macro.availabilityPart" module="MEI.header" type="pe" mode="change">
-            <content>
-              <rng:optional>
-                <rng:ref name="useRestrict"/>
-              </rng:optional>
-            </content>
-          </macroSpec>
-        </specGrp>
-        <specGrp xml:id="tidoSibeliusGrp">
-          <moduleRef key="MEI"/>
-          <moduleRef key="MEI.shared" except="clefGrp layerDef"/>
-          <moduleRef key="MEI.header"/>
-          <moduleRef key="MEI.cmn" except="meterSigGrp"/>
-          <moduleRef key="MEI.cmnOrnaments"/>
-          <moduleRef key="MEI.critapp"/>
-          <moduleRef key="MEI.edittrans"/>
-          <moduleRef key="MEI.externalsymbols"/>
-          <moduleRef key="MEI.fingering"/>
-          <moduleRef key="MEI.lyrics"/>
-          <moduleRef key="MEI.namesdates"/>
-          <moduleRef key="MEI.ptrref"/>
-          <moduleRef key="MEI.text"/>
-          <moduleRef key="MEI.usersymbols" include="symbol"/>
-          <!-- === TIDO:COLOR === -->
-          <classSpec ident="att.tido.color" type="atts" mode="add">
-            <desc>Color attributes to facilitate the content creation workflow for tido. See <ref
-                target="https://github.com/tido/MEIConverter/issues/5">
-                https://github.com/tido/MEIConverter/issues/5 discussion on GitHub</ref>
-            </desc>
-            <attList>
-              <attDef ident="color" ns="http://tido-music.com/ns/1.0" mode="add">
-                <desc>records color information as required by content creation workflow for tido.
-                  Further processing should transform this information into Critical Apparatus,
-                  Editorial Markup or other standard MEI. See discussion: <ref
-                    target="https://github.com/tido/MEIConverter/issues/5">
-                    https://github.com/tido/MEIConverter/issues/5 </ref>
-                </desc>
-                <datatype>
-                  <rng:ref name="data.COLOR"/>
-                </datatype>
-              </attDef>
-            </attList>
-          </classSpec>
-          <classSpec ident="att.staffDef.vis.cmn" module="MEI.cmn" type="atts" mode="change">
-            <classes mode="change">
-              <memberOf key="att.tido.color" mode="add"/>
-            </classes>
-            <exemplum>
-              <p>Valid usage of <att>tido:color</att> on <gi>staffDef</gi></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inMeasure">
-                <staffDef tido:color="#FF0000" lines="5" n="1" xml:id="d042"/>
-              </egXML>
-            </exemplum>
-          </classSpec>
-          <classSpec ident="att.color" module="MEI.shared" type="atts" mode="change">
-            <desc>Visual color attributes.</desc>
-            <classes mode="change">
-              <memberOf key="att.tido.color"/>
-            </classes>
-            <exemplum>
-              <p>Valid usage of <att>tido:color</att> on <gi>note</gi> and <gi>rest</gi> elements</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
-                <note pname="a" oct="4" dur="4" color="red" tido:color="#FF0000" xml:id="d043"/>
-                <rest dur="1" color="red" tido:color="#FF0000" xml:id="d044"/>
-              </egXML>
-            </exemplum>
-          </classSpec>
-          <elementSpec ident="dir" module="MEI.shared" mode="change">
-            <classes mode="change">
-              <memberOf key="att.tido.color" mode="add"/>
-            </classes>
-            <exemplum>
-              <p>Valid usage of <att>tido:color</att> on a <gi>dir</gi> element</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
-                <dir tido:color="red" tstamp="1" xml:id="d045"/>
-              </egXML>
-            </exemplum>
-          </elementSpec>
-          <elementSpec ident="dynam" module="MEI.shared" mode="change">
-            <classes mode="change">
-              <memberOf key="att.tido.color" mode="add"/>
-            </classes>
-            <exemplum>
-              <p>Valid usage of <att>tido:color</att> on a <gi>dynam</gi> element</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
-                <dynam tido:color="blue" tstamp="1" xml:id="d046"/>
-              </egXML>
-            </exemplum>
-          </elementSpec>
-          <elementSpec ident="tempo" module="MEI.shared" mode="change">
-            <classes mode="change">
-              <memberOf key="att.tido.color" mode="add"/>
-            </classes>
-            <exemplum>
-              <p>Valid usage of <att>tido:color</att> on a <gi>tempo</gi> element</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
-                <tempo tido:color="blue" tstamp="1" xml:id="d047"/>
-              </egXML>
-            </exemplum>
-          </elementSpec>
-          <elementSpec ident="octave" module="MEI.cmn" mode="change">
-            <exemplum>
-              <p>Valid usage of <att>tido:color</att> on an <gi>octave</gi> element</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
-                <octave tido:color="blue" tstamp="1" dur="1" xml:id="d048"/>
-              </egXML>
-            </exemplum>
-          </elementSpec>
-        </specGrp>
-        <specGrp xml:id="tidoCommonGrp">
           <constraintSpec ident="set_ns" scheme="isoschematron">
             <constraint>
               <sch:ns xmlns:sch="http://purl.oclc.org/dsdl/schematron" prefix="mei"
@@ -901,7 +437,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>A valid <gi>pedal</gi> element with local URI references in <att>startid</att> and
                   <att>endid</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <pedal dir="down" staff="1" layer="1" startid="#n01" endid="#n02" xml:id="d049"/>
               </egXML>
             </exemplum>
@@ -909,7 +445,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               <p>An invalid <gi>pedal</gi> element with local URI references lacking the hash sign
                 in <att>startid</att> and <att>endid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <pedal dir="down" staff="1" layer="1" startid="n01" endid="n02" xml:id="d050"/>
               </egXML>
             </exemplum>
@@ -917,7 +453,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               <p>An invalid <gi>pedal</gi> element with absolute URI references in
                   <att>startid</att> and <att>endid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <pedal xml:id="d051" dir="down" staff="1" layer="1"
                   startid="http://google.com#start" endid="http://google.com#end"/>
               </egXML>
@@ -1151,13 +687,13 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </classes>
             <exemplum>
               <p>A valid <gi>rest</gi> element containing the required <att>dur</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <rest dur="1" xml:id="d052"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>rest</gi> element without the required <att>dur</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <rest xml:id="d053"/>
               </egXML>
             </exemplum>
@@ -1171,13 +707,13 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </classes>
             <exemplum>
               <p>A valid <gi>space</gi> element containing the required <att>dur</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <space dur="1" xml:id="d054"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>space</gi> element without the required <att>dur</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <space xml:id="d055"/>
               </egXML>
             </exemplum>
@@ -1201,31 +737,31 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </constraintSpec>
             <exemplum>
               <p>A valid <gi>note</gi> element containing <att>pname</att>, <att>oct</att> and <att>dur</att> attributes</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <note pname="a" oct="4" dur="1" xml:id="d056"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>note</gi> element containing <att>loc</att> and <att>dur</att> attributes</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <note loc="4" dur="1" xml:id="d057"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>note</gi> element without the required <att>dur</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <note pname="a" oct="4" xml:id="d058"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>note</gi> element specifying <att>pname</att> but not <att>oct</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <note pname="a" dur="1" xml:id="d059"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>note</gi> element specifying <att>oct</att> but not <att>pname</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <note oct="4" dur="1" xml:id="d060"/>
               </egXML>
             </exemplum>
@@ -1274,7 +810,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </classes>
             <exemplum>
               <p>A valid <gi>chord</gi> element</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <chord xml:id="d061" dur="1">
                   <note pname="a" oct="4" xml:id="d062"/>
                   <note pname="a" oct="4" xml:id="d063"/>
@@ -1282,7 +818,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </egXML>
             </exemplum>
             <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <p>An invalid <gi>chord</gi> element without the required <att>dur</att> attribute</p>
                 <chord xml:id="d064">
                   <note pname="a" oct="4" xml:id="d065"/>
@@ -1291,7 +827,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </egXML>
             </exemplum>
             <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
                   elements don't match the <gi>chord</gi> element's <att>dir</att></p>
                 <chord xml:id="d067" dur="1">
@@ -1301,7 +837,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </egXML>
             </exemplum>
             <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
                   elements don't match the <gi>chord</gi> element's <att>dir</att></p>
                 <chord dur="1" xml:id="d070">
@@ -1311,7 +847,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </egXML>
             </exemplum>
             <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
                   elements don't match the <gi>chord</gi> element's <att>dir</att></p>
                 <chord dur="1" xml:id="d073">
@@ -1323,7 +859,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
                 elements don't match the <gi>chord</gi> element's <att>dir</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <chord dur="1" xml:id="d076">
                   <note pname="a" oct="4" dur="2" xml:id="d077"/>
                   <note pname="a" oct="4" dur="2" xml:id="d078"/>
@@ -1331,7 +867,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </egXML>
             </exemplum>
             <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
                   elements don't match the <gi>chord</gi> element's <att>dir</att></p>
                 <chord dur="1" xml:id="d079">
@@ -1341,7 +877,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </egXML>
             </exemplum>
             <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
                   elements don't match the <gi>chord</gi> element's <att>dir</att></p>
                 <chord dur="2" xml:id="d082">
@@ -1409,43 +945,43 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </constraintSpec>
             <exemplum>
               <p>A valid <att>note</att> element with a down stem</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <note pname="a" oct="4" dur="4" stem.dir="down" xml:id="d085"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <att>note</att> element with an up stem</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <note pname="a" dur="4" oct="2" stem.dir="up" xml:id="d092"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <att>note</att> element without a <att>stem.dir</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <note pname="a" oct="4" dur="4" xml:id="d086"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <att>note</att> element without a <att>dur</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <note pname="a" dur="4" xml:id="d087"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <att>note</att> element with an <att>oct</att> but no <att>pname</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <note oct="4" dur="4" xml:id="d088"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <att>note</att> element with a <att>pname</att> but no <att>oct</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <note pname="a" oct="4" xml:id="d089"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <att>note</att> element missing both duration and pitch</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <note xml:id="d090"/>
               </egXML>
             </exemplum>
@@ -1468,7 +1004,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </constraintSpec>
             <exemplum>
               <p>A valid <gi>chord</gi> element with a <att>stem.dir</att> attribute and child notes without <att>stem.dir</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <chord xml:id="d093" dur="4" stem.dir="up">
                   <note xml:id="d094" pname="a" oct="4"/>
                   <note xml:id="d095" pname="c" oct="4"/>
@@ -1477,7 +1013,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
             <exemplum>
               <p>An invalid <gi>chord</gi> element with child notes containing <att>stem.dir</att> attributes</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inLayer">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <chord xml:id="d096" dur="4" stem.dir="up">
                   <note xml:id="d097" pname="a" oct="4" stem.dir="up"/>
                   <note xml:id="d098" pname="c" oct="4" stem.dir="up"/>
@@ -1498,7 +1034,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </attList>
             <exemplum>
               <p>A valid layer element with a positive integer <att>n</att> value</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inSection">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inSection">
                 <measure n="1" xml:id="d103">
                   <staff n="1" xml:id="d104">
                     <layer n="1" xml:id="d105"/>
@@ -1508,7 +1044,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
             <exemplum>
               <p>An invalid layer element missing <att>n</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inSection">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inSection">
                 <measure n="1" xml:id="d106">
                   <staff n="1" xml:id="d107">
                     <layer xml:id="d108"/>
@@ -1518,7 +1054,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
             <exemplum>
               <p>An invalid layer element with a non-integer <att>n</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inSection">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inSection">
                 <measure n="1" xml:id="d109">
                   <staff n="1" xml:id="d110">
                     <layer n="s1" xml:id="d111"/>
@@ -1540,7 +1076,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </attList>
             <exemplum>
               <p>A valid staff element with a positive integer <att>n</att> value</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inSection">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inSection">
                 <measure n="1" xml:id="d112">
                   <staff n="1" xml:id="d113">
                     <layer n="1" xml:id="d114"/>
@@ -1550,7 +1086,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
             <exemplum>
               <p>An invalid staff element missing <att>n</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inSection">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inSection">
                 <measure n="1" xml:id="d115">
                   <staff xml:id="d116">
                     <layer n="1" xml:id="d117"/>
@@ -1560,7 +1096,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
             <exemplum>
               <p>An invalid staff element with a non-integer <att>n</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" tido:wrapper="inSection">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inSection">
                 <measure n="1" xml:id="d118">
                   <staff n="s1" xml:id="d119">
                     <layer n="1" xml:id="d120"/>
@@ -1577,67 +1113,67 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </classes>
             <exemplum>
               <p>A valid <gi>slur</gi> with all required attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <slur tstamp="1" tstamp2="0m+2" staff="1" layer="1" xml:id="d121"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>slur</gi> missing the <att>tstamp2</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <slur tstamp="1" layer="1" staff="1" xml:id="d122"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>slur</gi> missing the <att>tstamp</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <slur tstamp2="0m+2" layer="1" staff="1" xml:id="d123"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>slur</gi> missing the <att>staff</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <slur tstamp="1" tstamp2="0m+2" layer="1" xml:id="d124"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>slur</gi> with a single value in <att>staff</att> but no <att>layer</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <slur tstamp="1" tstamp2="0m+2" staff="1" xml:id="d125"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>slur</gi> with a single value in <att>staff</att> and a <att>layer</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <slur xml:id="d126" layer="1" staff="1" tstamp="1" tstamp2="0m+2"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>slur</gi> with a fraction in <att>tstamp2</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <slur xml:id="d127" layer="1" staff="1" tstamp="1" tstamp2="0m+2.00"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>slur</gi> with a fraction in <att>tstamp2</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <slur xml:id="d128" layer="1" staff="1" tstamp="1" tstamp2="0m+2.10"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>slur</gi> with space characters <att>tstamp2</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <slur xml:id="d129" layer="1" staff="1" tstamp="1" tstamp2="0m + 2"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>slur</gi> with only a digit in <att>tstamp2</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <slur xml:id="d130" layer="1" staff="1" tstamp="1" tstamp2="2"/>
               </egXML>
             </exemplum>
@@ -1650,56 +1186,56 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </classes>
             <exemplum>
               <p>A valid <gi>hairpin</gi> with all required attributes</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1" xml:id="d131"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>form</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <hairpin tstamp="1" tstamp2="0m+2" layer="1" staff="1" xml:id="d132"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>tstamp2</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <hairpin form="cres" tstamp="1" layer="1" staff="1" xml:id="d133"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>tstamp</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <hairpin form="cres" tstamp2="0m+2" layer="1" staff="1" xml:id="d134"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>staff</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <hairpin form="cres" tstamp="1" tstamp2="0m+2" layer="1" xml:id="d135"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> with a single value in <att>staff</att> but no <att>layer</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" xml:id="d136"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>hairpin</gi> with two values in <att>staff</att> and no <att>layer</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-                tido:wrapper="afterTwoStaves">
+                rendition="#afterTwoStaves">
                 <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1 2" xml:id="d137"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> with two values in <att>staff</att> and a <att>layer</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterTwoStaves">
+                rendition="#afterTwoStaves">
                 <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1 2" layer="1 2 3"
                   xml:id="d138"/>
               </egXML>
@@ -1707,7 +1243,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>A valid <gi>hairpin</gi> with a single value in <att>staff</att> and multiple values in <att>layer</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-                tido:wrapper="afterTwoStaves">
+                rendition="#afterTwoStaves">
                 <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1 2 3" xml:id="d139"
                 />
               </egXML>
@@ -1727,14 +1263,14 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>A valid <gi>staffDef</gi> containing all required attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef lines="5" xml:id="d141" n="1"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>staffDef</gi> containing all required attributes and a <gi>clef</gi> child element</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef lines="5" xml:id="d142" n="2">
                   <clef shape="G" line="2" xml:id="d143"/>
                 </staffDef>
@@ -1743,7 +1279,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>A valid <gi>staffDef</gi> containing all required attributes and a <gi>meterSig</gi> child element</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef lines="5" xml:id="d144" n="3">
                   <meterSig count="4" unit="4" xml:id="d145"/>
                 </staffDef>
@@ -1783,7 +1319,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>A valid <gi>meterSig</gi> containing all required attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef n="1" lines="5" xml:id="d146">
                   <meterSig xml:id="d147" count="4" unit="4"/>
                 </staffDef>
@@ -1792,7 +1328,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>An invalid <gi>meterSig</gi> without the <att>unit</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef n="1" lines="5" xml:id="d148">
                   <meterSig xml:id="d149" count="4"/>
                 </staffDef>
@@ -1801,7 +1337,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>An invalid <gi>meterSig</gi> without the <att>count</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef n="1" lines="5" xml:id="d150">
                   <meterSig xml:id="d151" unit="4"/>
                 </staffDef>
@@ -1822,7 +1358,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>A valid <gi>keySig</gi> with all required attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef n="1" xml:id="d152">
                   <keySig xml:id="d153" pname="f" mode="major"/>
                 </staffDef>
@@ -1831,7 +1367,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>An invalid <gi>keySig</gi> with an <att>accid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef n="1" xml:id="d154">
                   <keySig xml:id="d155" pname="f" accid="s" mode="major"/>
                 </staffDef>
@@ -1840,7 +1376,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>An invalid <gi>keySig</gi> without the <att>mode</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef n="1" xml:id="d156">
                   <keySig xml:id="d157" pname="f"/>
                 </staffDef>
@@ -1849,7 +1385,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>A invalid <gi>keySig</gi> without the <att>pname</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="inInitialStaffGrp">
+                rendition="#inInitialStaffGrp">
                 <staffDef n="1" xml:id="d158">
                   <keySig xml:id="d159" mode="major"/>
                 </staffDef>
@@ -1869,7 +1405,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </constraintSpec>
             <exemplum>
               <p>A valid sequence of <gi>pedal</gi> elements</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <pedal dir="down" tstamp="1" form="line" xml:id="d160"/>
                 <pedal dir="bounce" tstamp="1" form="line" xml:id="d161"/>
                 <pedal dir="up" tstamp="2" form="line" xml:id="d162"/>
@@ -1878,7 +1414,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>An invalid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <pedal dir="down" tstamp="1" form="line" xml:id="d163"/>
                 <pedal dir="bounce" tstamp="1" form="line" xml:id="d164"/>
                 <pedal dir="up" tstamp="2" form="pedstar" xml:id="d165"/>
@@ -1887,7 +1423,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>An invalid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <pedal dir="down" tstamp="1" form="line" xml:id="d166"/>
                 <pedal dir="bounce" tstamp="1" form="altpedstar" xml:id="d167"/>
                 <pedal dir="up" tstamp="2" form="line" xml:id="d168"/>
@@ -1895,7 +1431,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
             <exemplum>
               <p>A valid sequence of <gi>pedal</gi> elements</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <pedal dir="half" tstamp="1" form="altpedstar" xml:id="d169"/>
                 <pedal dir="up" tstamp="2" form="altpedstar" xml:id="d170"/>
               </egXML>
@@ -1933,14 +1469,14 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <elementSpec ident="ornam" module="MEI.shared" mode="change">
             <exemplum>
               <p>A valid <gi>ornam</gi> element specifying the glyph in its text content</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <ornam place="above" staff="1" layer="1" tstamp="1" xml:id="d171">&#x1234;</ornam>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>ornam</gi> element specifying the glyph in a nested <gi>symbol</gi> element</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <ornam place="above" staff="1" layer="1" tstamp="1" xml:id="d172">
                   <symbol ref="#smuflOrnamentMordent" xml:id="d173"/>
                 </ornam>
@@ -1948,7 +1484,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
             <exemplum>
               <p>A valid <gi>ornam</gi> element specifying the glyph in the <att>altsym</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <ornam place="above" staff="1" layer="1" tstamp="1" altsym="#ornamentMordent"
                   xml:id="d174"/>
               </egXML>
@@ -1956,7 +1492,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>An invalid <gi>ornam</gi> element specifying a non-support glyph in the <att>altsym</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                tido:wrapper="afterStaff">
+                rendition="#afterStaff">
                 <ornam place="above" staff="1" layer="1" tstamp="1" altsym="#nonSupportedGlyph"
                   xml:id="d175"/>
               </egXML>
@@ -2036,7 +1572,21 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </valList>
             </content>
           </macroSpec>
-        </specGrp>
+          <moduleRef key="MEI"/>
+          <moduleRef key="MEI.shared" except="clefGrp layerDef"/>
+          <moduleRef key="MEI.header"/>
+          <moduleRef key="MEI.cmn" except="meterSigGrp"/>
+          <moduleRef key="MEI.cmnOrnaments"/>
+          <moduleRef key="MEI.critapp"/>
+          <moduleRef key="MEI.edittrans"/>
+          <moduleRef key="MEI.externalsymbols"/>
+          <moduleRef key="MEI.fingering"/>
+          <moduleRef key="MEI.lyrics"/>
+          <moduleRef key="MEI.namesdates"/>
+          <moduleRef key="MEI.ptrref"/>
+          <moduleRef key="MEI.text"/>
+          <moduleRef key="MEI.usersymbols" include="symbol"/>
+        </schemaSpec>
       </div>
     </back>
   </text>
