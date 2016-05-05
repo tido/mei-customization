@@ -97,23 +97,24 @@ TODO discuss the nature of the customization: extension/strict subset etc.
     <body>
       <div>
         <head>Introduction</head>
-        <p>This document describes the use of MEI for tido.</p>
-        <p>The <ref target="http://music-encoding.org/documentation/guidelines2013/chapters">MEI
-            Guidelines</ref> should still be used for general information on how to use MEI. This
-          document describes how tido constrains or diverges from the MEI specification. </p>
-        <p>However, the <ref target="#tidoSchemaSpec">Specifications</ref> section lists all the
-          elements and classes used by the tido MEI schema and can be used as a technical reference
-          instead of the official MEI documentation.</p>
-        <p>Apart from the core 'tido' MEI specifications, from which the schema to validate
-          production-ready data is derived, the tido ODD contains a set of
-          specifications ('tido.sibelius') from which a less restrictive schema is created, which
-          can be used to validate the output of the Tido Sibelius converter.</p>
-        <p>Unless stated otherwise, the prose section of the tido ODD refers to the tido core
-          specifications.</p>
+        <p>This document describes Tido's MEI customization format. For general information about 
+          MEI, please refer to the 
+          <ref target="http://music-encoding.org/documentation/guidelines2013/chapters">MEI
+          Guidelines</ref>. This customization introduces several restricitions compared to the
+          <emph>mei_all</emph> schema. Each restriction is implemented using the 
+          <ref target="http://www.tei-c.org/Guidelines/Customization/odds.xml">TEI ODD</ref> specification language, 
+          and documented in the prose section of this ducument, including examples (what is valid) 
+          and counter-examples (what is invalid)</p>
+        
+        <p>Section <ref target="#tidoSchemaSpec">Specifications</ref> lists every element available in the customization
+          and can be used as a technical reference.</p>
+        
+        <p>Please note that this version is currently unstable and subject to change.</p>
+        <p></p>
       </div>
       <div>
         <head>Module Selection</head>
-        <p>tido MEI only adopts CMN logical modules. The following modules are in use:</p>
+        <p>Tido MEI only adopts CMN logical modules. The following modules are in use:</p>
         <list>
           <item>Shared</item>
           <item>Header</item>
@@ -128,7 +129,8 @@ TODO discuss the nature of the customization: extension/strict subset etc.
       </div>
       <div>
         <head>Common Attributes</head>
-        <p><att>xml:id</att> is mandatory on all elements, <att>n</att> on <list>
+        <p><att>xml:id</att> is mandatory on all elements.</p> 
+        <p><att>n</att> is mandatory on the following elements:<list>
           <item><gi>layer</gi></item>
           <item><gi>staff</gi></item>
           <item><gi>verse</gi></item>
@@ -139,8 +141,8 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <div>
           <head>Time signature</head>
           <p>Time signature <emph>must</emph> be expressed in a <gi>meterSig</gi> child element of
-              <gi>staffDef</gi> at this stage of development.</p>
-          <p>To define a time signature, tido uses <att>unit</att> and <att>count</att> on
+              <gi>staffDef</gi></p>
+          <p>To define a time signature, Tido uses <att>unit</att> and <att>count</att> on
               <gi>meterSig</gi>. They <emph>must</emph> occur together: </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
             rendition="#inInitialStaffGrp">
@@ -155,7 +157,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <head>Key signature</head>
           <p>Key signature <emph>must</emph> be expressed in <gi>keySig</gi> elements placed as
             child elements of <gi>staffDef</gi> at this stage of development.</p>
-          <p>To define a key signature, tido uses the <att>pname</att>, <att>accid</att> and
+          <p>To define a key signature, Tido uses the <att>pname</att>, <att>accid</att> and
               <att>mode</att> attributes of <gi>keySig</gi>. <att>pname</att> and <att>mode</att>
             <emph>must</emph> occur together, <att>accid</att> is optional. </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
@@ -170,7 +172,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <div>
           <head>Clefs</head>
           <p>Clefs <emph>must</emph> be expressed using the <gi>clef</gi> element.</p>
-          <p>To define a clef, tido uses <att>shape</att> and <att>line</att>, which
+          <p>To define a clef, Tido uses <att>shape</att> and <att>line</att>, which
               <emph>must</emph> occur together. </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
             rend="#inInitialStaffGrp">
@@ -189,16 +191,19 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <div>
           <head>Notes</head>
           <p>Notes must either have an octave and a pitch name or a <att>loc</att> attribute. Stem direction remains optional,
-            but is recommended. When notes are in a chord they must not express stem information. </p>
+            but is recommended. Notes within chords must not express stem information and duration</p>
           <p>This is a typical note:</p>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
+            <note pname="a" oct="4" dur="4" stem.dir="up" xml:id="d007"/>
+          </egXML>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
             <note pname="a" oct="4" dur="4" stem.dir="up" xml:id="d007"/>
           </egXML>
         </div>
         <div>
           <head>Duration</head>
-          <p>The specification of duration on events is more tightly controlled in the tido
-            schema.</p>
+          <p>The specification of duration on events is more tightly controlled in the Tido
+            schema than it is in <emph>mei_all</emph></p>
           <div>
             <head>Notes</head>
             <p>Notes must always have a duration (<att>dur</att>) except when they are part of
@@ -212,7 +217,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <head>Chords</head>
             <p>Duration on chords must be expressed on the <gi>chord</gi> element. The constituent
                 <gi>note</gi> elements may also express duration, but must agree with the value
-              expressed on the chord. The following are valid examples:</p>
+              expressed on the chord.</p>
             <list>
               <item>Duration on chord: <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                   rendition="#inLayer">
@@ -222,11 +227,11 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                   </chord>
                 </egXML>
               </item>
-              <item>Duration on both chord and notes (must match): <egXML
-                  xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
+              <item>Duration on both chord and notes are not allowed: <egXML
+                  xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                   <chord dur="4" xml:id="d011">
-                    <note pname="a" oct="4" xml:id="d012"/>
-                    <note pname="f" oct="4" xml:id="d013"/>
+                    <note pname="a" oct="4" dur="4" xml:id="d012"/>
+                    <note pname="f" oct="4" dur="4" xml:id="d013"/>
                   </chord>
                 </egXML>
               </item>
@@ -234,38 +239,61 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           </div>
           <div>
             <head>Control events</head>
-            <p>Control events like <gi>dir</gi> or <gi>hairpin</gi> can be placed either directly
+            <p>Control events like <gi>dir</gi>, <gi>hairpin</gi>, <gi>dynam</gi>, etc. can be placed either directly
               above or below a single staff or in the middle between two staves. Placement above or
-              below a staff is indicated by the <att>place</att> attribute, a position between two
-              staves is expressed by specifying the numbers of both staves in the <att>staff</att>
-              attribute. Note that both <att>place</att> and <att>layer</att> are not allowed with
-              there are multiple values in <att>staff</att>.</p>
+              below a staff is indicated by the <att>place</att> attribute,
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
+                  <dynam tstamp="1" layer="1" xml:id="d015" place="below" staff="1"/>
+                </egXML>
+              placement between two staves is expressed by specifying the numbers of both staves 
+              in the <att>staff</att> attribute. 
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
+                <dynam tstamp="1" xml:id="d015" staff="1 2"/>
+              </egXML>              
+              When the <att>staff</att> attribute has multiple values,
+              <att>place</att> and <att>layer</att> are not allowed:</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterTwoStaves">
+                <dynam tstamp="1" layer="1" xml:id="d015" place="above" staff="1 2"/>
+              </egXML>
           </div>
           <div>
-            <head>Slurs and Hairpins</head>
-            <p> Start and end values for slurs and hairpins must be expressed using
-                <att>tstamp</att> and <att>tstamp2</att> pairs. The location of these events must
-              always be expressed using <att>staff</att>. If <att>staff</att> refers to a single
-              staff, an additional <att>layer</att> attribute is required. </p>
-            <p>The beginning and end of these events can also be more precisely defined using
-                <att>startid</att> and <att>endid</att> pairs. This is not required, but can be
-              particularly useful for events stopping at an event without beat (e.g. during a
-              cadenza), or for complex slurs spanning multiple staves. </p>
-            <p>This is a typical slur: </p>
+            <head>Hairpins</head>
+            <p>Start and end point of hairpins must be expressed using <att>tstamp</att> and
+              <att>tstamp2</att> respectively. <att>startid</att> and <att>endid</att> attributes
+              are currently disabled on hairpins.
+            </p>
+          </div>
+          <div>
+            <head>Slurs</head>
+            <p>Start and end point of slurs can almost always be expressed using <att>startid</att> and 
+              <att>endid</att> attributes. The only exceptions are "partial" slurs, such as the ones 
+              at the boundary of <gi>ending</gi> elements. Such slurs need to be encoded using 
+              the <att>tstamp</att> or <att>tstamp2</att> attributes. When the inclompete slur starts
+              at the barline, <code>@tstamp="0"</code> is used, when the slur is incomplete at its end
+              point, <code>@tstamp2="0m+n"</code> is applied (where n is the meter.count of the current measure
+              plus one: 5 in 4/4, 3 in 2/4 etc. see 
+              <ref target="http://music-encoding.org/documentation/2.1.1/cmn/#cmnTstamp">
+              4.1.5 Timestamps and Durations</ref> of the MEI Guidelines'. Additionally, all partial 
+              slurs has to be supplied with a <att>curvedir</att> attribute indicating the direction of 
+              the slur (values: "above" or "below").
+            </p>
+              
+            <p>However, since tstamps are not always enough to describe start and end point of slurs,             
+              and it is simply impractical to assert in which situation which encoding is expected,
+              no restrictions apply for using combinations of <att>startid</att>/<att>endid</att>
+              and <att>tstamp</att>/<att>tstamp2</att> to describe slur start and end points.</p>
+            <p>A typical slur: </p>
             <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-              <slur xml:id="d014" layer="1" staff="1" tstamp="1" tstamp2="0m+2"/>
+              <slur xml:id="d014" startid="#n01" endid="#n02"/>
             </egXML>
-            <p>Partial slurs (as they appear, for example, in <gi>ending</gi> elements) need to be
-              encoded using the <att>tstamp</att> and <att>tstamp2</att> attributes. An incomplete
-              start of a partial slur gets encoded with <code>@tstamp="0"</code>, an incomplete end
-              with <code>@tstamp2="0m+n"</code> (where n is the meter.count of the current measure
-              plus one: 5 in 4/4, 3 in 2/4 etc.). All partial slurs need to be supplied with a
-                <att>curvedir</att> attribute indicating the direction of the slur (values: "above"
-              or "below").</p>
+            <p>A partial slur within a 2nd ending:</p>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+              <slur xml:id="d014" tstamp="0" endid="#n02"/>
+            </egXML>
           </div>
           <div>
             <head>Pedals</head>
-            <p> The form of pedal marks indicating to depress and release must be consistent. </p>
+            <p>The form of pedal marks indicating to depress and release must be consistent. </p>
             <p>Here is an example:</p>
             <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
               <pedal dir="down" tstamp="1" form="line" xml:id="d015"/>
@@ -388,22 +416,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
           <mordent form="inv" tstamp="1" altsym="#ornamentMordentInverted" xml:id="d041"/>
         </egXML>
-      </div>
-      <div>
-        <head>Use of color for content creation</head>
-        <p>Generally, content creation for tido begins with notation software, such as Sibelius. A
-          first export to MEI aims to reproduce closely the score. Further MEI to MEI
-          transformations may be needed to enrich the encoding.</p>
-        <p> To facilitate this process, components of a score can be colored in the notation
-          software to indicate that they need to be transformed into more semantic MEI elements
-          after the first export. For example, a set of bowings could be colored to indicate that
-          they are an alternative to the default bowing marks. The first export will only reproduce
-          the bowings with the color information, while a further transformation would convert it
-          into a more descriptive "layer". </p>
-        <p>To store this temporary color information, the tido.sibelius customization introduces a
-          subclass of the color attribute under tido's namespace. It can be used on every element
-          that can use MEI's default <att>color</att> attribute class, plus <gi>dir</gi>,
-            <gi>dynam</gi>, <gi>octave</gi>, <gi>staffDef</gi>, and <gi>tempo</gi>.</p>
       </div>
     </body>
     <back>
@@ -636,6 +648,41 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </constraint>
             </constraintSpec>
           </classSpec>
+          <classSpec ident="att.spanningElement" module="MEI.shared" type="atts" mode="add">
+            <desc>Describing attributes for spanning elements</desc>
+            <classes>
+              <memberOf key="att.timestamp.musical"/>
+              <memberOf key="att.timestamp2.musical"/>
+              <memberOf key="att.startendid"/>
+              <memberOf key="att.staffident"/>
+              <memberOf key="att.layerident"/>
+            </classes>
+            <constraintSpec ident="require_pricesely_one_start_spec"
+              scheme="isoschematron" mode="add">
+              <desc>Requires that precisely one of <att>startid</att> or <att>tstamp</att> is defined</desc>
+              <constraint>
+                <!-- the schematron context needs to list all elements which are members of 
+                -->
+                <sch:rule context="mei:slur">
+                  <sch:assert
+                    test="(@tstamp and not(@startid)) or (not(@tstamp) and @startid)"
+                    >precisely one of @tstamp or @startid must be defined</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <constraintSpec ident="require_pricesely_one_end_spec"
+              scheme="isoschematron" mode="add">
+              <desc>Requires that precisely one of <att>endid</att> or <att>tstamp2</att> is defined</desc>
+              <constraint>
+                <!-- the schematron context needs to list all elements which are members of att.spanningElement -->
+                <sch:rule context="mei:slur">
+                  <sch:assert
+                    test="(@tstamp2 and not(@endid)) or (not(@tstamp2) and @endid)"
+                    >precisely one of @tstamp2 or @endid must be defined</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+          </classSpec>
           <classSpec ident="att.controlevent.strict" module="MEI.shared" type="atts" mode="add">
             <desc>Attributes shared by events which rely on other events for their existence. For
               example, a slur/phrase marking must be drawn between or over a group of notes. The
@@ -653,7 +700,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 values.</desc>
               <constraint>
                 <!-- the schematron context needs to list all elements which are members of att.controlevent.strict -->
-                <sch:rule context="mei:slur|mei:hairpin">
+                <sch:rule context="mei:hairpin">
                   <sch:assert
                     test="if (not(contains(@staff, ' ')) and not(@layer)) then false() else true()"
                     >@layer must be specified unless @staff is multi-valued.</sch:assert>
@@ -770,11 +817,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <classSpec ident="att.slur.log.strict" module="MEI.cmn" type="atts" mode="add">
             <desc>Logical domain attributes.</desc>
             <classes>
-              <memberOf key="att.controlevent.strict"/>
-              <memberOf key="att.augmentdots"/>
-              <memberOf key="att.duration.additive"/>
-              <memberOf key="att.startendid"/>
-              <memberOf key="att.timestamp2.musical.req"/>
+              <memberOf key="att.spanningElement"/>
             </classes>
           </classSpec>
           <!-- === HAIRPIN ATTRIBUTES === -->
@@ -782,9 +825,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <desc>Logical domain attributes.</desc>
             <classes>
               <memberOf key="att.controlevent.strict"/>
-              <memberOf key="att.augmentdots"/>
-              <memberOf key="att.duration.additive"/>
-              <memberOf key="att.startendid"/>
               <memberOf key="att.timestamp2.musical.req"/>
             </classes>
             <attList>
@@ -943,6 +983,14 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 </sch:rule>
               </constraint>
             </constraintSpec>
+            <constraintSpec ident="no_dur_in_chord" scheme="isoschematron" mode="add">
+              <desc>Forbid notes within chords to specify duration</desc>
+              <constraint>
+                <sch:rule context="mei:note[ancestor::mei:chord]">
+                  <sch:report test="@dur">@dur attribute not permitted on notes within a chord.</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <exemplum>
               <p>A valid <att>note</att> element with a down stem</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
@@ -985,23 +1033,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 <note xml:id="d090"/>
               </egXML>
             </exemplum>
-          </elementSpec>
-          <!-- === CHORD === -->
-          <elementSpec ident="chord" module="MEI.shared" mode="change">
-            <constraintSpec ident="chord_notes_same_dur" scheme="isoschematron" mode="add">
-              <desc>Require chord and notes to have the same duration</desc>
-              <constraint>
-                <sch:rule
-                  context="mei:chord[@dur][count(distinct-values(for $n in descendant::mei:note return $n/@dur)) > 0]">
-                  <sch:let name="durs"
-                    value="distinct-values(for $n in descendant::mei:note return $n/@dur)"/>
-                  <sch:let name="durs_count"
-                    value="count(distinct-values($durs)) + count(descendant::mei:note[not(@dur)])"/>
-                  <sch:report test="$durs_count &gt; 1 or not($durs[1] = @dur)"> Duration of chord
-                    and constituent notes must match.</sch:report>
-                </sch:rule>
-              </constraint>
-            </constraintSpec>
             <exemplum>
               <p>A valid <gi>chord</gi> element with a <att>stem.dir</att> attribute and child notes without <att>stem.dir</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
@@ -1017,6 +1048,15 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 <chord xml:id="d096" dur="4" stem.dir="up">
                   <note xml:id="d097" pname="a" oct="4" stem.dir="up"/>
                   <note xml:id="d098" pname="c" oct="4" stem.dir="up"/>
+                </chord>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <gi>chord</gi> element with child notes containing <att>dur</att> attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <chord xml:id="d096" dur="4" stem.dir="up">
+                  <note xml:id="d097" pname="a" oct="4" dur="4"/>
+                  <note xml:id="d098" pname="c" oct="4" dur="4"/>
                 </chord>
               </egXML>
             </exemplum>
@@ -1112,69 +1152,49 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               <memberOf key="att.slur.log.strict" mode="add"/>
             </classes>
             <exemplum>
-              <p>A valid <gi>slur</gi> with all required attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <slur tstamp="1" tstamp2="0m+2" staff="1" layer="1" xml:id="d121"/>
+              <p>A valid <gi>slur</gi> with <att>tstamp</att> and <att>tstamp2</att> attributes</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
+                rendition="#afterStaff">
+                <slur tstamp="1" tstamp2="0m+2" xml:id="d124"/>
               </egXML>
             </exemplum>
             <exemplum>
-              <p>An invalid <gi>slur</gi> missing the <att>tstamp2</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+              <p>A valid <gi>slur</gi> with <att>startid</att> and <att>endid</att> attributes</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterStaff">
-                <slur tstamp="1" layer="1" staff="1" xml:id="d122"/>
+                <slur startid="#n01" endid="#n02" xml:id="d125"/>
               </egXML>
             </exemplum>
             <exemplum>
-              <p>An invalid <gi>slur</gi> missing the <att>tstamp</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+              <p>A valid <gi>slur</gi> with <att>tstamp</att> and <att>endid</att> attributes</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterStaff">
-                <slur tstamp2="0m+2" layer="1" staff="1" xml:id="d123"/>
+                <slur tstamp="1" endid="#n02" xml:id="d126"/>
               </egXML>
             </exemplum>
             <exemplum>
-              <p>An invalid <gi>slur</gi> missing the <att>staff</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+              <p>A valid <gi>slur</gi> with <att>startid</att> and <att>tstamp2</att> attributes</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterStaff">
-                <slur tstamp="1" tstamp2="0m+2" layer="1" xml:id="d124"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <gi>slur</gi> with a single value in <att>staff</att> but no <att>layer</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                rendition="#afterStaff">
-                <slur tstamp="1" tstamp2="0m+2" staff="1" xml:id="d125"/>
+                <slur startid="#n01" tstamp2="0m+2" xml:id="d127"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>slur</gi> with a single value in <att>staff</att> and a <att>layer</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <slur xml:id="d126" layer="1" staff="1" tstamp="1" tstamp2="0m+2"/>
+                <slur xml:id="d128" layer="1" staff="1" tstamp="1" tstamp2="0m+2"/>
               </egXML>
             </exemplum>
             <exemplum>
-              <p>A valid <gi>slur</gi> with a fraction in <att>tstamp2</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <slur xml:id="d127" layer="1" staff="1" tstamp="1" tstamp2="0m+2.00"/>
+              <p>An invalid <gi>slur</gi> without an attribute for the end point</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                <slur xml:id="d129" startid="#n01"/>
               </egXML>
             </exemplum>
             <exemplum>
-              <p>A valid <gi>slur</gi> with a fraction in <att>tstamp2</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <slur xml:id="d128" layer="1" staff="1" tstamp="1" tstamp2="0m+2.10"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <gi>slur</gi> with space characters <att>tstamp2</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                rendition="#afterStaff">
-                <slur xml:id="d129" layer="1" staff="1" tstamp="1" tstamp2="0m + 2"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <gi>slur</gi> with only a digit in <att>tstamp2</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                rendition="#afterStaff">
-                <slur xml:id="d130" layer="1" staff="1" tstamp="1" tstamp2="2"/>
+              <p>An invalid <gi>slur</gi> without an attribute for the start point</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                <slur xml:id="d130" endid="#n02"/>
               </egXML>
             </exemplum>
           </elementSpec>
