@@ -1,12 +1,12 @@
 {
-  "name": "tido-mei-customization",
+  "name": "mei-customization",
   "version": "0.1.0",
   "description": "Tido MEI Customization",
   "author": "",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tido/notation-odd.git"
+    "url": "https://github.com/tido/mei-customization.git"
   },
   "private": true,
   "scripts": {
@@ -42,7 +42,7 @@
     "xmldom": "^0.1.22"
   },
   "bugs": {
-    "url": "https://github.com/tido/notation-schema/issues"
+    "url": "https://github.com/tido/mei-customization/issues"
   },
-  "homepage": "https://github.com/tido/notation-schema"
+  "homepage": "https://github.com/tido/mei-customization"
 }
