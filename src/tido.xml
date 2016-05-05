@@ -15,6 +15,13 @@ licensed under the Educational Community License version 1.0.
 
 CONTACT: info@music-encoding.org
 -->
+
+
+<!--
+TODO discuss the nature of the customization: extension/strict subset etc.
+-->
+
+
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?> <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0"
   xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -138,7 +145,7 @@ CONTACT: info@music-encoding.org
           etc.</p>
         <div>
           <head>Notes</head>
-          <p> Notes must either have an octave and a pitch name or a <att>loc</att> attribute. Stem direction remains optional,
+          <p>Notes must either have an octave and a pitch name or a <att>loc</att> attribute. Stem direction remains optional,
             but is recommended. When notes are in a chord they must not express stem information. </p>
           <p>This is a typical note:</p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="inLayer">
@@ -372,7 +379,10 @@ CONTACT: info@music-encoding.org
           <specGrpRef target="#tidoSibeliusGrp"/>
         </schemaSpec>
         <specGrp xml:id="tidoStrictGrp">
-          <!-- the scope of elements reflects the usage of elements in our latest test files, with 2 exceptions: the schema permits <space> and <pedal> elements to be implemented soon -->
+          <!--
+            the scope of elements reflects the usage of elements in our latest test files,
+            with 2 exceptions: the schema permits <space> and <pedal> elements to be implemented soon
+          -->
           <moduleRef key="MEI"/>
           <moduleRef key="MEI.shared"
             except=" actor annot arranger artic author barLine bibl biblList biblScope caption

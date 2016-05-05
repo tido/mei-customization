@@ -45,13 +45,8 @@ Here's a full example of a class specification with a single test case:
   </attList>
   <exemplum>
     <p>A valid <gi>pedal</gi> element with local URI references in
-      <att>startid</att> and <att>endid</att>
-    </p>
-    <egXML
-      xmlns="http://www.tei-c.org/ns/Examples"
-      xml:space="preserve"
-      valid="true"
-      tido:wrapper="afterStaff">
+      <att>startid</att> and <att>endid</att></p>
+    <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
       <pedal dir="down" staff="1" layer="1" startid="#n01" endid="#n02"/>
     </egXML>
   </exemplum>
