@@ -29,13 +29,20 @@ valid and invalid fragments.
 
 The `build` folder contains output schema and documentation.
 
-### Build
-
-In order to build the schemata, build the HTML guidelines and run the tests with a single command run:
-
+### Build the schema
 ```
-npm run refresh
+npm run schema
 ```
+The output schema will be placed in `build/schema`
+
+### Build the Guidelines
+
+To build the Guidelines document in HTML:
+```
+npm run html-guidelines
+```
+
+The output of this will be placed in `build/guidelines`
 
 ## Test environment
 
@@ -44,6 +51,10 @@ test for the schema. A `nodejs` test environment is included in order to make su
 the provided examples (or counter-examples) are indeed validated (or invalidated)
 by the compiled schema.
 
+### Run the tests
+```
+npm test
+```
 
 # Modifying the Customization
 
