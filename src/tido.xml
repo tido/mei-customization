@@ -119,12 +119,9 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <item>Shared</item>
           <item>Header</item>
           <item>CMN</item>
-          <item>CMN Ornaments</item>
           <item>Critical Apparatus</item>
           <item>Editing and Transcription</item>
-          <item>Lyrics</item>
           <item>Names and Dates</item>
-          <item>Text Encoding</item>
         </list>
       </div>
       <div>
@@ -307,116 +304,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           </div>
         </div>
       </div>
-      <div>
-        <head>Ornamentation</head>
-        <p>MEI uses three main classes of ornaments: trill, turn, and mordent. Complex ornaments can
-          be encoded by combining these classes. Moreover, many ornaments with the same expansion
-          may have different symbols. MEI prioritizes encoding the meaning of the ornament and not
-          its symbol, but symbols can be defined and mapped to the encoding.</p>
-        <p>This section offers encoding examples for every ornament in the SMuFL standard, excluding
-          acciaccatura and appoggiatura, which are encoded with <gi>note</gi>. This is only meant to
-          show typical encoding of these symbols in Tido; each symbol may in fact correspond to any
-          number of encodings because these are symbols with a rich history that defies
-          standardization.</p>
-        <p>First, these are all the SMuFL ornament symbols declared as user symbols in an
-          hypothetical score definition:</p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible">
-          <scoreDef>
-            <symbolTable>
-              <symbolDef xml:id="ornamentTrill">
-                <anchoredText><![CDATA[&#xE566;]]></anchoredText>
-              </symbolDef>
-              <symbolDef xml:id="ornamentTurn">
-                <anchoredText><![CDATA[&#xE567;]]></anchoredText>
-              </symbolDef>
-              <symbolDef xml:id="ornamentTurnSlash">
-                <anchoredText><![CDATA[&#xE569;]]></anchoredText>
-              </symbolDef>
-              <symbolDef xml:id="ornamentMordent">
-                <anchoredText><![CDATA[&#xE56C;]]></anchoredText>
-              </symbolDef>
-              <symbolDef xml:id="ornamentMordentInverted">
-                <!-- The use of an "inverted" symbol for "normal" form complies with the fact the use of these symbols is inconsistent: this suser defined symbols allows us to associate a rendition with a specific meaning -->
-                <anchoredText><![CDATA[&#xE56D;]]></anchoredText>
-              </symbolDef>
-              <symbolDef xml:id="ornamentTremblement">
-                <anchoredText><![CDATA[&#xE56E;]]></anchoredText>
-              </symbolDef>
-              <symbolDef xml:id="ornamentHaydn">
-                <anchoredText><![CDATA[&#xE56F;]]></anchoredText>
-              </symbolDef>
-            </symbolTable>
-            <staffGrp>
-              <staffDef n="1" lines="5">
-                <clef shape="G" line="2"/>
-              </staffDef>
-            </staffGrp>
-          </scoreDef>
-        </egXML>
-        <p>Expansions. Expansions of ornaments must be encoded in the event stream of the score
-          using a <gi>choice</gi> element which contains the original notation wrapped in an
-            <gi>orig</gi> and the expanded version wrapped in a <gi>reg</gi> element. The
-          corresponding ornament must be encoded likewise, with <gi>choice</gi> wrapping an
-            <gi>orig</gi> element containing the ornament and an empty <gi>reg</gi> element.</p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inSection">
-          <measure n="22" xml:id="d018">
-            <staff n="1" xml:id="d019">
-              <layer n="1" xml:id="d020">
-                <choice xml:id="d021">
-                  <orig xml:id="d022">
-                    <note dur="4" oct="5" pname="c" stem.dir="down" xml:id="d023"/>
-                  </orig>
-                  <reg xml:id="d024">
-                    <note dur="32" oct="5" pname="d" xml:id="d025"/>
-                    <note dur="32" oct="5" pname="c" xml:id="d026"/>
-                    <note dur="32" oct="5" pname="d" xml:id="d027"/>
-                    <note dur="32" oct="5" pname="c" xml:id="d028"/>
-                    <note dur="32" oct="5" pname="d" xml:id="d029"/>
-                    <note dots="1" dur="16" oct="5" pname="c" xml:id="d030"/>
-                  </reg>
-                </choice>
-              </layer>
-            </staff>
-            <choice xml:id="d031">
-              <orig xml:id="d032">
-                <trill place="above" staff="1" tstamp="1" xml:id="d033"/>
-              </orig>
-              <reg xml:id="d034"/>
-            </choice>
-          </measure>
-        </egXML>
-        <p>Trill. In MEI trills are agnostic about the starting note (i.e. written or
-          ornamenting).</p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-          <trill tstamp="1" altsym="#ornamentTrill" xml:id="d035"/>
-        </egXML>
-        <p>Turn. Begins on the note above the written note.</p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-          <turn form="norm" tstamp="1" altsym="#ornamentTurn" xml:id="d036"/>
-        </egXML>
-        <p>Turn with slash. Begins on the note below the written note. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-          <turn form="inv" tstamp="1" altsym="#ornamentTurnSlash" xml:id="d037"/>
-        </egXML>
-        <p>Mordent. Performed as the written note, followed by its lower neighbor, with a return to
-          the written note. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-          <mordent form="norm" tstamp="1" altsym="#ornamentMordent" xml:id="d038"/>
-        </egXML>
-        <p>Inverted mordent. Performed as the principal note, followed by its upper neighbor, with a
-          return to the principal note. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-          <mordent form="inv" tstamp="1" altsym="#ornamentMordentInverted" xml:id="d039"/>
-        </egXML>
-        <p>Tremblement. Equivalent to a trill. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-          <trill tstamp="1" altsym="#ornamentTremblement" xml:id="d040"/>
-        </egXML>
-        <p>Haydn ornament. Same as inverted mordent. </p>
-        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-          <mordent form="inv" tstamp="1" altsym="#ornamentMordentInverted" xml:id="d041"/>
-        </egXML>
-      </div>
     </body>
     <back>
       <div xml:id="tidoSchemaSpec">
@@ -424,6 +311,193 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <!-- Schema specification for TIDO MEI files -->
         <schemaSpec ident="tido" ns="http://www.music-encoding.org/ns/mei"
           start="mei music body mdiv" prefix="tido_">
+          <moduleRef key="MEI"/>
+          <moduleRef key="MEI.shared"
+            except=" actor annot arranger artic author barLine bibl biblList biblScope caption
+            castGrp castItem castList clefGrp composer creation custos date depth dir distributor
+            div dot edition editor ending event eventList expansion extent funder genre group grpSym
+            head height identifier imprint incip keyAccid label layerDef lb librettist lyricist name
+            num pad part parts pb pgDesc pgFoot pgFoot2 pgHead pgHead2 phrase physLoc publisher
+            pubPlace recipient relatedItem repository resp role roleDesc sb series sponsor stack
+            tempo textLang titlePage width"/>
+          <moduleRef key="MEI.header"/>
+          <moduleRef key="MEI.cmn" except=" arpeg beamSpan beatRpt bend breath bTrem fermata fTrem gliss halfmRpt harpPedal
+            meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt octave ossia reh tuplet tupletSpan"/>
+          <moduleRef key="MEI.namesdates"/>
+          <moduleRef key="MEI.ptrref"/>
+          <classSpec ident="att.accid.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.accid.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.accid.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.altsym" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.articulation.performed" module="MEI.shared" type="atts"
+            mode="delete"/>
+          <classSpec ident="att.authorized" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.barplacement" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.bibl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.canonical" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.chord.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.chord.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <!-- <classSpec ident="att.chord.vis" module="MEI.shared" type="atts" mode="delete"/> -->
+          <classSpec ident="att.clef.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.clef.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.clef.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.cleffing.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.cleffing.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.color" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.coloration" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.curvature" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.curverend" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.datable" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.datapointing" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.declaring" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.distances" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.duration.additive" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.duration.default" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.duration.performed" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.dynam.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.dynam.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.enclosingchars" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.endings" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.extender" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.fermatapresent" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.filing" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.horizontalalign" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.instrumentident" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.joined" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.keySig.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.keySig.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.keySig.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.keySigDefault.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.keySigDefault.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.labels.addl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.lang" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.layer.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.layer.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.layer.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.layer.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.linerend" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.linerend.base" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.lyricstyle" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.measure.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.measure.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.measurement" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.measurenumbers" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.meterSig.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.meterSig.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.meterSig.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.meterSigDefault.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.meterSigDefault.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.meterconformance" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.mmtempo" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.multinummeasures" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.notationstyle" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.note.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.noteheads" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.octavedefault" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.octavedisplacement" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.onelinestaff" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.optimization" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.ornam.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.ornam.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.pages" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.plist" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.pointing" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.relativesize" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.responsibility" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.rest.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.rest.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <!-- <classSpec ident="att.rest.vis" module="MEI.shared" type="atts" mode="delete"/> -->
+          <classSpec ident="att.scalable" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.score.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.score.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.score.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.score.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.scoreDef.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.scoreDef.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.scoreDef.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.scoreDef.log.mensural" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.scoreDef.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.section.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.section.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.section.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.section.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.slurpresent" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.space.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.space.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.space.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.spacing" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staff.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staff.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staff.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staff.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staffDef.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staffDef.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staffDef.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staffGrp.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staffGrp.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staffGrp.log" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staffGrp.vis" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.staffloc.pitched" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.syl.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.syl.ges" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.syltext" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.systems" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.textstyle" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.tiepresent" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.timestamp.performed" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.transposition" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.tupletpresent" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.visibility" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.visualoffset" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.visualoffset.ho" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.visualoffset.to" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.visualoffset.vo" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.visualoffset2" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.visualoffset2.ho" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.visualoffset2.to" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.visualoffset2.vo" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.whitespace" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.width" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.xy" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.xy2" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.beam.anl" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.beam.ges" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.beam.log" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.beam.vis" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.beamed" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.beamedwith" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.beaming.log" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.beaming.vis" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.beamrend" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.beamsecondary" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.chord.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.chord.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.hairpin.anl" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.hairpin.ges" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.lvpresent" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.measure.vis" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.note.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.note.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.pedal.anl" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.pedal.ges" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.pianopedals" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.rehearsal" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.rest.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.rest.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.scoreDef.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.scoreDef.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.slur.anl" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.slur.ges" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.slur.vis" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.slurrend" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.space.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.staffDef.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.staffDef.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.stems.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.tie.anl" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.tie.ges" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.tie.vis" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.tierend" module="MEI.cmn" type="atts" mode="delete"/>
           <constraintSpec ident="set_ns" scheme="isoschematron">
             <constraint>
               <sch:ns xmlns:sch="http://purl.oclc.org/dsdl/schematron" prefix="mei"
@@ -479,14 +553,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 </datatype>
               </attDef>
             </attList>
-          </classSpec>
-          <!-- extend att.ornam.vis with att.ornam.altsym -->
-          <classSpec ident="att.ornam.vis" module="MEI.shared" type="atts" mode="change">
-            <desc>Visual domain attributes.</desc>
-            <classes mode="change">
-              <memberOf key="att.altsym" mode="delete"/>
-              <memberOf key="att.ornam.altsym" mode="add"/>
-            </classes>
           </classSpec>
           <!-- require clef/@shape -->
           <classSpec ident="att.clefshape" module="MEI.shared" type="atts" mode="change">
@@ -573,57 +639,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 <datatype>
                   <rng:ref name="data.MEASUREBEAT.strict"/>
                 </datatype>
-              </attDef>
-            </attList>
-          </classSpec>
-          <!-- New attribute class for altsym attributes on ornaments -->
-          <classSpec ident="att.ornam.altsym" module="MEI.shared" type="atts" mode="add">
-            <desc>Attributes supplying pointers to user-defined symbols.</desc>
-            <attList>
-              <attDef ident="altsym" usage="opt">
-                <desc>provides a way of pointing to an ornament symbol. It must contain an ID of a
-                  &lt;symbolDef&gt; element in Tido's ornament symbol table.</desc>
-                <valList type="closed">
-                  <valItem ident="#ornamentMordent">
-                    <desc>Inverted mordent (Tido default symbol for mordent[@inv='true']).</desc>
-                  </valItem>
-                  <valItem ident="#ornamentMordentInverted">
-                    <desc>Mordent (Tido default symbol for mordent[not(@inv='true')]).</desc>
-                  </valItem>
-                  <valItem ident="#ornamentTurn">
-                    <desc>Turn (Tido default symbol for turn[not(@inv='true')]).</desc>
-                  </valItem>
-                  <valItem ident="#ornamentTurnSlash">
-                    <desc>Turn with slash (Tido default symbol for turn[@inv='true']).</desc>
-                  </valItem>
-                  <valItem ident="#ornamentTrill">
-                    <desc>Trill.</desc>
-                  </valItem>
-                  <valItem ident="#ornamentPrecompSlideTrillDAnglebert">
-                    <desc>Slide trill (D'Anglebert).</desc>
-                  </valItem>
-                  <valItem ident="#ornamentPrecompMordentUpperPrefix">
-                    <desc>Mordent with upper prefix.</desc>
-                  </valItem>
-                  <valItem ident="#ornamentPrecompTrillSuffixDandrieu">
-                    <desc>Trill with suffix (Dandrieu).</desc>
-                  </valItem>
-                  <valItem ident="#ornamentPrecompTrillLowerSuffix">
-                    <desc>Trill with lower suffix.</desc>
-                  </valItem>
-                  <valItem ident="#ornamentPrecompPortDeVoixMordent">
-                    <desc>Port de voix mordent.</desc>
-                  </valItem>
-                  <valItem ident="#ornamentPrecompInvertedMordentUpperPrefix">
-                    <desc>Inverted mordent with upper prefix.</desc>
-                  </valItem>
-                  <valItem ident="#ornamentPrecompAppoggTrill">
-                    <desc>Appogiatura trill.</desc>
-                  </valItem>
-                  <valItem ident="#ornamentTremblement">
-                    <desc>Tremblement (Tido default symbol for mordent[@long='true']).</desc>
-                  </valItem>
-                </valList>
               </attDef>
             </attList>
           </classSpec>
@@ -1463,56 +1478,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </attDef>
             </attList>
           </classSpec>
-          <classSpec ident="att.mordent.vis" module="MEI.cmnOrnaments" type="atts" mode="change">
-            <classes mode="change">
-              <memberOf key="att.altsym" mode="delete"/>
-              <memberOf key="att.ornam.altsym" mode="add"/>
-            </classes>
-          </classSpec>
-          <classSpec ident="att.trill.vis" module="MEI.cmnOrnaments" type="atts" mode="change">
-            <classes mode="change">
-              <memberOf key="att.altsym" mode="delete"/>
-              <memberOf key="att.ornam.altsym" mode="add"/>
-            </classes>
-          </classSpec>
-          <classSpec ident="att.turn.vis" module="MEI.cmnOrnaments" type="atts" mode="change">
-            <classes mode="change">
-              <memberOf key="att.altsym" mode="delete"/>
-              <memberOf key="att.ornam.altsym" mode="add"/>
-            </classes>
-          </classSpec>
-          <elementSpec ident="ornam" module="MEI.shared" mode="change">
-            <exemplum>
-              <p>A valid <gi>ornam</gi> element specifying the glyph in its text content</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <ornam place="above" staff="1" layer="1" tstamp="1" xml:id="d171">&#x1234;</ornam>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <gi>ornam</gi> element specifying the glyph in a nested <gi>symbol</gi> element</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                rendition="#afterStaff">
-                <ornam place="above" staff="1" layer="1" tstamp="1" xml:id="d172">
-                  <symbol ref="#smuflOrnamentMordent" xml:id="d173"/>
-                </ornam>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>A valid <gi>ornam</gi> element specifying the glyph in the <att>altsym</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <ornam place="above" staff="1" layer="1" tstamp="1" altsym="#ornamentMordent"
-                  xml:id="d174"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <gi>ornam</gi> element specifying a non-support glyph in the <att>altsym</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
-                rendition="#afterStaff">
-                <ornam place="above" staff="1" layer="1" tstamp="1" altsym="#nonSupportedGlyph"
-                  xml:id="d175"/>
-              </egXML>
-            </exemplum>
-          </elementSpec>
           <!-- DATA TYPES -->
           <macroSpec ident="data.ACCIDENTAL.EXPLICIT" module="MEI" type="dt" mode="replace">
             <desc>Accidental attribute values.</desc>
@@ -1587,20 +1552,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </valList>
             </content>
           </macroSpec>
-          <moduleRef key="MEI"/>
-          <moduleRef key="MEI.shared" except="clefGrp layerDef"/>
-          <moduleRef key="MEI.header"/>
-          <moduleRef key="MEI.cmn" except="meterSigGrp"/>
-          <moduleRef key="MEI.cmnOrnaments"/>
-          <moduleRef key="MEI.critapp"/>
-          <moduleRef key="MEI.edittrans"/>
-          <moduleRef key="MEI.externalsymbols"/>
-          <moduleRef key="MEI.fingering"/>
-          <moduleRef key="MEI.lyrics"/>
-          <moduleRef key="MEI.namesdates"/>
-          <moduleRef key="MEI.ptrref"/>
-          <moduleRef key="MEI.text"/>
-          <moduleRef key="MEI.usersymbols" include="symbol"/>
         </schemaSpec>
       </div>
     </back>
