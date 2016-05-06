@@ -97,31 +97,26 @@ TODO discuss the nature of the customization: extension/strict subset etc.
     <body>
       <div>
         <head>Introduction</head>
-        <p>This document describes Tido's MEI customization format. For general information about
-          MEI, please refer to the
+        <p>This document a minimal MEI customization in order to define a very basic 
+          subset of elements with appropriate restrictions for basic use cases. 
+          For general information about MEI, please refer to the
           <ref target="http://music-encoding.org/documentation/guidelines2013/chapters">MEI
-          Guidelines</ref>. This customization introduces several restricitions compared to the
-          <emph>mei_all</emph> schema. Each restriction is implemented using the
+          Guidelines</ref>. Each restriction is implemented using the
           <ref target="http://www.tei-c.org/Guidelines/Customization/odds.xml">TEI ODD</ref> specification language,
           and documented in the prose section of this ducument, including examples (what is valid)
           and counter-examples (what is invalid)</p>
 
         <p>Section <ref target="#tidoSchemaSpec">Specifications</ref> lists every element available in the customization
           and can be used as a technical reference.</p>
-
-        <p>Please note that this version is currently unstable and subject to change.</p>
         <p></p>
       </div>
       <div>
         <head>Module Selection</head>
-        <p>Tido MEI only adopts CMN logical modules. The following modules are in use:</p>
+        <p>This basic customization only adopts following modules:</p>
         <list>
           <item>Shared</item>
           <item>Header</item>
           <item>CMN</item>
-          <item>Critical Apparatus</item>
-          <item>Editing and Transcription</item>
-          <item>Names and Dates</item>
         </list>
       </div>
       <div>
@@ -139,7 +134,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <head>Time signature</head>
           <p>Time signature <emph>must</emph> be expressed in a <gi>meterSig</gi> child element of
               <gi>staffDef</gi></p>
-          <p>To define a time signature, Tido uses <att>unit</att> and <att>count</att> on
+          <p>To define a time signature, the customization uses <att>unit</att> and <att>count</att> on
               <gi>meterSig</gi>. They <emph>must</emph> occur together: </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
             rendition="#inInitialStaffGrp">
@@ -154,7 +149,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <head>Key signature</head>
           <p>Key signature <emph>must</emph> be expressed in <gi>keySig</gi> elements placed as
             child elements of <gi>staffDef</gi> at this stage of development.</p>
-          <p>To define a key signature, Tido uses the <att>pname</att>, <att>accid</att> and
+          <p>To define a key signature, this customization uses the <att>pname</att>, <att>accid</att> and
               <att>mode</att> attributes of <gi>keySig</gi>. <att>pname</att> and <att>mode</att>
             <emph>must</emph> occur together, <att>accid</att> is optional. </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
@@ -169,7 +164,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <div>
           <head>Clefs</head>
           <p>Clefs <emph>must</emph> be expressed using the <gi>clef</gi> element.</p>
-          <p>To define a clef, Tido uses <att>shape</att> and <att>line</att>, which
+          <p>To define a clef, the customization uses <att>shape</att> and <att>line</att>, which
               <emph>must</emph> occur together. </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
             rend="#inInitialStaffGrp">
@@ -199,7 +194,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         </div>
         <div>
           <head>Duration</head>
-          <p>The specification of duration on events is more tightly controlled in the Tido
+          <p>The specification of duration on events is more tightly controlled in the
             schema than it is in <emph>mei_all</emph></p>
           <div>
             <head>Notes</head>
@@ -287,20 +282,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
               <slur xml:id="d014" tstamp="0" endid="#n02"/>
             </egXML>
-          </div>
-          <div>
-            <head>Pedals</head>
-            <p>The form of pedal marks indicating to depress and release must be consistent. </p>
-            <p>Here is an example:</p>
-            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-              <pedal dir="down" tstamp="1" form="line" xml:id="d015"/>
-              <pedal dir="bounce" tstamp="1" form="line" xml:id="d016"/>
-              <pedal dir="up" tstamp="2" form="line" xml:id="d017"/>
-            </egXML>
-            <p>When necessary, additional styling information can be provided by the Tido
-              stylesheets. For example, for instructional purposes the editor may decide that the up
-              and down movements should be represented as arrows, this styling will be provided by
-              the stylesheet.</p>
           </div>
         </div>
       </div>
@@ -592,8 +573,8 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               in the range from 0 to the numerator of the time signature plus 1. For example, for an
               event starting in the first measure of a piece containing 6 measures in 6/8, the
               measure number must be between 0 to 5 and the beat number must be within the range
-              from 0 to 7, e.g., "4m+3". Tido makes the measure value mandatory and removes optional
-              spaces.</desc>
+              from 0 to 7, e.g., "4m+3". The customization makes the measure value mandatory 
+              and removes optional spaces.</desc>
             <content>
               <rng:data type="token">
                 <rng:param name="pattern">[0-9]+m\+[0-9]+(\.?[0-9]*)?</rng:param>
@@ -909,25 +890,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
           </classSpec>
           <!-- === ELEMENT SPECIFICATIONS === -->
-          <!-- TODO determine where the tido:style element should be put; FRBR manifestation? -->
-          <elementSpec ident="style" module="MEI.header" ns="http://tido-music.com/ns/1.0"
-            mode="add">
-            <desc>Contains a reference to a Tido Stylesheet (TSS).</desc>
-            <classes>
-              <memberOf key="att.id"/>
-            </classes>
-            <content>
-              <rng:text/>
-            </content>
-            <attList>
-              <attDef ident="src" usage="opt">
-                <desc>Specifies the location of the associated Tido Stylesheet (TSS).</desc>
-                <datatype>
-                  <rng:ref name="data.URI"/>
-                </datatype>
-              </attDef>
-            </attList>
-          </elementSpec>
           <elementSpec ident="meiHead" module="MEI.header" mode="change">
             <content>
               <rng:ref name="style"/>
@@ -1189,7 +1151,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 "phrase" was used for a "unified melodic idea". Nowadays, however, "slur" often has the
                 same meaning as "phrase", since the visual rendition of the two
                 concepts is the same. Generic MEI provides two distinct elements so that those users wishing to
-                maintain a distinction for historical reasons may do so. Tido MEI customization does not maintain
+                maintain a distinction for historical reasons may do so. This basic MEI customization does not maintain
                 this distiction, and employs the more generic <gi scheme="MEI">slur</gi> element.
               </p>
             </remarks>
@@ -1274,7 +1236,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               <p>The <gi scheme="MEI">hairpin</gi> element is used for <emph>graphical</emph>, i.e.,
                 crescendo and diminuendo, dynamic markings. For instantaneous or continuous
                 <emph>textual</emph> dynamics, such as 'p', 'mf', or 'cres. poco a poco', the <gi
-                  scheme="MEI">dynam</gi> element should be used. As opposed to generic MEI, in the Tido 
+                  scheme="MEI">dynam</gi> element should be used. As opposed to generic MEI, in this basic 
                 customization the start and end point of the hairpin is always encoded with
                 <att>tstamp</att>, and <att>tstamp2</att> attributes.</p>
             </remarks>
@@ -1315,25 +1277,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 </staffDef>
               </egXML>
             </exemplum>
-          </elementSpec>
-          <!-- === SCORE === -->
-          <elementSpec ident="score" module="MEI.shared" mode="change">
-            <attList>
-              <attDef mode="add" ident="tido.playbackorder" usage="opt">
-                <desc>Determines in which order the measures of a score should played for playback.
-                  The value may be any string. TEMPORARY</desc>
-                <datatype>
-                  <rng:data type="string"/>
-                </datatype>
-              </attDef>
-              <attDef mode="add" ident="tido.systemspacing" usage="opt">
-                <desc>Determines the spacing between systems. The value must be a decimal number.
-                  TEMPORARY</desc>
-                <datatype>
-                  <rng:data type="decimal"/>
-                </datatype>
-              </attDef>
-            </attList>
           </elementSpec>
           <!-- === METER SIG === -->
           <elementSpec ident="meterSig" module="MEI.cmn" mode="change">
