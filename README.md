@@ -3,52 +3,68 @@ ODD specification and documentation of the Tido MEI Customization.
 
 # Setup
 
-```bash
+```
 git clone https://github.com/tido/mei-customization.git
+```
+
+If you run [node](http://nodejs.org) and would like to build the schema and/or
+the documentation or run the tests:
+
+```bash
 cd mei-customization
 npm install
 ```
 
-# Update git dependencies
+# Usage - Schemata and Guidelines
 
-The Tido MEI Customization project contains copies of `https://github.com/music-encoding/music-encoding` and `https://github.com/TEIC/Stylesheets` in the `vendor` folder. In case these dependencies need to be updated, run `./update-git-dependencies.sh` and commit the updated project.
+Use the schema files in `build/schema/` to validate MEI documents.
+Refer to the html guidelines in `build/guidelines` folder for documentation of the
+customization format.
 
-
-# Overview
-
-This section provides an overview of the project
-
-## The source
+# The source
 
 Tido ODD customization file is located at `src/tido.xml`.
 In addition to the schema specifications, this file contains examples of
 valid and invalid fragments.
 
+# Build
 
-## Usage - Schemata and Guidelines
+## Java dependencies
+In order to build the schema and guidelines you will need
+- `java` runtime environment
+- `JDK`
+- `ant`
+- `saxon`
 
-The `build` folder contains output schema and documentation.
+## MEI and TEI dependencies
+The Tido MEI Customization project contains copies of `https://github.com/music-encoding/music-encoding` and `https://github.com/TEIC/Stylesheets` in the `vendor` folder. In case these dependencies need to be updated, run `./update-git-dependencies.sh` and commit the updated project.
 
-### Build the schema
+## Build commands
+
+In order to build the schema:
 ```
-npm run schema
+ant -lib vendor/stylesheets/lib/saxon9he.jar schema
 ```
 The output schema will be placed in `build/schema`
 
-### Build the Guidelines
-
-To build the Guidelines document in HTML:
+To build the HTML guidelines:
 ```
+ant -lib vendor/stylesheets/lib/saxon9he.jar html-guidelines
+```
+The output of this will be placed in `build/guidelines`
+
+If you run [node](http://nodejs.org) you can also run the build commands via npm:
+
+```
+npm run schema
 npm run html-guidelines
 ```
-
-The output of this will be placed in `build/guidelines`
 
 ## Test environment
 
 In addition to providing documentation, the provided examples also serve validation
-test for the schema. A `nodejs` test environment is included in order to make sure
-the provided examples (or counter-examples) are indeed validated (or invalidated)
+test for the schema. A [node](https://nodejs.org) test environment is included in order to make sure
+that provided examples (or counter-examples) are indeed validated (or invalidated)
 by the compiled schema.
 
 ### Run the tests

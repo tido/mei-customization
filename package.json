@@ -13,13 +13,10 @@
     "test": "mocha --compilers js:babel-core/register --require babel-polyfill",
     "schema": "ant -lib vendor/stylesheets/lib/saxon9he.jar schema",
     "html-guidelines": "ant -lib vendor/stylesheets/lib/saxon9he.jar html-guidelines",
-    "pdf-guidelines": "ant -lib vendor/stylesheets/lib/saxon9he.jar pdf-guidelines",
     "refresh": "npm run schema && npm run html-guidelines && npm run test"
   },
-  "dependencies": {
-    "lodash": "4.6.1"
-  },
   "devDependencies": {
+    "lodash": "4.6.1",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.1",
     "babel-eslint": "^6.0.0-beta.6",
