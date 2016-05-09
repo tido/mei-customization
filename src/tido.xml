@@ -48,49 +48,49 @@ TODO discuss the nature of the customization: extension/strict subset etc.
     </fileDesc>
     <encodingDesc>
       <tagsDecl>
-        <rendition xml:id="afterStaff">
+        <rendition xml:id="afterStaff" scheme="free">
           <ptr target="../test/jade/wrappers/afterStaff.jade"/>
         </rendition>
-        <rendition xml:id="afterTwoStaves">
+        <rendition xml:id="afterTwoStaves" scheme="free">
           <ptr target="../test/jade/wrappers/afterTwoStaves.jade"/>
         </rendition>
-        <rendition xml:id="inInitialScoreDef">
+        <rendition xml:id="inInitialScoreDef" scheme="free">
           <ptr target="../test/jade/wrappers/inInitialScoreDef.jade"/>
         </rendition>
-        <rendition xml:id="inInitialStaffGrp">
+        <rendition xml:id="inInitialStaffGrp" scheme="free">
           <ptr target="../test/jade/wrappers/inInitialStaffGrp.jade"/>
         </rendition>
-        <rendition xml:id="inInitialStaffDefGrp">
+        <rendition xml:id="inInitialStaffDefGrp" scheme="free">
           <ptr target="../test/jade/wrappers/inInitialStaffDefGrp.jade"/>
         </rendition>
-        <rendition xml:id="inLayer">
+        <rendition xml:id="inLayer" scheme="free">
           <ptr target="../test/jade/wrappers/inLayer.jade"/>
         </rendition>
-        <rendition xml:id="inSection">
+        <rendition xml:id="inSection" scheme="free">
           <ptr target="../test/jade/wrappers/inSection.jade"/>
         </rendition>
-        <rendition xml:id="inLayerAfterMeasureWithFourQuarters">
+        <rendition xml:id="inLayerAfterMeasureWithFourQuarters" scheme="free">
           <ptr target="../test/jade/wrappers/inLayerAfterMeasureWithFourQuarters.jade"/>
         </rendition>
-        <rendition xml:id="inLayerBeforeMeasureWithFourQuarters">
+        <rendition xml:id="inLayerBeforeMeasureWithFourQuarters" scheme="free">
           <ptr target="../test/jade/wrappers/inLayerBeforeMeasureWithFourQuarters.jade"/>
         </rendition>
-        <rendition xml:id="inMeasure">
+        <rendition xml:id="inMeasure" scheme="free">
           <ptr target="../test/jade/wrappers/inMeasure.jade"/>
         </rendition>
-        <rendition xml:id="inScore">
+        <rendition xml:id="inScore" scheme="free">
           <ptr target="../test/jade/wrappers/inScore.jade"/>
         </rendition>
-        <rendition xml:id="inScoreDef">
+        <rendition xml:id="inScoreDef" scheme="free">
           <ptr target="../test/jade/wrappers/inScoreDef.jade"/>
         </rendition>
-        <rendition xml:id="inScoreinSection">
+        <rendition xml:id="inScoreinSection" scheme="free">
           <ptr target="../test/jade/wrappers/inScoreinSection.jade"/>
         </rendition>
-        <rendition xml:id="inStaffDefAfterLastMeasure">
+        <rendition xml:id="inStaffDefAfterLastMeasure" scheme="free">
           <ptr target="../test/jade/wrappers/inStaffDefAfterLastMeasure.jade"/>
         </rendition>
-        <rendition xml:id="twoStavesInSection">
+        <rendition xml:id="twoStavesInSection" scheme="free">
           <ptr target="../test/jade/wrappers/twoStavesInSection.jade"/>
         </rendition>
       </tagsDecl>
