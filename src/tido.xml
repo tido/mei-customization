@@ -231,25 +231,28 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </item>
             </list>
           </div>
-          <div>
-            <head>Control events</head>
-            <p>Control events like <gi>dir</gi>, <gi>hairpin</gi>, <gi>dynam</gi>, etc. can be placed either directly
-              above or below a single staff or in the middle between two staves. Placement above or
-              below a staff is indicated by the <att>place</att> attribute,
-                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
-                  <dynam tstamp="1" layer="1" xml:id="d015" place="below" staff="1"/>
-                </egXML>
-              placement between two staves is expressed by specifying the numbers of both staves
-              in the <att>staff</att> attribute.
+        </div>
+        <div>
+          <head>Control events</head>
+          <p>Control events like <gi>dir</gi>, <gi>hairpin</gi>, <gi>dynam</gi>, etc. can be placed either directly
+            above or below a single staff or in the middle between two staves. Placement above or
+            below a staff is indicated by the <att>place</att> attribute,
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
-                <dynam tstamp="1" xml:id="d015" staff="1 2"/>
+                <dynam tstamp="1" layer="1" xml:id="d015" place="below" staff="1"/>
               </egXML>
-              When the <att>staff</att> attribute has multiple values,
-              <att>place</att> and <att>layer</att> are not allowed:</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterTwoStaves">
-                <dynam tstamp="1" layer="1" xml:id="d015" place="above" staff="1 2"/>
-              </egXML>
-          </div>
+            placement between two staves is expressed by specifying the numbers of both staves
+            in the <att>staff</att> attribute.
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
+              <dynam tstamp="1" xml:id="d015" staff="1 2"/>
+            </egXML>
+            When the <att>staff</att> attribute has multiple values,
+            <att>place</att> and <att>layer</att> are not allowed:</p>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterTwoStaves">
+              <dynam tstamp="1" layer="1" xml:id="d015" place="above" staff="1 2"/>
+            </egXML>
+        </div>
+        <div>
+          <head>Spanning elements</head>
           <div>
             <head>Hairpins</head>
             <p>Start and end point of hairpins must be expressed using <att>tstamp</att> and
@@ -267,11 +270,11 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               point, <code>@tstamp2="0m+n"</code> is applied (where n is the meter.count of the current measure
               plus one: 5 in 4/4, 3 in 2/4 etc. see
               <ref target="http://music-encoding.org/documentation/2.1.1/cmn/#cmnTstamp">
-              4.1.5 Timestamps and Durations</ref> of the MEI Guidelines'). Additionally, all partial
+                4.1.5 Timestamps and Durations</ref> of the MEI Guidelines'). Additionally, all partial
               slurs has to be supplied with a <att>curvedir</att> attribute indicating the direction of
               the slur (values: "above" or "below").
             </p>
-
+            
             <p>However, since tstamps are not always enough to describe start and end point of slurs,
               and it is simply impractical to assert in which situation which encoding is expected,
               no restrictions apply for using combinations of <att>startid</att>/<att>endid</att>
