@@ -21,11 +21,18 @@ CONTACT: info@music-encoding.org
 TODO discuss the nature of the customization: extension/strict subset etc.
 -->
 
+<!-- TODO mention that our customization is based on the mei-develop branch which is more
+  advanced than the current release - we reference the current release in the prose section, 
+  but it would be more correct to reference a version of the guidelines matching our 
+  basis!! 
+-->
 
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?> <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0"
-  xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xi="http://www.w3.org/2001/XInclude"
-  xmlns:tido="http://tido-music.com/ns/1.0">
+<!-- TODO update xml:ids -->
+
+
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -109,17 +116,15 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <ref target="http://music-encoding.org/documentation/guidelines2013/chapters">MEI
           Guidelines</ref>. Each restriction is implemented using the
           <ref target="http://www.tei-c.org/Guidelines/Customization/odds.xml">TEI ODD</ref> specification language,
-          and documented in the prose section of this ducument, including examples (what is valid)
-          and counter-examples (what is invalid)</p>
-
-        <p>Section <ref target="#tidoSchemaSpec">Specifications</ref> lists every element available in the customization
+          and documented in the prose section of this document, including examples (what is valid)
+          and counter-examples (what is invalid).</p>
+        <p>The <ref target="#tidoSchemaSpec">Specifications</ref> section lists every element available in the customization
           and can be used as a technical reference.</p>
-        <p></p>
       </div>
       <div>
         <head>Module Selection</head>
         <p>This basic customization only adopts following modules:</p>
-        <list>
+        <list rend="bulleted">
           <item>Shared</item>
           <item>Header</item>
           <item>CMN</item>
@@ -128,18 +133,18 @@ TODO discuss the nature of the customization: extension/strict subset etc.
       <div>
         <head>Common Attributes</head>
         <p><att>xml:id</att> is mandatory on all elements.</p>
-        <p><att>n</att> is mandatory on the following elements:<list>
+        <p><att>n</att> is mandatory on:<list rend="bulleted">
           <item><gi>layer</gi></item>
           <item><gi>staff</gi></item>
           <item><gi>verse</gi></item>
         </list></p>
       </div>
       <div>
-        <head>Score and staff definitions</head>
+        <head>Clefs, Time and Key Signatures</head>
         <div>
           <head>Time signature</head>
           <p>Time signature <emph>must</emph> be expressed in a <gi>meterSig</gi> child element of
-              <gi>staffDef</gi></p>
+              <gi>staffDef</gi>.</p>
           <p>To define a time signature, the customization uses <att>unit</att> and <att>count</att> on
               <gi>meterSig</gi>. They <emph>must</emph> occur together: </p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
@@ -153,11 +158,11 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         </div>
         <div>
           <head>Key signature</head>
-          <p>Key signature <emph>must</emph> be expressed in <gi>keySig</gi> elements placed as
-            child elements of <gi>staffDef</gi> at this stage of development.</p>
-          <p>To define a key signature, this customization uses the <att>pname</att>, <att>accid</att> and
+          <p>Key signature <emph>must</emph> be expressed in a <gi>keySig</gi> child element 
+            of <gi>staffDef</gi> at this stage of development.</p>
+          <p>To define a key signature, the customization uses the <att>pname</att>, <att>accid</att> and
               <att>mode</att> attributes of <gi>keySig</gi>. <att>pname</att> and <att>mode</att>
-            <emph>must</emph> occur together, <att>accid</att> is optional. </p>
+            <emph>must</emph> occur together, <att>accid</att> is optional.</p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
             rendition="#inInitialStaffDefGrp">
             <staffDef xml:id="d003">
@@ -171,7 +176,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <head>Clefs</head>
           <p>Clefs <emph>must</emph> be expressed using the <gi>clef</gi> element.</p>
           <p>To define a clef, the customization uses <att>shape</att> and <att>line</att>, which
-              <emph>must</emph> occur together. </p>
+              <emph>must</emph> occur together.</p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
             rend="#inInitialStaffGrp">
             <staffDef lines="5" xml:id="d005" n="2">
@@ -184,8 +189,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
       </div>
       <div>
         <head>Events</head>
-        <p>This section describes restrictions to timed events on staves, such as notes, rests.
-          etc.</p>
+        <p>This section describes restrictions to timed events on staves, such as notes or rests.</p>
         <div>
           <head>Notes</head>
           <p>Notes must either have an octave and a pitch name or a <att>loc</att> attribute. Stem direction remains optional,
@@ -199,41 +203,49 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           </egXML>
         </div>
         <div>
-          <head>Duration</head>
-          <p>From this schema the gestural duration attribute <att>dur.ges</att> is excluded.
-            In addition to this restriction, the specification of the <att>dur</att> attribute
-            on events is more tightly controlled than it is in <emph>mei_all</emph>, as
-            described in the following sections.
+          <head>Duration and stem direction</head>
+          <p>The gestural duration attribute <att>dur.ges</att> is excluded in this customization.
+            In addition, the specification of the <att>dur</att> and <att>stem.dir</att> attributes 
+            on events is more tightly  controlled than it is in <emph>mei_all</emph>, as described 
+            in the following sections.
           </p>
           <div>
             <head>Notes</head>
-            <p>Notes must always have a duration (<att>dur</att>) except when they are part of
-              chords.</p>
+            <p>Notes must always have a duration (<att>dur</att>) and a stem direction (<att>stem.dir</att>)
+              except when they are part of a chord.</p>
           </div>
           <div>
             <head>Rests and spaces</head>
-            <p>Rest and spaces must always have a duration (<att>dur</att>).</p>
+            <p><gi>rest</gi> and <gi>space</gi> elements must always have a duration (<att>dur</att>).</p>
           </div>
           <div>
             <head>Chords</head>
-            <p>Duration on chords must be expressed on the <gi>chord</gi> element. The constituent
-                <gi>note</gi> elements are not allowed to express duration.</p>
-            <list>
+            <p>Duration and stem direction on chords must be expressed on the <gi>chord</gi> element. The constituent
+                <gi>note</gi> elements are not allowed to express duration or stem direction.</p>
+            <list rend="bulleted">
               <item>Duration on chord: <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                   rendition="#inLayer">
-                  <chord dur="4" xml:id="d008">
+                  <chord dur="4" stem.dir="up" xml:id="d008">
                     <note pname="a" oct="4" xml:id="d009"/>
                     <note pname="f" oct="4" xml:id="d010"/>
                   </chord>
                 </egXML>
               </item>
-              <item>Duration on both chord and notes are not allowed: <egXML
+              <item>Durations on child notes are not allowed: <egXML
                   xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                  <chord dur="4" xml:id="d011">
+                  <chord dur="4" stem.dir="up" xml:id="d011">
                     <note pname="a" oct="4" dur="4" xml:id="d012"/>
                     <note pname="f" oct="4" dur="4" xml:id="d013"/>
                   </chord>
                 </egXML>
+              </item>
+              <item>Stem directions on child notes are not allowed: <egXML
+                xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <chord dur="4" stem.dir="up" xml:id="d011">
+                  <note pname="a" oct="4" stem.dir="up" xml:id="d012"/>
+                  <note pname="f" oct="4" stem.dir="up" xml:id="d013"/>
+                </chord>
+              </egXML>
               </item>
             </list>
           </div>
@@ -256,43 +268,43 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterTwoStaves">
               <dynam tstamp="1" layer="1" xml:id="d015" place="above" staff="1 2"/>
             </egXML>
-        </div>
-        <div>
-          <head>Spanning elements</head>
           <div>
-            <head>Hairpins</head>
-            <p>Start and end point of hairpins must be expressed using <att>tstamp</att> and
-              <att>tstamp2</att> respectively. <att>startid</att> and <att>endid</att> attributes
-              are currently disabled on hairpins.
-            </p>
-          </div>
-          <div>
-            <head>Slurs</head>
-            <p>Start and end point of slurs can almost always be expressed using <att>startid</att> and
-              <att>endid</att> attributes. The only exceptions are "partial" slurs, such as the ones
-              at the boundary of <gi>ending</gi> elements. Such slurs need to be encoded using
-              the <att>tstamp</att> or <att>tstamp2</att> attributes. When the inclompete slur starts
-              at the barline, <code>@tstamp="0"</code> is used, when the slur is incomplete at its end
-              point, <code>@tstamp2="0m+n"</code> is applied (where n is the meter.count of the current measure
-              plus one: 5 in 4/4, 3 in 2/4 etc. see
-              <ref target="http://music-encoding.org/documentation/2.1.1/cmn/#cmnTstamp">
-                4.1.5 Timestamps and Durations</ref> of the MEI Guidelines'). Additionally, all partial
-              slurs has to be supplied with a <att>curvedir</att> attribute indicating the direction of
-              the slur (values: "above" or "below").
-            </p>
-
-            <p>However, since tstamps are not always enough to describe start and end point of slurs,
-              and it is simply impractical to assert in which situation which encoding is expected,
-              no restrictions apply for using combinations of <att>startid</att>/<att>endid</att>
-              and <att>tstamp</att>/<att>tstamp2</att> to describe slur start and end points.</p>
-            <p>A typical slur: </p>
-            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-              <slur xml:id="d014" startid="#n01" endid="#n02"/>
-            </egXML>
-            <p>A partial slur within a 2nd ending:</p>
-            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-              <slur xml:id="d014" tstamp="0" endid="#n02"/>
-            </egXML>
+            <head>Spanning elements</head>
+            <div>
+              <head>Hairpins</head>
+              <p>Start and end point of hairpins must be expressed using <att>tstamp</att> and
+                <att>tstamp2</att> respectively. <att>startid</att> and <att>endid</att> attributes
+                are currently disabled on hairpins.
+              </p>
+            </div>
+            <div>
+              <head>Slurs</head>
+              <p>Start and end point of a slur can almost always be expressed using the 
+                <att>startid</att> and <att>endid</att> attributes. The only exceptions are 
+                <soCalled>partial</soCalled> slurs, such as the ones at the boundary of 
+                <gi>ending</gi> elements. Such slurs need to be encoded using the <att>tstamp</att> 
+                or <att>tstamp2</att> attributes. When the inclompete slur starts at the barline, 
+                <code>@tstamp="0"</code> is used, when the slur is incomplete at its end point, 
+                <code>@tstamp2="0m+n"</code> is applied (where n is the meter.count of the current 
+                measure plus one: 5 in 4/4, 3 in 2/4 etc. see <ref 
+                  target="http://music-encoding.org/documentation/2.1.1/cmn/#cmnTstamp">4.1.5 Timestamps 
+                  and Durations</ref> of the MEI Guidelines). Additionally, all partial
+                slurs have to be supplied with a <att>curvedir</att> attribute indicating the direction of
+                the slur (values: <val>above</val> or <val>below</val>).
+              </p>
+              <p>However, since tstamps are not always enough to describe start and end point of slurs,
+                and it is simply impractical to assert in which situation which encoding is expected,
+                no restrictions apply for using combinations of <att>startid</att>/<att>endid</att>
+                and <att>tstamp</att>/<att>tstamp2</att> to describe slur start and end points.</p>
+              <p>A typical slur: </p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                <slur xml:id="d014" startid="#n01" endid="#n02"/>
+              </egXML>
+              <p>A partial slur within a 2nd ending:</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                <slur xml:id="d014" tstamp="0" endid="#n02"/>
+              </egXML>
+            </div>
           </div>
         </div>
       </div>
@@ -313,8 +325,9 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             pubPlace recipient relatedItem repository resp role roleDesc sb series sponsor stack
             tempo textLang titlePage width"/>
           <moduleRef key="MEI.header"/>
-          <moduleRef key="MEI.cmn" except=" arpeg beamSpan beatRpt bend breath bTrem fermata fTrem gliss halfmRpt harpPedal
-            meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt octave ossia reh tuplet tupletSpan"/>
+          <moduleRef key="MEI.cmn" except=" arpeg beamSpan beatRpt bend breath bTrem fermata fTrem 
+            gliss halfmRpt harpPedal meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt octave ossia 
+            reh tuplet tupletSpan"/>
           <moduleRef key="MEI.namesdates"/>
           <moduleRef key="MEI.ptrref"/>
           <classSpec ident="att.accid.anl" module="MEI.shared" type="atts" mode="delete"/>
@@ -428,7 +441,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <classSpec ident="att.staffGrp.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.staffGrp.ges" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.staffGrp.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffGrp.vis" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.staffloc.pitched" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.syl.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.syl.ges" module="MEI.shared" type="atts" mode="delete"/>
@@ -750,40 +762,152 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 note.</desc>
               <constraint>
                 <sch:rule context="mei:note">
-                  <sch:assert
-                    test="if (not(@pname and @oct) and not(@loc)) then false() else true()">either
-                    @pname and @oct or @loc must be specified on a note.</sch:assert>
+                  <sch:assert test="(@pname and @oct) or @loc">either @pname and @oct or @loc 
+                    must be specified on a note.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <constraintSpec ident="standalone_note_require_dur" scheme="isoschematron" mode="add">
+              <desc>Require <att>dur</att> on notes outside chords.</desc>
+              <constraint>
+                <sch:rule context="mei:note[not(ancestor::mei:chord)]">
+                  <sch:assert test="exists(@dur)">Must have dur attribute.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <constraintSpec ident="standalone_note_require_stem.dir" scheme="isoschematron" mode="add">
+              <desc>Require <att>stem.dir</att> on notes outside chords.</desc>
+              <constraint>
+                <sch:rule context="mei:note[not(ancestor::mei:chord)]">
+                  <sch:assert test="exists(@stem.dir)">Must have stem.dir attribute.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <constraintSpec ident="no_note_dur_in_chord" scheme="isoschematron" mode="add">
+              <desc>Forbid @dur on notes in chords.</desc>
+              <constraint>
+                <sch:rule context="mei:note[ancestor::mei:chord]">
+                  <sch:report test="exists(@dur)">@dur attribute not permitted on notes within a chord.</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <constraintSpec ident="no_note_stem.dir_in_chord" scheme="isoschematron" mode="add">
+              <desc>Forbid @stem.dir on notes in chords.</desc>
+              <constraint>
+                <sch:rule context="mei:note[ancestor::mei:chord]">
+                  <sch:report test="@stem.dir">@stem.dir not permitted on notes within a chord.</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
             <exemplum>
-              <p>A valid <gi>note</gi> element containing <att>pname</att>, <att>oct</att> and <att>dur</att> attributes</p>
+              <p>A valid <gi>note</gi> element containing <att>pname</att>, <att>oct</att>, <att>dur</att> and <att>stem.dir</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <note pname="a" oct="4" dur="1" xml:id="d056"/>
+                <note pname="a" oct="4" dur="1" stem.dir="up" xml:id="d056"/>
               </egXML>
             </exemplum>
             <exemplum>
-              <p>A valid <gi>note</gi> element containing <att>loc</att> and <att>dur</att> attributes</p>
+              <p>A valid <gi>note</gi> element containing <att>loc</att>, <att>dur</att> and <att>stem.dir</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <note loc="4" dur="1" xml:id="d057"/>
+                <note loc="4" dur="1" stem.dir="down" xml:id="d057"/>
               </egXML>
             </exemplum>
             <exemplum>
-              <p>An invalid <gi>note</gi> element without the required <att>dur</att> attribute</p>
+              <p>An invalid standalone <att>note</att> element without a <att>stem.dir</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note pname="a" oct="4" xml:id="d058"/>
+                <note pname="a" oct="4" dur="4" xml:id="d086"/>
               </egXML>
             </exemplum>
             <exemplum>
-              <p>An invalid <gi>note</gi> element specifying <att>pname</att> but not <att>oct</att></p>
+              <p>An invalid standalone <att>note</att> element without a <att>dur</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note pname="a" dur="1" xml:id="d059"/>
+                <note pname="a" dur="4" stem.dir="down" xml:id="d087"/>
               </egXML>
             </exemplum>
             <exemplum>
-              <p>An invalid <gi>note</gi> element specifying <att>oct</att> but not <att>pname</att></p>
+              <p>An invalid <att>note</att> element with an <att>oct</att> but no <att>pname</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note oct="4" dur="1" xml:id="d060"/>
+                <note oct="4" dur="4" stem.dir="up" xml:id="d088"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <att>note</att> element with a <att>pname</att> but no <att>oct</att> attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <note pname="a" dur="4" stem.dir="up" xml:id="d089"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <att>note</att> element missing duration, stem direction and pitch</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <note xml:id="d090"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>A valid <gi>chord</gi> element with a <att>stem.dir</att> attribute and child notes without <att>stem.dir</att> or <att>dur</att></p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
+                <chord xml:id="d093" dur="4" stem.dir="up">
+                  <note xml:id="d094" pname="a" oct="4"/>
+                  <note xml:id="d095" pname="c" oct="4"/>
+                </chord>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>Invalid child <gi>note</gi> elements containing <att>stem.dir</att> attributes</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <chord xml:id="d096" dur="4" stem.dir="up">
+                  <note xml:id="d097" pname="a" oct="4" stem.dir="up"/>
+                  <note xml:id="d098" pname="c" oct="4" stem.dir="up"/>
+                </chord>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>Invalid child <gi>note</gi> elements containing <att>dur</att> attributes</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <chord xml:id="d096" dur="4" stem.dir="up">
+                  <note xml:id="d097" pname="a" oct="4" dur="4"/>
+                  <note xml:id="d098" pname="c" oct="4" dur="4"/>
+                </chord>
+              </egXML>
+            </exemplum>
+          </classSpec>
+          <!-- === CHORD ATTRIBUTES === -->
+          <classSpec ident="att.chord.log" module="MEI.shared" type="atts" mode="change">
+            <classes mode="change">
+              <memberOf key="att.duration.musical" mode="delete"/>
+              <memberOf key="att.duration.musical.req" mode="add"/>
+            </classes>
+            <constraintSpec ident="require_chord_stem.dir" scheme="isoschematron" mode="add">
+              <desc>Require <att>stem.dir</att> on chords.</desc>
+              <constraint>
+                <sch:rule context="mei:chord">
+                  <sch:assert test="exists(@stem.dir)">Must have dur attribute.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <exemplum>
+              <p>A valid <gi>chord</gi> element</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
+                <chord dur="1" stem.dir="up" xml:id="d061">
+                  <note pname="a" oct="4" xml:id="d062"/>
+                  <note pname="a" oct="4" xml:id="d063"/>
+                </chord>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <p>An invalid <gi>chord</gi> element without the required <att>dur</att> attribute</p>
+                <chord stem.dir="up" xml:id="d064">
+                  <note pname="a" oct="4" xml:id="d065"/>
+                  <note pname="a" oct="4" xml:id="d066"/>
+                </chord>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <p>An invalid <gi>chord</gi> element without the required <att>stem.dir</att> attribute</p>
+                <chord dur="4" xml:id="d064">
+                  <note pname="a" oct="4" xml:id="d065"/>
+                  <note pname="a" oct="4" xml:id="d066"/>
+                </chord>
               </egXML>
             </exemplum>
           </classSpec>
@@ -815,91 +939,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </attDef>
             </attList>
           </classSpec>
-          <!-- === CHORD ATTRIBUTES === -->
-          <classSpec ident="att.chord.log" module="MEI.shared" type="atts" mode="change">
-            <classes mode="change">
-              <memberOf key="att.duration.musical" mode="delete"/>
-              <memberOf key="att.duration.musical.req" mode="add"/>
-            </classes>
-            <exemplum>
-              <p>A valid <gi>chord</gi> element</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <chord xml:id="d061" dur="1">
-                  <note pname="a" oct="4" xml:id="d062"/>
-                  <note pname="a" oct="4" xml:id="d063"/>
-                </chord>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <p>An invalid <gi>chord</gi> element without the required <att>dur</att> attribute</p>
-                <chord xml:id="d064">
-                  <note pname="a" oct="4" xml:id="d065"/>
-                  <note pname="a" oct="4" xml:id="d066"/>
-                </chord>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
-                  elements don't match the <gi>chord</gi> element's <att>dir</att></p>
-                <chord xml:id="d067" dur="1">
-                  <note pname="a" oct="4" dur="1" xml:id="d068"/>
-                  <note pname="a" oct="4" xml:id="d069"/>
-                </chord>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
-                  elements don't match the <gi>chord</gi> element's <att>dir</att></p>
-                <chord dur="1" xml:id="d070">
-                  <note pname="a" oct="4" dur="1" xml:id="d071"/>
-                  <note pname="a" oct="4" dur="2" xml:id="d072"/>
-                </chord>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
-                  elements don't match the <gi>chord</gi> element's <att>dir</att></p>
-                <chord dur="1" xml:id="d073">
-                  <note pname="a" oct="4" dur="2" xml:id="d074"/>
-                  <note pname="a" oct="4" xml:id="d075"/>
-                </chord>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
-                elements don't match the <gi>chord</gi> element's <att>dir</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <chord dur="1" xml:id="d076">
-                  <note pname="a" oct="4" dur="2" xml:id="d077"/>
-                  <note pname="a" oct="4" dur="2" xml:id="d078"/>
-                </chord>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
-                  elements don't match the <gi>chord</gi> element's <att>dir</att></p>
-                <chord dur="1" xml:id="d079">
-                  <note pname="a" oct="4" xml:id="d080"/>
-                  <note pname="a" oct="4" dur="2" xml:id="d081"/>
-                </chord>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <p>An invalid chord in which the <att>dur</att> attributes of the <gi>note</gi>
-                  elements don't match the <gi>chord</gi> element's <att>dir</att></p>
-                <chord dur="2" xml:id="d082">
-                  <note pname="a" oct="4" dur="1" xml:id="d083"/>
-                  <note pname="a" oct="4" dur="2" xml:id="d084"/>
-                </chord>
-              </egXML>
-            </exemplum>
-          </classSpec>
           <!-- === ELEMENT SPECIFICATIONS === -->
           <elementSpec ident="meiHead" module="MEI.header" mode="change">
             <content>
@@ -913,107 +952,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 <rng:ref name="revisionDesc"/>
               </rng:optional>
             </content>
-          </elementSpec>
-          <!-- === NOTE === -->
-          <elementSpec ident="note" module="MEI.shared" mode="change">
-            <constraintSpec ident="require_out_of_chord" scheme="isoschematron" mode="add">
-              <desc>Require <att>dur</att> on notes outside chords.</desc>
-              <!-- Make @dur mandatory when applicable on note element -->
-              <constraint>
-                <sch:rule context="mei:note">
-                  <sch:assert
-                    test="if (not(ancestor::mei:chord) and not(@dur)) then false() else true()">
-                    Must have dur attribute.</sch:assert>
-                </sch:rule>
-              </constraint>
-            </constraintSpec>
-            <constraintSpec ident="no_stem_in_chord" scheme="isoschematron" mode="add">
-              <desc>Forbid att.stemmed attributes on notes in chords.</desc>
-              <!-- Make @dur mandatory when applicable on note element -->
-              <constraint>
-                <sch:rule context="mei:note[ancestor::mei:chord]">
-                  <sch:report test="@stem.dir or @stem.len or @stem.pos or @stem.x or @stem.y"> Stem
-                    attributes not permitted on notes within a chord.</sch:report>
-                </sch:rule>
-              </constraint>
-            </constraintSpec>
-            <constraintSpec ident="no_dur_in_chord" scheme="isoschematron" mode="add">
-              <desc>Forbid notes within chords to specify duration</desc>
-              <constraint>
-                <sch:rule context="mei:note[ancestor::mei:chord]">
-                  <sch:report test="@dur">@dur attribute not permitted on notes within a chord.</sch:report>
-                </sch:rule>
-              </constraint>
-            </constraintSpec>
-            <exemplum>
-              <p>A valid <att>note</att> element with a down stem</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <note pname="a" oct="4" dur="4" stem.dir="down" xml:id="d085"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>A valid <att>note</att> element with an up stem</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <note pname="a" dur="4" oct="2" stem.dir="up" xml:id="d092"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>A valid <att>note</att> element without a <att>stem.dir</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <note pname="a" oct="4" dur="4" xml:id="d086"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <att>note</att> element without a <att>dur</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note pname="a" dur="4" xml:id="d087"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <att>note</att> element with an <att>oct</att> but no <att>pname</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note oct="4" dur="4" xml:id="d088"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <att>note</att> element with a <att>pname</att> but no <att>oct</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note pname="a" oct="4" xml:id="d089"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <att>note</att> element missing both duration and pitch</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note xml:id="d090"/>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>A valid <gi>chord</gi> element with a <att>stem.dir</att> attribute and child notes without <att>stem.dir</att></p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <chord xml:id="d093" dur="4" stem.dir="up">
-                  <note xml:id="d094" pname="a" oct="4"/>
-                  <note xml:id="d095" pname="c" oct="4"/>
-                </chord>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <gi>chord</gi> element with child notes containing <att>stem.dir</att> attributes</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <chord xml:id="d096" dur="4" stem.dir="up">
-                  <note xml:id="d097" pname="a" oct="4" stem.dir="up"/>
-                  <note xml:id="d098" pname="c" oct="4" stem.dir="up"/>
-                </chord>
-              </egXML>
-            </exemplum>
-            <exemplum>
-              <p>An invalid <gi>chord</gi> element with child notes containing <att>dur</att> attribute</p>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <chord xml:id="d096" dur="4" stem.dir="up">
-                  <note xml:id="d097" pname="a" oct="4" dur="4"/>
-                  <note xml:id="d098" pname="c" oct="4" dur="4"/>
-                </chord>
-              </egXML>
-            </exemplum>
           </elementSpec>
           <!-- === LAYER === -->
           <elementSpec ident="layer" module="MEI.shared" mode="change">

@@ -171,7 +171,7 @@
     <target name="schema" depends="clean-schema">
         <createRNG schemaIdent="tido"/>
         <createRNC schemaIdent="tido"/>
-        <createXSD schemaIdent="tido"/>
+<!--        <createXSD schemaIdent="tido"/>-->
         <createSchematron schemaIdent="tido"/>
         <createSchematronXSL schemaIdent="tido"/>
     </target>
