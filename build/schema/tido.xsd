@@ -1,0 +1,4200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.music-encoding.org/ns/mei" xmlns:mei="http://www.music-encoding.org/ns/mei">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!--
+    Schema generated from ODD source 2016-05-09T15:27:09Z. .
+    TEI Edition: Version 3.0.0
+    TEI Edition Location: http://www.tei-c.org/Vault/P5//
+    
+  -->
+  <!-- Copyright 2014-2016 Tido Ltd. All rights reserved. -->
+  <xs:simpleType name="tido_data.ACCIDENTAL.EXPLICIT">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="s">
+        <xs:annotation>
+          <xs:documentation>Sharp.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="f">
+        <xs:annotation>
+          <xs:documentation>Flat.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="x">
+        <xs:annotation>
+          <xs:documentation>Double sharp (written using croix).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ff">
+        <xs:annotation>
+          <xs:documentation>Double flat.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="n">
+        <xs:annotation>
+          <xs:documentation>Natural.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.ACCIDENTAL.IMPLICIT">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="s">
+        <xs:annotation>
+          <xs:documentation>Sharp.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="f">
+        <xs:annotation>
+          <xs:documentation>Flat.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ss">
+        <xs:annotation>
+          <xs:documentation>Double sharp.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ff">
+        <xs:annotation>
+          <xs:documentation>Double flat.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="n">
+        <xs:annotation>
+          <xs:documentation>Natural.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.ARTICULATION">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="acc">
+        <xs:annotation>
+          <xs:documentation>Accent (Unicode 1D17B).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="stacc">
+        <xs:annotation>
+          <xs:documentation>Staccato (Unicode 1D17C).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ten">
+        <xs:annotation>
+          <xs:documentation>Tenuto (Unicode 1D17D).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="stacciss">
+        <xs:annotation>
+          <xs:documentation>Staccatissimo (Unicode 1D17E).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="marc">
+        <xs:annotation>
+          <xs:documentation>Marcato (Unicode 1D17F).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.AUGMENTDOT">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:maxInclusive value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.BARRENDITION">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="dashed">
+        <xs:annotation>
+          <xs:documentation>Dashed line (Unicode 1D104).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dotted">
+        <xs:annotation>
+          <xs:documentation>Dotted line.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dbl">
+        <xs:annotation>
+          <xs:documentation>(Unicode 1D101).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dbldashed">
+        <xs:annotation>
+          <xs:documentation>Double dashed line.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dbldotted">
+        <xs:annotation>
+          <xs:documentation>Double dotted line.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="end">
+        <xs:annotation>
+          <xs:documentation>(Unicode 1D102).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="invis">
+        <xs:annotation>
+          <xs:documentation>Bar line not rendered.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rptstart">
+        <xs:annotation>
+          <xs:documentation>Repeat start (Unicode 1D106).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rptboth">
+        <xs:annotation>
+          <xs:documentation>Repeat start and end.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rptend">
+        <xs:annotation>
+          <xs:documentation>Repeat end (Unicode 1D107).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="single">
+        <xs:annotation>
+          <xs:documentation>(Unicode 1D100).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.BEAT">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.BOOLEAN">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="true">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="false">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.CLEFLINE">
+    <xs:restriction base="xs:positiveInteger"/>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.CLEFSHAPE">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="G">
+        <xs:annotation>
+          <xs:documentation>G clef (Unicode 1D11E).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GG">
+        <xs:annotation>
+          <xs:documentation>Double G clef.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="F">
+        <xs:annotation>
+          <xs:documentation>F clef (Unicode 1D122).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="C">
+        <xs:annotation>
+          <xs:documentation>C clef (Unicode 1D121).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="perc">
+        <xs:annotation>
+          <xs:documentation>Drum clef (Unicode 1D125 or Unicode 1D126).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TAB">
+        <xs:annotation>
+          <xs:documentation>Tablature "clef"; i.e. usually "TAB" rendered vertically.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.CLUSTER">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="white">
+        <xs:annotation>
+          <xs:documentation>White keys.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="black">
+        <xs:annotation>
+          <xs:documentation>Black keys.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="chromatic">
+        <xs:annotation>
+          <xs:documentation>Mixed black and white keys.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.COLORNAMES">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="aqua">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="black">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="blue">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fuchsia">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gray">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="green">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lime">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="maroon">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="navy">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="olive">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="purple">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="red">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="silver">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="teal">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="white">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="yellow">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.COLORVALUES">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:pattern value="#[0-9A-Fa-f]{6,6}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:pattern value="#[0-9A-Fa-f]{8,8}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:pattern value="rgb\((\s*(([01]?[0-9]?[0-9])|2[0-4][0-9]|25[0-5])\s*,\s*){2}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*\)"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:pattern value="rgba\(\s*(([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*){3}(0(\.\d+)?|1(\.0+)?)\s*\)|rgba\(\s*(((\d{1,2})?%|100%)\s*,\s*){2}(\d{1,2}%|100%)\s*,\s*(0(\.\d+)?|1(\.0+)?)\s*\)"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:pattern value="hsl\(\s*((\d{1,2})|[12]\d{2}|3[0-5]\d|360)\s*,\s*(\d{1,2}%|100%)\s*,\s*(\d{1,2}%|100%)\s*\)"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:pattern value="hsla\(\s*(\d{1,2}|[12]\d{2}|3[0-5]\d|360)\s*,\s*(\d{1,2}%|100%)\s*,\s*(\d{1,2}%|100%)\s*,\s*(0(\.\d+)?|1(\.0+)?)\s*\)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.COLOR">
+    <xs:union memberTypes="mei:tido_data.COLORNAMES mei:tido_data.COLORVALUES"/>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.DEGREES">
+    <xs:restriction base="xs:decimal">
+      <xs:maxInclusive value="360.0"/>
+      <xs:minInclusive value="-360.0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.DURATION">
+    <xs:restriction base="mei:tido_data.DURATION.cmn"/>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.FONTFAMILY">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.FONTNAME">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.FONTSTYLE">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="italic">
+        <xs:annotation>
+          <xs:documentation>Text slants to right.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="normal">
+        <xs:annotation>
+          <xs:documentation>Unadorned.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="oblique">
+        <xs:annotation>
+          <xs:documentation>Text slants to the left.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.FONTWEIGHT">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="bold">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="normal">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.GLISSANDO">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="i">
+        <xs:annotation>
+          <xs:documentation>First note/chord in glissando.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="m">
+        <xs:annotation>
+          <xs:documentation>Note/chord that's neither first nor last in glissando.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="t">
+        <xs:annotation>
+          <xs:documentation>Last note in glissando.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.GRACE">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="acc">
+        <xs:annotation>
+          <xs:documentation>Time "stolen" from following note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unacc">
+        <xs:annotation>
+          <xs:documentation>Time "stolen" from previous note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>No interpretation regarding performed value of grace note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.LAYERSCHEME">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Single layer.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2o">
+        <xs:annotation>
+          <xs:documentation>Two layers with opposing stems.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2f">
+        <xs:annotation>
+          <xs:documentation>Two layers with 'floating' stems.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3o">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3f">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.MEASUREBEAT">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="([0-9]+m\s*\+\s*)?[0-9]+(\.?[0-9]*)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.MEASUREMENT">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="(\+|-)?\d+(\.\d+)?(cm|mm|in|pt|pc|px|vu)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.MENSURATIONSIGN">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="C">
+        <xs:annotation>
+          <xs:documentation>Tempus imperfectum.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="O">
+        <xs:annotation>
+          <xs:documentation>Tempus perfectum.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.METERSIGN">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="common">
+        <xs:annotation>
+          <xs:documentation>Common time; i.e. 4/4.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cut">
+        <xs:annotation>
+          <xs:documentation>Cut time; i.e. 2/2.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.MODE">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="major">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="minor">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dorian">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="phrygian">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lydian">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mixolydian">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="aeolian">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="locrian">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.OCTAVE">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:maxInclusive value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.PERCENT">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]+(\.?[0-9]*)?%"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.PITCHNAME">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[a-g]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.PITCHNAME.GES">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[a-g]|none"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.PITCHNUMBER">
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.SLASH">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.STAFFLOC">
+    <xs:restriction base="xs:integer"/>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.STAFFREL">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="above">
+        <xs:annotation>
+          <xs:documentation>Written above staff.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="below">
+        <xs:annotation>
+          <xs:documentation>Written below staff.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="within">
+        <xs:annotation>
+          <xs:documentation>Written on staff.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.STEMDIRECTION">
+    <xs:union memberTypes="mei:tido_data.STEMDIRECTION.basic mei:tido_data.STEMDIRECTION.extended"/>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.STEMDIRECTION.basic">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="up">
+        <xs:annotation>
+          <xs:documentation>Stem points upwards.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="down">
+        <xs:annotation>
+          <xs:documentation>Stem points downwards.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.STEMDIRECTION.extended">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="left">
+        <xs:annotation>
+          <xs:documentation>Stem points left.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="right">
+        <xs:annotation>
+          <xs:documentation>Stem points right.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ne">
+        <xs:annotation>
+          <xs:documentation>Stem points up and right.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="se">
+        <xs:annotation>
+          <xs:documentation>Stem points down and right.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nw">
+        <xs:annotation>
+          <xs:documentation>Stem points up and left.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sw">
+        <xs:annotation>
+          <xs:documentation>Stem points down and left.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.STEMMODIFIER">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="none">
+        <xs:annotation>
+          <xs:documentation>No modifications to stem.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1slash">
+        <xs:annotation>
+          <xs:documentation>1 slash through stem.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2slash">
+        <xs:annotation>
+          <xs:documentation>2 slashes through stem.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3slash">
+        <xs:annotation>
+          <xs:documentation>3 slashes through stem.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4slash">
+        <xs:annotation>
+          <xs:documentation>4 slashes through stem.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="5slash">
+        <xs:annotation>
+          <xs:documentation>5 slashes through stem.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6slash">
+        <xs:annotation>
+          <xs:documentation>6 slashes through stem.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sprech">
+        <xs:annotation>
+          <xs:documentation>X placed on stem.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="z">
+        <xs:annotation>
+          <xs:documentation>Z placed on stem.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.STEMPOSITION">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="left">
+        <xs:annotation>
+          <xs:documentation>Stem attached to left side of note head.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="right">
+        <xs:annotation>
+          <xs:documentation>Stem attached to right side of note head.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="center">
+        <xs:annotation>
+          <xs:documentation>Stem is originates from center of note head.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.TEXTRENDITIONLIST">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="xx-small">
+        <xs:annotation>
+          <xs:documentation>Relative font size.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="x-small">
+        <xs:annotation>
+          <xs:documentation>Relative font size.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="small">
+        <xs:annotation>
+          <xs:documentation>Relative font size.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="medium">
+        <xs:annotation>
+          <xs:documentation>Relative font size.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="large">
+        <xs:annotation>
+          <xs:documentation>Relative font size.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="x-large">
+        <xs:annotation>
+          <xs:documentation>Relative font size.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="xx-large">
+        <xs:annotation>
+          <xs:documentation>Relative font size.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="smaller">
+        <xs:annotation>
+          <xs:documentation>Relative font size.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="larger">
+        <xs:annotation>
+          <xs:documentation>Relative font size.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="italic">
+        <xs:annotation>
+          <xs:documentation>Italicized (slanted to right).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="oblique">
+        <xs:annotation>
+          <xs:documentation>Oblique (slanted to left).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="smcaps">
+        <xs:annotation>
+          <xs:documentation>Small capitals.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bold">
+        <xs:annotation>
+          <xs:documentation>Relative font weight.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bolder">
+        <xs:annotation>
+          <xs:documentation>Relative font weight.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lighter">
+        <xs:annotation>
+          <xs:documentation>Relative font weight.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="box">
+        <xs:annotation>
+          <xs:documentation>Enclosed in box.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="circle">
+        <xs:annotation>
+          <xs:documentation>Enclosed in ellipse/circle.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dbox">
+        <xs:annotation>
+          <xs:documentation>Enclosed in diamond.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tbox">
+        <xs:annotation>
+          <xs:documentation>Enclosed in triangle.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bslash">
+        <xs:annotation>
+          <xs:documentation>Struck through by '\' (back slash).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fslash">
+        <xs:annotation>
+          <xs:documentation>Struck through by '/' (forward slash).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="line-through">
+        <xs:annotation>
+          <xs:documentation>Struck through by '-'; may be qualified to indicate multiple lines, e.g. line-through(2).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="none">
+        <xs:annotation>
+          <xs:documentation>Not rendered, invisible.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="overline">
+        <xs:annotation>
+          <xs:documentation>Line above the text; may be qualified to indicate multiple lines, e.g. overline(3).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="overstrike">
+        <xs:annotation>
+          <xs:documentation>obscured by other text, such as 'XXXXX'</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="strike">
+        <xs:annotation>
+          <xs:documentation>Struck through by '-'; equivalent to line-through; may be qualified to indicate multiple lines, e.g. strike(3).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sub">
+        <xs:annotation>
+          <xs:documentation>Subscript.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sup">
+        <xs:annotation>
+          <xs:documentation>Superscript.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="underline">
+        <xs:annotation>
+          <xs:documentation>Underlined; may be qualified to indicate multiple lines, e.g. underline(2).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ltr">
+        <xs:annotation>
+          <xs:documentation>Left-to-right (BIDI embed).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rtl">
+        <xs:annotation>
+          <xs:documentation>Right-to-left (BIDI embed).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lro">
+        <xs:annotation>
+          <xs:documentation>Left-to-right (BIDI override).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rlo">
+        <xs:annotation>
+          <xs:documentation>Right-to-left (BIDI override).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.TEXTRENDITIONPAR">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="(underline|overline|line-through|strike)\(\d+\)"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="(letter-spacing|line-height)\((\+|-)?\d+(\.\d+)?%?\)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.TEXTRENDITION">
+    <xs:union memberTypes="mei:tido_data.TEXTRENDITIONLIST mei:tido_data.TEXTRENDITIONPAR"/>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.URI">
+    <xs:restriction base="xs:anyURI"/>
+  </xs:simpleType>
+  <xs:complexType name="tido_macro.musicPart">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:body"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tido_macro.availabilityPart">
+    <xs:sequence>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="mei:acqSource"/>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mei:accessRestrict"/>
+          <xs:element minOccurs="0" ref="mei:price"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:element minOccurs="0" ref="mei:useRestrict"/>
+      <xs:element minOccurs="0" ref="mei:sysReq"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="tido_macro.bibldescPart">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:editionStmt"/>
+      <xs:element minOccurs="0" ref="mei:pubStmt"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:physDesc"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:seriesStmt"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:simpleType name="tido_data.DURATION.cmn">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="long">
+        <xs:annotation>
+          <xs:documentation>Quadruple whole note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="breve">
+        <xs:annotation>
+          <xs:documentation>Double whole note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Whole note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Half note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>Quarter note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>8th note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="16">
+        <xs:annotation>
+          <xs:documentation>16th note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="32">
+        <xs:annotation>
+          <xs:documentation>32nd note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="64">
+        <xs:annotation>
+          <xs:documentation>64th note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="128">
+        <xs:annotation>
+          <xs:documentation>128th note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="256">
+        <xs:annotation>
+          <xs:documentation>256th note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="512">
+        <xs:annotation>
+          <xs:documentation>512th note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1024">
+        <xs:annotation>
+          <xs:documentation>1024th note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2048">
+        <xs:annotation>
+          <xs:documentation>2048th note.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.URI.local">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="#[A-Za-z][A-Za-z0-9\-_:\.]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tido_data.MEASUREBEAT.strict">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]+m\+[0-9]+(\.?[0-9]*)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="tido_att.accid.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.accidental.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.controlevent.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.accid.log.attribute.func"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.accid.log.attribute.func">
+    <xs:attribute name="func">
+      <xs:annotation>
+        <xs:documentation>Records the function of an accidental.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="caution">
+            <xs:annotation>
+              <xs:documentation>Cautionary accidental.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="edit">
+            <xs:annotation>
+              <xs:documentation>Editorial accidental.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.accidental.attributes">
+    <xs:attributeGroup ref="mei:tido_att.accidental.attribute.accid"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.accidental.attribute.accid">
+    <xs:attribute name="accid" type="mei:tido_data.ACCIDENTAL.EXPLICIT">
+      <xs:annotation>
+        <xs:documentation>Captures a written accidental.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.accidental.performed.attributes">
+    <xs:attributeGroup ref="mei:tido_att.accidental.performed.attribute.accid.ges"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.accidental.performed.attribute.accid.ges">
+    <xs:attribute name="accid.ges" type="mei:tido_data.ACCIDENTAL.IMPLICIT">
+      <xs:annotation>
+        <xs:documentation>Records the performed pitch inflection.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.articulation.attributes">
+    <xs:attributeGroup ref="mei:tido_att.articulation.attribute.artic"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.articulation.attribute.artic">
+    <xs:attribute name="artic">
+      <xs:annotation>
+        <xs:documentation>Encodes the written articulation(s). Articulations are normally encoded in order from the note head outward; that is, away from the stem. See additional notes at att.vis.note. Only articulations should be encoded in the artic attribute; for example, fingerings should be encoded using the &lt;fingering&gt; element.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list itemType="mei:tido_data.ARTICULATION"/>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.augmentdots.attributes">
+    <xs:attributeGroup ref="mei:tido_att.augmentdots.attribute.dots"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.augmentdots.attribute.dots">
+    <xs:attribute name="dots" type="mei:tido_data.AUGMENTDOT">
+      <xs:annotation>
+        <xs:documentation>Records the number of augmentation dots required by a dotted duration.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.chord.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.duration.musical.req.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.event.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.articulation.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.augmentdots.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.chord.vis.attributes">
+    <xs:attributeGroup ref="mei:tido_att.stems.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.typography.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.chord.vis.attribute.cluster"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.chord.vis.attribute.cluster">
+    <xs:attribute name="cluster" type="mei:tido_data.CLUSTER">
+      <xs:annotation>
+        <xs:documentation>Indicates a single, alternative note head should be displayed instead of individual note heads. The highest and lowest notes of the chord usually indicate the upper and lower boundaries of the cluster note head.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.classcodeident.attributes">
+    <xs:attributeGroup ref="mei:tido_att.classcodeident.attribute.classcode"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.classcodeident.attribute.classcode">
+    <xs:attribute name="classcode" type="mei:tido_data.URI">
+      <xs:annotation>
+        <xs:documentation>Contains a reference to the controlled vocabulary from which the term is drawn. The value must match the value of an ID attribute on a classCode element given elsewhere in the document.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.clef.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.clefshape.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.lineloc.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.octave.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.clef.log.attribute.cautionary"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.clef.log.attribute.cautionary">
+    <xs:attribute name="cautionary" type="mei:tido_data.BOOLEAN">
+      <xs:annotation>
+        <xs:documentation>Records the function of the clef. A "cautionary" clef does not change the following pitches.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.clefshape.attributes">
+    <xs:attributeGroup ref="mei:tido_att.clefshape.attribute.shape"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.clefshape.attribute.shape">
+    <xs:attribute name="shape" use="required" type="mei:tido_data.CLEFSHAPE">
+      <xs:annotation>
+        <xs:documentation>Describes a clef's shape.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.common.attributes">
+    <xs:attributeGroup ref="mei:tido_att.commonPart.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.common.attribute.n"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.common.attribute.n">
+    <xs:attribute name="n">
+      <xs:annotation>
+        <xs:documentation>Provides a number-like designation for an element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.commonPart.attributes">
+    <xs:attributeGroup ref="mei:tido_att.id.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.commonPart.attribute.label"/>
+    <xs:attributeGroup ref="mei:tido_att.commonPart.attribute.xmlbase"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.commonPart.attribute.label">
+    <xs:attribute name="label" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Provides a name or label for an element. The value may be any string.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.commonPart.attribute.xmlbase">
+    <xs:attribute ref="xml:base"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.controlevent.attributes">
+    <xs:attributeGroup ref="mei:tido_att.timestamp.musical.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.staffident.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.layerident.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.duration.musical.attributes">
+    <xs:attributeGroup ref="mei:tido_att.duration.musical.attribute.dur"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.duration.musical.attribute.dur">
+    <xs:attribute name="dur" type="mei:tido_data.DURATION">
+      <xs:annotation>
+        <xs:documentation>Records the duration of a feature using the relative durational values provided by the data.DURATION datatype.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.duration.ratio.attributes">
+    <xs:attributeGroup ref="mei:tido_att.duration.ratio.attribute.num"/>
+    <xs:attributeGroup ref="mei:tido_att.duration.ratio.attribute.numbase"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.duration.ratio.attribute.num">
+    <xs:attribute name="num" type="xs:positiveInteger">
+      <xs:annotation>
+        <xs:documentation>Along with numbase, describes duration as a ratio. num is the first value in the ratio, while numbase is the second.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.duration.ratio.attribute.numbase">
+    <xs:attribute name="numbase" type="xs:positiveInteger">
+      <xs:annotation>
+        <xs:documentation>Along with num, describes duration as a ratio. num is the first value in the ratio, while numbase is the second.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.dynam.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.controlevent.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.augmentdots.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.startendid.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.timestamp2.musical.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.dynam.vis.attributes">
+    <xs:attributeGroup ref="mei:tido_att.placement.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.event.attributes">
+    <xs:attributeGroup ref="mei:tido_att.timestamp.musical.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.staffident.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.layerident.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.id.attributes">
+    <xs:attributeGroup ref="mei:tido_att.id.attribute.xmlid"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.id.attribute.xmlid">
+    <xs:attribute ref="xml:id"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.internetmedia.attributes">
+    <xs:attributeGroup ref="mei:tido_att.internetmedia.attribute.mimetype"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.internetmedia.attribute.mimetype">
+    <xs:attribute name="mimetype" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Specifies the applicable MIME (multimedia internet mail extension) type. The value should be a valid MIME media type defined by the Internet Engineering Task Force in RFC 2046.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.keySig.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.accidental.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.pitch.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.keySig.log.attribute.mode"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.keySig.log.attribute.mode">
+    <xs:attribute name="mode" type="mei:tido_data.MODE">
+      <xs:annotation>
+        <xs:documentation>Indicates major, minor, or other tonality.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.layerident.attributes">
+    <xs:attributeGroup ref="mei:tido_att.layerident.attribute.layer"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.layerident.attribute.layer">
+    <xs:attribute name="layer">
+      <xs:annotation>
+        <xs:documentation>Identifies the layer to which a feature applies.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list itemType="xs:positiveInteger"/>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.lineloc.attributes">
+    <xs:attributeGroup ref="mei:tido_att.lineloc.attribute.line"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.lineloc.attribute.line">
+    <xs:attribute name="line" use="required" type="mei:tido_data.CLEFLINE">
+      <xs:annotation>
+        <xs:documentation>Indicates the line upon which a feature stands. The value must be in the range between 1 and the number of lines on the staff. The numbering of lines starts with the lowest line of the staff.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.measure.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.meterconformance.bar.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.measure.log.attribute.left"/>
+    <xs:attributeGroup ref="mei:tido_att.measure.log.attribute.right"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.measure.log.attribute.left">
+    <xs:attribute name="left" type="mei:tido_data.BARRENDITION">
+      <xs:annotation>
+        <xs:documentation>Indicates the visual rendition of the left bar line. It is present here only for facilitation of translation from legacy encodings which use it. Usually, it can be safely ignored.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.measure.log.attribute.right">
+    <xs:attribute name="right" type="mei:tido_data.BARRENDITION">
+      <xs:annotation>
+        <xs:documentation>Indicates the function of the right bar line and is structurally important.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.medium.attributes">
+    <xs:attributeGroup ref="mei:tido_att.medium.attribute.medium"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.medium.attribute.medium">
+    <xs:attribute name="medium" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Describes the writing medium.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.meiversion.attributes">
+    <xs:attributeGroup ref="mei:tido_att.meiversion.attribute.meiversion"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.meiversion.attribute.meiversion">
+    <xs:attribute name="meiversion" default="3.0.0">
+      <xs:annotation>
+        <xs:documentation>Specifies a generic MEI version label.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="3.0.0">
+            <xs:annotation>
+              <xs:documentation>This version of MEI.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.mensur.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.duration.ratio.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.slashcount.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.mensur.log.attribute.dot"/>
+    <xs:attributeGroup ref="mei:tido_att.mensur.log.attribute.sign"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.mensur.log.attribute.dot">
+    <xs:attribute name="dot" type="mei:tido_data.BOOLEAN">
+      <xs:annotation>
+        <xs:documentation>Specifies whether a dot is to be added to the base symbol.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.mensur.log.attribute.sign">
+    <xs:attribute name="sign" type="mei:tido_data.MENSURATIONSIGN">
+      <xs:annotation>
+        <xs:documentation>The base symbol in the mensuration sign/time signature of mensural notation.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.meterconformance.bar.attributes">
+    <xs:attributeGroup ref="mei:tido_att.meterconformance.bar.attribute.metcon"/>
+    <xs:attributeGroup ref="mei:tido_att.meterconformance.bar.attribute.control"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.meterconformance.bar.attribute.metcon">
+    <xs:attribute name="metcon" type="mei:tido_data.BOOLEAN">
+      <xs:annotation>
+        <xs:documentation>Indicates the relationship between the content of a measure and the prevailing meter.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.meterconformance.bar.attribute.control">
+    <xs:attribute name="control" type="mei:tido_data.BOOLEAN">
+      <xs:annotation>
+        <xs:documentation>Indicates whether or not a bar line is "controlling"; that is, if it indicates a point of alignment across all the parts. Bar lines within a score are usually controlling; that is, they "line up". Bar lines within parts may or may not be controlling. When applied to &lt;measure&gt;, this attribute indicates the nature of the right barline but not the left.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.meterSig.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.meterSig.log.attribute.count"/>
+    <xs:attributeGroup ref="mei:tido_att.meterSig.log.attribute.sym"/>
+    <xs:attributeGroup ref="mei:tido_att.meterSig.log.attribute.unit"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.meterSig.log.attribute.count">
+    <xs:attribute name="count">
+      <xs:annotation>
+        <xs:documentation>Captures the number of beats in a measure, that is, the top number of the meter signature. It must contain a decimal number or an additive expression that evaluates to a decimal number, such as 2+3.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\d+(\.\d+)?(\s*\+\s*\d+(\.\d+)?)*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.meterSig.log.attribute.sym">
+    <xs:attribute name="sym" type="mei:tido_data.METERSIGN">
+      <xs:annotation>
+        <xs:documentation>Indicates the use of a meter symbol instead of a numeric meter signature, that is, 'C' for common time or 'C' with a slash for cut time.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.meterSig.log.attribute.unit">
+    <xs:attribute name="unit" type="xs:decimal">
+      <xs:annotation>
+        <xs:documentation>Contains the number indicating the beat unit, that is, the bottom number of the meter signature.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.name.attributes">
+    <xs:attributeGroup ref="mei:tido_att.name.attribute.nymref"/>
+    <xs:attributeGroup ref="mei:tido_att.name.attribute.role"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.name.attribute.nymref">
+    <xs:attribute name="nymref" type="mei:tido_data.URI">
+      <xs:annotation>
+        <xs:documentation>Used to record a pointer to the regularized form of the name elsewhere in the document.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.name.attribute.role">
+    <xs:attribute name="role">
+      <xs:annotation>
+        <xs:documentation>Used to specify further information about the entity referenced by this name, for example, the occupation of a person or the status of a place. Use a standard value whenever possible.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.note.ges.attributes">
+    <xs:attributeGroup ref="mei:tido_att.accidental.performed.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.note.ges.cmn.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.note.ges.attribute.oct.ges"/>
+    <xs:attributeGroup ref="mei:tido_att.note.ges.attribute.pname.ges"/>
+    <xs:attributeGroup ref="mei:tido_att.note.ges.attribute.pnum"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.note.ges.attribute.oct.ges">
+    <xs:attribute name="oct.ges" type="mei:tido_data.OCTAVE">
+      <xs:annotation>
+        <xs:documentation>Records performed octave information that differs from the written value.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.note.ges.attribute.pname.ges">
+    <xs:attribute name="pname.ges" type="mei:tido_data.PITCHNAME.GES">
+      <xs:annotation>
+        <xs:documentation>Contains a performed pitch name that differs from the written value.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.note.ges.attribute.pnum">
+    <xs:attribute name="pnum" type="mei:tido_data.PITCHNUMBER">
+      <xs:annotation>
+        <xs:documentation>Holds a pitch-to-number mapping, a base-40 or MIDI note number, for example.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.note.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.event.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.articulation.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.augmentdots.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.duration.musical.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.pitched.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.note.vis.attributes">
+    <xs:attributeGroup ref="mei:tido_att.staffloc.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.stems.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.typography.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.octave.attributes">
+    <xs:attributeGroup ref="mei:tido_att.octave.attribute.oct"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.octave.attribute.oct">
+    <xs:attribute name="oct" type="mei:tido_data.OCTAVE">
+      <xs:annotation>
+        <xs:documentation>Captures written octave information.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.ornam.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.controlevent.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.startendid.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.timestamp2.musical.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.ornam.vis.attributes">
+    <xs:attributeGroup ref="mei:tido_att.placement.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.pitch.attributes">
+    <xs:attributeGroup ref="mei:tido_att.pitch.attribute.pname"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.pitch.attribute.pname">
+    <xs:attribute name="pname" type="mei:tido_data.PITCHNAME">
+      <xs:annotation>
+        <xs:documentation>Contains a written pitch name.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.pitched.attributes">
+    <xs:attributeGroup ref="mei:tido_att.pitch.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.octave.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.placement.attributes">
+    <xs:attributeGroup ref="mei:tido_att.placement.attribute.place"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.placement.attribute.place">
+    <xs:attribute name="place" type="mei:tido_data.STAFFREL">
+      <xs:annotation>
+        <xs:documentation>Captures the placement of the item with respect to the staff with which it is associated.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.quantity.attributes">
+    <xs:attributeGroup ref="mei:tido_att.quantity.attribute.quantity"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.quantity.attribute.quantity">
+    <xs:attribute name="quantity" type="xs:decimal">
+      <xs:annotation>
+        <xs:documentation>Numeric value capturing a measurement or count. Can only be interpreted in combination with the unit or currency attribute.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.rest.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.duration.musical.req.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.augmentdots.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.event.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.rest.vis.attributes">
+    <xs:attributeGroup ref="mei:tido_att.staffloc.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.typography.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.slashcount.attributes">
+    <xs:attributeGroup ref="mei:tido_att.slashcount.attribute.slash"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.slashcount.attribute.slash">
+    <xs:attribute name="slash" type="mei:tido_data.SLASH">
+      <xs:annotation>
+        <xs:documentation>Indicates the number of slashes present.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.space.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.duration.musical.req.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.augmentdots.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.event.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffDef.vis.attributes">
+    <xs:attributeGroup ref="mei:tido_att.staffDef.vis.attribute.grid.show"/>
+    <xs:attributeGroup ref="mei:tido_att.staffDef.vis.attribute.layerscheme"/>
+    <xs:attributeGroup ref="mei:tido_att.staffDef.vis.attribute.lines"/>
+    <xs:attributeGroup ref="mei:tido_att.staffDef.vis.attribute.lines.color"/>
+    <xs:attributeGroup ref="mei:tido_att.staffDef.vis.attribute.lines.visible"/>
+    <xs:attributeGroup ref="mei:tido_att.staffDef.vis.attribute.spacing"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffDef.vis.attribute.grid.show">
+    <xs:attribute name="grid.show" type="mei:tido_data.BOOLEAN">
+      <xs:annotation>
+        <xs:documentation>Determines whether to display guitar chord grids.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffDef.vis.attribute.layerscheme">
+    <xs:attribute name="layerscheme" type="mei:tido_data.LAYERSCHEME">
+      <xs:annotation>
+        <xs:documentation>Indicates the number of layers and their stem directions.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffDef.vis.attribute.lines">
+    <xs:attribute name="lines" type="xs:positiveInteger">
+      <xs:annotation>
+        <xs:documentation>Indicates the number of staff lines.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffDef.vis.attribute.lines.color">
+    <xs:attribute name="lines.color">
+      <xs:annotation>
+        <xs:documentation>Captures the colors of the staff lines. The value is structured; that is, it should have the same number of space-separated RGB values as the number of lines indicated by the lines attribute. A line can be made invisible by assigning it the same RGB value as the background, usually white.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list itemType="mei:tido_data.COLOR"/>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffDef.vis.attribute.lines.visible">
+    <xs:attribute name="lines.visible" type="mei:tido_data.BOOLEAN">
+      <xs:annotation>
+        <xs:documentation>Records whether all staff lines are visible.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffDef.vis.attribute.spacing">
+    <xs:attribute name="spacing" type="mei:tido_data.MEASUREMENT">
+      <xs:annotation>
+        <xs:documentation>Records the absolute distance (as opposed to the relative distances recorded in &lt;scoreDef&gt; elements) between this staff and the preceding one in the same system. This value is meaningless for the first staff in a system since the spacing.system attribute indicates the spacing between systems.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffident.attributes">
+    <xs:attributeGroup ref="mei:tido_att.staffident.attribute.staff"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffident.attribute.staff">
+    <xs:attribute name="staff">
+      <xs:annotation>
+        <xs:documentation>Signifies the staff on which a notated event occurs or to which a control event applies. Mandatory when applicable.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list itemType="xs:positiveInteger"/>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffloc.attributes">
+    <xs:attributeGroup ref="mei:tido_att.staffloc.attribute.loc"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.staffloc.attribute.loc">
+    <xs:attribute name="loc" type="mei:tido_data.STAFFLOC">
+      <xs:annotation>
+        <xs:documentation>Holds the staff location of the feature.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.startendid.attributes">
+    <xs:attributeGroup ref="mei:tido_att.startid.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.startendid.attribute.endid"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.startendid.attribute.endid">
+    <xs:attribute name="endid" type="mei:tido_data.URI.local">
+      <xs:annotation>
+        <xs:documentation>Indicates the final element in a sequence of events to which the feature applies.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.startid.attributes">
+    <xs:attributeGroup ref="mei:tido_att.startid.attribute.startid"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.startid.attribute.startid">
+    <xs:attribute name="startid" type="mei:tido_data.URI.local">
+      <xs:annotation>
+        <xs:documentation>Holds a reference to the first element in a sequence of events to which the feature applies.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.stems.attributes">
+    <xs:attributeGroup ref="mei:tido_att.stems.attribute.stem.dir"/>
+    <xs:attributeGroup ref="mei:tido_att.stems.attribute.stem.len"/>
+    <xs:attributeGroup ref="mei:tido_att.stems.attribute.stem.mod"/>
+    <xs:attributeGroup ref="mei:tido_att.stems.attribute.stem.pos"/>
+    <xs:attributeGroup ref="mei:tido_att.stems.attribute.stem.x"/>
+    <xs:attributeGroup ref="mei:tido_att.stems.attribute.stem.y"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.stems.attribute.stem.dir">
+    <xs:attribute name="stem.dir" type="mei:tido_data.STEMDIRECTION">
+      <xs:annotation>
+        <xs:documentation>Describes the direction of a stem.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.stems.attribute.stem.len">
+    <xs:attribute name="stem.len" type="mei:tido_data.MEASUREMENT">
+      <xs:annotation>
+        <xs:documentation>Encodes the stem length.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.stems.attribute.stem.mod">
+    <xs:attribute name="stem.mod" type="mei:tido_data.STEMMODIFIER">
+      <xs:annotation>
+        <xs:documentation>Encodes any stem "modifiers"; that is, symbols rendered on the stem, such as tremolo or Sprechstimme indicators.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.stems.attribute.stem.pos">
+    <xs:attribute name="stem.pos" type="mei:tido_data.STEMPOSITION">
+      <xs:annotation>
+        <xs:documentation>Records the position of the stem in relation to the note head(s).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.stems.attribute.stem.x">
+    <xs:attribute name="stem.x" type="xs:decimal">
+      <xs:annotation>
+        <xs:documentation>Records the output x coordinate of the stem's attachment point.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.stems.attribute.stem.y">
+    <xs:attribute name="stem.y" type="xs:decimal">
+      <xs:annotation>
+        <xs:documentation>Records the output y coordinate of the stem's attachment point.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.syl.log.attribute.con">
+    <xs:attribute name="con">
+      <xs:annotation>
+        <xs:documentation>Describes the symbols typically used to indicate breaks between syllables and their functions.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="s">
+            <xs:annotation>
+              <xs:documentation>Space (word separator).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="d">
+            <xs:annotation>
+              <xs:documentation>Dash (syllable separator).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="u">
+            <xs:annotation>
+              <xs:documentation>Underscore (syllable extension).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="t">
+            <xs:annotation>
+              <xs:documentation>Tilde (syllable elision).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="c">
+            <xs:annotation>
+              <xs:documentation>Circumflex [angled line above] (syllable elision).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="v">
+            <xs:annotation>
+              <xs:documentation>Caron [angled line below] (syllable elision).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="i">
+            <xs:annotation>
+              <xs:documentation>Inverted breve [curved line above] (syllable elision).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="b">
+            <xs:annotation>
+              <xs:documentation>Breve [curved line below] (syllable elision).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.syl.log.attribute.wordpos">
+    <xs:attribute name="wordpos">
+      <xs:annotation>
+        <xs:documentation>Records the position of a syllable within a word.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="i">
+            <xs:annotation>
+              <xs:documentation>(initial) first syllable.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="m">
+            <xs:annotation>
+              <xs:documentation>(medial) neither first nor last syllable.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="t">
+            <xs:annotation>
+              <xs:documentation>(terminal) last syllable.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.timestamp.musical.attributes">
+    <xs:attributeGroup ref="mei:tido_att.timestamp.musical.attribute.tstamp"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.timestamp.musical.attribute.tstamp">
+    <xs:attribute name="tstamp" type="mei:tido_data.BEAT">
+      <xs:annotation>
+        <xs:documentation>Encodes the onset time in terms of musical time, i.e., beats[.fractional_beat_part].</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.timestamp2.musical.attributes">
+    <xs:attributeGroup ref="mei:tido_att.timestamp2.musical.attribute.tstamp2"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.timestamp2.musical.attribute.tstamp2">
+    <xs:attribute name="tstamp2" type="mei:tido_data.MEASUREBEAT">
+      <xs:annotation>
+        <xs:documentation>Encodes the ending point of an event in terms of musical time, i.e., a count of measures plus a beat location.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.typed.attributes">
+    <xs:attributeGroup ref="mei:tido_att.typed.attribute.type"/>
+    <xs:attributeGroup ref="mei:tido_att.typed.attribute.subtype"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.typed.attribute.type">
+    <xs:attribute name="type" type="xs:NMTOKEN">
+      <xs:annotation>
+        <xs:documentation>Characterizes the element in some sense, using any convenient classification scheme or typology.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.typed.attribute.subtype">
+    <xs:attribute name="subtype" type="xs:NMTOKEN">
+      <xs:annotation>
+        <xs:documentation>Provide any sub-classification for the element, additional to that given by its type attribute.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.typography.attributes">
+    <xs:attributeGroup ref="mei:tido_att.typography.attribute.fontfam"/>
+    <xs:attributeGroup ref="mei:tido_att.typography.attribute.fontname"/>
+    <xs:attributeGroup ref="mei:tido_att.typography.attribute.fontsize"/>
+    <xs:attributeGroup ref="mei:tido_att.typography.attribute.fontstyle"/>
+    <xs:attributeGroup ref="mei:tido_att.typography.attribute.fontweight"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.typography.attribute.fontfam">
+    <xs:attribute name="fontfam" type="mei:tido_data.FONTFAMILY">
+      <xs:annotation>
+        <xs:documentation>Contains the name of a font-family.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.typography.attribute.fontname">
+    <xs:attribute name="fontname" type="mei:tido_data.FONTNAME">
+      <xs:annotation>
+        <xs:documentation>Holds the name of a font.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.typography.attribute.fontsize">
+    <xs:attribute name="fontsize">
+      <xs:annotation>
+        <xs:documentation>Indicates the size of a font in printers' points, i.e., 1/72nd of an inch.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:minInclusive value="0.1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.typography.attribute.fontstyle">
+    <xs:attribute name="fontstyle" type="mei:tido_data.FONTSTYLE">
+      <xs:annotation>
+        <xs:documentation>Records the style of a font, i.e, italic, oblique, or normal.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.typography.attribute.fontweight">
+    <xs:attribute name="fontweight" type="mei:tido_data.FONTWEIGHT">
+      <xs:annotation>
+        <xs:documentation>Used to indicate bold type.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="tido_model.addressLike">
+    <xs:sequence>
+      <xs:element ref="mei:address"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.addressLike_alternation">
+    <xs:sequence>
+      <xs:element ref="mei:address"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.addressLike_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:address"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.addressLike_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:address"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.addressLike_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:address"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.addressLike_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:address"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.controleventLike">
+    <xs:choice>
+      <xs:element ref="mei:dynam"/>
+      <xs:element ref="mei:ornam"/>
+      <xs:group ref="mei:tido_model.controleventLike.cmn"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.eventLike">
+    <xs:choice>
+      <xs:group ref="mei:tido_model.keySigLike"/>
+      <xs:group ref="mei:tido_model.meterSigLike"/>
+      <xs:element ref="mei:chord"/>
+      <xs:element ref="mei:clef"/>
+      <xs:element ref="mei:note"/>
+      <xs:element ref="mei:rest"/>
+      <xs:element ref="mei:space"/>
+      <xs:group ref="mei:tido_model.eventLike.cmn"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.keySigLike">
+    <xs:sequence>
+      <xs:element ref="mei:keySig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.keySigLike_alternation">
+    <xs:sequence>
+      <xs:element ref="mei:keySig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.keySigLike_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:keySig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.keySigLike_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:keySig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.keySigLike_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:keySig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.keySigLike_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:keySig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="tido_model.layerLike" abstract="true" substitutionGroup="mei:tido_model.staffPart"/>
+  <xs:group name="tido_model.layerPart">
+    <xs:choice>
+      <xs:group ref="mei:tido_model.eventLike"/>
+      <xs:group ref="mei:tido_model.layerPart.cmn"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="tido_model.mdivLike" abstract="true">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element minOccurs="0" ref="mei:tido_model.scoreLike"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.mdivLike"/>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="tido_model.meterSigLike">
+    <xs:sequence>
+      <xs:element ref="mei:meterSig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.meterSigLike_alternation">
+    <xs:sequence>
+      <xs:element ref="mei:meterSig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.meterSigLike_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:meterSig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.meterSigLike_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:meterSig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.meterSigLike_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:meterSig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.meterSigLike_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:meterSig"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike">
+    <xs:choice>
+      <xs:group ref="mei:tido_model.nameLike.agent"/>
+      <xs:group ref="mei:tido_model.nameLike.place"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.nameLike_alternation">
+    <xs:choice>
+      <xs:group ref="mei:tido_model.nameLike.agent_alternation"/>
+      <xs:group ref="mei:tido_model.nameLike.place_alternation"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.nameLike_sequence">
+    <xs:sequence>
+      <xs:group ref="mei:tido_model.nameLike.agent_sequence"/>
+      <xs:group ref="mei:tido_model.nameLike.place_sequence"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike_sequenceOptional">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="mei:tido_model.nameLike.agent_sequenceOptional"/>
+      <xs:group minOccurs="0" ref="mei:tido_model.nameLike.place_sequenceOptional"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.nameLike.agent_sequenceOptionalRepeatable"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.nameLike.place_sequenceOptionalRepeatable"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="tido_model.noteModifierLike" abstract="true">
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.accid.log.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="tido_model.paracontentPart">
+    <xs:sequence>
+      <xs:group ref="mei:tido_model.textphraseLike"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="tido_model.pLike" abstract="true" substitutionGroup="mei:tido_model.textcomponentLike"/>
+  <xs:group name="tido_model.rendLike">
+    <xs:sequence>
+      <xs:element ref="mei:rend"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.rendLike_alternation">
+    <xs:sequence>
+      <xs:element ref="mei:rend"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.rendLike_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:rend"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.rendLike_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:rend"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.rendLike_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:rend"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.rendLike_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:rend"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="tido_model.respLike" abstract="true">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.nameLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tido_model.scoreDefLike" abstract="true" substitutionGroup="mei:tido_model.scorePart">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group minOccurs="0" ref="mei:tido_model.keySigLike"/>
+        <xs:group minOccurs="0" ref="mei:tido_model.meterSigLike"/>
+        <xs:element minOccurs="0" ref="mei:tido_model.staffGrpLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tido_model.scoreLike" abstract="true">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.scorePart"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tido_model.scorePart" abstract="true"/>
+  <xs:element name="tido_model.sectionLike" abstract="true" substitutionGroup="mei:tido_model.scorePart">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.sectionPart"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="tido_model.sectionPart">
+    <xs:choice>
+      <xs:element ref="mei:tido_model.scoreDefLike"/>
+      <xs:element ref="mei:tido_model.sectionLike"/>
+      <xs:element ref="mei:tido_model.staffDefLike"/>
+      <xs:group ref="mei:tido_model.sectionPart.cmn"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="tido_model.staffDefLike" abstract="true" substitutionGroup="mei:tido_model.scorePart">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.staffDefPart"/>
+      <xs:attributeGroup ref="mei:tido_att.commonPart.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.staffDef.vis.attributes"/>
+      <xs:attribute name="n" use="required" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>provides a name or number designation for an element. While the value need not be unique, it is required to be a single token. Must be an integer.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="tido_model.staffDefPart">
+    <xs:choice>
+      <xs:group ref="mei:tido_model.keySigLike"/>
+      <xs:group ref="mei:tido_model.meterSigLike"/>
+      <xs:element ref="mei:clef"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="tido_model.staffGrpLike" abstract="true">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="mei:tido_model.staffGrpLike"/>
+        <xs:element ref="mei:tido_model.staffDefLike"/>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tido_model.staffLike" abstract="true">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.staffPart"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.commonPart.attributes"/>
+      <xs:attribute name="n" use="required" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>provides a name or number designation for an element. While the value need not be unique, it is required to be a single token. Must be an integer.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tido_model.staffPart" abstract="true">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.layerPart"/>
+      <xs:attributeGroup ref="mei:tido_att.commonPart.attributes"/>
+      <xs:attribute name="n" use="required" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>provides a name or number designation for an element. While the value need not be unique, it is required to be a single token. Must be an integer.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tido_model.textcomponentLike" abstract="true">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.paracontentPart"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="tido_model.textphraseLike">
+    <xs:sequence>
+      <xs:group ref="mei:tido_model.textphraseLike.limited"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.textphraseLike.limited">
+    <xs:choice>
+      <xs:group ref="mei:tido_model.addressLike"/>
+      <xs:group ref="mei:tido_model.nameLike"/>
+      <xs:group ref="mei:tido_model.rendLike"/>
+      <xs:group ref="mei:tido_model.titleLike"/>
+      <xs:group ref="mei:tido_model.nameLike.label"/>
+      <xs:group ref="mei:tido_model.locrefLike"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.textphraseLike.limited_alternation">
+    <xs:choice>
+      <xs:group ref="mei:tido_model.addressLike_alternation"/>
+      <xs:group ref="mei:tido_model.nameLike_alternation"/>
+      <xs:group ref="mei:tido_model.rendLike_alternation"/>
+      <xs:group ref="mei:tido_model.titleLike_alternation"/>
+      <xs:group ref="mei:tido_model.nameLike.label_alternation"/>
+      <xs:group ref="mei:tido_model.locrefLike_alternation"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.textphraseLike.limited_sequence">
+    <xs:sequence>
+      <xs:group ref="mei:tido_model.addressLike_sequence"/>
+      <xs:group ref="mei:tido_model.nameLike_sequence"/>
+      <xs:group ref="mei:tido_model.rendLike_sequence"/>
+      <xs:group ref="mei:tido_model.titleLike_sequence"/>
+      <xs:group ref="mei:tido_model.nameLike.label_sequence"/>
+      <xs:group ref="mei:tido_model.locrefLike_sequence"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.textphraseLike.limited_sequenceOptional">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="mei:tido_model.addressLike_sequenceOptional"/>
+      <xs:group minOccurs="0" ref="mei:tido_model.nameLike_sequenceOptional"/>
+      <xs:group minOccurs="0" ref="mei:tido_model.rendLike_sequenceOptional"/>
+      <xs:group minOccurs="0" ref="mei:tido_model.titleLike_sequenceOptional"/>
+      <xs:group minOccurs="0" ref="mei:tido_model.nameLike.label_sequenceOptional"/>
+      <xs:group minOccurs="0" ref="mei:tido_model.locrefLike_sequenceOptional"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.textphraseLike.limited_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.addressLike_sequenceOptionalRepeatable"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.nameLike_sequenceOptionalRepeatable"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.rendLike_sequenceOptionalRepeatable"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.titleLike_sequenceOptionalRepeatable"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.nameLike.label_sequenceOptionalRepeatable"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.locrefLike_sequenceOptionalRepeatable"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.titleLike">
+    <xs:sequence>
+      <xs:element ref="mei:title"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.titleLike_alternation">
+    <xs:sequence>
+      <xs:element ref="mei:title"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.titleLike_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:title"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.titleLike_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:title"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.titleLike_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:title"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.titleLike_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:title"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="accid" substitutionGroup="mei:tido_model.noteModifierLike">
+    <xs:annotation>
+      <xs:documentation>(accidental) – Records a temporary alteration to the pitch of a note.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="address">
+    <xs:annotation>
+      <xs:documentation>Contains a postal address, for example of a publisher, an organization, or an individual.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:addrLine"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addrLine">
+    <xs:annotation>
+      <xs:documentation>(address line) – Single line of a postal address.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="body">
+    <xs:annotation>
+      <xs:documentation>Contains the whole of a single musical text, excluding any front or back matter.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.mdivLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="chord">
+    <xs:annotation>
+      <xs:documentation>A simultaneous sounding of two or more notes in the same layer *with the same duration*.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:note"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.chord.log.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.chord.vis.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="clef">
+    <xs:annotation>
+      <xs:documentation>Indication of the exact location of a particular note on the staff and, therefore, the other notes as well.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.event.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.clef.log.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dynam">
+    <xs:annotation>
+      <xs:documentation>(dynamic) – Indication of the volume of a note, phrase, or section of music.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.dynam.log.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.dynam.vis.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="keySig">
+    <xs:annotation>
+      <xs:documentation>(key signature) – Written key signature.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.keySig.log.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="layer" substitutionGroup="mei:tido_model.layerLike">
+    <xs:annotation>
+      <xs:documentation>An independent stream of events on a staff.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="mdiv" substitutionGroup="mei:tido_model.mdivLike">
+    <xs:annotation>
+      <xs:documentation>(musical division) – Contains a subdivision of the body of a musical text.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="mei">
+    <xs:annotation>
+      <xs:documentation>Contains a single MEI-conformant document, consisting of an MEI header and a musical text, either in isolation or as part of an meiCorpus element.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="mei:meiHead"/>
+        <xs:element ref="mei:music"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.meiversion.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.id.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="music">
+    <xs:annotation>
+      <xs:documentation>Contains a single musical text of any kind, whether unitary or composite, for example, an etude, opera, song cycle, symphony, or anthology of piano solos.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="mei:tido_macro.musicPart">
+          <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+          <xs:attributeGroup ref="mei:tido_att.meiversion.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="note">
+    <xs:annotation>
+      <xs:documentation>A single pitched event. </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.noteModifierLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.note.log.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.note.vis.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.note.ges.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ornam">
+    <xs:annotation>
+      <xs:documentation>An element indicating an ornament that is not a mordent, turn, or trill. </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.ornam.log.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.ornam.vis.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="p" substitutionGroup="mei:tido_model.pLike">
+    <xs:annotation>
+      <xs:documentation>(paragraph) – One or more text phrases that form a logical prose passage.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="rend">
+    <xs:annotation>
+      <xs:documentation>(render) – A formatting element indicating special visual rendering, e.g., bold or italicized, of a text word or phrase.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typography.attributes"/>
+      <xs:attribute name="altrend">
+        <xs:annotation>
+          <xs:documentation>Used to extend the values of the rend attribute.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction>
+            <xs:simpleType>
+              <xs:list itemType="xs:NMTOKEN"/>
+            </xs:simpleType>
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rend">
+        <xs:annotation>
+          <xs:documentation>Captures the appearance of the element's contents using MEI-defined descriptors.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction>
+            <xs:simpleType>
+              <xs:list itemType="mei:tido_data.TEXTRENDITION"/>
+            </xs:simpleType>
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rotation" type="mei:tido_data.DEGREES">
+        <xs:annotation>
+          <xs:documentation>A positive value for rotation rotates the text in a counter-clockwise fashion, while negative values produce clockwise rotation.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="valign">
+        <xs:annotation>
+          <xs:documentation>Specifies the vertical position of the element content relative to the surrounding text.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="top">
+              <xs:annotation>
+                <xs:documentation>Aligns the top of the content with the top of the surrounding text.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="middle">
+              <xs:annotation>
+                <xs:documentation>Aligns the middle of the content with the middle of the surrounding text.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="bottom">
+              <xs:annotation>
+                <xs:documentation>Aligns the bottom of the content with the bottom of the surrounding text.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="baseline">
+              <xs:annotation>
+                <xs:documentation>Aligns the baseline of the content with the baseline of the surrounding text.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="respStmt" substitutionGroup="mei:tido_model.respLike">
+    <xs:annotation>
+      <xs:documentation>(responsibility statement) – Names one or more individuals, groups, or in rare cases, mechanical processes, responsible for creation or realization of the intellectual or artistic content.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="rest">
+    <xs:annotation>
+      <xs:documentation>A non-sounding event found in the source being transcribed.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.rest.log.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.rest.vis.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="score" substitutionGroup="mei:tido_model.scoreLike">
+    <xs:annotation>
+      <xs:documentation>Full score view of the musical content.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="scoreDef" substitutionGroup="mei:tido_model.scoreDefLike">
+    <xs:annotation>
+      <xs:documentation>(score definition) – Container for score meta-information.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="section" substitutionGroup="mei:tido_model.sectionLike">
+    <xs:annotation>
+      <xs:documentation>Segment of music data.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="space">
+    <xs:annotation>
+      <xs:documentation>A placeholder used to fill an incomplete measure, layer, etc. most often so that the combined duration of the events equals the number of beats in the measure.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.space.log.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="staff" substitutionGroup="mei:tido_model.staffLike">
+    <xs:annotation>
+      <xs:documentation>A group of equidistant horizontal lines on which notes are placed in order to represent pitch or a grouping element for individual 'strands' of notes, rests, etc. that may or may not actually be rendered on staff lines; that is, both diastematic and non-diastematic signs.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="staffDef" substitutionGroup="mei:tido_model.staffDefLike">
+    <xs:annotation>
+      <xs:documentation>(staff definition) – Container for staff meta-information.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="staffGrp" substitutionGroup="mei:tido_model.staffGrpLike">
+    <xs:annotation>
+      <xs:documentation>(staff group) – A group of bracketed or braced staves.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="title">
+    <xs:annotation>
+      <xs:documentation>Title of a bibliographic entity.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attribute name="level">
+        <xs:annotation>
+          <xs:documentation>Indicates the bibliographic level for a title.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="a">
+              <xs:annotation>
+                <xs:documentation>Analyzed component, such as an article or chapter, within a larger bibliographic entity.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="m">
+              <xs:annotation>
+                <xs:documentation>Monograph.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="j">
+              <xs:annotation>
+                <xs:documentation>Journal.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="s">
+              <xs:annotation>
+                <xs:documentation>Series.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="u">
+              <xs:annotation>
+                <xs:documentation>Unpublished (including theses and dissertations unless published by a commercial press).</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="type">
+        <xs:annotation>
+          <xs:documentation>Characterizes the element in some sense, using any convenient classification scheme or typology.
+Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternative; 5] translated; 6] uniform</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:union memberTypes="xs:NMTOKEN">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="main">
+                  <xs:annotation>
+                    <xs:documentation>Main title.</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="subordinate">
+                  <xs:annotation>
+                    <xs:documentation>Subtitle or title of part.</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="abbreviated">
+                  <xs:annotation>
+                    <xs:documentation>Abbreviated form of title.</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="alternative">
+                  <xs:annotation>
+                    <xs:documentation>Alternate title by which the item is also known.</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="translated">
+                  <xs:annotation>
+                    <xs:documentation>Translated form of title.</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="uniform">
+                  <xs:annotation>
+                    <xs:documentation>Collective title.</xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="subtype" type="xs:NMTOKEN">
+        <xs:annotation>
+          <xs:documentation>Provide any sub-classification for the element, additional to that given by its type attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="tido_att.regularmethod.attributes">
+    <xs:attributeGroup ref="mei:tido_att.regularmethod.attribute.method"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.regularmethod.attribute.method">
+    <xs:attribute name="method">
+      <xs:annotation>
+        <xs:documentation>Indicates the method employed to mark corrections and normalizations.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="silent">
+            <xs:annotation>
+              <xs:documentation>Corrections and normalizations made silently.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="tags">
+            <xs:annotation>
+              <xs:documentation>Corrections and normalizations indicated using elements.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="tido_model.editorialDeclPart" abstract="true"/>
+  <xs:complexType name="tido_model.encodingPart_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:appInfo"/>
+      <xs:element minOccurs="0" ref="mei:editorialDecl"/>
+      <xs:element minOccurs="0" ref="mei:projectDesc"/>
+      <xs:element minOccurs="0" ref="mei:samplingDecl"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="tido_model.headerPart_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:encodingDesc"/>
+      <xs:element minOccurs="0" ref="mei:workDesc"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="tido_model.physDescPart" abstract="true"/>
+  <xs:group name="tido_model.pubStmtPart">
+    <xs:choice>
+      <xs:group ref="mei:tido_model.addressLike"/>
+      <xs:element ref="mei:respStmt"/>
+      <xs:element ref="mei:availability"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="tido_model.workIdent" abstract="true"/>
+  <xs:element name="accessRestrict">
+    <xs:annotation>
+      <xs:documentation>(access restriction) – Describes the conditions that affect the accessibility of material.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="acqSource">
+    <xs:annotation>
+      <xs:documentation>(acquisition source) – Post-publication source, such as a vendor or distributor, from which access to a bibliographic item may be obtained, including electronic access.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="altId">
+    <xs:annotation>
+      <xs:documentation>(alternative identifier) – May contain a bibliographic identifier that does not fit within the meiHead element's id attribute, for example because the identifier does not fit the definition of an XML id or because multiple identifiers are needed.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.rendLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="appInfo">
+    <xs:annotation>
+      <xs:documentation>(application information) – Groups information about applications which have acted upon the MEI file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:application"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="application">
+    <xs:annotation>
+      <xs:documentation>Provides information about an application which has acted upon the current document.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.locrefLike"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+      <xs:attribute name="version" type="xs:NMTOKEN">
+        <xs:annotation>
+          <xs:documentation>Supplies a version number for an application, independent of its identifier or display name.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="audience">
+    <xs:annotation>
+      <xs:documentation>Defines the class of user for which the work is intended, as defined by age group (e.g., children, young adults, adults, etc.), educational level (e.g., primary, secondary, etc.), or other categorization.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="availability">
+    <xs:annotation>
+      <xs:documentation>Groups elements that describe the availability of and access to a bibliographic item, including an MEI-encoded document.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="mei:tido_macro.availabilityPart">
+          <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="captureMode" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(capture mode) – The means used to record notation, sound, or images in the production of a source/manifestation (e.g., analogue, acoustic, electric, digital, optical etc.).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="carrierForm" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(carrier form) – The specific class of material to which the physical carrier of the source/manifestation belongs (e.g., sound cassette, videodisc, microfilm cartridge, transparency, etc.). The carrier for a manifestation comprising multiple physical components may include more than one form (e.g., a filmstrip with an accompanying booklet, a separate sound disc carrying the sound track for a film, etc.).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="change">
+    <xs:annotation>
+      <xs:documentation>Individual change within the revision description.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mei:respStmt"/>
+        <xs:element ref="mei:changeDesc"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="changeDesc">
+    <xs:annotation>
+      <xs:documentation>(change description) – Description of a revision of the MEI file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="classCode">
+    <xs:annotation>
+      <xs:documentation>(classification code) – Holds a citation to the source of controlled-vocabulary terms used in the &lt;termList&gt; element; for example, Library of Congress Subject Headings (LCSH), Library of Congress Classification (LCC), Library of Congress Name Authority File (LCNAF), or other thesaurus or ontology.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.rendLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="classification">
+    <xs:annotation>
+      <xs:documentation>Groups information which describes the nature or topic of an entity.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="mei:classCode"/>
+        <xs:element ref="mei:termList"/>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="condition" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>The physical condition of an item, particularly any variances between the physical make-up of the item and that of other copies of the same item (e.g., missing pages or plates, brittleness, faded images, etc.).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="contentItem">
+    <xs:annotation>
+      <xs:documentation>Contains a single entry within a content description element.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="contents">
+    <xs:annotation>
+      <xs:documentation>Description of the material contained within a resource.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element minOccurs="0" ref="mei:tido_model.pLike"/>
+        <xs:element maxOccurs="unbounded" ref="mei:contentItem"/>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="context">
+    <xs:annotation>
+      <xs:documentation>The historical, social, intellectual, artistic, or other context within which the work was originally conceived (e.g., the 17th century restoration of the monarchy in England, the aesthetic movement of the late 19th century, etc.) or the historical, social, intellectual, artistic, or other context within which the expression was realized.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="correction" substitutionGroup="mei:tido_model.editorialDeclPart">
+    <xs:annotation>
+      <xs:documentation>States how and under what circumstances corrections have been made in the text.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.regularmethod.attributes"/>
+      <xs:attribute name="corrlevel">
+        <xs:annotation>
+          <xs:documentation>Indicates the degree of correction applied to the text.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="high">
+              <xs:annotation>
+                <xs:documentation>The text has been thoroughly checked and proofread.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="medium">
+              <xs:annotation>
+                <xs:documentation>The text has been checked at least once.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="low">
+              <xs:annotation>
+                <xs:documentation>The text has not been checked.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="unknown">
+              <xs:annotation>
+                <xs:documentation>The correction status of the text is unknown.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dimensions" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>Information about the physical size of a bibliographic source; usually includes numerical data.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="editionStmt" abstract="true">
+    <xs:annotation>
+      <xs:documentation>(edition statement) – Container for meta-data pertaining to a particular edition of the material being described.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="editorialDecl">
+    <xs:annotation>
+      <xs:documentation>(editorial declaration) – Used to provide details of editorial principles and practices applied during the encoding of musical text.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" ref="mei:tido_model.editorialDeclPart"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="encodingDesc">
+    <xs:annotation>
+      <xs:documentation>(encoding description) – Documents the relationship between an electronic file and the source or sources from which it was derived as well as applications used in the encoding/editing process.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="mei:tido_model.encodingPart_sequenceOptional">
+          <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="exhibHist" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(exhibition history) – A record of public exhibitions, including dates, venues, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fileChar" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(file characteristics) – Standards or schemes used to encode the file (e.g., ASCII, SGML, etc.), physical characteristics of the file (e.g., recording density, parity, blocking, etc.), and other characteristics that have a bearing on how the file can be processed.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fileDesc">
+    <xs:annotation>
+      <xs:documentation>(file description) – Contains a full bibliographic description of the MEI file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="mei:titleStmt"/>
+        <xs:element minOccurs="0" ref="mei:editionStmt"/>
+        <xs:element ref="mei:pubStmt"/>
+        <xs:element minOccurs="0" ref="mei:seriesStmt"/>
+        <xs:element minOccurs="0" ref="mei:notesStmt"/>
+        <xs:element minOccurs="0" ref="mei:sourceDesc"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fingerprint" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>Contains a string that uniquely identifies an item, such as those constructed by combining groups of characters transcribed from specified pages of a printed item or a file's checksum.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hand">
+    <xs:annotation>
+      <xs:documentation>Defines a distinct scribe or handwriting style.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.medium.attributes"/>
+      <xs:attribute name="initial" type="mei:tido_data.BOOLEAN">
+        <xs:annotation>
+          <xs:documentation>Marks this hand as the first one of the document.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="handList" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>Container for one or more hand elements.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:hand"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="history">
+    <xs:annotation>
+      <xs:documentation>Provides a container for information about the history of a resource. To facilitate efficient data interchange, basic information about the circumstances surrounding the creation of bibliographic resources should be recorded within the creation element.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textcomponentLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="inscription" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>An inscription added to an item, such as a bookplate, a note designating the item as a gift, and/or the author's signature.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interpretation" substitutionGroup="mei:tido_model.editorialDeclPart">
+    <xs:annotation>
+      <xs:documentation>Describes the scope of any analytic or interpretive information added to the transcription of the music.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="key" substitutionGroup="mei:tido_model.workIdent">
+    <xs:annotation>
+      <xs:documentation>Key captures information about tonal center and mode.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.keySig.log.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="language">
+    <xs:annotation>
+      <xs:documentation>Description of a language used in the document.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="langUsage">
+    <xs:annotation>
+      <xs:documentation>(language usage) – Groups elements describing the languages, sub-languages, dialects, etc., represented within the encoded resource.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:language"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="meiHead">
+    <xs:annotation>
+      <xs:documentation>(MEI header) – Supplies the descriptive and declarative metadata prefixed to every MEI-conformant text.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:altId"/>
+        <xs:element ref="mei:fileDesc"/>
+        <xs:group ref="mei:tido_model.headerPart_sequenceOptional"/>
+        <xs:element minOccurs="0" ref="mei:revisionDesc"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.meiversion.attributes"/>
+      <xs:attribute name="type">
+        <xs:annotation>
+          <xs:documentation>Specifies the kind of document to which the header is attached, for example whether it is a corpus or individual text.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="music">
+              <xs:annotation>
+                <xs:documentation>Header is attached to a music document.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="corpus">
+              <xs:annotation>
+                <xs:documentation>Header is attached to a corpus.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mensuration" substitutionGroup="mei:tido_model.workIdent">
+    <xs:annotation>
+      <xs:documentation>Captures information about mensuration within bibliographic descriptions.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.mensur.log.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="meter" substitutionGroup="mei:tido_model.workIdent">
+    <xs:annotation>
+      <xs:documentation>Captures information about the time signature within bibliographic descriptions.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.meterSig.log.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="normalization" substitutionGroup="mei:tido_model.editorialDeclPart">
+    <xs:annotation>
+      <xs:documentation>Indicates the extent of normalization or regularization of the original source carried out in converting it to electronic form.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.regularmethod.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="notesStmt" abstract="true">
+    <xs:annotation>
+      <xs:documentation>(notes statement)– Collects any notes providing information about a text additional to that recorded in other parts of the bibliographic description.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="otherChar">
+    <xs:annotation>
+      <xs:documentation>(other distinguishing characteristic) – Any characteristic that serves to differentiate a work or expression from another.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="perfDuration" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(performance duration) – Used to express the duration of performance of printed or manuscript music or the playing time for a sound recording, videorecording, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attribute name="isodur" type="xs:duration">
+        <xs:annotation>
+          <xs:documentation>Holds a W3C duration value, e.g., "PT2H34M45.67S".</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="perfMedium">
+    <xs:annotation>
+      <xs:documentation>(performance medium) – Indicates the number and character of the performing forces used in a musical composition.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mei:perfResList"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="perfRes">
+    <xs:annotation>
+      <xs:documentation>(performance resource) – Name of an instrument on which a performer plays, a performer's voice range, or a standard performing ensemble designation.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attribute name="count" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>Indicates the number of performers.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="solo" type="mei:tido_data.BOOLEAN">
+        <xs:annotation>
+          <xs:documentation>Marks this instrument or vocal part as a soloist. Do not use this attribute for a solo instrument which is not accompanied.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="perfResList">
+    <xs:annotation>
+      <xs:documentation>Several instrumental or vocal resources treated as a group.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="mei:perfRes"/>
+        <xs:element ref="mei:perfResList"/>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attribute name="count" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>Indicates the number of performers.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="physDesc">
+    <xs:annotation>
+      <xs:documentation>(physical description) – Container for information about the appearance, construction, or handling of physical materials, such as their dimension, quantity, color, style, and technique of creation.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.physDescPart"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="physMedium" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(physical medium) – Records the physical materials used in the source, such as ink and paper.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="plateNum" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(plate number) – Designation assigned to a resource by a music publisher, usually printed at the bottom of each page, and sometimes appearing also on the title page.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="playingSpeed" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>Playing speed for a sound recording is the speed at which the carrier must be operated to produce the sound intended (e.g., 33 1/3 rpm, 19 cm/s, etc.).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="price">
+    <xs:annotation>
+      <xs:documentation>The cost of access to a bibliographic item.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.quantity.attributes"/>
+      <xs:attribute name="currency" type="xs:NMTOKEN">
+        <xs:annotation>
+          <xs:documentation>Monetary unit.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="projectDesc">
+    <xs:annotation>
+      <xs:documentation>(project description) – Project-level meta-data describing the aim or purpose for which the electronic file was encoded, funding agencies, etc. together with any other relevant information concerning the process by which it was assembled or collected.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pubStmt">
+    <xs:annotation>
+      <xs:documentation>(publication statement) – Container for information regarding the publication or distribution of a bibliographic item, including the publisher's name and address, the date of publication, and other relevant details.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element minOccurs="0" ref="mei:unpub"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.pubStmtPart"/>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="revisionDesc">
+    <xs:annotation>
+      <xs:documentation>(revision description) – Container for information about alterations that have been made to an MEI file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:change"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="samplingDecl">
+    <xs:annotation>
+      <xs:documentation>(sampling declaration) – Contains a prose description of the rationale and methods used in sampling texts in the creation of a corpus or collection.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="scoreFormat" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>Describes the type of score used to represent a musical composition (e.g., short score, full score, condensed score, close score, etc.).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="segmentation" substitutionGroup="mei:tido_model.editorialDeclPart">
+    <xs:annotation>
+      <xs:documentation>Describes the principles according to which the musical text has been segmented, for example into movements, sections, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="seriesStmt">
+    <xs:annotation>
+      <xs:documentation>(series statement) – Groups information about the series, if any, to which a publication belongs.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group maxOccurs="unbounded" ref="mei:tido_model.titleLike"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:respStmt"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mei:contents"/>
+          <xs:element ref="mei:seriesStmt"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="soundChan" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(sound channels) – Reflects the number of apparent sound channels in the playback of a recording (monaural, stereophonic, quadraphonic, etc.).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attribute name="num" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>Records the channel configuration in numeric form.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="source">
+    <xs:annotation>
+      <xs:documentation>A bibliographic description of a source used in the creation of the electronic file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mei:titleStmt"/>
+        <xs:group ref="mei:tido_macro.bibldescPart"/>
+        <xs:element minOccurs="0" ref="mei:history"/>
+        <xs:element minOccurs="0" ref="mei:langUsage"/>
+        <xs:element minOccurs="0" ref="mei:contents"/>
+        <xs:element minOccurs="0" ref="mei:notesStmt"/>
+        <xs:element minOccurs="0" ref="mei:classification"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sourceDesc">
+    <xs:annotation>
+      <xs:documentation>(source description) – A container for the descriptions of the source(s) used in the creation of the electronic file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:source"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="specRepro" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(special reproduction characteristic) – The equalization system, noise reduction system, etc. used in making the recording (e.g., NAB, DBX, Dolby, etc.).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stdVals" substitutionGroup="mei:tido_model.editorialDeclPart">
+    <xs:annotation>
+      <xs:documentation>(standard values) – Specifies the format used when standardized date or number values are supplied.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:tido_model.pLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sysReq">
+    <xs:annotation>
+      <xs:documentation>(system requirements) – System requirements for using the electronic item.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="term">
+    <xs:annotation>
+      <xs:documentation>Keyword or phrase which describes a resource.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="mei:term"/>
+        <xs:group ref="mei:tido_model.textphraseLike.limited"/>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.classcodeident.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="termList">
+    <xs:annotation>
+      <xs:documentation>Collection of text phrases which describe a resource.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:term"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.classcodeident.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="titleStmt">
+    <xs:annotation>
+      <xs:documentation>(title statement) – Container for title and responsibility meta-data.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group maxOccurs="unbounded" ref="mei:tido_model.titleLike"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.respLike"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="trackConfig" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(track configuration) – Number of physical/input tracks on a sound medium (e.g., eight track, twelve track).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attribute name="num" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>Records the track configuration in numeric form.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="treatHist" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(treatment history) – A record of the treatment the item has undergone (e.g., de-acidification, restoration, etc.).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="treatSched" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>(treatment scheduled) – Scheduled treatment, e.g. de-acidification, restoration, etc., for an item.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="unpub">
+    <xs:annotation>
+      <xs:documentation>(unpublished) – Used to explicitly indicate that a bibliographic resource is unpublished.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="useRestrict">
+    <xs:annotation>
+      <xs:documentation>(usage restrictions) – Container for information about the conditions that affect use of a bibliographic item after access has been granted.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="watermark" substitutionGroup="mei:tido_model.physDescPart">
+    <xs:annotation>
+      <xs:documentation>Contains a description of a watermark or similar device.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike.limited"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="work">
+    <xs:annotation>
+      <xs:documentation>Provides a detailed description of a work, specifically its history, language use, and high-level musical attributes: key, tempo, meter, medium of performance, and intended duration.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mei:titleStmt"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.workIdent"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:otherChar"/>
+        <xs:element minOccurs="0" ref="mei:history"/>
+        <xs:element minOccurs="0" ref="mei:langUsage"/>
+        <xs:element minOccurs="0" ref="mei:perfMedium"/>
+        <xs:element minOccurs="0" ref="mei:perfDuration"/>
+        <xs:element minOccurs="0" ref="mei:audience"/>
+        <xs:element minOccurs="0" ref="mei:contents"/>
+        <xs:element minOccurs="0" ref="mei:context"/>
+        <xs:element minOccurs="0" ref="mei:notesStmt"/>
+        <xs:element minOccurs="0" ref="mei:classification"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="workDesc">
+    <xs:annotation>
+      <xs:documentation>(work description) – Grouping mechanism for information describing non-bibliographic aspects of a text.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mei:work"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="tido_att.cutout.attributes">
+    <xs:attributeGroup ref="mei:tido_att.cutout.attribute.cutout"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.cutout.attribute.cutout">
+    <xs:attribute name="cutout">
+      <xs:annotation>
+        <xs:documentation>"Cut-out" style indicated for this measure.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="cutout">
+            <xs:annotation>
+              <xs:documentation>The staff lines should not be drawn.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.graced.attributes">
+    <xs:attributeGroup ref="mei:tido_att.graced.attribute.grace"/>
+    <xs:attributeGroup ref="mei:tido_att.graced.attribute.grace.time"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.graced.attribute.grace">
+    <xs:attribute name="grace" type="mei:tido_data.GRACE">
+      <xs:annotation>
+        <xs:documentation>Marks a note or chord as a "grace" (without a definitive written duration) and records from which other note/chord it should "steal" time.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.graced.attribute.grace.time">
+    <xs:attribute name="grace.time" type="mei:tido_data.PERCENT">
+      <xs:annotation>
+        <xs:documentation>Records the amount of time to be "stolen" from a non-grace note/chord.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.mRest.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.duration.musical.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.event.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.mRest.vis.attributes">
+    <xs:attributeGroup ref="mei:tido_att.cutout.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.staffloc.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.typography.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.note.ges.cmn.attributes">
+    <xs:attributeGroup ref="mei:tido_att.graced.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.note.ges.cmn.attribute.gliss"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.note.ges.cmn.attribute.gliss">
+    <xs:attribute name="gliss" type="mei:tido_data.GLISSANDO">
+      <xs:annotation>
+        <xs:documentation>Indicates that this element participates in a glissando.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.pedal.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.controlevent.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.startendid.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.pedal.log.attribute.dir"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.pedal.log.attribute.dir">
+    <xs:attribute name="dir" use="required">
+      <xs:annotation>
+        <xs:documentation>Records the position of the piano damper pedal.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="down">
+            <xs:annotation>
+              <xs:documentation>Depress the pedal.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="up">
+            <xs:annotation>
+              <xs:documentation>Release the pedal.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="half">
+            <xs:annotation>
+              <xs:documentation>Half pedal.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="bounce">
+            <xs:annotation>
+              <xs:documentation>Release then immediately depress the pedal.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.pedal.vis.attributes">
+    <xs:attributeGroup ref="mei:tido_att.placement.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.typography.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.pedal.vis.attribute.form"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.pedal.vis.attribute.form">
+    <xs:attribute name="form">
+      <xs:annotation>
+        <xs:documentation>Determines whether piano pedal marks should be rendered as lines or as terms.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="line">
+            <xs:annotation>
+              <xs:documentation>Continuous line with start and end positions rendered by vertical bars and bounces shown by upward-pointing "blips".</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="pedstar">
+            <xs:annotation>
+              <xs:documentation>Pedal down and half pedal rendered with "Ped.", pedal up rendered by "*", pedal "bounce" rendered with "* Ped.".</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="altpedstar">
+            <xs:annotation>
+              <xs:documentation>Pedal up and down indications same as with "pedstar", but bounce is rendered with "Ped." only.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.tie.log.attributes">
+    <xs:attributeGroup ref="mei:tido_att.controlevent.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.startendid.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.timestamp2.musical.attributes"/>
+  </xs:attributeGroup>
+  <xs:group name="tido_model.controleventLike.cmn">
+    <xs:choice>
+      <xs:element ref="mei:hairpin"/>
+      <xs:element ref="mei:pedal"/>
+      <xs:element ref="mei:slur"/>
+      <xs:element ref="mei:tie"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.controleventLike.cmn_alternation">
+    <xs:choice>
+      <xs:element ref="mei:hairpin"/>
+      <xs:element ref="mei:pedal"/>
+      <xs:element ref="mei:slur"/>
+      <xs:element ref="mei:tie"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.controleventLike.cmn_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:hairpin"/>
+      <xs:element ref="mei:pedal"/>
+      <xs:element ref="mei:slur"/>
+      <xs:element ref="mei:tie"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.controleventLike.cmn_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:hairpin"/>
+      <xs:element minOccurs="0" ref="mei:pedal"/>
+      <xs:element minOccurs="0" ref="mei:slur"/>
+      <xs:element minOccurs="0" ref="mei:tie"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.controleventLike.cmn_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:hairpin"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:pedal"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:slur"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:tie"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.controleventLike.cmn_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:hairpin"/>
+      <xs:element maxOccurs="unbounded" ref="mei:pedal"/>
+      <xs:element maxOccurs="unbounded" ref="mei:slur"/>
+      <xs:element maxOccurs="unbounded" ref="mei:tie"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.cmn">
+    <xs:sequence>
+      <xs:element ref="mei:beam"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.cmn_alternation">
+    <xs:sequence>
+      <xs:element ref="mei:beam"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.cmn_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:beam"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.cmn_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:beam"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.cmn_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:beam"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.cmn_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:beam"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.measureFilling">
+    <xs:sequence>
+      <xs:element ref="mei:mRest"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.measureFilling_alternation">
+    <xs:sequence>
+      <xs:element ref="mei:mRest"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.measureFilling_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:mRest"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.measureFilling_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:mRest"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.measureFilling_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:mRest"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.eventLike.measureFilling_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:mRest"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.layerPart.cmn">
+    <xs:sequence>
+      <xs:group ref="mei:tido_model.eventLike.measureFilling"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.measureLike">
+    <xs:sequence>
+      <xs:element ref="mei:measure"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.measureLike_alternation">
+    <xs:sequence>
+      <xs:element ref="mei:measure"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.measureLike_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:measure"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.measureLike_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:measure"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.measureLike_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:measure"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.measureLike_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:measure"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.measurePart">
+    <xs:choice>
+      <xs:group ref="mei:tido_model.controleventLike"/>
+      <xs:element ref="mei:tido_model.staffLike"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.sectionPart.cmn">
+    <xs:sequence>
+      <xs:group ref="mei:tido_model.measureLike"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="beam">
+    <xs:annotation>
+      <xs:documentation>A container for a series of explicitly beamed events that begins and ends entirely within a measure.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.eventLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hairpin">
+    <xs:annotation>
+      <xs:documentation>Indicates continuous dynamics expressed on the score as wedge-shaped graphics, e.g. &lt; and &gt;.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.hairpin.log.strict.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="measure">
+    <xs:annotation>
+      <xs:documentation>Unit of musical time consisting of a fixed number of note-values of a given type, as determined by the prevailing meter, and delimited in musical notation by bar lines.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="mei:tido_model.staffDefLike"/>
+        <xs:group ref="mei:tido_model.measurePart"/>
+      </xs:choice>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.measure.log.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="meterSig">
+    <xs:annotation>
+      <xs:documentation>(meter signature) – Written meter signature.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.meterSig.log.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mRest">
+    <xs:annotation>
+      <xs:documentation>(measure rest) – Complete measure rest in any meter. </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.mRest.log.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.mRest.vis.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pedal">
+    <xs:annotation>
+      <xs:documentation>Piano pedal mark.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.pedal.log.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.pedal.vis.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="slur">
+    <xs:annotation>
+      <xs:documentation>Indication of 1) a "unified melodic idea" or 2) performance technique.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.slur.log.strict.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tie">
+    <xs:annotation>
+      <xs:documentation>An indication that two notes of the same pitch form a single note with their combined rhythmic values.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.tie.log.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="tido_model.nameLike.agent">
+    <xs:choice>
+      <xs:element ref="mei:corpName"/>
+      <xs:element ref="mei:persName"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.agent_alternation">
+    <xs:choice>
+      <xs:element ref="mei:corpName"/>
+      <xs:element ref="mei:persName"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.agent_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:corpName"/>
+      <xs:element ref="mei:persName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.agent_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:corpName"/>
+      <xs:element minOccurs="0" ref="mei:persName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.agent_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:corpName"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:persName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.agent_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:corpName"/>
+      <xs:element maxOccurs="unbounded" ref="mei:persName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.geogName">
+    <xs:sequence>
+      <xs:element ref="mei:geogName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.geogName_alternation">
+    <xs:sequence>
+      <xs:element ref="mei:geogName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.geogName_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:geogName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.geogName_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:geogName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.geogName_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:geogName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.geogName_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:geogName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.label">
+    <xs:choice>
+      <xs:element ref="mei:periodName"/>
+      <xs:element ref="mei:styleName"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.label_alternation">
+    <xs:choice>
+      <xs:element ref="mei:periodName"/>
+      <xs:element ref="mei:styleName"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.label_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:periodName"/>
+      <xs:element ref="mei:styleName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.label_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:periodName"/>
+      <xs:element minOccurs="0" ref="mei:styleName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.label_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:periodName"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:styleName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.label_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:periodName"/>
+      <xs:element maxOccurs="unbounded" ref="mei:styleName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.place">
+    <xs:sequence>
+      <xs:group ref="mei:tido_model.nameLike.geogName"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.place_alternation">
+    <xs:sequence>
+      <xs:group ref="mei:tido_model.nameLike.geogName_alternation"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.place_sequence">
+    <xs:sequence>
+      <xs:group ref="mei:tido_model.nameLike.geogName_sequence"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.place_sequenceOptional">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="mei:tido_model.nameLike.geogName_sequenceOptional"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.nameLike.place_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.nameLike.geogName_sequenceOptionalRepeatable"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="corpName">
+    <xs:annotation>
+      <xs:documentation>(corporate name) – Identifies an organization or group of people that acts as a single entity.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.name.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="geogName">
+    <xs:annotation>
+      <xs:documentation>(geographic name) – The proper noun designation for a place, natural feature, or political jurisdiction.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.name.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="periodName">
+    <xs:annotation>
+      <xs:documentation>(period name) – A label that describes a period of time, such as 'Baroque' or '3rd Style period'.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.name.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="persName">
+    <xs:annotation>
+      <xs:documentation>(personal name) – Designation for an individual, including any or all of that individual's forenames, surnames, honorific titles, and added names.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.name.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="styleName">
+    <xs:annotation>
+      <xs:documentation>(style name) – A label for a characteristic style of writing or performance, such as 'bebop' or 'rock-n-roll'.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.name.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="tido_model.locrefLike">
+    <xs:choice>
+      <xs:element ref="mei:ptr"/>
+      <xs:element ref="mei:ref"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.locrefLike_alternation">
+    <xs:choice>
+      <xs:element ref="mei:ptr"/>
+      <xs:element ref="mei:ref"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="tido_model.locrefLike_sequence">
+    <xs:sequence>
+      <xs:element ref="mei:ptr"/>
+      <xs:element ref="mei:ref"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.locrefLike_sequenceOptional">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mei:ptr"/>
+      <xs:element minOccurs="0" ref="mei:ref"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.locrefLike_sequenceOptionalRepeatable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:ptr"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mei:ref"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="tido_model.locrefLike_sequenceRepeatable">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="mei:ptr"/>
+      <xs:element maxOccurs="unbounded" ref="mei:ref"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="ptr">
+    <xs:annotation>
+      <xs:documentation>(pointer) – Defines a pointer to another location, using only attributes to describe the destination.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.internetmedia.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ref">
+    <xs:annotation>
+      <xs:documentation>(reference) – Defines a reference to another location that may contain text and sub-elements to describe the destination.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mei:tido_model.textphraseLike"/>
+      <xs:attributeGroup ref="mei:tido_att.common.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.internetmedia.attributes"/>
+      <xs:attributeGroup ref="mei:tido_att.typed.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="tido_att.duration.musical.req.attributes">
+    <xs:attributeGroup ref="mei:tido_att.duration.musical.req.attribute.dur"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.duration.musical.req.attribute.dur">
+    <xs:attribute name="dur" use="required" type="mei:tido_data.DURATION">
+      <xs:annotation>
+        <xs:documentation>records the duration of a feature using the relative durational values provided by the data.DURATION datatype.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.timestamp.musical.req.attributes">
+    <xs:attributeGroup ref="mei:tido_att.timestamp.musical.req.attribute.tstamp"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.timestamp.musical.req.attribute.tstamp">
+    <xs:attribute name="tstamp" use="required" type="mei:tido_data.BEAT">
+      <xs:annotation>
+        <xs:documentation>encodes the onset time in terms of musical time, i.e., beats[.fractional_beat_part].</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.timestamp2.musical.req.attributes">
+    <xs:attributeGroup ref="mei:tido_att.timestamp2.musical.req.attribute.tstamp2"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.timestamp2.musical.req.attribute.tstamp2">
+    <xs:attribute name="tstamp2" use="required" type="mei:tido_data.MEASUREBEAT.strict">
+      <xs:annotation>
+        <xs:documentation>encodes the ending point of an event in terms of musical time, i.e., a count of measures plus a beat location.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.spanning.req.attributes">
+    <xs:attributeGroup ref="mei:tido_att.timestamp.musical.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.timestamp2.musical.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.startendid.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.staffident.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.layerident.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.spanning.musical.req.attributes">
+    <xs:attributeGroup ref="mei:tido_att.timestamp.musical.req.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.timestamp2.musical.req.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.staffident.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.layerident.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.slur.log.strict.attributes">
+    <xs:attributeGroup ref="mei:tido_att.spanning.req.attributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.hairpin.log.strict.attributes">
+    <xs:attributeGroup ref="mei:tido_att.spanning.musical.req.attributes"/>
+    <xs:attributeGroup ref="mei:tido_att.hairpin.log.strict.attribute.form"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="tido_att.hairpin.log.strict.attribute.form">
+    <xs:attribute name="form" use="required">
+      <xs:annotation>
+        <xs:documentation>captures the visual rendition and function of the hairpin; that is, whether it indicates an increase or a decrease in volume.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="cres">
+            <xs:annotation>
+              <xs:documentation>crescendo; i.e., louder.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="dim">
+            <xs:annotation>
+              <xs:documentation>diminuendo; i.e., softer.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+</xs:schema>

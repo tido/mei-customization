@@ -7,6 +7,8 @@
 
     <property name="schemaIdent" value="tido"/>
     <property name="rngAntFile" value="${basedir}/vendor/stylesheets/relaxng/build-to.xml"/>
+    <property name="rncAntFile" value="${basedir}/vendor/stylesheets/rnc/build-to.xml"/>
+    <property name="xsdAntFile" value="${basedir}/vendor/stylesheets/xsd/build-to.xml"/>
     <property name="htmlAntFile" value="${basedir}/vendor/stylesheets/html/build-to.xml"/>
     <property name="pdfAntFile" value="${basedir}/vendor/stylesheets/pdf/build-to.xml"/>
     <property name="defaultSource" value="${basedir}/vendor/music-encoding/source/driver.xml"/>
@@ -34,7 +36,35 @@
         </sequential>
     </macrodef>
 
-    <macrodef name="createSchematronXSL">
+    <macrodef name="createRNC">
+        <attribute name="schemaIdent"/>
+        <sequential>
+            <ant antfile="${rncAntFile}"
+                dir="odd/customizations"
+                usenativebasedir="true">
+                <property name="defaultSource" value="${defaultSource}"/>
+                <property name="selectedSchema" value="@{schemaIdent}"/>
+                <property name="inputFile" value="${oddPath}"/>
+                <property name="outputFile" value="${schemaOutputPath}/@{schemaIdent}.rnc"/>
+            </ant>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="createXSD">
+        <attribute name="schemaIdent"/>
+        <sequential>
+            <ant antfile="${xsdAntFile}"
+                dir="odd/customizations"
+                usenativebasedir="true">
+                <property name="defaultSource" value="${defaultSource}"/>
+                <property name="selectedSchema" value="@{schemaIdent}"/>
+                <property name="inputFile" value="${oddPath}"/>
+                <property name="outputFile" value="${schemaOutputPath}/@{schemaIdent}.xsd"/>
+            </ant>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="createSchematron">
         <attribute name="schemaIdent"/>
         <sequential>
             <xslt in="${schemaOutputPath}/@{schemaIdent}.rng"
@@ -52,13 +82,20 @@
             </xslt>
 
             <xslt in="${tmpPath}/@{schemaIdent}.02.combined.sch"
-                out="${tmpPath}/@{schemaIdent}.03.expanded.sch"
+                out="${schemaOutputPath}/@{schemaIdent}.sch"
                 style="${schematronStylesheets}/iso_abstract_expand.xsl"
                 processor="trax">
                 <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             </xslt>
 
-            <xslt in="${tmpPath}/@{schemaIdent}.03.expanded.sch"
+            <delete dir="${tmpPath}"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="createSchematronXSL">
+        <attribute name="schemaIdent"/>
+        <sequential>
+            <xslt in="${schemaOutputPath}/@{schemaIdent}.sch"
                 out="${tmpPath}/@{schemaIdent}.04.xslWithWarnings.xsl"
                 style="${schematronToXslPath}"
                 processor="trax">
@@ -71,8 +108,6 @@
                 processor="trax">
                 <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             </xslt>
-
-            <delete dir="${tmpPath}"/>
         </sequential>
     </macrodef>
 
@@ -80,7 +115,19 @@
         <createRNG schemaIdent="${schemaIdent}"/>
     </target>
 
-    <target name="xsl">
+    <target name="rnc" depends="rng">
+        <createRNC schemaIdent="${schemaIdent}"/>
+    </target>
+
+    <target name="xsd" depends="rng">
+        <createXSD schemaIdent="${schemaIdent}"/>
+    </target>
+
+    <target name="sch">
+        <createSchematron schemaIdent="${schemaIdent}"/>
+    </target>
+
+    <target name="xsl" depends="sch">
         <createSchematronXSL schemaIdent="${schemaIdent}"/>
     </target>
 
@@ -123,6 +170,9 @@
 
     <target name="schema" depends="clean-schema">
         <createRNG schemaIdent="tido"/>
+        <createRNC schemaIdent="tido"/>
+        <createXSD schemaIdent="tido"/>
+        <createSchematron schemaIdent="tido"/>
         <createSchematronXSL schemaIdent="tido"/>
     </target>
 

@@ -41,13 +41,13 @@ The Tido MEI Customization project contains copies of `https://github.com/music-
 
 In order to build the schema:
 ```
-ant -lib vendor/stylesheets/lib/saxon9he.jar schema
+ant -lib vendor/stylesheets/lib schema
 ```
 The output schema will be placed in `build/schema`
 
 To build the HTML guidelines:
 ```
-ant -lib vendor/stylesheets/lib/saxon9he.jar html-guidelines
+ant -lib vendor/stylesheets/lib html-guidelines
 ```
 The output of this will be placed in `build/guidelines`
 

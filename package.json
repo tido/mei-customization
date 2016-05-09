@@ -11,8 +11,8 @@
   "private": true,
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require babel-polyfill",
-    "schema": "ant -lib vendor/stylesheets/lib/saxon9he.jar schema",
-    "html-guidelines": "ant -lib vendor/stylesheets/lib/saxon9he.jar html-guidelines",
+    "schema": "ant -lib vendor/stylesheets/lib schema",
+    "html-guidelines": "ant -lib vendor/stylesheets/lib html-guidelines",
     "refresh": "npm run schema && npm run html-guidelines && npm run test"
   },
   "devDependencies": {
