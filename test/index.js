@@ -96,13 +96,13 @@ const validateElement = (renditionToWrapperPath, schemaSpecName) => (element) =>
       case 'true':
         it(`should be valid against schema spec "${schemaSpecName}"`, () => {
           assertWrapper(wrapperPath, rendition);
-          wrapFragment(wrapperPath, fragment, undefined, true, 'always', schemaPaths);
+          wrapFragment(path.resolve(__dirname, wrapperPath), fragment, true, schemaPaths);
         });
         break;
       case 'false':
         it(`should be invalid against schema spec "${schemaSpecName}"`, () => {
           assertWrapper(wrapperPath, rendition);
-          wrapFragment(wrapperPath, fragment, undefined, false, 'always', schemaPaths);
+          wrapFragment(path.resolve(__dirname, wrapperPath), fragment, false, schemaPaths);
         });
         break;
       default:

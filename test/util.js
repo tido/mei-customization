@@ -1,38 +1,23 @@
 
 import { validateSync } from 'mei-validation-js';
 
-import path from 'path';
 import jade from 'jade';
-import { _, assign } from 'lodash';
+import _ from 'lodash';
 import { DOMParser } from 'xmldom';
-
-const globals = { _, pretty: true };
 
 export function parseXML(str) {
   return new DOMParser().parseFromString(str, 'text/xml');
 }
 
-export function wrapFragment(
-  wrapperPath,
-  data,
-  options,
-  valid = true,
-  validate,
-  schemaPaths
-) {
-  const jadeOptions = assign({}, globals, { data }, options);
-  const mei = jade.renderFile(path.resolve(__dirname, wrapperPath), jadeOptions);
+export function wrapFragment(wrapperPath, data, valid, schemaPaths) {
+  const jadeOptions = { _, pretty: true, data };
+  const mei = jade.renderFile(wrapperPath, jadeOptions);
+  const report = validateSync(mei, schemaPaths, true);
 
-  // console.log(mei); // eshint-ignore-line
-
-  // TODO refactor
-  if (validate !== 'never' || validate === 'always') {
-    const report = validateSync(mei, schemaPaths, true);
-    if (valid) {
-      assertValid(report);
-    } else {
-      assertInvalid(report);
-    }
+  if (valid) {
+    assertValid(report);
+  } else {
+    assertInvalid(report);
   }
 
   return mei;
