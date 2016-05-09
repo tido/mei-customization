@@ -23,7 +23,7 @@ customization format.
 
 # The source
 
-Tido ODD customization file is located at `src/tido.xml`.
+The Tido ODD customization file is located at `src/tido.xml`.
 In addition to the schema specifications, this file contains examples of
 valid and invalid fragments.
 
@@ -31,10 +31,8 @@ valid and invalid fragments.
 
 ## Java dependencies
 In order to build the schema and guidelines you will need
-- `java` runtime environment
-- `JDK`
-- `ant`
-- `saxon`
+- a Java Development Kit (JDK)
+- `ANT`
 
 ## MEI and TEI dependencies
 The Tido MEI Customization project contains copies of `https://github.com/music-encoding/music-encoding` and `https://github.com/TEIC/Stylesheets` in the `vendor` folder. In case these dependencies need to be updated, run `./update-git-dependencies.sh` and commit the updated project.
@@ -68,12 +66,15 @@ that provided examples (or counter-examples) are indeed validated (or invalidate
 by the compiled schema.
 
 ### Run the tests
+
 ```
 npm test
 ```
 
-### To build and test
+### Build and test
+
 In order to build both the schema and the documentation and run the tests:
+
 ```
 npm run refresh
 ```
