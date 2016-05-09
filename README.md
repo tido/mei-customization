@@ -97,10 +97,10 @@ with `@valid="feasible"`. In that case, its content will be skipped when running
 the validation tests.
 
 The test environment uses the `jade` template library to construct complete MEI
-fragments. The `test/jade` folder contains wrappers and mixins that help to
-contextualise the provided examples. In order to do this, the `<egXML>` element
-refer to a wrappers, this instructs the test environment to insert the provided
-example into the appropriate context, thus providing a valid MEI document.
+documents from the MEI fragments in `<egXML>`. The `test/jade` folder contains
+wrappers and mixins that help to contextualise the provided examples. In order to
+assign a wrapper to a fragment, the `<egXML>` elements link to `<rendition>`
+declarations in the `<teiHeader>` which point to the Jade template files in concern.
 
 Here's a full example of a class specification with a single test case:
 
