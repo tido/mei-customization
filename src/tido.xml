@@ -267,7 +267,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               point, <code>@tstamp2="0m+n"</code> is applied (where n is the meter.count of the current measure
               plus one: 5 in 4/4, 3 in 2/4 etc. see
               <ref target="http://music-encoding.org/documentation/2.1.1/cmn/#cmnTstamp">
-              4.1.5 Timestamps and Durations</ref> of the MEI Guidelines'. Additionally, all partial
+              4.1.5 Timestamps and Durations</ref> of the MEI Guidelines'). Additionally, all partial
               slurs has to be supplied with a <att>curvedir</att> attribute indicating the direction of
               the slur (values: "above" or "below").
             </p>
