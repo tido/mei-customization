@@ -194,8 +194,11 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         </div>
         <div>
           <head>Duration</head>
-          <p>The specification of duration on events is more tightly controlled in the
-            schema than it is in <emph>mei_all</emph></p>
+          <p>From this schema the gestural duration attribute <att>dur.ges</att> is excluded.
+            In addition to this restriction, the specification of the <att>dur</att> attribute
+            on events is more tightly controlled than it is in <emph>mei_all</emph>, as 
+            described in the following sections. 
+          </p>
           <div>
             <head>Notes</head>
             <p>Notes must always have a duration (<att>dur</att>) except when they are part of
@@ -208,8 +211,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <div>
             <head>Chords</head>
             <p>Duration on chords must be expressed on the <gi>chord</gi> element. The constituent
-                <gi>note</gi> elements may also express duration, but must agree with the value
-              expressed on the chord.</p>
+                <gi>note</gi> elements are not allowed to express duration.</p>
             <list>
               <item>Duration on chord: <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                   rendition="#inLayer">
