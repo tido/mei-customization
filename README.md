@@ -97,7 +97,7 @@ with `@valid="feasible"`. In that case, its content will be skipped when running
 the validation tests.
 
 The test environment uses the `jade` template library to construct complete MEI
-fragments. `test/jade` folder contains wrappers and mixins that help to
+fragments. The `test/jade` folder contains wrappers and mixins that help to
 contextualise the provided examples. In order to do this, the `<egXML>` element
 refer to a wrappers, this instructs the test environment to insert the provided
 example into the appropriate context, thus providing a valid MEI document.
@@ -116,7 +116,7 @@ Here's a full example of a class specification with a single test case:
   <exemplum>
     <p>A valid <gi>pedal</gi> element with local URI references in
       <att>startid</att> and <att>endid</att></p>
-    <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+    <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
       <pedal dir="down" staff="1" layer="1" startid="#n01" endid="#n02"/>
     </egXML>
   </exemplum>
