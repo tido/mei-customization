@@ -60,8 +60,14 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <rendition xml:id="inInitialStaffGrp">
           <ptr target="../test/jade/wrappers/inInitialStaffGrp.jade"/>
         </rendition>
+        <rendition xml:id="inInitialStaffDefGrp">
+          <ptr target="../test/jade/wrappers/inInitialStaffDefGrp.jade"/>
+        </rendition>
         <rendition xml:id="inLayer">
           <ptr target="../test/jade/wrappers/inLayer.jade"/>
+        </rendition>
+        <rendition xml:id="inSection">
+          <ptr target="../test/jade/wrappers/inSection.jade"/>
         </rendition>
         <rendition xml:id="inLayerAfterMeasureWithFourQuarters">
           <ptr target="../test/jade/wrappers/inLayerAfterMeasureWithFourQuarters.jade"/>
@@ -97,8 +103,8 @@ TODO discuss the nature of the customization: extension/strict subset etc.
     <body>
       <div>
         <head>Introduction</head>
-        <p>This document a minimal MEI customization in order to define a very basic 
-          subset of elements with appropriate restrictions for basic use cases. 
+        <p>This document a minimal MEI customization in order to define a very basic
+          subset of elements with appropriate restrictions for basic use cases.
           For general information about MEI, please refer to the
           <ref target="http://music-encoding.org/documentation/guidelines2013/chapters">MEI
           Guidelines</ref>. Each restriction is implemented using the
@@ -196,8 +202,8 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <head>Duration</head>
           <p>From this schema the gestural duration attribute <att>dur.ges</att> is excluded.
             In addition to this restriction, the specification of the <att>dur</att> attribute
-            on events is more tightly controlled than it is in <emph>mei_all</emph>, as 
-            described in the following sections. 
+            on events is more tightly controlled than it is in <emph>mei_all</emph>, as
+            described in the following sections.
           </p>
           <div>
             <head>Notes</head>
@@ -274,7 +280,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               slurs has to be supplied with a <att>curvedir</att> attribute indicating the direction of
               the slur (values: "above" or "below").
             </p>
-            
+
             <p>However, since tstamps are not always enough to describe start and end point of slurs,
               and it is simply impractical to assert in which situation which encoding is expected,
               no restrictions apply for using combinations of <att>startid</att>/<att>endid</att>
@@ -578,7 +584,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               in the range from 0 to the numerator of the time signature plus 1. For example, for an
               event starting in the first measure of a piece containing 6 measures in 6/8, the
               measure number must be between 0 to 5 and the beat number must be within the range
-              from 0 to 7, e.g., "4m+3". The customization makes the measure value mandatory 
+              from 0 to 7, e.g., "4m+3". The customization makes the measure value mandatory
               and removes optional spaces.</desc>
             <content>
               <rng:data type="token">
@@ -1241,7 +1247,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               <p>The <gi scheme="MEI">hairpin</gi> element is used for <emph>graphical</emph>, i.e.,
                 crescendo and diminuendo, dynamic markings. For instantaneous or continuous
                 <emph>textual</emph> dynamics, such as 'p', 'mf', or 'cres. poco a poco', the <gi
-                  scheme="MEI">dynam</gi> element should be used. As opposed to generic MEI, in this basic 
+                  scheme="MEI">dynam</gi> element should be used. As opposed to generic MEI, in this basic
                 customization the start and end point of the hairpin is always encoded with
                 <att>tstamp</att>, and <att>tstamp2</att> attributes.</p>
             </remarks>

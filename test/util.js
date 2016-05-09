@@ -1,11 +1,11 @@
 
 import { validateSync } from 'mei-validation-js';
 
+import path from 'path';
 import jade from 'jade';
 import { _, assign } from 'lodash';
 import { DOMParser } from 'xmldom';
 
-const wrappersPath = 'test/jade/wrappers';
 const globals = { _, pretty: true };
 
 export function parseXML(str) {
@@ -13,21 +13,15 @@ export function parseXML(str) {
 }
 
 export function wrapFragment(
-  wrapperName,
+  wrapperPath,
   data,
   options,
   valid = true,
   validate,
   schemaPaths
 ) {
-  if (typeof wrapperName !== 'string') {
-    throw new Error('Cannot wrap without a wrapper name.');
-  }
-
-  const filePath = `${wrappersPath}/${wrapperName}.jade`;
   const jadeOptions = assign({}, globals, { data }, options);
-
-  const mei = jade.renderFile(filePath, jadeOptions);
+  const mei = jade.renderFile(path.resolve(__dirname, wrapperPath), jadeOptions);
 
   // console.log(mei); // eshint-ignore-line
 
