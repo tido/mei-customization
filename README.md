@@ -51,14 +51,7 @@ ant -lib vendor/stylesheets/lib html-guidelines
 ```
 The output of this will be placed in `build/guidelines`
 
-If you run [node](http://nodejs.org) you can also run the build commands via npm:
-
-```
-npm run schema
-npm run html-guidelines
-```
-
-## Test environment
+## Test environment for Node
 
 In addition to providing documentation, the provided examples also serve validation
 test for the schema. A [node](https://nodejs.org) test environment is included in order to make sure
@@ -73,8 +66,13 @@ npm test
 
 ### Build and test
 
-In order to build both the schema and the documentation and run the tests:
+In Node you can also run the build scripts through npm scripts:
+```
+npm run schema
+npm run html-guidelines
+```
 
+And if you want to do all the above at once, that is build the schema, build the documentation and run the tests:
 ```
 npm run refresh
 ```
