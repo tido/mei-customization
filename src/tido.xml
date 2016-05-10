@@ -16,15 +16,10 @@ licensed under the Educational Community License version 1.0.
 CONTACT: info@music-encoding.org
 -->
 
-
-<!--
-TODO discuss the nature of the customization: extension/strict subset etc.
--->
-
 <!-- TODO mention that our customization is based on the mei-develop branch which is more
-  advanced than the current release - we reference the current release in the prose section, 
-  but it would be more correct to reference a version of the guidelines matching our 
-  basis!! 
+  advanced than the current release - we reference the current release in the prose section,
+  but it would be more correct to reference a version of the guidelines matching our
+  basis!!
 -->
 
 <!-- TODO update xml:ids -->
@@ -110,7 +105,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
     <body>
       <div>
         <head>Introduction</head>
-        <p>This document a minimal MEI customization in order to define a very basic
+        <p>This document provides a minimal MEI customization in order to define a very basic
           subset of elements with appropriate restrictions for basic use cases.
           For general information about MEI, please refer to the
           <ref target="http://music-encoding.org/documentation/guidelines2013/chapters">MEI
@@ -125,18 +120,21 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         <head>Module Selection</head>
         <p>This basic customization only adopts following modules:</p>
         <list rend="bulleted">
-          <item>Shared</item>
-          <item>Header</item>
-          <item>CMN</item>
+          <item>MEI</item>
+          <item>MEI.shared</item>
+          <item>MEI.header</item>
+          <item>MEI.cmn</item>
+          <item>MEI.namesdates</item>
+          <item>MEI.ptrref</item>
         </list>
       </div>
       <div>
         <head>Common Attributes</head>
-        <p><att>xml:id</att> is mandatory on all elements.</p>
-        <p><att>n</att> is mandatory on:<list rend="bulleted">
+        <p><att>xml:id</att> is mandatory on all elements, <att>n</att> is mandatory on: <list rend="bulleted">
           <item><gi>layer</gi></item>
           <item><gi>staff</gi></item>
-          <item><gi>verse</gi></item>
+          <item><gi>staffDef</gi></item>
+          <!-- <item><gi>verse</gi></item> -->
         </list></p>
       </div>
       <div>
@@ -146,7 +144,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <p>Time signature <emph>must</emph> be expressed in a <gi>meterSig</gi> child element of
               <gi>staffDef</gi>.</p>
           <p>To define a time signature, the customization uses <att>unit</att> and <att>count</att> on
-              <gi>meterSig</gi>. They <emph>must</emph> occur together: </p>
+              <gi>meterSig</gi>. They <emph>must</emph> occur together:</p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
             rendition="#inInitialStaffGrp">
             <staffDef xml:id="d001">
@@ -158,7 +156,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         </div>
         <div>
           <head>Key signature</head>
-          <p>Key signature <emph>must</emph> be expressed in a <gi>keySig</gi> child element 
+          <p>Key signature <emph>must</emph> be expressed in a <gi>keySig</gi> child element
             of <gi>staffDef</gi> at this stage of development.</p>
           <p>To define a key signature, the customization uses the <att>pname</att>, <att>accid</att> and
               <att>mode</att> attributes of <gi>keySig</gi>. <att>pname</att> and <att>mode</att>
@@ -198,15 +196,12 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
             <note pname="a" oct="4" dur="4" stem.dir="up" xml:id="d007"/>
           </egXML>
-          <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-            <note pname="a" oct="4" dur="4" stem.dir="up" xml:id="d007"/>
-          </egXML>
         </div>
         <div>
           <head>Duration and stem direction</head>
           <p>The gestural duration attribute <att>dur.ges</att> is excluded in this customization.
-            In addition, the specification of the <att>dur</att> and <att>stem.dir</att> attributes 
-            on events is more tightly  controlled than it is in <emph>mei_all</emph>, as described 
+            In addition, the specification of the <att>dur</att> and <att>stem.dir</att> attributes
+            on events is more tightly  controlled than it is in <emph>mei_all</emph>, as described
             in the following sections.
           </p>
           <div>
@@ -252,7 +247,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
         </div>
         <div>
           <head>Control events</head>
-          <p>Control events like <gi>dir</gi>, <gi>hairpin</gi>, <gi>dynam</gi>, etc. can be placed either directly
+          <p>Control events like <!-- <gi>dir</gi>, --><gi>hairpin</gi> and <gi>dynam</gi> can be placed either directly
             above or below a single staff or in the middle between two staves. Placement above or
             below a staff is indicated by the <att>place</att> attribute,
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
@@ -272,22 +267,22 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <head>Spanning elements</head>
             <div>
               <head>Hairpins</head>
-              <p>Start and end point of hairpins must be expressed using <att>tstamp</att> and
+              <p>Start and end point of <gi>hairpin</gi> elements must be expressed using <att>tstamp</att> and
                 <att>tstamp2</att> respectively. <att>startid</att> and <att>endid</att> attributes
                 are currently disabled on hairpins.
               </p>
             </div>
             <div>
               <head>Slurs</head>
-              <p>Start and end point of a slur can almost always be expressed using the 
-                <att>startid</att> and <att>endid</att> attributes. The only exceptions are 
-                <soCalled>partial</soCalled> slurs, such as the ones at the boundary of 
-                <gi>ending</gi> elements. Such slurs need to be encoded using the <att>tstamp</att> 
-                or <att>tstamp2</att> attributes. When the inclompete slur starts at the barline, 
-                <code>@tstamp="0"</code> is used, when the slur is incomplete at its end point, 
-                <code>@tstamp2="0m+n"</code> is applied (where n is the meter.count of the current 
-                measure plus one: 5 in 4/4, 3 in 2/4 etc. see <ref 
-                  target="http://music-encoding.org/documentation/2.1.1/cmn/#cmnTstamp">4.1.5 Timestamps 
+              <p>Start and end point of a <gi>slur</gi> can almost always be expressed using the
+                <att>startid</att> and <att>endid</att> attributes. The only exceptions are
+                <soCalled>partial</soCalled> slurs, such as the ones at the boundary of
+                <gi>ending</gi> elements. Such slurs need to be encoded using the <att>tstamp</att>
+                or <att>tstamp2</att> attributes. When the inclompete slur starts at the barline,
+                <code>@tstamp="0"</code> is used, when the slur is incomplete at its end point,
+                <code>@tstamp2="0m+n"</code> is applied (where n is the meter.count of the current
+                measure plus one: 5 in 4/4, 3 in 2/4 etc. see <ref
+                  target="http://music-encoding.org/documentation/2.1.1/cmn/#cmnTstamp">4.1.5 Timestamps
                   and Durations</ref> of the MEI Guidelines). Additionally, all partial
                 slurs have to be supplied with a <att>curvedir</att> attribute indicating the direction of
                 the slur (values: <val>above</val> or <val>below</val>).
@@ -312,24 +307,32 @@ TODO discuss the nature of the customization: extension/strict subset etc.
     <back>
       <div xml:id="tidoSchemaSpec">
         <head>Specifications</head>
-        <!-- Schema specification for TIDO MEI files -->
         <schemaSpec ident="tido" ns="http://www.music-encoding.org/ns/mei"
           start="mei music body mdiv" prefix="tido_">
           <moduleRef key="MEI"/>
           <moduleRef key="MEI.shared"
             except=" actor annot arranger artic author barLine bibl biblList biblScope caption
             castGrp castItem castList clefGrp composer creation custos date depth dir distributor
-            div dot edition editor ending event eventList expansion extent funder genre group grpSym
+            div dot edition editor event eventList expansion extent funder genre group grpSym
             head height identifier imprint incip keyAccid label layerDef lb librettist lyricist name
             num pad part parts pb pgDesc pgFoot pgFoot2 pgHead pgHead2 phrase physLoc publisher
             pubPlace recipient relatedItem repository resp role roleDesc sb series sponsor stack
             tempo textLang titlePage width"/>
           <moduleRef key="MEI.header"/>
-          <moduleRef key="MEI.cmn" except=" arpeg beamSpan beatRpt bend breath bTrem fermata fTrem 
-            gliss halfmRpt harpPedal meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt octave ossia 
-            reh tuplet tupletSpan"/>
+          <moduleRef key="MEI.cmn" except=" arpeg beamSpan beatRpt bend breath bTrem fermata fTrem
+            gliss halfmRpt harpPedal meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt octave ossia
+            phrase reh tuplet tupletSpan"/>
           <moduleRef key="MEI.namesdates"/>
           <moduleRef key="MEI.ptrref"/>
+
+          <constraintSpec ident="set_ns" scheme="isoschematron">
+            <constraint>
+              <sch:ns xmlns:sch="http://purl.oclc.org/dsdl/schematron" prefix="mei"
+                uri="http://www.music-encoding.org/ns/mei"/>
+            </constraint>
+          </constraintSpec>
+
+          <macroSpec ident="data.STEMDIRECTION.extended" module="MEI" type="dt" mode="delete"/>
           <classSpec ident="att.accid.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.accid.ges" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.accid.vis" module="MEI.shared" type="atts" mode="delete"/>
@@ -342,7 +345,6 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <classSpec ident="att.canonical" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.chord.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.chord.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <!-- <classSpec ident="att.chord.vis" module="MEI.shared" type="atts" mode="delete"/> -->
           <classSpec ident="att.clef.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.clef.ges" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.clef.vis" module="MEI.shared" type="atts" mode="delete"/>
@@ -367,6 +369,27 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <classSpec ident="att.fermatapresent" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.filing" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.horizontalalign" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.id" module="MEI.shared" type="atts" mode="change">
+            <attList>
+              <attDef ident="xml:id" usage="req" mode="change">
+                <datatype>
+                  <rng:data type="ID"/>
+                </datatype>
+              </attDef>
+            </attList>
+            <exemplum>
+              <p>A valid <gi>note</gi> element with the required <att>xml:id</att></p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <note pname="a" oct="4" dur="4" stem.dir="up"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <gi>note</gi> element without the required <att>xml:id</att></p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <note pname="a" oct="4" dur="4" stem.dir="up"/>
+              </egXML>
+            </exemplum>
+          </classSpec>
           <classSpec ident="att.instrumentident" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.joined" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.keySig.anl" module="MEI.shared" type="atts" mode="delete"/>
@@ -442,9 +465,19 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <classSpec ident="att.staffGrp.ges" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.staffGrp.log" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.staffloc.pitched" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.syl.anl" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.stems" module="MEI.shared" type="atts" mode="change">
+            <attList>
+              <attDef ident="stem.dir" usage="opt" mode="replace">
+                <desc>Describes the direction of a stem.</desc>
+                <datatype>
+                  <rng:ref name="data.STEMDIRECTION"/>
+                </datatype>
+              </attDef>
+            </attList>
+          </classSpec>
+          <!-- <classSpec ident="att.syl.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.syl.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.syltext" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.syltext" module="MEI.shared" type="atts" mode="delete"/> -->
           <classSpec ident="att.systems" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.textstyle" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.tiepresent" module="MEI.shared" type="atts" mode="delete"/>
@@ -502,12 +535,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           <classSpec ident="att.tie.ges" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.tie.vis" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.tierend" module="MEI.cmn" type="atts" mode="delete"/>
-          <constraintSpec ident="set_ns" scheme="isoschematron">
-            <constraint>
-              <sch:ns xmlns:sch="http://purl.oclc.org/dsdl/schematron" prefix="mei"
-                uri="http://www.music-encoding.org/ns/mei"/>
-            </constraint>
-          </constraintSpec>
+
           <classSpec ident="model.scorePart.mensuralAndNeumes" module="MEI.shared" type="model"
             mode="replace"/>
           <classSpec ident="model.sectionPart.mensuralAndNeumes" module="MEI.shared" type="model"
@@ -525,27 +553,26 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </attDef>
             </attList>
             <exemplum>
-              <p>A valid <gi>pedal</gi> element with local URI references in <att>startid</att> and
-                  <att>endid</att></p>
+              <p>A valid <gi>pedal</gi> element with a local URI reference in <att>startid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <pedal dir="down" staff="1" layer="1" startid="#n01" endid="#n02" xml:id="d049"/>
+                <pedal place="below" layer="1" dir="down" staff="1" startid="#n01" endid="#n02" xml:id="d049"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>pedal</gi> element with local URI references lacking the hash sign
-                in <att>startid</att> and <att>endid</att></p>
+                in <att>startid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal dir="down" staff="1" layer="1" startid="n01" endid="n02" xml:id="d050"/>
+                <pedal place="below" layer="1" dir="down" staff="1" startid="n01" endid="#n02" xml:id="d050"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>pedal</gi> element with absolute URI references in
-                  <att>startid</att> and <att>endid</att></p>
+                  <att>startid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal xml:id="d051" dir="down" staff="1" layer="1"
-                  startid="http://google.com#start" endid="http://google.com#end"/>
+                <pedal place="below" xml:id="d051" dir="down" staff="1" layer="1"
+                  startid="http://google.com#start" endid="#n02"/>
               </egXML>
             </exemplum>
           </classSpec>
@@ -557,6 +584,29 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 </datatype>
               </attDef>
             </attList>
+            <exemplum>
+              <p>A valid <gi>pedal</gi> element with a local URI reference in <att>endid</att></p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                <pedal place="below" layer="1" dir="down" staff="1" startid="#n01" endid="#n02" xml:id="d049"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <gi>pedal</gi> element with local URI references lacking the hash sign
+                in <att>endid</att></p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+                rendition="#afterStaff">
+                <pedal place="below" layer="1" dir="down" staff="1" startid="#n01" endid="n02" xml:id="d050"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <gi>pedal</gi> element with absolute URI references in
+                  <att>endid</att></p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+                rendition="#afterStaff">
+                <pedal place="below" layer="1" xml:id="d051" dir="down" staff="1"
+                  startid="#n01" endid="http://google.com#end"/>
+              </egXML>
+            </exemplum>
           </classSpec>
           <!-- require clef/@shape -->
           <classSpec ident="att.clefshape" module="MEI.shared" type="atts" mode="change">
@@ -567,6 +617,24 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 </datatype>
               </attDef>
             </attList>
+            <exemplum>
+              <p>A valid <gi>clef</gi> with a <att>shape</att> attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
+                rendition="#inInitialStaffGrp">
+                <staffDef lines="5" xml:id="d142" n="2">
+                  <clef shape="G" line="2" xml:id="d143"/>
+                </staffDef>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <gi>clef</gi> without a <att>shape</att> attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+                rendition="#inInitialStaffGrp">
+                <staffDef lines="5" xml:id="d142" n="2">
+                  <clef line="2" xml:id="d143"/>
+                </staffDef>
+              </egXML>
+            </exemplum>
           </classSpec>
           <!-- require clef/@line -->
           <classSpec ident="att.lineloc" module="MEI.shared" type="atts" mode="change">
@@ -577,6 +645,24 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 </datatype>
               </attDef>
             </attList>
+            <exemplum>
+              <p>A valid <gi>clef</gi> with a <att>line</att> attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
+                rendition="#inInitialStaffGrp">
+                <staffDef lines="5" xml:id="d142" n="2">
+                  <clef shape="G" line="2" xml:id="d143"/>
+                </staffDef>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <gi>clef</gi> without a <att>line</att> attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+                rendition="#inInitialStaffGrp">
+                <staffDef lines="5" xml:id="d142" n="2">
+                  <clef shape="G" xml:id="d143"/>
+                </staffDef>
+              </egXML>
+            </exemplum>
           </classSpec>
           <!-- === CUSTOM DATATYPES === -->
           <macroSpec ident="data.URI.local" module="MEI" type="dt" mode="add">
@@ -587,24 +673,67 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </rng:data>
             </content>
           </macroSpec>
-          <macroSpec ident="data.MEASUREBEAT.strict" module="MEI" type="dt" mode="add">
+          <macroSpec ident="data.MEASUREBEAT" module="MEI" type="dt" mode="change">
             <desc>A count of measures plus a beat location, i.e., [0-9]+m\+[0-9]+(\.?[0-9]*)?. The
               measure count is the number of barlines crossed by the event, while the beat location
-              is a timestamp in the measure where the event ends. For example, dur="1m + 3"
+              is a timestamp in the measure where the event ends. For example, dur="1m+3"
               indicates that the event ends in the next measure on beat 3. The measure number must
               be in the range of 0 to the number of remaining measures and the beat number must be
               in the range from 0 to the numerator of the time signature plus 1. For example, for an
               event starting in the first measure of a piece containing 6 measures in 6/8, the
               measure number must be between 0 to 5 and the beat number must be within the range
-              from 0 to 7, e.g., "4m+3". The customization makes the measure value mandatory
-              and removes optional spaces.</desc>
+              from 0 to 7, e.g., "4m+3". The customization makes the measure part mandatory
+              and disallows space characters.</desc>
             <content>
               <rng:data type="token">
                 <rng:param name="pattern">[0-9]+m\+[0-9]+(\.?[0-9]*)?</rng:param>
               </rng:data>
             </content>
+            <exemplum>
+              <p>A valid <att>tstamp2</att></p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
+                rendition="#afterStaff">
+                <slur tstamp="1" tstamp2="0m+2" xml:id="d124"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <att>tstamp2</att> containing spaces</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+                rendition="#afterStaff">
+                <slur tstamp="1" tstamp2="0m + 2" xml:id="d124"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <att>tstamp2</att> lacking a measure value</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+                rendition="#afterStaff">
+                <slur tstamp="1" tstamp2="2" xml:id="d124"/>
+              </egXML>
+            </exemplum>
           </macroSpec>
           <!-- === NEW ATTRIBUTE CLASSES === -->
+          <!-- New attribute class for required @staff -->
+          <classSpec ident="att.staffident.req" module="MEI.shared" type="atts" mode="add">
+            <desc>Make <att>staff</att> required</desc>
+            <attList>
+              <attDef ident="staff" usage="req" mode="add">
+                <datatype maxOccurs="unbounded">
+                  <rng:data type="positiveInteger"/>
+                </datatype>
+              </attDef>
+            </attList>
+          </classSpec>
+          <!-- New attribute class for required @stem.dir -->
+          <classSpec ident="att.stemdir.req" module="MEI.shared" type="atts" mode="add">
+            <attList>
+              <attDef ident="stem.dir" usage="req">
+                <desc>Describes the direction of a stem.</desc>
+                <datatype>
+                  <rng:ref name="data.STEMDIRECTION"/>
+                </datatype>
+              </attDef>
+            </attList>
+          </classSpec>
           <!-- New attribute class for required @dur -->
           <classSpec ident="att.duration.musical.req" module="MEI.shared" type="atts" mode="add">
             <desc>Required attributes that express duration in musical terms.</desc>
@@ -641,18 +770,40 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 <desc>encodes the ending point of an event in terms of musical time, i.e., a count
                   of measures plus a beat location.</desc>
                 <datatype>
-                  <rng:ref name="data.MEASUREBEAT.strict"/>
+                  <rng:ref name="data.MEASUREBEAT"/>
                 </datatype>
               </attDef>
             </attList>
           </classSpec>
           <!-- === COMMON ATTRIBUTES === -->
           <classSpec ident="att.controlevent" module="MEI.shared" type="atts" mode="change">
+            <classes mode="change">
+              <memberOf key="att.staffident" mode="delete"/>
+              <memberOf key="att.staffident.req" mode="add"/>
+            </classes>
+            <constraintSpec ident="require_layer_with_singlevalue_staff" scheme="isoschematron" mode="add">
+              <desc>Require <att>layer</att> when <att>staff</att> has a single value and the element is not excluded from the rule.</desc>
+              <constraint>
+                <sch:rule context="mei:*[not(name() = ('slur', 'tie', 'accid'))][@staff][not(contains(@staff, ' '))]">
+                  <sch:assert test="exists(@layer)"
+                    >@layer must be present when @staff contains a single value.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <constraintSpec ident="require_place_with_singlevalue_staff" scheme="isoschematron" mode="add">
+              <desc>Require <att>place</att> when <att>staff</att> has a single value and the element is not excluded from the rule.</desc>
+              <constraint>
+                <sch:rule context="mei:*[not(name() = ('slur', 'tie', 'accid'))][@staff][not(contains(@staff, ' '))]">
+                  <sch:assert test="exists(@place)"
+                    >@place must be present when @staff contains a single value.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <constraintSpec ident="no_layer_with_multivalue_staff" scheme="isoschematron" mode="add">
               <desc>Prohibit <att>layer</att> when <att>staff</att> has multiple values.</desc>
               <constraint>
                 <sch:rule context="mei:*[@staff]">
-                  <sch:assert test="if (contains(@staff, ' ') and @layer) then false() else true()"
+                  <sch:assert test="not(contains(@staff, ' ') and @layer)"
                     >@layer must be absent when @staff contains multiple values.</sch:assert>
                 </sch:rule>
               </constraint>
@@ -661,7 +812,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               <desc>Prohibit <att>place</att> when <att>staff</att> has multiple values.</desc>
               <constraint>
                 <sch:rule context="mei:*[@staff]">
-                  <sch:assert test="if (contains(@staff, ' ') and @place) then false() else true()"
+                  <sch:assert test="not(contains(@staff, ' ') and @place)"
                     >@place must be absent when @staff contains multiple values.</sch:assert>
                 </sch:rule>
               </constraint>
@@ -676,12 +827,11 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               <memberOf key="att.staffident"/>
               <memberOf key="att.layerident"/>
             </classes>
-            <constraintSpec ident="require_pricesely_one_start_spec"
+            <constraintSpec ident="require_precisely_one_start_spec"
               scheme="isoschematron" mode="add">
               <desc>Requires that precisely one of <att>startid</att> or <att>tstamp</att> is defined</desc>
               <constraint>
-                <!-- the schematron context needs to list all elements which are members of
-                -->
+                <!-- the schematron context needs to list all elements which are members of att.spanning.req -->
                 <sch:rule context="mei:slur">
                   <sch:assert
                     test="(@tstamp and not(@startid)) or (not(@tstamp) and @startid)"
@@ -689,8 +839,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 </sch:rule>
               </constraint>
             </constraintSpec>
-            <constraintSpec ident="require_pricesely_one_end_spec"
-              scheme="isoschematron" mode="add">
+            <constraintSpec ident="require_precisely_one_end_spec" scheme="isoschematron" mode="add">
               <desc>Requires that precisely one of <att>endid</att> or <att>tstamp2</att> is defined</desc>
               <constraint>
                 <!-- the schematron context needs to list all elements which are members of att.spanning.req -->
@@ -762,7 +911,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 note.</desc>
               <constraint>
                 <sch:rule context="mei:note">
-                  <sch:assert test="(@pname and @oct) or @loc">either @pname and @oct or @loc 
+                  <sch:assert test="(@pname and @oct) or @loc">either @pname and @oct or @loc
                     must be specified on a note.</sch:assert>
                 </sch:rule>
               </constraint>
@@ -870,21 +1019,37 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
           </classSpec>
           <!-- === CHORD ATTRIBUTES === -->
+          <classSpec ident="att.chord.vis" module="MEI.shared" type="atts" mode="change">
+            <classes mode="change">
+              <memberOf key="att.stems" mode="delete"/>
+              <memberOf key="att.stemdir.req" mode="add"/>
+            </classes>
+            <exemplum>
+              <p>A valid <gi>chord</gi> element with a <att>stem.dir</att> attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
+                <chord dur="1" stem.dir="up" xml:id="d061">
+                  <note pname="a" oct="4" xml:id="d062"/>
+                  <note pname="a" oct="4" xml:id="d063"/>
+                </chord>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
+                <p>An invalid <gi>chord</gi> element without the required <att>stem.dir</att> attribute</p>
+                <chord dur="4" xml:id="d064">
+                  <note pname="a" oct="4" xml:id="d065"/>
+                  <note pname="a" oct="4" xml:id="d066"/>
+                </chord>
+              </egXML>
+            </exemplum>
+          </classSpec>
           <classSpec ident="att.chord.log" module="MEI.shared" type="atts" mode="change">
             <classes mode="change">
               <memberOf key="att.duration.musical" mode="delete"/>
               <memberOf key="att.duration.musical.req" mode="add"/>
             </classes>
-            <constraintSpec ident="require_chord_stem.dir" scheme="isoschematron" mode="add">
-              <desc>Require <att>stem.dir</att> on chords.</desc>
-              <constraint>
-                <sch:rule context="mei:chord">
-                  <sch:assert test="exists(@stem.dir)">Must have dur attribute.</sch:assert>
-                </sch:rule>
-              </constraint>
-            </constraintSpec>
             <exemplum>
-              <p>A valid <gi>chord</gi> element</p>
+              <p>A valid <gi>chord</gi> element with a <att>dur</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
                 <chord dur="1" stem.dir="up" xml:id="d061">
                   <note pname="a" oct="4" xml:id="d062"/>
@@ -901,25 +1066,16 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 </chord>
               </egXML>
             </exemplum>
-            <exemplum>
-              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <p>An invalid <gi>chord</gi> element without the required <att>stem.dir</att> attribute</p>
-                <chord dur="4" xml:id="d064">
-                  <note pname="a" oct="4" xml:id="d065"/>
-                  <note pname="a" oct="4" xml:id="d066"/>
-                </chord>
-              </egXML>
-            </exemplum>
           </classSpec>
           <!-- === SLUR ATTRIBUTES === -->
-          <classSpec ident="att.slur.log.strict" module="MEI.cmn" type="atts" mode="add">
+          <classSpec ident="att.slur.log" module="MEI.cmn" type="atts" mode="replace">
             <desc>Logical domain attributes.</desc>
             <classes>
               <memberOf key="att.spanning.req"/>
             </classes>
           </classSpec>
           <!-- === HAIRPIN ATTRIBUTES === -->
-          <classSpec ident="att.hairpin.log.strict" module="MEI.cmn" type="atts" mode="add">
+          <classSpec ident="att.hairpin.log" module="MEI.cmn" type="atts" mode="replace">
             <desc>Logical domain attributes.</desc>
             <classes>
               <memberOf key="att.spanning.musical.req"/>
@@ -940,7 +1096,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </attList>
           </classSpec>
           <!-- === ELEMENT SPECIFICATIONS === -->
-          <elementSpec ident="meiHead" module="MEI.header" mode="change">
+          <!-- <elementSpec ident="meiHead" module="MEI.header" mode="change">
             <content>
               <rng:ref name="style"/>
               <rng:zeroOrMore>
@@ -952,7 +1108,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
                 <rng:ref name="revisionDesc"/>
               </rng:optional>
             </content>
-          </elementSpec>
+          </elementSpec> -->
           <!-- === LAYER === -->
           <elementSpec ident="layer" module="MEI.shared" mode="change">
             <attList>
@@ -1038,16 +1194,7 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             </exemplum>
           </elementSpec>
           <!-- === SLUR === -->
-          <elementSpec ident="phrase" module="MEI.cmn" mode="delete"/>
           <elementSpec ident="slur" module="MEI.cmn" mode="change">
-            <classes mode="change">
-              <memberOf key="att.facsimile" mode="delete"/>
-              <memberOf key="att.slur.vis" mode="delete"/>
-              <memberOf key="att.slur.ges" mode="delete"/>
-              <memberOf key="att.slur.anl" mode="delete"/>
-              <memberOf key="att.slur.log" mode="delete"/>
-              <memberOf key="att.slur.log.strict" mode="add"/>
-            </classes>
             <constraintSpec ident="slur_containing_curve" scheme="isoschematron" mode="delete"/>
             <exemplum>
               <p>A valid <gi>slur</gi> with <att>tstamp</att> and <att>tstamp2</att> attributes</p>
@@ -1107,20 +1254,19 @@ TODO discuss the nature of the customization: extension/strict subset etc.
           </elementSpec>
           <!-- === HAIRPIN -->
           <elementSpec ident="hairpin" module="MEI.cmn" mode="change">
-            <classes mode="change">
-              <memberOf key="att.facsimile" mode="delete"/>
-              <memberOf key="att.hairpin.vis" mode="delete"/>
-              <memberOf key="att.hairpin.ges" mode="delete"/>
-              <memberOf key="att.hairpin.anl" mode="delete"/>
-              <memberOf key="att.hairpin.log" mode="delete"/>
-              <memberOf key="att.hairpin.ges" mode="delete"/>
-              <memberOf key="att.hairpin.log.strict" mode="add"/>
-            </classes>
             <constraintSpec ident="hairpin_start-_and_end-type_attributes_required" scheme="isoschematron" mode="replace"/>
+            <constraintSpec ident="hairpin_place_required_with_single_staff" scheme="isoschematron" mode="add">
+              <desc>Require <att>place</att> on <gi>hairpin</gi> when <att>staff</att> has a single value.</desc>
+              <constraint>
+                <sch:rule context="mei:hairpin[not(contains(@staff, ' '))]">
+                  <sch:assert test="exists(@place)">Must have place attribute.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <exemplum>
               <p>A valid <gi>hairpin</gi> with all required and optional attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1" xml:id="d131"/>
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1" place="above" xml:id="d131"/>
               </egXML>
             </exemplum>
             <exemplum>
@@ -1131,46 +1277,59 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </egXML>
             </exemplum>
             <exemplum>
+              <p>An invalid <gi>hairpin</gi> missing the <att>staff</att> attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+                rendition="#afterTwoStaves">
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" xml:id="d137"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
               <p>A valid <gi>hairpin</gi> with a single value in <att>staff</att> and multiple values in <att>layer</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterTwoStaves">
-                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1 2 3" xml:id="d139"
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1 2 3" place="below" xml:id="d139"
                 />
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <gi>hairpin</gi> with a single value in <att>staff</att> missing the <att>place</att> attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1" xml:id="d131"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>form</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin tstamp="1" tstamp2="0m+2" xml:id="d132"/>
+                <hairpin tstamp="1" tstamp2="0m+2" staff="1 2" xml:id="d132"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> using the <att>endid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" endid="#n02" xml:id="d133-1"/>
+                <hairpin form="cres" tstamp="1" staff="1 2" endid="#n02" xml:id="d133-1"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> using the <att>startid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" startid="#n01" tstamp2="0m+2" xml:id="d133-2"/>
+                <hairpin form="cres" startid="#n01" staff="1 2" tstamp2="0m+2" xml:id="d133-2"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>tstamp2</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" xml:id="d133"/>
+                <hairpin form="cres" tstamp="1" staff="1 2" xml:id="d133"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>tstamp</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" tstamp2="0m+2" xml:id="d134"/>
+                <hairpin form="cres" tstamp2="0m+2" staff="1 2" xml:id="d134"/>
               </egXML>
             </exemplum>
             <exemplum>
@@ -1202,10 +1361,17 @@ TODO discuss the nature of the customization: extension/strict subset etc.
               </attDef>
             </attList>
             <exemplum>
-              <p>A valid <gi>staffDef</gi> containing all required attributes</p>
+              <p>A valid <gi>staffDef</gi> with an <att>n</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#inInitialStaffGrp">
                 <staffDef lines="5" xml:id="d141" n="1"/>
+              </egXML>
+            </exemplum>
+            <exemplum>
+              <p>An invalid <gi>staffDef</gi> missing the n attribute</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
+                rendition="#inInitialStaffGrp">
+                <staffDef lines="5" xml:id="d141"/>
               </egXML>
             </exemplum>
             <exemplum>
@@ -1328,34 +1494,34 @@ TODO discuss the nature of the customization: extension/strict subset etc.
             <exemplum>
               <p>A valid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <pedal dir="down" tstamp="1" form="line" xml:id="d160"/>
-                <pedal dir="bounce" tstamp="1" form="line" xml:id="d161"/>
-                <pedal dir="up" tstamp="2" form="line" xml:id="d162"/>
+                <pedal place="below" layer="1" dir="down" tstamp="1" form="line" staff="1" xml:id="d160"/>
+                <pedal place="below" layer="1" dir="bounce" tstamp="1" form="line" staff="1" xml:id="d161"/>
+                <pedal place="below" layer="1" dir="up" tstamp="2" form="line" staff="1" xml:id="d162"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal dir="down" tstamp="1" form="line" xml:id="d163"/>
-                <pedal dir="bounce" tstamp="1" form="line" xml:id="d164"/>
-                <pedal dir="up" tstamp="2" form="pedstar" xml:id="d165"/>
+                <pedal place="below" layer="1" dir="down" tstamp="1" form="line" staff="1" xml:id="d163"/>
+                <pedal place="below" layer="1" dir="bounce" tstamp="1" form="line" staff="1" xml:id="d164"/>
+                <pedal place="below" layer="1" dir="up" tstamp="2" form="pedstar" staff="1" xml:id="d165"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal dir="down" tstamp="1" form="line" xml:id="d166"/>
-                <pedal dir="bounce" tstamp="1" form="altpedstar" xml:id="d167"/>
-                <pedal dir="up" tstamp="2" form="line" xml:id="d168"/>
+                <pedal place="below" layer="1" dir="down" tstamp="1" form="line" staff="1" xml:id="d166"/>
+                <pedal place="below" layer="1" dir="bounce" tstamp="1" form="altpedstar" staff="1" xml:id="d167"/>
+                <pedal place="below" layer="1" dir="up" tstamp="2" form="line" staff="1" xml:id="d168"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <pedal dir="half" tstamp="1" form="altpedstar" xml:id="d169"/>
-                <pedal dir="up" tstamp="2" form="altpedstar" xml:id="d170"/>
+                <pedal place="below" layer="1" dir="half" tstamp="1" form="altpedstar" staff="1" xml:id="d169"/>
+                <pedal place="below" layer="1" dir="up" tstamp="2" form="altpedstar" staff="1" xml:id="d170"/>
               </egXML>
             </exemplum>
           </elementSpec>
