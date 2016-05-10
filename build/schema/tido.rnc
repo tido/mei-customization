@@ -1,0 +1,3740 @@
+default namespace = "http://www.music-encoding.org/ns/mei"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+# Schema generated from ODD source 2016-05-10T17:13:25Z. .
+# TEI Edition: Version 3.0.0
+# TEI Edition Location: http://www.tei-c.org/Vault/P5//
+#
+
+# Copyright 2014-2016 Tido Ltd. Licensed under Educational Community License 2.0 you may not use this file except in compliance with the License. You may obtain a copy of the License at https://opensource.org/licenses/ECL-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+sch:ns [ prefix = "tei" uri = "http://www.tei-c.org/ns/1.0" ]
+tido_data.ACCIDENTAL.EXPLICIT =
+  
+  ## Sharp.
+  "s"
+  | 
+    ## Flat.
+    "f"
+  | 
+    ## Double sharp (written using croix).
+    "x"
+  | 
+    ## Double flat.
+    "ff"
+  | 
+    ## Natural.
+    "n"
+tido_data.ACCIDENTAL.IMPLICIT =
+  
+  ## Sharp.
+  "s"
+  | 
+    ## Flat.
+    "f"
+  | 
+    ## Double sharp.
+    "ss"
+  | 
+    ## Double flat.
+    "ff"
+  | 
+    ## Natural.
+    "n"
+tido_data.ARTICULATION =
+  
+  ## Accent (Unicode 1D17B).
+  "acc"
+  | 
+    ## Staccato (Unicode 1D17C).
+    "stacc"
+  | 
+    ## Tenuto (Unicode 1D17D).
+    "ten"
+  | 
+    ## Staccatissimo (Unicode 1D17E).
+    "stacciss"
+  | 
+    ## Marcato (Unicode 1D17F).
+    "marc"
+tido_data.AUGMENTDOT = xsd:nonNegativeInteger { maxInclusive = "4" }
+tido_data.BARRENDITION =
+  
+  ## Dashed line (Unicode 1D104).
+  "dashed"
+  | 
+    ## Dotted line.
+    "dotted"
+  | 
+    ## (Unicode 1D101).
+    "dbl"
+  | 
+    ## Double dashed line.
+    "dbldashed"
+  | 
+    ## Double dotted line.
+    "dbldotted"
+  | 
+    ## (Unicode 1D102).
+    "end"
+  | 
+    ## Bar line not rendered.
+    "invis"
+  | 
+    ## Repeat start (Unicode 1D106).
+    "rptstart"
+  | 
+    ## Repeat start and end.
+    "rptboth"
+  | 
+    ## Repeat end (Unicode 1D107).
+    "rptend"
+  | 
+    ## (Unicode 1D100).
+    "single"
+tido_data.BEAT = xsd:decimal { minInclusive = "0" }
+tido_data.BOOLEAN =
+  
+  ##
+  "true"
+  | 
+    ##
+    "false"
+tido_data.CLEFLINE = xsd:positiveInteger
+tido_data.CLEFSHAPE =
+  
+  ## G clef (Unicode 1D11E).
+  "G"
+  | 
+    ## Double G clef.
+    "GG"
+  | 
+    ## F clef (Unicode 1D122).
+    "F"
+  | 
+    ## C clef (Unicode 1D121).
+    "C"
+  | 
+    ## Drum clef (Unicode 1D125 or Unicode 1D126).
+    "perc"
+  | 
+    ## Tablature "clef"; i.e. usually "TAB" rendered vertically.
+    "TAB"
+tido_data.CLUSTER =
+  
+  ## White keys.
+  "white"
+  | 
+    ## Black keys.
+    "black"
+  | 
+    ## Mixed black and white keys.
+    "chromatic"
+tido_data.COLORNAMES =
+  
+  ##
+  "aqua"
+  | 
+    ##
+    "black"
+  | 
+    ##
+    "blue"
+  | 
+    ##
+    "fuchsia"
+  | 
+    ##
+    "gray"
+  | 
+    ##
+    "green"
+  | 
+    ##
+    "lime"
+  | 
+    ##
+    "maroon"
+  | 
+    ##
+    "navy"
+  | 
+    ##
+    "olive"
+  | 
+    ##
+    "purple"
+  | 
+    ##
+    "red"
+  | 
+    ##
+    "silver"
+  | 
+    ##
+    "teal"
+  | 
+    ##
+    "white"
+  | 
+    ##
+    "yellow"
+tido_data.COLORVALUES =
+  xsd:token { pattern = "#[0-9A-Fa-f]{6,6}" }
+  | xsd:token { pattern = "#[0-9A-Fa-f]{8,8}" }
+  | xsd:token {
+      pattern =
+        "rgb\((\s*(([01]?[0-9]?[0-9])|2[0-4][0-9]|25[0-5])\s*,\s*){2}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*\)"
+    }
+  | xsd:token {
+      pattern =
+        "rgba\(\s*(([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*){3}(0(\.\d+)?|1(\.0+)?)\s*\)|rgba\(\s*(((\d{1,2})?%|100%)\s*,\s*){2}(\d{1,2}%|100%)\s*,\s*(0(\.\d+)?|1(\.0+)?)\s*\)"
+    }
+  | xsd:token {
+      pattern =
+        "hsl\(\s*((\d{1,2})|[12]\d{2}|3[0-5]\d|360)\s*,\s*(\d{1,2}%|100%)\s*,\s*(\d{1,2}%|100%)\s*\)"
+    }
+  | xsd:token {
+      pattern =
+        "hsla\(\s*(\d{1,2}|[12]\d{2}|3[0-5]\d|360)\s*,\s*(\d{1,2}%|100%)\s*,\s*(\d{1,2}%|100%)\s*,\s*(0(\.\d+)?|1(\.0+)?)\s*\)"
+    }
+tido_data.COLOR = tido_data.COLORNAMES | tido_data.COLORVALUES
+tido_data.DEGREES =
+  xsd:decimal { maxInclusive = "360.0" minInclusive = "-360.0" }
+tido_data.DURATION = tido_data.DURATION.cmn
+tido_data.FONTFAMILY = xsd:token
+tido_data.FONTNAME = xsd:token
+tido_data.FONTSTYLE =
+  
+  ## Text slants to right.
+  "italic"
+  | 
+    ## Unadorned.
+    "normal"
+  | 
+    ## Text slants to the left.
+    "oblique"
+tido_data.FONTWEIGHT =
+  
+  ##
+  "bold"
+  | 
+    ##
+    "normal"
+tido_data.GLISSANDO =
+  
+  ## First note/chord in glissando.
+  "i"
+  | 
+    ## Note/chord that's neither first nor last in glissando.
+    "m"
+  | 
+    ## Last note in glissando.
+    "t"
+tido_data.GRACE =
+  
+  ## Time "stolen" from following note.
+  "acc"
+  | 
+    ## Time "stolen" from previous note.
+    "unacc"
+  | 
+    ## No interpretation regarding performed value of grace note.
+    "unknown"
+tido_data.LAYERSCHEME =
+  
+  ## Single layer.
+  "1"
+  | 
+    ## Two layers with opposing stems.
+    "2o"
+  | 
+    ## Two layers with 'floating' stems.
+    "2f"
+  | 
+    ##
+    "3o"
+  | 
+    ##
+    "3f"
+tido_data.MEASUREBEAT =
+  xsd:token { pattern = "[0-9]+m\+[0-9]+(\.?[0-9]*)?" }
+tido_data.MEASUREMENT =
+  xsd:token { pattern = "(\+|-)?\d+(\.\d+)?(cm|mm|in|pt|pc|px|vu)?" }
+tido_data.MENSURATIONSIGN =
+  
+  ## Tempus imperfectum.
+  "C"
+  | 
+    ## Tempus perfectum.
+    "O"
+tido_data.METERSIGN =
+  
+  ## Common time; i.e. 4/4.
+  "common"
+  | 
+    ## Cut time; i.e. 2/2.
+    "cut"
+tido_data.MODE =
+  
+  ##
+  "major"
+  | 
+    ##
+    "minor"
+  | 
+    ##
+    "dorian"
+  | 
+    ##
+    "phrygian"
+  | 
+    ##
+    "lydian"
+  | 
+    ##
+    "mixolydian"
+  | 
+    ##
+    "aeolian"
+  | 
+    ##
+    "locrian"
+tido_data.OCTAVE = xsd:nonNegativeInteger { maxInclusive = "9" }
+tido_data.PERCENT = xsd:token { pattern = "[0-9]+(\.?[0-9]*)?%" }
+tido_data.PITCHNAME = xsd:token { pattern = "[a-g]" }
+tido_data.PITCHNAME.GES = xsd:token { pattern = "[a-g]|none" }
+tido_data.PITCHNUMBER = xsd:nonNegativeInteger
+tido_data.SLASH =
+  xsd:positiveInteger { minInclusive = "1" maxInclusive = "6" }
+tido_data.STAFFLOC = xsd:integer
+tido_data.STAFFREL =
+  
+  ## Written above staff.
+  "above"
+  | 
+    ## Written below staff.
+    "below"
+  | 
+    ## Written on staff.
+    "within"
+tido_data.STEMDIRECTION = tido_data.STEMDIRECTION.basic
+tido_data.STEMDIRECTION.basic =
+  
+  ## Stem points upwards.
+  "up"
+  | 
+    ## Stem points downwards.
+    "down"
+tido_data.STEMMODIFIER =
+  
+  ## No modifications to stem.
+  "none"
+  | 
+    ## 1 slash through stem.
+    "1slash"
+  | 
+    ## 2 slashes through stem.
+    "2slash"
+  | 
+    ## 3 slashes through stem.
+    "3slash"
+  | 
+    ## 4 slashes through stem.
+    "4slash"
+  | 
+    ## 5 slashes through stem.
+    "5slash"
+  | 
+    ## 6 slashes through stem.
+    "6slash"
+  | 
+    ## X placed on stem.
+    "sprech"
+  | 
+    ## Z placed on stem.
+    "z"
+tido_data.STEMPOSITION =
+  
+  ## Stem attached to left side of note head.
+  "left"
+  | 
+    ## Stem attached to right side of note head.
+    "right"
+  | 
+    ## Stem is originates from center of note head.
+    "center"
+tido_data.TEXTRENDITIONLIST =
+  
+  ## Relative font size.
+  "xx-small"
+  | 
+    ## Relative font size.
+    "x-small"
+  | 
+    ## Relative font size.
+    "small"
+  | 
+    ## Relative font size.
+    "medium"
+  | 
+    ## Relative font size.
+    "large"
+  | 
+    ## Relative font size.
+    "x-large"
+  | 
+    ## Relative font size.
+    "xx-large"
+  | 
+    ## Relative font size.
+    "smaller"
+  | 
+    ## Relative font size.
+    "larger"
+  | 
+    ## Italicized (slanted to right).
+    "italic"
+  | 
+    ## Oblique (slanted to left).
+    "oblique"
+  | 
+    ## Small capitals.
+    "smcaps"
+  | 
+    ## Relative font weight.
+    "bold"
+  | 
+    ## Relative font weight.
+    "bolder"
+  | 
+    ## Relative font weight.
+    "lighter"
+  | 
+    ## Enclosed in box.
+    "box"
+  | 
+    ## Enclosed in ellipse/circle.
+    "circle"
+  | 
+    ## Enclosed in diamond.
+    "dbox"
+  | 
+    ## Enclosed in triangle.
+    "tbox"
+  | 
+    ## Struck through by '\' (back slash).
+    "bslash"
+  | 
+    ## Struck through by '/' (forward slash).
+    "fslash"
+  | 
+    ## Struck through by '-'; may be qualified to indicate multiple lines, e.g. line-through(2).
+    "line-through"
+  | 
+    ## Not rendered, invisible.
+    "none"
+  | 
+    ## Line above the text; may be qualified to indicate multiple lines, e.g. overline(3).
+    "overline"
+  | 
+    ## obscured by other text, such as 'XXXXX'
+    "overstrike"
+  | 
+    ## Struck through by '-'; equivalent to line-through; may be qualified to indicate multiple lines, e.g. strike(3).
+    "strike"
+  | 
+    ## Subscript.
+    "sub"
+  | 
+    ## Superscript.
+    "sup"
+  | 
+    ## Underlined; may be qualified to indicate multiple lines, e.g. underline(2).
+    "underline"
+  | 
+    ## Left-to-right (BIDI embed).
+    "ltr"
+  | 
+    ## Right-to-left (BIDI embed).
+    "rtl"
+  | 
+    ## Left-to-right (BIDI override).
+    "lro"
+  | 
+    ## Right-to-left (BIDI override).
+    "rlo"
+tido_data.TEXTRENDITIONPAR =
+  xsd:string {
+    pattern = "(underline|overline|line-through|strike)\(\d+\)"
+  }
+  | xsd:string {
+      pattern = "(letter-spacing|line-height)\((\+|-)?\d+(\.\d+)?%?\)"
+    }
+tido_data.TEXTRENDITION =
+  tido_data.TEXTRENDITIONLIST | tido_data.TEXTRENDITIONPAR
+tido_data.URI = xsd:anyURI
+tido_macro.musicPart = (tido_body)?
+tido_macro.availabilityPart =
+  (tido_acqSource, (tido_accessRestrict, tido_price?)*)*,
+  tido_useRestrict?,
+  tido_sysReq?
+tido_macro.bibldescPart =
+  tido_editionStmt?, tido_pubStmt?, tido_physDesc*, tido_seriesStmt*
+tido_data.DURATION.cmn =
+  
+  ## Quadruple whole note.
+  "long"
+  | 
+    ## Double whole note.
+    "breve"
+  | 
+    ## Whole note.
+    "1"
+  | 
+    ## Half note.
+    "2"
+  | 
+    ## Quarter note.
+    "4"
+  | 
+    ## 8th note.
+    "8"
+  | 
+    ## 16th note.
+    "16"
+  | 
+    ## 32nd note.
+    "32"
+  | 
+    ## 64th note.
+    "64"
+  | 
+    ## 128th note.
+    "128"
+  | 
+    ## 256th note.
+    "256"
+  | 
+    ## 512th note.
+    "512"
+  | 
+    ## 1024th note.
+    "1024"
+  | 
+    ## 2048th note.
+    "2048"
+tido_data.URI.local =
+  xsd:token { pattern = "#[A-Za-z][A-Za-z0-9\-_:\.]*" }
+tido_att.accid.log.attributes =
+  tido_att.accidental.attributes,
+  tido_att.controlevent.attributes,
+  tido_att.accid.log.attribute.func
+tido_att.accid.log.attribute.func =
+  
+  ## Records the function of an accidental.
+  attribute func {
+    
+    ## Cautionary accidental.
+    "caution"
+    | 
+      ## Editorial accidental.
+      "edit"
+  }?
+tido_att.accidental.attributes = tido_att.accidental.attribute.accid
+tido_att.accidental.attribute.accid =
+  
+  ## Captures a written accidental.
+  attribute accid { tido_data.ACCIDENTAL.EXPLICIT }?
+tido_att.accidental.performed.attributes =
+  tido_att.accidental.performed.attribute.accid.ges
+tido_att.accidental.performed.attribute.accid.ges =
+  
+  ## Records the performed pitch inflection.
+  attribute accid.ges { tido_data.ACCIDENTAL.IMPLICIT }?
+tido_att.articulation.attributes = tido_att.articulation.attribute.artic
+tido_att.articulation.attribute.artic =
+  
+  ## Encodes the written articulation(s). Articulations are normally encoded in order from the note head outward; that is, away from the stem. See additional notes at att.vis.note. Only articulations should be encoded in the artic attribute; for example, fingerings should be encoded using the <fingering> element.
+  attribute artic {
+    list { tido_data.ARTICULATION+ }
+  }?
+tido_att.augmentdots.attributes = tido_att.augmentdots.attribute.dots
+tido_att.augmentdots.attribute.dots =
+  
+  ## Records the number of augmentation dots required by a dotted duration.
+  attribute dots { tido_data.AUGMENTDOT }?
+sch:pattern [
+  id =
+    "tido-att.augmentdots-dots-dots_attribute_requires_dur-constraint-1"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:*[@dots]"
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      test = "@dur"
+      "An element with a dots attribute must also have a dur\x{a}" ~
+      "                  attribute."
+    ]
+    "\x{a}" ~
+    "              "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tido_att.chord.log.attributes =
+  tido_att.duration.musical.req.attributes,
+  tido_att.event.attributes,
+  tido_att.articulation.attributes,
+  tido_att.augmentdots.attributes,
+  tido_att.syltext.attributes
+tido_att.chord.vis.attributes =
+  tido_att.stemdir.req.attributes,
+  tido_att.typography.attributes,
+  tido_att.chord.vis.attribute.cluster
+tido_att.chord.vis.attribute.cluster =
+  
+  ## Indicates a single, alternative note head should be displayed instead of individual note heads. The highest and lowest notes of the chord usually indicate the upper and lower boundaries of the cluster note head.
+  attribute cluster { tido_data.CLUSTER }?
+tido_att.classcodeident.attributes =
+  tido_att.classcodeident.attribute.classcode
+tido_att.classcodeident.attribute.classcode =
+  
+  ## Contains a reference to the controlled vocabulary from which the term is drawn. The value must match the value of an ID attribute on a classCode element given elsewhere in the document.
+  attribute classcode { tido_data.URI }?
+sch:pattern [
+  id =
+    "tido-att.classcodeident-classcode-check_classcodeTarget-constraint-2"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "@classcode"
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      role = "warning"
+      test = "not(normalize-space(.) eq '')"
+      "@classcode attribute\x{a}" ~
+      "                  has no content."
+    ]
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      role = "warning"
+      test =
+        "every $i in tokenize(., '\s+') satisfies substring($i,2)=//mei:classCode/@xml:id"
+      "The value in @classcode must correspond to the @xml:id attribute of a classCode\x{a}" ~
+      "                  element."
+    ]
+    "\x{a}" ~
+    "              "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tido_att.clef.log.attributes =
+  tido_att.clefshape.attributes,
+  tido_att.lineloc.attributes,
+  tido_att.octave.attributes,
+  tido_att.clef.log.attribute.cautionary
+tido_att.clef.log.attribute.cautionary =
+  
+  ## Records the function of the clef. A "cautionary" clef does not change the following pitches.
+  attribute cautionary { tido_data.BOOLEAN }?
+tido_att.clefshape.attributes = tido_att.clefshape.attribute.shape
+tido_att.clefshape.attribute.shape =
+  
+  ## Describes a clef's shape.
+  attribute shape { tido_data.CLEFSHAPE }
+tido_att.common.attributes =
+  tido_att.commonPart.attributes, tido_att.common.attribute.n
+tido_att.common.attribute.n =
+  
+  ## Provides a number-like designation for an element.
+  attribute n { text }?
+tido_att.commonPart.attributes =
+  tido_att.id.attributes,
+  tido_att.commonPart.attribute.label,
+  tido_att.commonPart.attribute.xmlbase
+tido_att.commonPart.attribute.label =
+  
+  ## Provides a name or label for an element. The value may be any string.
+  attribute label { xsd:string }?
+tido_att.commonPart.attribute.xmlbase =
+  
+  ## Provides a base URI reference with which applications can resolve relative URI references into absolute URI references.
+  attribute xml:base { tido_data.URI }?
+tido_att.controlevent.attributes =
+  tido_att.staffident.req.attributes,
+  tido_att.timestamp.musical.attributes,
+  tido_att.layerident.attributes
+sch:pattern [
+  id =
+    "tido-att.controlevent-require_layer_with_singlevalue_staff-constraint-3"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context =
+      "mei:*[not(name() = ('slur', 'tie', 'accid'))][@staff][not(contains(@staff, ' '))]"
+    "\x{a}" ~
+    "                  "
+    sch:assert [
+      test = "exists(@layer)"
+      "@layer must be present when @staff contains a single value."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id =
+    "tido-att.controlevent-require_place_with_singlevalue_staff-constraint-4"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context =
+      "mei:*[not(name() = ('slur', 'tie', 'accid'))][@staff][not(contains(@staff, ' '))]"
+    "\x{a}" ~
+    "                  "
+    sch:assert [
+      test = "exists(@place)"
+      "@place must be present when @staff contains a single value."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id =
+    "tido-att.controlevent-no_layer_with_multivalue_staff-constraint-5"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:*[@staff]"
+    "\x{a}" ~
+    "                  "
+    sch:assert [
+      test = "not(contains(@staff, ' ') and @layer)"
+      "@layer must be absent when @staff contains multiple values."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id =
+    "tido-att.controlevent-no_place_with_multivalue_staff-constraint-6"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:*[@staff]"
+    "\x{a}" ~
+    "                  "
+    sch:assert [
+      test = "not(contains(@staff, ' ') and @place)"
+      "@place must be absent when @staff contains multiple values."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tido_att.duration.musical.attributes =
+  tido_att.duration.musical.attribute.dur
+tido_att.duration.musical.attribute.dur =
+  
+  ## Records the duration of a feature using the relative durational values provided by the data.DURATION datatype.
+  attribute dur { tido_data.DURATION }?
+tido_att.duration.ratio.attributes =
+  tido_att.duration.ratio.attribute.num,
+  tido_att.duration.ratio.attribute.numbase
+tido_att.duration.ratio.attribute.num =
+  
+  ## Along with numbase, describes duration as a ratio. num is the first value in the ratio, while numbase is the second.
+  attribute num { xsd:positiveInteger }?
+tido_att.duration.ratio.attribute.numbase =
+  
+  ## Along with num, describes duration as a ratio. num is the first value in the ratio, while numbase is the second.
+  attribute numbase { xsd:positiveInteger }?
+tido_att.dynam.log.attributes =
+  tido_att.controlevent.attributes,
+  tido_att.augmentdots.attributes,
+  tido_att.startendid.attributes,
+  tido_att.timestamp2.musical.attributes
+tido_att.dynam.vis.attributes = tido_att.placement.attributes
+tido_att.ending.anl.attributes = empty
+tido_att.ending.ges.attributes = empty
+tido_att.ending.log.attributes = empty
+tido_att.ending.vis.attributes = empty
+tido_att.event.attributes =
+  tido_att.timestamp.musical.attributes,
+  tido_att.staffident.attributes,
+  tido_att.layerident.attributes
+tido_att.id.attributes = tido_att.id.attribute.xmlid
+tido_att.id.attribute.xmlid =
+  
+  ## Regularizes the naming of an element and thus facilitates building links between it and other resources. Each id attribute within a document must have a unique value.
+  attribute xml:id { xsd:ID }
+tido_att.internetmedia.attributes =
+  tido_att.internetmedia.attribute.mimetype
+tido_att.internetmedia.attribute.mimetype =
+  
+  ## Specifies the applicable MIME (multimedia internet mail extension) type. The value should be a valid MIME media type defined by the Internet Engineering Task Force in RFC 2046.
+  attribute mimetype { xsd:string }?
+tido_att.keySig.log.attributes =
+  tido_att.accidental.attributes,
+  tido_att.pitch.attributes,
+  tido_att.keySig.log.attribute.mode
+tido_att.keySig.log.attribute.mode =
+  
+  ## Indicates major, minor, or other tonality.
+  attribute mode { tido_data.MODE }?
+tido_att.layerident.attributes = tido_att.layerident.attribute.layer
+tido_att.layerident.attribute.layer =
+  
+  ## Identifies the layer to which a feature applies.
+  attribute layer {
+    list { xsd:positiveInteger+ }
+  }?
+tido_att.lineloc.attributes = tido_att.lineloc.attribute.line
+tido_att.lineloc.attribute.line =
+  
+  ## Indicates the line upon which a feature stands. The value must be in the range between 1 and the number of lines on the staff. The numbering of lines starts with the lowest line of the staff.
+  attribute line { tido_data.CLEFLINE }
+tido_att.measure.log.attributes =
+  tido_att.meterconformance.bar.attributes,
+  tido_att.measure.log.attribute.left,
+  tido_att.measure.log.attribute.right
+tido_att.measure.log.attribute.left =
+  
+  ## Indicates the visual rendition of the left bar line. It is present here only for facilitation of translation from legacy encodings which use it. Usually, it can be safely ignored.
+  attribute left { tido_data.BARRENDITION }?
+tido_att.measure.log.attribute.right =
+  
+  ## Indicates the function of the right bar line and is structurally important.
+  attribute right { tido_data.BARRENDITION }?
+tido_att.medium.attributes = tido_att.medium.attribute.medium
+tido_att.medium.attribute.medium =
+  
+  ## Describes the writing medium.
+  attribute medium { xsd:string }?
+tido_att.meiversion.attributes =
+  tido_att.meiversion.attribute.meiversion
+tido_att.meiversion.attribute.meiversion =
+  
+  ## Specifies a generic MEI version label.
+  [ a:defaultValue = "3.0.0" ]
+  attribute meiversion {
+    
+    ## This version of MEI.
+    "3.0.0"
+  }?
+tido_att.mensur.log.attributes =
+  tido_att.duration.ratio.attributes,
+  tido_att.slashcount.attributes,
+  tido_att.mensur.log.attribute.dot,
+  tido_att.mensur.log.attribute.sign
+tido_att.mensur.log.attribute.dot =
+  
+  ## Specifies whether a dot is to be added to the base symbol.
+  attribute dot { tido_data.BOOLEAN }?
+tido_att.mensur.log.attribute.sign =
+  
+  ## The base symbol in the mensuration sign/time signature of mensural notation.
+  attribute sign { tido_data.MENSURATIONSIGN }?
+tido_att.meterconformance.bar.attributes =
+  tido_att.meterconformance.bar.attribute.metcon,
+  tido_att.meterconformance.bar.attribute.control
+tido_att.meterconformance.bar.attribute.metcon =
+  
+  ## Indicates the relationship between the content of a measure and the prevailing meter.
+  attribute metcon { tido_data.BOOLEAN }?
+tido_att.meterconformance.bar.attribute.control =
+  
+  ## Indicates whether or not a bar line is "controlling"; that is, if it indicates a point of alignment across all the parts. Bar lines within a score are usually controlling; that is, they "line up". Bar lines within parts may or may not be controlling. When applied to <measure>, this attribute indicates the nature of the right barline but not the left.
+  attribute control { tido_data.BOOLEAN }?
+tido_att.meterSig.log.attributes =
+  tido_att.meterSig.log.attribute.count,
+  tido_att.meterSig.log.attribute.sym,
+  tido_att.meterSig.log.attribute.unit
+tido_att.meterSig.log.attribute.count =
+  
+  ## Captures the number of beats in a measure, that is, the top number of the meter signature. It must contain a decimal number or an additive expression that evaluates to a decimal number, such as 2+3.
+  attribute count {
+    xsd:string { pattern = "\d+(\.\d+)?(\s*\+\s*\d+(\.\d+)?)*" }
+  }?
+tido_att.meterSig.log.attribute.sym =
+  
+  ## Indicates the use of a meter symbol instead of a numeric meter signature, that is, 'C' for common time or 'C' with a slash for cut time.
+  attribute sym { tido_data.METERSIGN }?
+tido_att.meterSig.log.attribute.unit =
+  
+  ## Contains the number indicating the beat unit, that is, the bottom number of the meter signature.
+  attribute unit { xsd:decimal }?
+tido_att.name.attributes =
+  tido_att.name.attribute.nymref, tido_att.name.attribute.role
+tido_att.name.attribute.nymref =
+  
+  ## Used to record a pointer to the regularized form of the name elsewhere in the document.
+  attribute nymref { tido_data.URI }?
+sch:pattern [
+  id = "tido-att.name-nymref-check_nymrefTarget-constraint-7"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "@nymref"
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      role = "warning"
+      test = "not(normalize-space(.) eq '')"
+      "@nymref attribute\x{a}" ~
+      "                  has no content."
+    ]
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      role = "warning"
+      test =
+        "every $i in tokenize(., '\s+') satisfies substring($i,2)=//mei:*/@xml:id"
+      "The value in @nymref must correspond to the @xml:id attribute of an\x{a}" ~
+      "                  element."
+    ]
+    "\x{a}" ~
+    "              "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tido_att.name.attribute.role =
+  
+  ## Used to specify further information about the entity referenced by this name, for example, the occupation of a person or the status of a place. Use a standard value whenever possible.
+  attribute role { text }?
+tido_att.note.ges.attributes =
+  tido_att.accidental.performed.attributes,
+  tido_att.note.ges.cmn.attributes,
+  tido_att.note.ges.attribute.oct.ges,
+  tido_att.note.ges.attribute.pname.ges,
+  tido_att.note.ges.attribute.pnum
+tido_att.note.ges.attribute.oct.ges =
+  
+  ## Records performed octave information that differs from the written value.
+  attribute oct.ges { tido_data.OCTAVE }?
+tido_att.note.ges.attribute.pname.ges =
+  
+  ## Contains a performed pitch name that differs from the written value.
+  attribute pname.ges { tido_data.PITCHNAME.GES }?
+tido_att.note.ges.attribute.pnum =
+  
+  ## Holds a pitch-to-number mapping, a base-40 or MIDI note number, for example.
+  attribute pnum { tido_data.PITCHNUMBER }?
+tido_att.note.log.attributes =
+  tido_att.event.attributes,
+  tido_att.articulation.attributes,
+  tido_att.augmentdots.attributes,
+  tido_att.duration.musical.attributes,
+  tido_att.pitched.attributes,
+  tido_att.syltext.attributes
+sch:pattern [
+  id = "tido-att.note.log-require_oct_and_pname_or_loc-constraint-8"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:note"
+    "\x{a}" ~
+    "                  "
+    sch:assert [
+      test = "(@pname and @oct) or @loc"
+      "either @pname and @oct or @loc\x{a}" ~
+      "                    must be specified on a note."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id = "tido-att.note.log-standalone_note_require_dur-constraint-9"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:note[not(ancestor::mei:chord)]"
+    "\x{a}" ~
+    "                  "
+    sch:assert [ test = "exists(@dur)" "Must have dur attribute." ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id =
+    "tido-att.note.log-standalone_note_require_stem.dir-constraint-10"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:note[not(ancestor::mei:chord)]"
+    "\x{a}" ~
+    "                  "
+    sch:assert [
+      test = "exists(@stem.dir)"
+      "Must have stem.dir attribute."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id = "tido-att.note.log-no_note_dur_in_chord-constraint-11"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:note[ancestor::mei:chord]"
+    "\x{a}" ~
+    "                  "
+    sch:report [
+      test = "exists(@dur)"
+      "@dur attribute not permitted on notes within a chord."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id = "tido-att.note.log-no_note_stem.dir_in_chord-constraint-12"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:note[ancestor::mei:chord]"
+    "\x{a}" ~
+    "                  "
+    sch:report [
+      test = "@stem.dir"
+      "@stem.dir not permitted on notes within a chord."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tido_att.note.vis.attributes =
+  tido_att.staffloc.attributes,
+  tido_att.stems.attributes,
+  tido_att.typography.attributes
+tido_att.octave.attributes = tido_att.octave.attribute.oct
+tido_att.octave.attribute.oct =
+  
+  ## Captures written octave information.
+  attribute oct { tido_data.OCTAVE }?
+tido_att.ornam.log.attributes =
+  tido_att.controlevent.attributes,
+  tido_att.startendid.attributes,
+  tido_att.timestamp2.musical.attributes
+tido_att.ornam.vis.attributes = tido_att.placement.attributes
+tido_att.pitch.attributes = tido_att.pitch.attribute.pname
+tido_att.pitch.attribute.pname =
+  
+  ## Contains a written pitch name.
+  attribute pname { tido_data.PITCHNAME }?
+tido_att.pitched.attributes =
+  tido_att.pitch.attributes, tido_att.octave.attributes
+tido_att.placement.attributes = tido_att.placement.attribute.place
+tido_att.placement.attribute.place =
+  
+  ## Captures the placement of the item with respect to the staff with which it is associated.
+  attribute place { tido_data.STAFFREL }?
+tido_att.quantity.attributes = tido_att.quantity.attribute.quantity
+tido_att.quantity.attribute.quantity =
+  
+  ## Numeric value capturing a measurement or count. Can only be interpreted in combination with the unit or currency attribute.
+  attribute quantity { xsd:decimal }?
+tido_att.rest.log.attributes =
+  tido_att.duration.musical.req.attributes,
+  tido_att.augmentdots.attributes,
+  tido_att.event.attributes
+tido_att.rest.vis.attributes =
+  tido_att.staffloc.attributes, tido_att.typography.attributes
+tido_att.slashcount.attributes = tido_att.slashcount.attribute.slash
+tido_att.slashcount.attribute.slash =
+  
+  ## Indicates the number of slashes present.
+  attribute slash { tido_data.SLASH }?
+tido_att.space.log.attributes =
+  tido_att.duration.musical.req.attributes,
+  tido_att.augmentdots.attributes,
+  tido_att.event.attributes
+tido_att.staffDef.vis.attributes =
+  tido_att.staffDef.vis.attribute.grid.show,
+  tido_att.staffDef.vis.attribute.layerscheme,
+  tido_att.staffDef.vis.attribute.lines,
+  tido_att.staffDef.vis.attribute.lines.color,
+  tido_att.staffDef.vis.attribute.lines.visible,
+  tido_att.staffDef.vis.attribute.spacing
+tido_att.staffDef.vis.attribute.grid.show =
+  
+  ## Determines whether to display guitar chord grids.
+  attribute grid.show { tido_data.BOOLEAN }?
+tido_att.staffDef.vis.attribute.layerscheme =
+  
+  ## Indicates the number of layers and their stem directions.
+  attribute layerscheme { tido_data.LAYERSCHEME }?
+tido_att.staffDef.vis.attribute.lines =
+  
+  ## Indicates the number of staff lines.
+  attribute lines { xsd:positiveInteger }?
+tido_att.staffDef.vis.attribute.lines.color =
+  
+  ## Captures the colors of the staff lines. The value is structured; that is, it should have the same number of space-separated RGB values as the number of lines indicated by the lines attribute. A line can be made invisible by assigning it the same RGB value as the background, usually white.
+  attribute lines.color {
+    list { tido_data.COLOR+ }
+  }?
+tido_att.staffDef.vis.attribute.lines.visible =
+  
+  ## Records whether all staff lines are visible.
+  attribute lines.visible { tido_data.BOOLEAN }?
+tido_att.staffDef.vis.attribute.spacing =
+  
+  ## Records the absolute distance (as opposed to the relative distances recorded in <scoreDef> elements) between this staff and the preceding one in the same system. This value is meaningless for the first staff in a system since the spacing.system attribute indicates the spacing between systems.
+  attribute spacing { tido_data.MEASUREMENT }?
+tido_att.staffgroupingsym.attributes =
+  tido_att.staffgroupingsym.attribute.symbol
+tido_att.staffgroupingsym.attribute.symbol =
+  
+  ## Specifies the symbol used to group a set of staves.
+  attribute symbol {
+    
+    ## Curved symbol, i.e., {.
+    "brace"
+    | 
+      ## Square symbol, i.e., [, but with curved/angled top and bottom segments.
+      "bracket"
+    | 
+      ## Square symbol, i.e., [, with horizontal top and bottom segments.
+      "bracketsq"
+    | 
+      ## Line symbol, i.e., |, (wide) line without top and bottom curved/horizontal segments.
+      "line"
+    | 
+      ## Grouping symbol missing.
+      "none"
+  }?
+tido_att.staffGrp.vis.attributes =
+  tido_att.staffgroupingsym.attributes,
+  tido_att.staffGrp.vis.attribute.barthru
+tido_att.staffGrp.vis.attribute.barthru =
+  
+  ## Indicates whether bar lines go across the space between staves (true) or are only drawn across the lines of each staff (false).
+  attribute barthru { tido_data.BOOLEAN }?
+tido_att.staffident.attributes = tido_att.staffident.attribute.staff
+tido_att.staffident.attribute.staff =
+  
+  ## Signifies the staff on which a notated event occurs or to which a control event applies. Mandatory when applicable.
+  attribute staff {
+    list { xsd:positiveInteger+ }
+  }?
+tido_att.staffloc.attributes = tido_att.staffloc.attribute.loc
+tido_att.staffloc.attribute.loc =
+  
+  ## Holds the staff location of the feature.
+  attribute loc { tido_data.STAFFLOC }?
+tido_att.startendid.attributes =
+  tido_att.startid.attributes, tido_att.startendid.attribute.endid
+tido_att.startendid.attribute.endid =
+  
+  ## Indicates the final element in a sequence of events to which the feature applies.
+  attribute endid { tido_data.URI.local }?
+sch:pattern [
+  id = "tido-att.startendid-endid-check_endidTarget-constraint-13"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "@endid"
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      role = "warning"
+      test = "not(normalize-space(.) eq '')"
+      "@endid attribute has\x{a}" ~
+      "                  no content."
+    ]
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      role = "warning"
+      test =
+        "every $i in tokenize(., '\s+') satisfies substring($i,2)=//mei:*/@xml:id"
+      "The value in @endid must correspond to the @xml:id attribute of an\x{a}" ~
+      "                  element."
+    ]
+    "\x{a}" ~
+    "              "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tido_att.startid.attributes = tido_att.startid.attribute.startid
+tido_att.startid.attribute.startid =
+  
+  ## Holds a reference to the first element in a sequence of events to which the feature applies.
+  attribute startid { tido_data.URI.local }?
+sch:pattern [
+  id = "tido-att.startid-startid-check_startidTarget-constraint-14"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "@startid"
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      role = "warning"
+      test = "not(normalize-space(.) eq '')"
+      "@startid attribute\x{a}" ~
+      "                  has no content."
+    ]
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      role = "warning"
+      test =
+        "every $i in tokenize(., '\s+') satisfies substring($i,2)=//mei:*/@xml:id"
+      "The value in @startid must correspond to the @xml:id attribute of an\x{a}" ~
+      "                  element."
+    ]
+    "\x{a}" ~
+    "              "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tido_att.stems.attributes =
+  tido_att.stems.attribute.stem.dir,
+  tido_att.stems.attribute.stem.len,
+  tido_att.stems.attribute.stem.mod,
+  tido_att.stems.attribute.stem.pos,
+  tido_att.stems.attribute.stem.x,
+  tido_att.stems.attribute.stem.y
+tido_att.stems.attribute.stem.dir =
+  
+  ## Describes the direction of a stem.
+  attribute stem.dir { tido_data.STEMDIRECTION }?
+tido_att.stems.attribute.stem.len =
+  
+  ## Encodes the stem length.
+  attribute stem.len { tido_data.MEASUREMENT }?
+tido_att.stems.attribute.stem.mod =
+  
+  ## Encodes any stem "modifiers"; that is, symbols rendered on the stem, such as tremolo or Sprechstimme indicators.
+  attribute stem.mod { tido_data.STEMMODIFIER }?
+tido_att.stems.attribute.stem.pos =
+  
+  ## Records the position of the stem in relation to the note head(s).
+  attribute stem.pos { tido_data.STEMPOSITION }?
+tido_att.stems.attribute.stem.x =
+  
+  ## Records the output x coordinate of the stem's attachment point.
+  attribute stem.x { xsd:decimal }?
+tido_att.stems.attribute.stem.y =
+  
+  ## Records the output y coordinate of the stem's attachment point.
+  attribute stem.y { xsd:decimal }?
+tido_att.syltext.attributes = tido_att.syltext.attribute.syl
+tido_att.syltext.attribute.syl =
+  
+  ## Holds an associated sung text syllable.
+  attribute syl { xsd:string }?
+tido_att.timestamp.musical.attributes =
+  tido_att.timestamp.musical.attribute.tstamp
+tido_att.timestamp.musical.attribute.tstamp =
+  
+  ## Encodes the onset time in terms of musical time, i.e., beats[.fractional_beat_part].
+  attribute tstamp { tido_data.BEAT }?
+tido_att.timestamp2.musical.attributes =
+  tido_att.timestamp2.musical.attribute.tstamp2
+tido_att.timestamp2.musical.attribute.tstamp2 =
+  
+  ## Encodes the ending point of an event in terms of musical time, i.e., a count of measures plus a beat location.
+  attribute tstamp2 { tido_data.MEASUREBEAT }?
+tido_att.typed.attributes =
+  tido_att.typed.attribute.type, tido_att.typed.attribute.subtype
+tido_att.typed.attribute.type =
+  
+  ## Characterizes the element in some sense, using any convenient classification scheme or typology.
+  attribute type { xsd:NMTOKEN }?
+tido_att.typed.attribute.subtype =
+  
+  ## Provide any sub-classification for the element, additional to that given by its type attribute.
+  attribute subtype { xsd:NMTOKEN }?
+sch:pattern [
+  id = "tido-att.typed-subtype-When_subtype-constraint-15"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:*[@subtype]"
+    "\x{a}" ~
+    "                "
+    sch:assert [
+      test = "@type"
+      "An element with a subtype attribute must have a type\x{a}" ~
+      "                  attribute."
+    ]
+    "\x{a}" ~
+    "              "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tido_att.typography.attributes =
+  tido_att.typography.attribute.fontfam,
+  tido_att.typography.attribute.fontname,
+  tido_att.typography.attribute.fontsize,
+  tido_att.typography.attribute.fontstyle,
+  tido_att.typography.attribute.fontweight
+tido_att.typography.attribute.fontfam =
+  
+  ## Contains the name of a font-family.
+  attribute fontfam { tido_data.FONTFAMILY }?
+tido_att.typography.attribute.fontname =
+  
+  ## Holds the name of a font.
+  attribute fontname { tido_data.FONTNAME }?
+tido_att.typography.attribute.fontsize =
+  
+  ## Indicates the size of a font in printers' points, i.e., 1/72nd of an inch.
+  attribute fontsize {
+    xsd:decimal { minInclusive = "0.1" }
+  }?
+tido_att.typography.attribute.fontstyle =
+  
+  ## Records the style of a font, i.e, italic, oblique, or normal.
+  attribute fontstyle { tido_data.FONTSTYLE }?
+tido_att.typography.attribute.fontweight =
+  
+  ## Used to indicate bold type.
+  attribute fontweight { tido_data.FONTWEIGHT }?
+tido_model.addressLike = tido_address
+tido_model.addressLike_alternation = tido_address
+tido_model.addressLike_sequence = tido_address
+tido_model.addressLike_sequenceOptional = tido_address?
+tido_model.addressLike_sequenceOptionalRepeatable = tido_address*
+tido_model.addressLike_sequenceRepeatable = tido_address+
+tido_model.annotLike = notAllowed
+tido_model.annotLike_alternation = notAllowed
+tido_model.annotLike_sequence = empty
+tido_model.annotLike_sequenceOptional = empty
+tido_model.annotLike_sequenceOptionalRepeatable = empty
+tido_model.annotLike_sequenceRepeatable = notAllowed
+tido_model.biblLike = notAllowed
+tido_model.biblLike_alternation = notAllowed
+tido_model.biblLike_sequence = empty
+tido_model.biblLike_sequenceOptional = empty
+tido_model.biblLike_sequenceOptionalRepeatable = empty
+tido_model.biblLike_sequenceRepeatable = notAllowed
+tido_model.controleventLike =
+  tido_dynam | tido_ornam | tido_model.controleventLike.cmn
+tido_model.dateLike = notAllowed
+tido_model.dateLike_alternation = notAllowed
+tido_model.dateLike_sequence = empty
+tido_model.dateLike_sequenceOptional = empty
+tido_model.dateLike_sequenceOptionalRepeatable = empty
+tido_model.dateLike_sequenceRepeatable = notAllowed
+tido_model.dimLike = notAllowed
+tido_model.editionLike = notAllowed
+tido_model.editorialLike = notAllowed
+tido_model.editorialLike_alternation = notAllowed
+tido_model.editorialLike_sequence = empty
+tido_model.editorialLike_sequenceOptional = empty
+tido_model.editorialLike_sequenceOptionalRepeatable = empty
+tido_model.editorialLike_sequenceRepeatable = notAllowed
+tido_model.endingLike = tido_ending
+tido_model.eventLike =
+  tido_model.keySigLike
+  | tido_model.meterSigLike
+  | tido_chord
+  | tido_clef
+  | tido_note
+  | tido_rest
+  | tido_space
+  | tido_model.eventLike.cmn
+tido_model.identifierLike = notAllowed
+tido_model.identifierLike_alternation = notAllowed
+tido_model.identifierLike_sequence = empty
+tido_model.identifierLike_sequenceOptional = empty
+tido_model.identifierLike_sequenceOptionalRepeatable = empty
+tido_model.identifierLike_sequenceRepeatable = notAllowed
+tido_model.incipLike = notAllowed
+tido_model.instrDefLike = notAllowed
+tido_model.keyAccidLike = notAllowed
+tido_model.keySigLike = tido_keySig
+tido_model.keySigLike_alternation = tido_keySig
+tido_model.keySigLike_sequence = tido_keySig
+tido_model.keySigLike_sequenceOptional = tido_keySig?
+tido_model.keySigLike_sequenceOptionalRepeatable = tido_keySig*
+tido_model.keySigLike_sequenceRepeatable = tido_keySig+
+tido_model.labelLike = notAllowed
+tido_model.layerDefLike = notAllowed
+tido_model.layerLike = tido_layer
+tido_model.layerPart = tido_model.eventLike | tido_model.layerPart.cmn
+tido_model.lbLike = notAllowed
+tido_model.lbLike_alternation = notAllowed
+tido_model.lbLike_sequence = empty
+tido_model.lbLike_sequenceOptional = empty
+tido_model.lbLike_sequenceOptionalRepeatable = empty
+tido_model.lbLike_sequenceRepeatable = notAllowed
+tido_model.mdivLike = tido_mdiv
+tido_model.measurementLike = tido_model.numLike
+tido_model.measurementLike_alternation = tido_model.numLike_alternation
+tido_model.measurementLike_sequence = tido_model.numLike_sequence
+tido_model.measurementLike_sequenceOptional =
+  tido_model.numLike_sequenceOptional?
+tido_model.measurementLike_sequenceOptionalRepeatable =
+  tido_model.numLike_sequenceOptionalRepeatable*
+tido_model.measurementLike_sequenceRepeatable =
+  tido_model.numLike_sequenceRepeatable+
+tido_model.meterSigLike = tido_meterSig
+tido_model.meterSigLike_alternation = tido_meterSig
+tido_model.meterSigLike_sequence = tido_meterSig
+tido_model.meterSigLike_sequenceOptional = tido_meterSig?
+tido_model.meterSigLike_sequenceOptionalRepeatable = tido_meterSig*
+tido_model.meterSigLike_sequenceRepeatable = tido_meterSig+
+tido_model.milestoneLike.music = tido_model.pbLike
+tido_model.nameLike =
+  tido_model.nameLike.agent | tido_model.nameLike.place
+tido_model.nameLike_alternation =
+  tido_model.nameLike.agent_alternation
+  | tido_model.nameLike.place_alternation
+tido_model.nameLike_sequence =
+  tido_model.nameLike.agent_sequence, tido_model.nameLike.place_sequence
+tido_model.nameLike_sequenceOptional =
+  tido_model.nameLike.agent_sequenceOptional?,
+  tido_model.nameLike.place_sequenceOptional?
+tido_model.nameLike_sequenceOptionalRepeatable =
+  tido_model.nameLike.agent_sequenceOptionalRepeatable*,
+  tido_model.nameLike.place_sequenceOptionalRepeatable*
+tido_model.nameLike_sequenceRepeatable =
+  tido_model.nameLike.agent_sequenceRepeatable+,
+  tido_model.nameLike.place_sequenceRepeatable+
+tido_model.noteModifierLike = tido_accid
+tido_model.numLike = notAllowed
+tido_model.numLike_alternation = notAllowed
+tido_model.numLike_sequence = empty
+tido_model.numLike_sequenceOptional = empty
+tido_model.numLike_sequenceOptionalRepeatable = empty
+tido_model.numLike_sequenceRepeatable = notAllowed
+tido_model.paracontentPart = tido_model.textphraseLike
+tido_model.partsLike = notAllowed
+tido_model.pbLike = notAllowed
+tido_model.pbLike_alternation = notAllowed
+tido_model.pbLike_sequence = empty
+tido_model.pbLike_sequenceOptional = empty
+tido_model.pbLike_sequenceOptionalRepeatable = empty
+tido_model.pbLike_sequenceRepeatable = notAllowed
+tido_model.pLike = tido_p
+tido_model.rendLike = tido_rend
+tido_model.rendLike_alternation = tido_rend
+tido_model.rendLike_sequence = tido_rend
+tido_model.rendLike_sequenceOptional = tido_rend?
+tido_model.rendLike_sequenceOptionalRepeatable = tido_rend*
+tido_model.rendLike_sequenceRepeatable = tido_rend+
+tido_model.repositoryLike = notAllowed
+tido_model.repositoryLike_alternation = notAllowed
+tido_model.repositoryLike_sequence = empty
+tido_model.repositoryLike_sequenceOptional = empty
+tido_model.repositoryLike_sequenceOptionalRepeatable = empty
+tido_model.repositoryLike_sequenceRepeatable = notAllowed
+tido_model.resourceLike = notAllowed
+tido_model.respLike = tido_model.respLikePart | tido_respStmt
+tido_model.respLikePart = notAllowed
+tido_model.scoreDefLike = tido_scoreDef
+tido_model.scoreLike = tido_score
+tido_model.scorePart =
+  tido_model.endingLike
+  | tido_model.scoreDefLike
+  | tido_model.sectionLike
+  | tido_model.staffDefLike
+tido_model.sectionLike = tido_section
+tido_model.sectionPart =
+  tido_model.endingLike
+  | tido_model.scoreDefLike
+  | tido_model.sectionLike
+  | tido_model.staffDefLike
+  | tido_model.sectionPart.cmn
+tido_model.staffDefLike = tido_staffDef
+tido_model.staffDefPart =
+  tido_model.keySigLike | tido_model.meterSigLike | tido_clef
+tido_model.staffGrpLike = tido_staffGrp
+tido_model.staffLike = tido_staff
+tido_model.staffPart = tido_model.layerLike | tido_model.ossiaLike
+tido_model.textcomponentLike = tido_model.pLike
+tido_model.textphraseLike =
+  tido_model.pbLike | tido_model.textphraseLike.limited
+tido_model.textphraseLike.limited =
+  tido_model.addressLike
+  | tido_model.annotLike
+  | tido_model.biblLike
+  | tido_model.dateLike
+  | tido_model.editorialLike
+  | tido_model.identifierLike
+  | tido_model.lbLike
+  | tido_model.measurementLike
+  | tido_model.nameLike
+  | tido_model.rendLike
+  | tido_model.titleLike
+  | tido_model.nameLike.label
+  | tido_model.locrefLike
+tido_model.textphraseLike.limited_alternation =
+  tido_model.addressLike_alternation
+  | tido_model.annotLike_alternation
+  | tido_model.biblLike_alternation
+  | tido_model.dateLike_alternation
+  | tido_model.editorialLike_alternation
+  | tido_model.identifierLike_alternation
+  | tido_model.lbLike_alternation
+  | tido_model.measurementLike_alternation
+  | tido_model.nameLike_alternation
+  | tido_model.rendLike_alternation
+  | tido_model.titleLike_alternation
+  | tido_model.nameLike.label_alternation
+  | tido_model.locrefLike_alternation
+tido_model.textphraseLike.limited_sequence =
+  tido_model.addressLike_sequence,
+  tido_model.annotLike_sequence,
+  tido_model.biblLike_sequence,
+  tido_model.dateLike_sequence,
+  tido_model.editorialLike_sequence,
+  tido_model.identifierLike_sequence,
+  tido_model.lbLike_sequence,
+  tido_model.measurementLike_sequence,
+  tido_model.nameLike_sequence,
+  tido_model.rendLike_sequence,
+  tido_model.titleLike_sequence,
+  tido_model.nameLike.label_sequence,
+  tido_model.locrefLike_sequence
+tido_model.textphraseLike.limited_sequenceOptional =
+  tido_model.addressLike_sequenceOptional?,
+  tido_model.annotLike_sequenceOptional?,
+  tido_model.biblLike_sequenceOptional?,
+  tido_model.dateLike_sequenceOptional?,
+  tido_model.editorialLike_sequenceOptional?,
+  tido_model.identifierLike_sequenceOptional?,
+  tido_model.lbLike_sequenceOptional?,
+  tido_model.measurementLike_sequenceOptional?,
+  tido_model.nameLike_sequenceOptional?,
+  tido_model.rendLike_sequenceOptional?,
+  tido_model.titleLike_sequenceOptional?,
+  tido_model.nameLike.label_sequenceOptional?,
+  tido_model.locrefLike_sequenceOptional?
+tido_model.textphraseLike.limited_sequenceOptionalRepeatable =
+  tido_model.addressLike_sequenceOptionalRepeatable*,
+  tido_model.annotLike_sequenceOptionalRepeatable*,
+  tido_model.biblLike_sequenceOptionalRepeatable*,
+  tido_model.dateLike_sequenceOptionalRepeatable*,
+  tido_model.editorialLike_sequenceOptionalRepeatable*,
+  tido_model.identifierLike_sequenceOptionalRepeatable*,
+  tido_model.lbLike_sequenceOptionalRepeatable*,
+  tido_model.measurementLike_sequenceOptionalRepeatable*,
+  tido_model.nameLike_sequenceOptionalRepeatable*,
+  tido_model.rendLike_sequenceOptionalRepeatable*,
+  tido_model.titleLike_sequenceOptionalRepeatable*,
+  tido_model.nameLike.label_sequenceOptionalRepeatable*,
+  tido_model.locrefLike_sequenceOptionalRepeatable*
+tido_model.textphraseLike.limited_sequenceRepeatable =
+  tido_model.addressLike_sequenceRepeatable+,
+  tido_model.annotLike_sequenceRepeatable+,
+  tido_model.biblLike_sequenceRepeatable+,
+  tido_model.dateLike_sequenceRepeatable+,
+  tido_model.editorialLike_sequenceRepeatable+,
+  tido_model.identifierLike_sequenceRepeatable+,
+  tido_model.lbLike_sequenceRepeatable+,
+  tido_model.measurementLike_sequenceRepeatable+,
+  tido_model.nameLike_sequenceRepeatable+,
+  tido_model.rendLike_sequenceRepeatable+,
+  tido_model.titleLike_sequenceRepeatable+,
+  tido_model.nameLike.label_sequenceRepeatable+,
+  tido_model.locrefLike_sequenceRepeatable+
+tido_model.titleLike = mei_title
+tido_model.titleLike_alternation = mei_title
+tido_model.titleLike_sequence = mei_title
+tido_model.titleLike_sequenceOptional = mei_title?
+tido_model.titleLike_sequenceOptionalRepeatable = mei_title*
+tido_model.titleLike_sequenceRepeatable = mei_title+
+tido_accid =
+  
+  ## (accidental) – Records a temporary alteration to the pitch of a note.
+  element accid {
+    empty,
+    tido_att.common.attributes,
+    tido_att.accid.log.attributes,
+    empty
+  }
+tido_address =
+  
+  ## Contains a postal address, for example of a publisher, an organization, or an individual.
+  element address { tido_addrLine+, tido_att.common.attributes, empty }
+tido_addrLine =
+  
+  ## (address line) – Single line of a postal address.
+  element addrLine {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_body =
+  
+  ## Contains the whole of a single musical text, excluding any front or back matter.
+  element body {
+    tido_model.mdivLike+, tido_att.common.attributes, empty
+  }
+tido_chord =
+  
+  ## A simultaneous sounding of two or more notes in the same layer *with the same duration*.
+  element chord {
+    (tido_note)*,
+    tido_att.common.attributes,
+    tido_att.chord.log.attributes,
+    tido_att.chord.vis.attributes,
+    empty
+  }
+tido_clef =
+  
+  ## Indication of the exact location of a particular note on the staff and, therefore, the other notes as well.
+  element clef {
+    empty
+    >> sch:pattern [
+         id = "tido-clef-Clef_position_lines-constraint-16"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:clef[ancestor::mei:staffDef[@lines]]"
+           "\x{a}" ~
+           "               "
+           sch:let [
+             name = "thisstaff"
+             value = "ancestor::mei:staffDef/@n"
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test =
+               "number(@line) <=               number(ancestor::mei:staffDef[@n=$thisstaff and @lines][1]/@lines)"
+             "The clef position must be less than or equal to the number of lines on the\x{a}" ~
+             "              staff."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id = "tido-clef-Clef_position_nolines-constraint-17"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:clef[ancestor::mei:staffDef[not(@lines)]]"
+           "\x{a}" ~
+           "               "
+           sch:let [
+             name = "thisstaff"
+             value = "ancestor::mei:staffDef/@n"
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test =
+               "number(@line) <=               number(preceding::mei:staffDef[@n=$thisstaff and @lines][1]/@lines)"
+             "The clef position must be less than or equal to the number of lines on the\x{a}" ~
+             "              staff."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.event.attributes,
+    tido_att.clef.log.attributes,
+    empty
+  }
+tido_dynam =
+  
+  ## (dynamic) – Indication of the volume of a note, phrase, or section of music.
+  element dynam {
+    ((text | tido_model.textphraseLike.limited)*)
+    >> sch:pattern [
+         id =
+           "tido-dynam-dynam_start-type_attributes_required-constraint-18"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:dynam"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@startid or @tstamp or @tstamp.ges or @tstamp.real"
+             " Must have one of\x{a}" ~
+             "              the attributes: startid, tstamp, tstamp.ges or tstamp.real"
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id = "tido-dynam-dynam_end-type_attributes-constraint-19"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:dynam[@val2]"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@dur or @dur.ges or @endid or @tstamp2"
+             "When @val2 is present, either\x{a}" ~
+             "              @dur, @dur.ges, @endid, or @tstamp2 must also be present."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.dynam.log.attributes,
+    tido_att.dynam.vis.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_ending =
+  
+  ## Alternative ending for a repeated passage of music; i.e., prima volta, seconda volta, etc.
+  element ending {
+    (tido_model.milestoneLike.music
+     | tido_model.annotLike
+     | tido_model.sectionPart)*,
+    tido_att.common.attributes,
+    tido_att.ending.anl.attributes,
+    tido_att.ending.ges.attributes,
+    tido_att.ending.log.attributes,
+    tido_att.ending.vis.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_keySig =
+  
+  ## (key signature) – Written key signature.
+  element keySig {
+    (tido_model.keyAccidLike*)
+    >> sch:pattern [
+         id = "tido-keySig-key_att_pair-constraint-20"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:keySig"
+           "\x{a}" ~
+           "                  "
+           sch:report [
+             test = "not(@pname and @mode)"
+             " Key signature must be complete (both\x{a}" ~
+             "                    @pname and @mode are required)."
+           ]
+           "\x{a}" ~
+           "                "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.keySig.log.attributes,
+    empty
+  }
+tido_layer =
+  
+  ## An independent stream of events on a staff.
+  element layer {
+    (tido_model.milestoneLike.music
+     | tido_model.annotLike
+     | tido_model.layerPart)*,
+    tido_att.commonPart.attributes,
+    
+    ## provides a name or number designation for an element. While the value need not be unique, it is required to be a single token. Must be an integer.
+    attribute n { xsd:positiveInteger },
+    empty
+  }
+tido_mdiv =
+  
+  ## (musical division) – Contains a subdivision of the body of a musical text.
+  element mdiv {
+    ((tido_model.scoreLike?, tido_model.partsLike?)
+     | tido_model.mdivLike*),
+    tido_att.common.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_mei =
+  
+  ## Contains a single MEI-conformant document, consisting of an MEI header and a musical text, either in isolation or as part of an meiCorpus element.
+  element mei {
+    tido_meiHead,
+    tido_music
+    >> sch:pattern [
+         id = "tido-mei-Check_staff-constraint-21"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:*[@staff]"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test =
+               "every $i in tokenize(@staff, '\s+') satisfies $i=//mei:staffDef/@n"
+             "The values in @staff must correspond to @n attribute of a staffDef\x{a}" ~
+             "              element."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.meiversion.attributes,
+    tido_att.id.attributes,
+    empty
+  }
+tido_music =
+  
+  ## Contains a single musical text of any kind, whether unitary or composite, for example, an etude, opera, song cycle, symphony, or anthology of piano solos.
+  element music {
+    tido_model.resourceLike*,
+    tido_macro.musicPart,
+    tido_att.common.attributes,
+    tido_att.meiversion.attributes,
+    empty
+  }
+tido_note =
+  
+  ## A single pitched event. 
+  element note {
+    (tido_model.noteModifierLike)*,
+    tido_att.common.attributes,
+    tido_att.note.log.attributes,
+    tido_att.note.vis.attributes,
+    tido_att.note.ges.attributes,
+    empty
+  }
+tido_ornam =
+  
+  ## An element indicating an ornament that is not a mordent, turn, or trill. 
+  element ornam {
+    ((text | tido_model.textphraseLike.limited)*)
+    >> sch:pattern [
+         id =
+           "tido-ornam-ornam_start-type_attributes_required-constraint-22"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:ornam"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@startid or @tstamp or @tstamp.ges or @tstamp.real"
+             "Must have one of\x{a}" ~
+             "              the attributes: startid, tstamp, tstamp.ges or tstamp.real"
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.ornam.log.attributes,
+    tido_att.ornam.vis.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_p =
+  
+  ## (paragraph) – One or more text phrases that form a logical prose passage.
+  element p {
+    (text | tido_model.paracontentPart)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_rend =
+  
+  ## (render) – A formatting element indicating special visual rendering, e.g., bold or italicized, of a text word or phrase.
+  element rend {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    tido_att.typography.attributes,
+    
+    ## Used to extend the values of the rend attribute.
+    attribute altrend {
+      list { xsd:NMTOKEN+ }
+    }?,
+    
+    ## Captures the appearance of the element's contents using MEI-defined descriptors.
+    attribute rend {
+      list { tido_data.TEXTRENDITION+ }
+    }?,
+    
+    ## A positive value for rotation rotates the text in a counter-clockwise fashion, while negative values produce clockwise rotation.
+    attribute rotation { tido_data.DEGREES }?,
+    
+    ## Specifies the vertical position of the element content relative to the surrounding text.
+    attribute valign {
+      
+      ## Aligns the top of the content with the top of the surrounding text.
+      "top"
+      | 
+        ## Aligns the middle of the content with the middle of the surrounding text.
+        "middle"
+      | 
+        ## Aligns the bottom of the content with the bottom of the surrounding text.
+        "bottom"
+      | 
+        ## Aligns the baseline of the content with the baseline of the surrounding text.
+        "baseline"
+    }?,
+    empty
+  }
+tido_respStmt =
+  
+  ## (responsibility statement) – Names one or more individuals, groups, or in rare cases, mechanical processes, responsible for creation or realization of the intellectual or artistic content.
+  element respStmt {
+    (tido_model.nameLike)*, tido_att.common.attributes, empty
+  }
+tido_rest =
+  
+  ## A non-sounding event found in the source being transcribed.
+  element rest {
+    empty
+    >> sch:pattern [
+         id = "tido-rest-Check_restline-constraint-23"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:rest[@line]"
+           "\x{a}" ~
+           "               "
+           sch:let [
+             name = "thisstaff"
+             value = "ancestor::mei:staff/@n"
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test =
+               "number(@line) <=               number(preceding::mei:staffDef[@n=$thisstaff and @lines][1]/@lines)"
+             "The value of @line must be less than or equal to the number of lines on the\x{a}" ~
+             "              staff."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.rest.log.attributes,
+    tido_att.rest.vis.attributes,
+    empty
+  }
+tido_score =
+  
+  ## Full score view of the musical content.
+  element score {
+    (tido_model.milestoneLike.music
+     | tido_model.annotLike
+     | tido_model.scorePart)*,
+    tido_att.common.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_scoreDef =
+  
+  ## (score definition) – Container for score meta-information.
+  element scoreDef {
+    tido_model.keySigLike?,
+    tido_model.meterSigLike?,
+    tido_model.staffGrpLike?,
+    tido_att.common.attributes,
+    empty
+  }
+tido_section =
+  
+  ## Segment of music data.
+  element section {
+    ((tido_model.milestoneLike.music
+      | tido_model.annotLike
+      | tido_model.sectionPart)*)
+    >> sch:pattern [
+         id = "tido-section-Check_sectionexpansion-constraint-24"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:section[mei:expansion]"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test =
+               "descendant::mei:section|descendant::mei:ending|descendant::mei:rdg"
+             "Must have descendant section, ending, or rdg elements that can be pointed\x{a}" ~
+             "              to."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_space =
+  
+  ## A placeholder used to fill an incomplete measure, layer, etc. most often so that the combined duration of the events equals the number of beats in the measure.
+  element space {
+    empty,
+    tido_att.common.attributes,
+    tido_att.space.log.attributes,
+    empty
+  }
+tido_staff =
+  
+  ## A group of equidistant horizontal lines on which notes are placed in order to represent pitch or a grouping element for individual 'strands' of notes, rests, etc. that may or may not actually be rendered on staff lines; that is, both diastematic and non-diastematic signs.
+  element staff {
+    (tido_model.milestoneLike.music
+     | tido_model.annotLike
+     | tido_model.staffPart)*,
+    tido_att.commonPart.attributes,
+    
+    ## provides a name or number designation for an element. While the value need not be unique, it is required to be a single token. Must be an integer.
+    attribute n { xsd:positiveInteger },
+    empty
+  }
+tido_staffDef =
+  
+  ## (staff definition) – Container for staff meta-information.
+  element staffDef {
+    tido_model.labelLike*,
+    ((tido_model.instrDefLike
+      | tido_model.layerDefLike
+      | tido_model.staffDefPart)*)
+    >> sch:pattern [
+         id = "tido-staffDef-Check_staffDefn-constraint-25"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef"
+           "\x{a}" ~
+           "               "
+           sch:let [ name = "thisstaff" value = "@n" ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@n"
+             "A staffDef must have an n attribute."
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test =
+               "@lines or preceding::mei:staffDef[@n=$thisstaff and @lines]"
+             "The first\x{a}" ~
+             "              occurrence of a staff must declare the number of staff lines."
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "count(mei:clef) + count(mei:clefGrp) < 2"
+             "Only one clef or clefGrp\x{a}" ~
+             "              is permitted."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id = "tido-staffDef-Check_ancestor_staff-constraint-26"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef[ancestor::mei:staff]"
+           "\x{a}" ~
+           "               "
+           sch:let [ name = "thisstaff" value = "@n" ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "ancestor::mei:staff/@n eq $thisstaff"
+             "If a staffDef appears in a\x{a}" ~
+             "              staff, it must bear the same @n than this staff."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id = "tido-staffDef-Check_clef_position_staffDef-constraint-27"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef[@clef.line and @lines]"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "number(@clef.line) <= number(@lines)"
+             "The clef position must be\x{a}" ~
+             "              less than or equal to the number of lines on the staff."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id =
+           "tido-staffDef-Check_clef_position_staffDef_nolines-constraint-28"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef[@clef.line and not(@lines)]"
+           "\x{a}" ~
+           "               "
+           sch:let [ name = "thisstaff" value = "@n" ]
+           "\x{a}" ~
+           "               "
+           sch:let [
+             name = "stafflines"
+             value =
+               "preceding::mei:staffDef[@n=$thisstaff and @lines][1]/@lines"
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "number(@clef.line) <= number($stafflines)"
+             "The clef position must\x{a}" ~
+             "              be less than or equal to the number of lines on the staff."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id = "tido-staffDef-Check_tab_strings_lines-constraint-29"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef[@tab.strings and @lines]"
+           "\x{a}" ~
+           "               "
+           sch:let [
+             name = "countTokens"
+             value =
+               "count(tokenize(normalize-space(@tab.strings), '\s'))"
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "$countTokens = 1 or $countTokens = @lines"
+             "The tab.strings attribute\x{a}" ~
+             "              must have the same number of values as there are staff lines."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id = "tido-staffDef-Check_tab_strings_nolines-constraint-30"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef[@tab.strings and not(@lines)]"
+           "\x{a}" ~
+           "               "
+           sch:let [
+             name = "countTokens"
+             value =
+               "count(tokenize(normalize-space(@tab.strings), '\s'))"
+           ]
+           "\x{a}" ~
+           "               "
+           sch:let [ name = "thisStaff" value = "@n" ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test =
+               "$countTokens = 1 or $countTokens = preceding::mei:staffDef[@n=$thisStaff and @lines][1]/@lines"
+             "The tab.strings attribute must have the same number of values as there are staff\x{a}" ~
+             "              lines."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef[@lines.color and @lines]"
+           "\x{a}" ~
+           "              "
+           sch:let [
+             name = "countTokens"
+             value =
+               "count(tokenize(normalize-space(@lines.color), '\s'))"
+           ]
+           "\x{a}" ~
+           "              "
+           sch:assert [
+             test = "$countTokens = 1 or $countTokens = @lines"
+             "The lines.color attribute\x{a}" ~
+             "                must have either 1) a single value or 2) the same number of values as there are\x{a}" ~
+             "                staff lines."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef[@lines.color and not(@lines)]"
+           "\x{a}" ~
+           "              "
+           sch:let [
+             name = "countTokens"
+             value =
+               "count(tokenize(normalize-space(@lines.color), '\s'))"
+           ]
+           "\x{a}" ~
+           "              "
+           sch:let [ name = "thisStaff" value = "@n" ]
+           "\x{a}" ~
+           "              "
+           sch:assert [
+             test =
+               "$countTokens = 1 or $countTokens = preceding::mei:staffDef[@n=$thisStaff and @lines][1]/@lines"
+             "The lines.color attribute must have either 1) a single value or 2) the same number\x{a}" ~
+             "                of values as there are staff lines."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "          "
+       ]
+    >> sch:pattern [
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef[@ppq][ancestor::mei:scoreDef[@ppq]]"
+           "\x{a}" ~
+           "              "
+           sch:let [ name = "staffPPQ" value = "@ppq" ]
+           "\x{a}" ~
+           "              "
+           sch:let [
+             name = "scorePPQ"
+             value = "ancestor::mei:scoreDef[@ppq][1]/@ppq"
+           ]
+           "\x{a}" ~
+           "              "
+           sch:assert [
+             test = "($scorePPQ mod $staffPPQ) = 0"
+             "The value of ppq must be a factor of\x{a}" ~
+             "                the value of ppq on an ancestor scoreDef."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "          "
+       ]
+    >> sch:pattern [
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffDef[@ppq][preceding::mei:scoreDef[@ppq]]"
+           "\x{a}" ~
+           "              "
+           sch:let [ name = "staffPPQ" value = "@ppq" ]
+           "\x{a}" ~
+           "              "
+           sch:let [
+             name = "scorePPQ"
+             value = "preceding::mei:scoreDef[@ppq][1]/@ppq"
+           ]
+           "\x{a}" ~
+           "              "
+           sch:assert [
+             test = "($scorePPQ mod $staffPPQ) = 0"
+             "The value of ppq must be a factor of\x{a}" ~
+             "                the value of ppq on a preceding scoreDef."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "          "
+       ],
+    tido_att.commonPart.attributes,
+    tido_att.staffDef.vis.attributes,
+    
+    ## provides a name or number designation for an element. While the value need not be unique, it is required to be a single token. Must be an integer.
+    attribute n { xsd:positiveInteger },
+    empty
+  }
+tido_staffGrp =
+  
+  ## (staff group) – A group of bracketed or braced staves.
+  element staffGrp {
+    tido_model.labelLike*,
+    tido_model.instrDefLike*,
+    ((tido_model.staffGrpLike | tido_model.staffDefLike)+)
+    >> sch:pattern [
+         id =
+           "tido-staffGrp-Check_staffGrp_unique_staff_n_values-constraint-35"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:staffGrp"
+           "\x{a}" ~
+           "               "
+           sch:let [
+             name = "countstaves"
+             value = "count(descendant::mei:staffDef)"
+           ]
+           "\x{a}" ~
+           "               "
+           sch:let [
+             name = "countuniqstaves"
+             value =
+               "count(distinct-values(descendant::mei:staffDef/@n))"
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "$countstaves eq $countuniqstaves"
+             "Each staffDef must have a unique\x{a}" ~
+             "              value for the n attribute."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.staffGrp.vis.attributes,
+    empty
+  }
+mei_title =
+  
+  ## Title of a bibliographic entity.
+  element title {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    
+    ## Indicates the bibliographic level for a title.
+    attribute level {
+      
+      ## Analyzed component, such as an article or chapter, within a larger bibliographic entity.
+      "a"
+      | 
+        ## Monograph.
+        "m"
+      | 
+        ## Journal.
+        "j"
+      | 
+        ## Series.
+        "s"
+      | 
+        ## Unpublished (including theses and dissertations unless published by a commercial press).
+        "u"
+    }?,
+    
+    ## Characterizes the element in some sense, using any convenient classification scheme or typology.
+    ## Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternative; 5] translated; 6] uniform
+    attribute type {
+      
+      ## Main title.
+      "main"
+      | 
+        ## Subtitle or title of part.
+        "subordinate"
+      | 
+        ## Abbreviated form of title.
+        "abbreviated"
+      | 
+        ## Alternate title by which the item is also known.
+        "alternative"
+      | 
+        ## Translated form of title.
+        "translated"
+      | 
+        ## Collective title.
+        "uniform"
+      | xsd:NMTOKEN
+    }?,
+    
+    ## Provide any sub-classification for the element, additional to that given by its type attribute.
+    attribute subtype { xsd:NMTOKEN }?,
+    empty
+  }
+tido_att.regularmethod.attributes =
+  tido_att.regularmethod.attribute.method
+tido_att.regularmethod.attribute.method =
+  
+  ## Indicates the method employed to mark corrections and normalizations.
+  attribute method {
+    
+    ## Corrections and normalizations made silently.
+    "silent"
+    | 
+      ## Corrections and normalizations indicated using elements.
+      "tags"
+  }?
+tido_model.editorialDeclPart =
+  tido_correction
+  | tido_interpretation
+  | tido_normalization
+  | tido_segmentation
+  | tido_stdVals
+tido_model.encodingPart_sequenceOptional =
+  tido_appInfo?,
+  tido_editorialDecl?,
+  tido_projectDesc?,
+  tido_samplingDecl?
+tido_model.frontPart = notAllowed
+tido_model.headerPart_sequenceOptional =
+  tido_encodingDesc?, tido_workDesc?
+tido_model.physDescPart =
+  tido_model.frontPart
+  | tido_captureMode
+  | tido_carrierForm
+  | tido_condition
+  | tido_dimensions
+  | tido_exhibHist
+  | tido_fileChar
+  | tido_fingerprint
+  | tido_handList
+  | tido_inscription
+  | tido_perfDuration
+  | tido_physMedium
+  | tido_plateNum
+  | tido_playingSpeed
+  | tido_scoreFormat
+  | tido_soundChan
+  | tido_specRepro
+  | tido_trackConfig
+  | tido_treatHist
+  | tido_treatSched
+  | tido_watermark
+tido_model.pubStmtPart =
+  tido_model.addressLike
+  | tido_model.dateLike
+  | tido_model.identifierLike
+  | tido_respStmt
+  | tido_availability
+tido_model.workIdent =
+  tido_model.incipLike | tido_key | tido_mensuration | tido_meter
+tido_accessRestrict =
+  
+  ## (access restriction) – Describes the conditions that affect the accessibility of material.
+  element accessRestrict {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_acqSource =
+  
+  ## (acquisition source) – Post-publication source, such as a vendor or distributor, from which access to a bibliographic item may be obtained, including electronic access.
+  element acqSource {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_altId =
+  
+  ## (alternative identifier) – May contain a bibliographic identifier that does not fit within the meiHead element's id attribute, for example because the identifier does not fit the definition of an XML id or because multiple identifiers are needed.
+  element altId {
+    (text | tido_model.lbLike | tido_model.rendLike)*,
+    tido_att.common.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_appInfo =
+  
+  ## (application information) – Groups information about applications which have acted upon the MEI file.
+  element appInfo {
+    tido_application*, tido_att.common.attributes, empty
+  }
+tido_application =
+  
+  ## Provides information about an application which has acted upon the current document.
+  element application {
+    (tido_model.locrefLike* | tido_model.pLike*),
+    tido_att.common.attributes,
+    tido_att.typed.attributes,
+    
+    ## Supplies a version number for an application, independent of its identifier or display name.
+    attribute version { xsd:NMTOKEN }?,
+    empty
+  }
+tido_audience =
+  
+  ## Defines the class of user for which the work is intended, as defined by age group (e.g., children, young adults, adults, etc.), educational level (e.g., primary, secondary, etc.), or other categorization.
+  element audience {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_availability =
+  
+  ## Groups elements that describe the availability of and access to a bibliographic item, including an MEI-encoded document.
+  element availability {
+    tido_macro.availabilityPart, tido_att.common.attributes, empty
+  }
+tido_captureMode =
+  
+  ## (capture mode) – The means used to record notation, sound, or images in the production of a source/manifestation (e.g., analogue, acoustic, electric, digital, optical etc.).
+  element captureMode {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_carrierForm =
+  
+  ## (carrier form) – The specific class of material to which the physical carrier of the source/manifestation belongs (e.g., sound cassette, videodisc, microfilm cartridge, transparency, etc.). The carrier for a manifestation comprising multiple physical components may include more than one form (e.g., a filmstrip with an accompanying booklet, a separate sound disc carrying the sound track for a film, etc.).
+  element carrierForm {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_change =
+  
+  ## Individual change within the revision description.
+  element change {
+    tido_respStmt?,
+    tido_changeDesc,
+    (tido_model.dateLike?)
+    >> sch:pattern [
+         id = "tido-change-change_requirements-constraint-36"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:change"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@isodate or mei:date"
+             "The date of the change must be recorded in an\x{a}" ~
+             "              isodate attribute or date element."
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@resp or mei:respStmt"
+             "The person responsible for the change must be\x{a}" ~
+             "              recorded in a resp attribute or respStmt element."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_changeDesc =
+  
+  ## (change description) – Description of a revision of the MEI file.
+  element changeDesc {
+    tido_model.pLike+, tido_att.common.attributes, empty
+  }
+tido_classCode =
+  
+  ## (classification code) – Holds a citation to the source of controlled-vocabulary terms used in the <termList> element; for example, Library of Congress Subject Headings (LCSH), Library of Congress Classification (LCC), Library of Congress Name Authority File (LCNAF), or other thesaurus or ontology.
+  element classCode {
+    (text | tido_model.lbLike | tido_model.rendLike)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_classification =
+  
+  ## Groups information which describes the nature or topic of an entity.
+  element classification {
+    (tido_classCode | tido_termList)+, tido_att.common.attributes, empty
+  }
+tido_condition =
+  
+  ## The physical condition of an item, particularly any variances between the physical make-up of the item and that of other copies of the same item (e.g., missing pages or plates, brittleness, faded images, etc.).
+  element condition {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_contentItem =
+  
+  ## Contains a single entry within a content description element.
+  element contentItem {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_contents =
+  
+  ## Description of the material contained within a resource.
+  element contents {
+    (tido_model.pLike? | (tido_model.labelLike?, tido_contentItem)+),
+    tido_att.common.attributes,
+    empty
+  }
+tido_context =
+  
+  ## The historical, social, intellectual, artistic, or other context within which the work was originally conceived (e.g., the 17th century restoration of the monarchy in England, the aesthetic movement of the late 19th century, etc.) or the historical, social, intellectual, artistic, or other context within which the expression was realized.
+  element context {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_correction =
+  
+  ## States how and under what circumstances corrections have been made in the text.
+  element correction {
+    tido_model.pLike+,
+    tido_att.common.attributes,
+    tido_att.regularmethod.attributes,
+    
+    ## Indicates the degree of correction applied to the text.
+    attribute corrlevel {
+      
+      ## The text has been thoroughly checked and proofread.
+      "high"
+      | 
+        ## The text has been checked at least once.
+        "medium"
+      | 
+        ## The text has not been checked.
+        "low"
+      | 
+        ## The correction status of the text is unknown.
+        "unknown"
+    }?,
+    empty
+  }
+tido_dimensions =
+  
+  ## Information about the physical size of a bibliographic source; usually includes numerical data.
+  element dimensions {
+    (text | tido_model.textphraseLike.limited | tido_model.dimLike)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_editionStmt =
+  
+  ## (edition statement) – Container for meta-data pertaining to a particular edition of the material being described.
+  element editionStmt {
+    (tido_model.editionLike, tido_respStmt*)+,
+    tido_att.common.attributes,
+    empty
+  }
+tido_editorialDecl =
+  
+  ## (editorial declaration) – Used to provide details of editorial principles and practices applied during the encoding of musical text.
+  element editorialDecl {
+    (tido_model.pLike+
+     | (tido_model.editorialDeclPart+, tido_model.pLike*)),
+    tido_att.common.attributes,
+    empty
+  }
+tido_encodingDesc =
+  
+  ## (encoding description) – Documents the relationship between an electronic file and the source or sources from which it was derived as well as applications used in the encoding/editing process.
+  element encodingDesc {
+    tido_model.encodingPart_sequenceOptional,
+    tido_att.common.attributes,
+    empty
+  }
+tido_exhibHist =
+  
+  ## (exhibition history) – A record of public exhibitions, including dates, venues, etc.
+  element exhibHist {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_fileChar =
+  
+  ## (file characteristics) – Standards or schemes used to encode the file (e.g., ASCII, SGML, etc.), physical characteristics of the file (e.g., recording density, parity, blocking, etc.), and other characteristics that have a bearing on how the file can be processed.
+  element fileChar { text, tido_att.common.attributes, empty }
+tido_fileDesc =
+  
+  ## (file description) – Contains a full bibliographic description of the MEI file.
+  element fileDesc {
+    tido_titleStmt,
+    tido_editionStmt?,
+    tido_pubStmt,
+    tido_seriesStmt?,
+    tido_notesStmt?,
+    tido_sourceDesc?,
+    tido_att.common.attributes,
+    empty
+  }
+tido_fingerprint =
+  
+  ## Contains a string that uniquely identifies an item, such as those constructed by combining groups of characters transcribed from specified pages of a printed item or a file's checksum.
+  element fingerprint { text, tido_att.common.attributes, empty }
+tido_hand =
+  
+  ## Defines a distinct scribe or handwriting style.
+  element hand {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    tido_att.medium.attributes,
+    
+    ## Marks this hand as the first one of the document.
+    attribute initial { tido_data.BOOLEAN }?,
+    empty
+  }
+tido_handList =
+  
+  ## Container for one or more hand elements.
+  element handList {
+    (tido_model.labelLike?, tido_hand)*,
+    tido_att.common.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_history =
+  
+  ## Provides a container for information about the history of a resource. To facilitate efficient data interchange, basic information about the circumstances surrounding the creation of bibliographic resources should be recorded within the creation element.
+  element history {
+    (tido_model.textcomponentLike)*, tido_att.common.attributes, empty
+  }
+tido_inscription =
+  
+  ## An inscription added to an item, such as a bookplate, a note designating the item as a gift, and/or the author's signature.
+  element inscription {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_interpretation =
+  
+  ## Describes the scope of any analytic or interpretive information added to the transcription of the music.
+  element interpretation {
+    tido_model.pLike+, tido_att.common.attributes, empty
+  }
+tido_key =
+  
+  ## Key captures information about tonal center and mode.
+  element key {
+    text,
+    tido_att.common.attributes,
+    tido_att.keySig.log.attributes,
+    empty
+  }
+tido_language =
+  
+  ## Description of a language used in the document.
+  element language {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_langUsage =
+  
+  ## (language usage) – Groups elements describing the languages, sub-languages, dialects, etc., represented within the encoded resource.
+  element langUsage {
+    tido_language+, tido_att.common.attributes, empty
+  }
+tido_meiHead =
+  
+  ## (MEI header) – Supplies the descriptive and declarative metadata prefixed to every MEI-conformant text.
+  element meiHead {
+    tido_altId*,
+    tido_fileDesc,
+    tido_model.headerPart_sequenceOptional,
+    tido_revisionDesc?,
+    tido_att.common.attributes,
+    tido_att.meiversion.attributes,
+    
+    ## Specifies the kind of document to which the header is attached, for example whether it is a corpus or individual text.
+    attribute type {
+      
+      ## Header is attached to a music document.
+      "music"
+      | 
+        ## Header is attached to a corpus.
+        "corpus"
+    }?,
+    empty
+  }
+tido_mensuration =
+  
+  ## Captures information about mensuration within bibliographic descriptions.
+  element mensuration {
+    text,
+    tido_att.common.attributes,
+    tido_att.mensur.log.attributes,
+    empty
+  }
+tido_meter =
+  
+  ## Captures information about the time signature within bibliographic descriptions.
+  element meter {
+    text,
+    tido_att.common.attributes,
+    tido_att.meterSig.log.attributes,
+    empty
+  }
+tido_normalization =
+  
+  ## Indicates the extent of normalization or regularization of the original source carried out in converting it to electronic form.
+  element normalization {
+    tido_model.pLike+,
+    tido_att.common.attributes,
+    tido_att.regularmethod.attributes,
+    empty
+  }
+tido_notesStmt =
+  
+  ## (notes statement)– Collects any notes providing information about a text additional to that recorded in other parts of the bibliographic description.
+  element notesStmt {
+    tido_model.annotLike+, tido_att.common.attributes, empty
+  }
+tido_otherChar =
+  
+  ## (other distinguishing characteristic) – Any characteristic that serves to differentiate a work or expression from another.
+  element otherChar {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_perfDuration =
+  
+  ## (performance duration) – Used to express the duration of performance of printed or manuscript music or the playing time for a sound recording, videorecording, etc.
+  element perfDuration {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    
+    ## Holds a W3C duration value, e.g., "PT2H34M45.67S".
+    attribute isodur { xsd:duration }?,
+    empty
+  }
+tido_perfMedium =
+  
+  ## (performance medium) – Indicates the number and character of the performing forces used in a musical composition.
+  element perfMedium {
+    tido_perfResList?,
+    tido_model.annotLike*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_perfRes =
+  
+  ## (performance resource) – Name of an instrument on which a performer plays, a performer's voice range, or a standard performing ensemble designation.
+  element perfRes {
+    text*,
+    tido_att.common.attributes,
+    
+    ## Indicates the number of performers.
+    attribute count { xsd:positiveInteger }?,
+    
+    ## Marks this instrument or vocal part as a soloist. Do not use this attribute for a solo instrument which is not accompanied.
+    attribute solo { tido_data.BOOLEAN }?,
+    empty
+  }
+tido_perfResList =
+  
+  ## Several instrumental or vocal resources treated as a group.
+  element perfResList {
+    (tido_perfRes | tido_perfResList)*,
+    tido_att.common.attributes,
+    
+    ## Indicates the number of performers.
+    attribute count { xsd:positiveInteger }?,
+    empty
+  }
+tido_physDesc =
+  
+  ## (physical description) – Container for information about the appearance, construction, or handling of physical materials, such as their dimension, quantity, color, style, and technique of creation.
+  element physDesc {
+    tido_model.pLike*,
+    tido_model.physDescPart*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_physMedium =
+  
+  ## (physical medium) – Records the physical materials used in the source, such as ink and paper.
+  element physMedium {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_plateNum =
+  
+  ## (plate number) – Designation assigned to a resource by a music publisher, usually printed at the bottom of each page, and sometimes appearing also on the title page.
+  element plateNum {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_playingSpeed =
+  
+  ## Playing speed for a sound recording is the speed at which the carrier must be operated to produce the sound intended (e.g., 33 1/3 rpm, 19 cm/s, etc.).
+  element playingSpeed {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_price =
+  
+  ## The cost of access to a bibliographic item.
+  element price {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    tido_att.quantity.attributes,
+    
+    ## Monetary unit.
+    attribute currency { xsd:NMTOKEN }?,
+    empty
+  }
+tido_projectDesc =
+  
+  ## (project description) – Project-level meta-data describing the aim or purpose for which the electronic file was encoded, funding agencies, etc. together with any other relevant information concerning the process by which it was assembled or collected.
+  element projectDesc {
+    tido_model.pLike+, tido_att.common.attributes, empty
+  }
+tido_pubStmt =
+  
+  ## (publication statement) – Container for information regarding the publication or distribution of a bibliographic item, including the publisher's name and address, the date of publication, and other relevant details.
+  element pubStmt {
+    (tido_unpub? | tido_model.pubStmtPart*),
+    tido_att.common.attributes,
+    empty
+  }
+tido_revisionDesc =
+  
+  ## (revision description) – Container for information about alterations that have been made to an MEI file.
+  element revisionDesc {
+    tido_change+, tido_att.common.attributes, empty
+  }
+tido_samplingDecl =
+  
+  ## (sampling declaration) – Contains a prose description of the rationale and methods used in sampling texts in the creation of a corpus or collection.
+  element samplingDecl {
+    tido_model.pLike+, tido_att.common.attributes, empty
+  }
+tido_scoreFormat =
+  
+  ## Describes the type of score used to represent a musical composition (e.g., short score, full score, condensed score, close score, etc.).
+  element scoreFormat { text, tido_att.common.attributes, empty }
+tido_segmentation =
+  
+  ## Describes the principles according to which the musical text has been segmented, for example into movements, sections, etc.
+  element segmentation {
+    tido_model.pLike+, tido_att.common.attributes, empty
+  }
+tido_seriesStmt =
+  
+  ## (series statement) – Groups information about the series, if any, to which a publication belongs.
+  element seriesStmt {
+    tido_model.titleLike+,
+    (tido_respStmt)*,
+    (tido_model.identifierLike | tido_contents | tido_seriesStmt)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_soundChan =
+  
+  ## (sound channels) – Reflects the number of apparent sound channels in the playback of a recording (monaural, stereophonic, quadraphonic, etc.).
+  element soundChan {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    
+    ## Records the channel configuration in numeric form.
+    attribute num { xsd:positiveInteger }?,
+    empty
+  }
+tido_source =
+  
+  ## A bibliographic description of a source used in the creation of the electronic file.
+  element source {
+    tido_model.identifierLike*,
+    tido_titleStmt?,
+    tido_macro.bibldescPart,
+    tido_history?,
+    tido_langUsage?,
+    tido_contents?,
+    tido_notesStmt?,
+    tido_classification?,
+    tido_att.common.attributes,
+    empty
+  }
+tido_sourceDesc =
+  
+  ## (source description) – A container for the descriptions of the source(s) used in the creation of the electronic file.
+  element sourceDesc { tido_source+, tido_att.common.attributes, empty }
+tido_specRepro =
+  
+  ## (special reproduction characteristic) – The equalization system, noise reduction system, etc. used in making the recording (e.g., NAB, DBX, Dolby, etc.).
+  element specRepro {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_stdVals =
+  
+  ## (standard values) – Specifies the format used when standardized date or number values are supplied.
+  element stdVals {
+    tido_model.pLike+, tido_att.common.attributes, empty
+  }
+tido_sysReq =
+  
+  ## (system requirements) – System requirements for using the electronic item.
+  element sysReq {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_term =
+  
+  ## Keyword or phrase which describes a resource.
+  element term {
+    (text | tido_term | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    tido_att.classcodeident.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_termList =
+  
+  ## Collection of text phrases which describe a resource.
+  element termList {
+    (tido_model.labelLike?, tido_term)*,
+    tido_att.common.attributes,
+    tido_att.classcodeident.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_titleStmt =
+  
+  ## (title statement) – Container for title and responsibility meta-data.
+  element titleStmt {
+    tido_model.titleLike+,
+    tido_model.respLike*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_trackConfig =
+  
+  ## (track configuration) – Number of physical/input tracks on a sound medium (e.g., eight track, twelve track).
+  element trackConfig {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    
+    ## Records the track configuration in numeric form.
+    attribute num { xsd:positiveInteger }?,
+    empty
+  }
+tido_treatHist =
+  
+  ## (treatment history) – A record of the treatment the item has undergone (e.g., de-acidification, restoration, etc.).
+  element treatHist {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_treatSched =
+  
+  ## (treatment scheduled) – Scheduled treatment, e.g. de-acidification, restoration, etc., for an item.
+  element treatSched {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_unpub =
+  
+  ## (unpublished) – Used to explicitly indicate that a bibliographic resource is unpublished.
+  element unpub { text, tido_att.common.attributes, empty }
+tido_useRestrict =
+  
+  ## (usage restrictions) – Container for information about the conditions that affect use of a bibliographic item after access has been granted.
+  element useRestrict {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_watermark =
+  
+  ## Contains a description of a watermark or similar device.
+  element watermark {
+    (text | tido_model.textphraseLike.limited)*,
+    tido_att.common.attributes,
+    empty
+  }
+tido_work =
+  
+  ## Provides a detailed description of a work, specifically its history, language use, and high-level musical attributes: key, tempo, meter, medium of performance, and intended duration.
+  element work {
+    tido_model.identifierLike*,
+    tido_titleStmt?,
+    tido_model.workIdent*,
+    tido_otherChar*,
+    tido_history?,
+    tido_langUsage?,
+    tido_perfMedium?,
+    tido_perfDuration?,
+    tido_audience?,
+    tido_contents?,
+    tido_context?,
+    tido_notesStmt?,
+    tido_classification?,
+    tido_att.common.attributes,
+    empty
+  }
+tido_workDesc =
+  
+  ## (work description) – Grouping mechanism for information describing non-bibliographic aspects of a text.
+  element workDesc { tido_work+, tido_att.common.attributes, empty }
+tido_att.cutout.attributes = tido_att.cutout.attribute.cutout
+tido_att.cutout.attribute.cutout =
+  
+  ## "Cut-out" style indicated for this measure.
+  attribute cutout {
+    
+    ## The staff lines should not be drawn.
+    "cutout"
+  }?
+tido_att.graced.attributes =
+  tido_att.graced.attribute.grace, tido_att.graced.attribute.grace.time
+tido_att.graced.attribute.grace =
+  
+  ## Marks a note or chord as a "grace" (without a definitive written duration) and records from which other note/chord it should "steal" time.
+  attribute grace { tido_data.GRACE }?
+tido_att.graced.attribute.grace.time =
+  
+  ## Records the amount of time to be "stolen" from a non-grace note/chord.
+  attribute grace.time { tido_data.PERCENT }?
+tido_att.hairpin.log.attributes =
+  tido_att.spanning.musical.req.attributes,
+  tido_att.hairpin.log.attribute.form
+tido_att.hairpin.log.attribute.form =
+  
+  ## captures the visual rendition and function of the hairpin; that is, whether it indicates an increase or a decrease in volume.
+  attribute form {
+    
+    ## crescendo; i.e., louder.
+    "cres"
+    | 
+      ## diminuendo; i.e., softer.
+      "dim"
+  }
+tido_att.hairpin.vis.attributes =
+  tido_att.placement.attributes, tido_att.hairpin.vis.attribute.opening
+tido_att.hairpin.vis.attribute.opening =
+  
+  ## Specifies the distance between the points of the open end of a hairpin dynamic mark.
+  attribute opening { tido_data.MEASUREMENT }?
+tido_att.mRest.anl.attributes = empty
+tido_att.mRest.ges.attributes = empty
+tido_att.mRest.log.attributes =
+  tido_att.duration.musical.attributes, tido_att.event.attributes
+tido_att.mRest.vis.attributes =
+  tido_att.cutout.attributes,
+  tido_att.staffloc.attributes,
+  tido_att.typography.attributes
+tido_att.note.ges.cmn.attributes =
+  tido_att.graced.attributes, tido_att.note.ges.cmn.attribute.gliss
+tido_att.note.ges.cmn.attribute.gliss =
+  
+  ## Indicates that this element participates in a glissando.
+  attribute gliss { tido_data.GLISSANDO }?
+tido_att.pedal.log.attributes =
+  tido_att.controlevent.attributes,
+  tido_att.startendid.attributes,
+  tido_att.pedal.log.attribute.dir
+tido_att.pedal.log.attribute.dir =
+  
+  ## Records the position of the piano damper pedal.
+  attribute dir {
+    
+    ## Depress the pedal.
+    "down"
+    | 
+      ## Release the pedal.
+      "up"
+    | 
+      ## Half pedal.
+      "half"
+    | 
+      ## Release then immediately depress the pedal.
+      "bounce"
+  }
+tido_att.pedal.vis.attributes =
+  tido_att.placement.attributes,
+  tido_att.typography.attributes,
+  tido_att.pedal.vis.attribute.form
+tido_att.pedal.vis.attribute.form =
+  
+  ## Determines whether piano pedal marks should be rendered as lines or as terms.
+  attribute form {
+    
+    ## Continuous line with start and end positions rendered by vertical bars and bounces shown by upward-pointing "blips".
+    "line"
+    | 
+      ## Pedal down and half pedal rendered with "Ped.", pedal up rendered by "*", pedal "bounce" rendered with "* Ped.".
+      "pedstar"
+    | 
+      ## Pedal up and down indications same as with "pedstar", but bounce is rendered with "Ped." only.
+      "altpedstar"
+  }?
+tido_att.slur.log.attributes = tido_att.spanning.req.attributes
+tido_att.tie.log.attributes =
+  tido_att.controlevent.attributes,
+  tido_att.startendid.attributes,
+  tido_att.timestamp2.musical.attributes
+tido_model.controleventLike.cmn =
+  tido_hairpin | tido_pedal | tido_slur | tido_tie
+tido_model.controleventLike.cmn_alternation =
+  tido_hairpin | tido_pedal | tido_slur | tido_tie
+tido_model.controleventLike.cmn_sequence =
+  tido_hairpin, tido_pedal, tido_slur, tido_tie
+tido_model.controleventLike.cmn_sequenceOptional =
+  tido_hairpin?, tido_pedal?, tido_slur?, tido_tie?
+tido_model.controleventLike.cmn_sequenceOptionalRepeatable =
+  tido_hairpin*, tido_pedal*, tido_slur*, tido_tie*
+tido_model.controleventLike.cmn_sequenceRepeatable =
+  tido_hairpin+, tido_pedal+, tido_slur+, tido_tie+
+tido_model.eventLike.cmn = tido_beam
+tido_model.eventLike.cmn_alternation = tido_beam
+tido_model.eventLike.cmn_sequence = tido_beam
+tido_model.eventLike.cmn_sequenceOptional = tido_beam?
+tido_model.eventLike.cmn_sequenceOptionalRepeatable = tido_beam*
+tido_model.eventLike.cmn_sequenceRepeatable = tido_beam+
+tido_model.eventLike.measureFilling = tido_mRest
+tido_model.eventLike.measureFilling_alternation = tido_mRest
+tido_model.eventLike.measureFilling_sequence = tido_mRest
+tido_model.eventLike.measureFilling_sequenceOptional = tido_mRest?
+tido_model.eventLike.measureFilling_sequenceOptionalRepeatable =
+  tido_mRest*
+tido_model.eventLike.measureFilling_sequenceRepeatable = tido_mRest+
+tido_model.layerPart.cmn = tido_model.eventLike.measureFilling
+tido_model.measureLike = tido_measure
+tido_model.measureLike_alternation = tido_measure
+tido_model.measureLike_sequence = tido_measure
+tido_model.measureLike_sequenceOptional = tido_measure?
+tido_model.measureLike_sequenceOptionalRepeatable = tido_measure*
+tido_model.measureLike_sequenceRepeatable = tido_measure+
+tido_model.measurePart =
+  tido_model.controleventLike
+  | tido_model.staffLike
+  | tido_model.ossiaLike
+tido_model.ossiaLike = notAllowed
+tido_model.sectionPart.cmn = tido_model.measureLike
+tido_beam =
+  
+  ## A container for a series of explicitly beamed events that begins and ends entirely within a measure.
+  element beam {
+    ((tido_model.eventLike)*)
+    >> sch:pattern [
+         id = "tido-beam-When_not_copyof_beam_content-constraint-38"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:beam[not(@copyof)]"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test =
+               "count(descendant::*[local-name()='note' or local-name()='rest' or               local-name()='chord' or local-name()='space']) > 1"
+             "A beam without a copyof attribute must have at least 2 note, rest, chord, or space\x{a}" ~
+             "              descendants."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    empty
+  }
+tido_hairpin =
+  
+  ## Indicates continuous dynamics expressed on the score as wedge-shaped graphics, e.g. < and >.
+  element hairpin {
+    empty
+    >> sch:pattern [
+         id =
+           "tido-hairpin-hairpin_place_required_with_single_staff-constraint-39"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:hairpin[not(contains(@staff, ' '))]"
+           "\x{a}" ~
+           "                  "
+           sch:assert [
+             test = "exists(@place)"
+             "Must have place attribute."
+           ]
+           "\x{a}" ~
+           "                "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.hairpin.log.attributes,
+    tido_att.hairpin.vis.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_measure =
+  
+  ## Unit of musical time consisting of a fixed number of note-values of a given type, as determined by the prevailing meter, and delimited in musical notation by bar lines.
+  element measure {
+    (tido_model.milestoneLike.music
+     | tido_model.staffDefLike
+     | tido_model.annotLike
+     | tido_model.measurePart)*,
+    tido_att.common.attributes,
+    tido_att.measure.log.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_meterSig =
+  
+  ## (meter signature) – Written meter signature.
+  element meterSig {
+    empty
+    >> sch:pattern [
+         id = "tido-meterSig-meter_att_pair-constraint-40"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:meterSig"
+           "\x{a}" ~
+           "                  "
+           sch:report [
+             test = "not(@count and @unit)"
+             "Time signature must be complete (both\x{a}" ~
+             "                    @count and @unit are required)."
+           ]
+           "\x{a}" ~
+           "                "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.meterSig.log.attributes,
+    empty
+  }
+tido_mRest =
+  
+  ## (measure rest) – Complete measure rest in any meter. 
+  element mRest {
+    empty,
+    tido_att.common.attributes,
+    tido_att.mRest.log.attributes,
+    tido_att.mRest.vis.attributes,
+    tido_att.mRest.ges.attributes,
+    tido_att.mRest.anl.attributes,
+    empty
+  }
+tido_pedal =
+  
+  ## Piano pedal mark.
+  element pedal {
+    empty
+    >> sch:pattern [
+         id = "tido-pedal-pedal_style_consistent-constraint-41"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:pedal[@form][@dir=('bounce', 'up')]"
+           "\x{a}" ~
+           "                  "
+           sch:let [ name = "form" value = "@form" ]
+           "\x{a}" ~
+           "                  "
+           sch:assert [
+             test =
+               "preceding::mei:pedal[@dir=('down', 'half')][1][@form=$form]"
+             "\x{a}" ~
+             "                    Pedal styles must be consistent between pedal down and pedal up."
+           ]
+           "\x{a}" ~
+           "                "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id =
+           "tido-pedal-pedal_start-type_attributes_required-constraint-42"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:pedal"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@startid or @tstamp or @tstamp.ges or @tstamp.real"
+             "Must have one of\x{a}" ~
+             "              the attributes: startid, tstamp, tstamp.ges or tstamp.real"
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.pedal.log.attributes,
+    tido_att.pedal.vis.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_slur =
+  
+  ## Indication of 1) a "unified melodic idea" or 2) performance technique.
+  [
+    sch:pattern [
+      id =
+        "tido-slur-slur_start-_and_end-type_attributes_required-constraint-43"
+      "\x{a}" ~
+      "            "
+      sch:rule [
+        context = "mei:slur"
+        "\x{a}" ~
+        "               "
+        sch:assert [
+          test = "@startid or @tstamp or @tstamp.ges or @tstamp.real"
+          "Must have one of\x{a}" ~
+          "              the attributes: startid, tstamp, tstamp.ges or tstamp.real"
+        ]
+        "\x{a}" ~
+        "               "
+        sch:assert [
+          test = "@dur or @dur.ges or @endid or @tstamp2"
+          "Must have one of the\x{a}" ~
+          "              attributes: dur, dur.ges, endid, or tstamp2"
+        ]
+        "\x{a}" ~
+        "            "
+      ]
+      "\x{a}" ~
+      "         "
+    ]
+  ]
+  element slur {
+    tido_att.common.attributes,
+    tido_att.slur.log.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_tie =
+  
+  ## An indication that two notes of the same pitch form a single note with their combined rhythmic values.
+  [
+    sch:pattern [
+      id =
+        "tido-tie-tie_start-_and_end-type_attributes_required-constraint-44"
+      "\x{a}" ~
+      "            "
+      sch:rule [
+        context = "mei:tie"
+        "\x{a}" ~
+        "               "
+        sch:assert [
+          test = "@startid or @tstamp or @tstamp.ges or @tstamp.real"
+          "Must have one of\x{a}" ~
+          "              the attributes: startid, tstamp, tstamp.ges or tstamp.real"
+        ]
+        "\x{a}" ~
+        "               "
+        sch:assert [
+          test = "@dur or @dur.ges or @endid or @tstamp2"
+          "Must have one of the\x{a}" ~
+          "              attributes: dur, dur.ges, endid, or tstamp2"
+        ]
+        "\x{a}" ~
+        "            "
+      ]
+      "\x{a}" ~
+      "         "
+    ]
+    sch:pattern [
+      id = "tido-tie-tie_containing_curve-constraint-45"
+      "\x{a}" ~
+      "            "
+      sch:rule [
+        context =
+          "mei:tie[mei:curve[@bezier or @bulge or @curvedir or @lform or @lwidth or             @ho or @startho or @endho or @to or @startto or @endto or @vo or @startvo or             @endvo or @x or @y or @x2 or @y2]]"
+        "\x{a}" ~
+        "               "
+        sch:assert [
+          test =
+            "not(@bezier or @bulge or @curvedir or @lform or @lwidth or @ho or @startho or               @endho or @to or @startto or @endto or @vo or @startvo or @endvo or @x or @y or @x2 or @y2)"
+          role = "warning"
+          "The visual attributes of the tie (@bezier, @bulge, @curvedir, @lform,\x{a}" ~
+          "              @lwidth, @ho, @startho, @endho, @to, @startto, @endto, @vo, @startvo, @endvo, @x, @y,\x{a}" ~
+          "              @x2, and @y2) will be overridden by visual attributes of the contained curve\x{a}" ~
+          "              elements."
+        ]
+        "\x{a}" ~
+        "            "
+      ]
+      "\x{a}" ~
+      "         "
+    ]
+  ]
+  element tie {
+    tido_att.common.attributes,
+    tido_att.tie.log.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_model.nameLike.agent = tido_corpName | tido_persName
+tido_model.nameLike.agent_alternation = tido_corpName | tido_persName
+tido_model.nameLike.agent_sequence = tido_corpName, tido_persName
+tido_model.nameLike.agent_sequenceOptional =
+  tido_corpName?, tido_persName?
+tido_model.nameLike.agent_sequenceOptionalRepeatable =
+  tido_corpName*, tido_persName*
+tido_model.nameLike.agent_sequenceRepeatable =
+  tido_corpName+, tido_persName+
+tido_model.nameLike.geogName = tido_geogName
+tido_model.nameLike.geogName_alternation = tido_geogName
+tido_model.nameLike.geogName_sequence = tido_geogName
+tido_model.nameLike.geogName_sequenceOptional = tido_geogName?
+tido_model.nameLike.geogName_sequenceOptionalRepeatable = tido_geogName*
+tido_model.nameLike.geogName_sequenceRepeatable = tido_geogName+
+tido_model.nameLike.label = tido_periodName | tido_styleName
+tido_model.nameLike.label_alternation = tido_periodName | tido_styleName
+tido_model.nameLike.label_sequence = tido_periodName, tido_styleName
+tido_model.nameLike.label_sequenceOptional =
+  tido_periodName?, tido_styleName?
+tido_model.nameLike.label_sequenceOptionalRepeatable =
+  tido_periodName*, tido_styleName*
+tido_model.nameLike.label_sequenceRepeatable =
+  tido_periodName+, tido_styleName+
+tido_model.nameLike.place =
+  tido_model.repositoryLike | tido_model.nameLike.geogName
+tido_model.nameLike.place_alternation =
+  tido_model.repositoryLike_alternation
+  | tido_model.nameLike.geogName_alternation
+tido_model.nameLike.place_sequence =
+  tido_model.repositoryLike_sequence,
+  tido_model.nameLike.geogName_sequence
+tido_model.nameLike.place_sequenceOptional =
+  tido_model.repositoryLike_sequenceOptional?,
+  tido_model.nameLike.geogName_sequenceOptional?
+tido_model.nameLike.place_sequenceOptionalRepeatable =
+  tido_model.repositoryLike_sequenceOptionalRepeatable*,
+  tido_model.nameLike.geogName_sequenceOptionalRepeatable*
+tido_model.nameLike.place_sequenceRepeatable =
+  tido_model.repositoryLike_sequenceRepeatable+,
+  tido_model.nameLike.geogName_sequenceRepeatable+
+tido_corpName =
+  
+  ## (corporate name) – Identifies an organization or group of people that acts as a single entity.
+  element corpName {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    tido_att.name.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_geogName =
+  
+  ## (geographic name) – The proper noun designation for a place, natural feature, or political jurisdiction.
+  element geogName {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    tido_att.name.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_periodName =
+  
+  ## (period name) – A label that describes a period of time, such as 'Baroque' or '3rd Style period'.
+  element periodName {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    tido_att.name.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_persName =
+  
+  ## (personal name) – Designation for an individual, including any or all of that individual's forenames, surnames, honorific titles, and added names.
+  element persName {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    tido_att.name.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_styleName =
+  
+  ## (style name) – A label for a characteristic style of writing or performance, such as 'bebop' or 'rock-n-roll'.
+  element styleName {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    tido_att.name.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_model.locrefLike = tido_ptr | tido_ref
+tido_model.locrefLike_alternation = tido_ptr | tido_ref
+tido_model.locrefLike_sequence = tido_ptr, tido_ref
+tido_model.locrefLike_sequenceOptional = tido_ptr?, tido_ref?
+tido_model.locrefLike_sequenceOptionalRepeatable = tido_ptr*, tido_ref*
+tido_model.locrefLike_sequenceRepeatable = tido_ptr+, tido_ref+
+tido_ptr =
+  
+  ## (pointer) – Defines a pointer to another location, using only attributes to describe the destination.
+  element ptr {
+    empty,
+    tido_att.common.attributes,
+    tido_att.internetmedia.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_ref =
+  
+  ## (reference) – Defines a reference to another location that may contain text and sub-elements to describe the destination.
+  element ref {
+    (text | tido_model.textphraseLike)*,
+    tido_att.common.attributes,
+    tido_att.internetmedia.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
+tido_att.staffident.req.attributes =
+  tido_att.staffident.req.attribute.staff
+tido_att.staffident.req.attribute.staff =
+  
+  ##
+  attribute staff {
+    list { xsd:positiveInteger+ }
+  }
+tido_att.stemdir.req.attributes =
+  tido_att.stemdir.req.attribute.stem.dir
+tido_att.stemdir.req.attribute.stem.dir =
+  
+  ## Describes the direction of a stem.
+  attribute stem.dir { tido_data.STEMDIRECTION }
+tido_att.duration.musical.req.attributes =
+  tido_att.duration.musical.req.attribute.dur
+tido_att.duration.musical.req.attribute.dur =
+  
+  ## records the duration of a feature using the relative durational values provided by the data.DURATION datatype.
+  attribute dur { tido_data.DURATION }
+tido_att.timestamp.musical.req.attributes =
+  tido_att.timestamp.musical.req.attribute.tstamp
+tido_att.timestamp.musical.req.attribute.tstamp =
+  
+  ## encodes the onset time in terms of musical time, i.e., beats[.fractional_beat_part].
+  attribute tstamp { tido_data.BEAT }
+tido_att.timestamp2.musical.req.attributes =
+  tido_att.timestamp2.musical.req.attribute.tstamp2
+tido_att.timestamp2.musical.req.attribute.tstamp2 =
+  
+  ## encodes the ending point of an event in terms of musical time, i.e., a count of measures plus a beat location.
+  attribute tstamp2 { tido_data.MEASUREBEAT }
+tido_att.spanning.req.attributes =
+  tido_att.timestamp.musical.attributes,
+  tido_att.timestamp2.musical.attributes,
+  tido_att.startendid.attributes,
+  tido_att.staffident.attributes,
+  tido_att.layerident.attributes
+sch:pattern [
+  id =
+    "tido-att.spanning.req-require_precisely_one_start_spec-constraint-46"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:slur"
+    "\x{a}" ~
+    "                  "
+    sch:assert [
+      test =
+        "(@tstamp and not(@startid)) or (not(@tstamp) and @startid)"
+      "precisely one of @tstamp or @startid must be defined"
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id =
+    "tido-att.spanning.req-require_precisely_one_end_spec-constraint-47"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:slur"
+    "\x{a}" ~
+    "                  "
+    sch:assert [
+      test = "(@tstamp2 and not(@endid)) or (not(@tstamp2) and @endid)"
+      "precisely one of @tstamp2 or @endid must be defined"
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tido_att.spanning.musical.req.attributes =
+  tido_att.timestamp.musical.req.attributes,
+  tido_att.timestamp2.musical.req.attributes,
+  tido_att.staffident.attributes,
+  tido_att.layerident.attributes
+start = tido_mei | tido_music | tido_body | tido_mdiv
+sch:ns [ prefix = "mei" uri = "http://www.music-encoding.org/ns/mei" ]

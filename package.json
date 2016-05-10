@@ -1,9 +1,9 @@
 {
-  "name": "mei-customization",
+  "name": "tido-mei-specs",
   "version": "0.1.0",
   "description": "Tido MEI Customization",
-  "author": "",
-  "license": "ISC",
+  "author": "Tido",
+  "license": "ECL-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/tido/mei-customization.git"
@@ -11,8 +11,8 @@
   "private": true,
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require babel-polyfill",
-    "schema": "ant -lib vendor/stylesheets/lib/saxon9he.jar schema",
-    "html-guidelines": "ant -lib vendor/stylesheets/lib/saxon9he.jar html-guidelines",
+    "schema": "ant -lib vendor/stylesheets/lib schema",
+    "html-guidelines": "ant -lib vendor/stylesheets/lib html-guidelines",
     "refresh": "npm run schema && npm run html-guidelines && npm run test"
   },
   "devDependencies": {

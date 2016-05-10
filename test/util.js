@@ -2,43 +2,22 @@
 import { validateSync } from 'mei-validation-js';
 
 import jade from 'jade';
-import { _, assign } from 'lodash';
+import _ from 'lodash';
 import { DOMParser } from 'xmldom';
-
-const wrappersPath = 'test/jade/wrappers';
-const globals = { _, pretty: true };
 
 export function parseXML(str) {
   return new DOMParser().parseFromString(str, 'text/xml');
 }
 
-export function wrapFragment(
-  wrapperName,
-  data,
-  options,
-  valid = true,
-  validate,
-  schemaPaths
-) {
-  if (typeof wrapperName !== 'string') {
-    throw new Error('Cannot wrap without a wrapper name.');
-  }
+export function wrapFragment(wrapperPath, data, valid, schemaPaths) {
+  const jadeOptions = { _, pretty: true, data };
+  const mei = jade.renderFile(wrapperPath, jadeOptions);
+  const report = validateSync(mei, schemaPaths, true);
 
-  const filePath = `${wrappersPath}/${wrapperName}.jade`;
-  const jadeOptions = assign({}, globals, { data }, options);
-
-  const mei = jade.renderFile(filePath, jadeOptions);
-
-  // console.log(mei); // eshint-ignore-line
-
-  // TODO refactor
-  if (validate !== 'never' || validate === 'always') {
-    const report = validateSync(mei, schemaPaths, true);
-    if (valid) {
-      assertValid(report);
-    } else {
-      assertInvalid(report);
-    }
+  if (valid) {
+    assertValid(report);
+  } else {
+    assertInvalid(report);
   }
 
   return mei;
