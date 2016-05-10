@@ -16,15 +16,6 @@ licensed under the Educational Community License version 1.0.
 CONTACT: info@music-encoding.org
 -->
 
-<!-- TODO mention that our customization is based on the mei-develop branch which is more
-  advanced than the current release - we reference the current release in the prose section,
-  but it would be more correct to reference a version of the guidelines matching our
-  basis!!
--->
-
-<!-- TODO update xml:ids -->
-
-
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
@@ -236,9 +227,9 @@ CONTACT: info@music-encoding.org
               </item>
               <item>Stem directions on child notes are not allowed: <egXML
                 xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <chord dur="4" stem.dir="up" xml:id="d011">
-                  <note pname="a" oct="4" stem.dir="up" xml:id="d012"/>
-                  <note pname="f" oct="4" stem.dir="up" xml:id="d013"/>
+                <chord dur="4" stem.dir="up" xml:id="d014">
+                  <note pname="a" oct="4" stem.dir="up" xml:id="d015"/>
+                  <note pname="f" oct="4" stem.dir="up" xml:id="d016"/>
                 </chord>
               </egXML>
               </item>
@@ -251,17 +242,17 @@ CONTACT: info@music-encoding.org
             above or below a single staff or in the middle between two staves. Placement above or
             below a staff is indicated by the <att>place</att> attribute,
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
-                <dynam tstamp="1" layer="1" xml:id="d015" place="below" staff="1"/>
+                <dynam tstamp="1" layer="1" xml:id="d017" place="below" staff="1"/>
               </egXML>
             placement between two staves is expressed by specifying the numbers of both staves
             in the <att>staff</att> attribute.
             <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
-              <dynam tstamp="1" xml:id="d015" staff="1 2"/>
+              <dynam tstamp="1" xml:id="d018" staff="1 2"/>
             </egXML>
             When the <att>staff</att> attribute has multiple values,
             <att>place</att> and <att>layer</att> are not allowed:</p>
             <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterTwoStaves">
-              <dynam tstamp="1" layer="1" xml:id="d015" place="above" staff="1 2"/>
+              <dynam tstamp="1" layer="1" xml:id="d019" place="above" staff="1 2"/>
             </egXML>
           <div>
             <head>Spanning elements</head>
@@ -293,11 +284,11 @@ CONTACT: info@music-encoding.org
                 and <att>tstamp</att>/<att>tstamp2</att> to describe slur start and end points.</p>
               <p>A typical slur: </p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <slur xml:id="d014" startid="#n01" endid="#n02"/>
+                <slur xml:id="d020" startid="#n01" endid="#n02"/>
               </egXML>
               <p>A partial slur within a 2nd ending:</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <slur xml:id="d014" tstamp="0" endid="#n02"/>
+                <slur xml:id="d021" tstamp="0" endid="#n02"/>
               </egXML>
             </div>
           </div>
@@ -555,7 +546,7 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid <gi>pedal</gi> element with a local URI reference in <att>startid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <pedal place="below" layer="1" dir="down" staff="1" startid="#n01" endid="#n02" xml:id="d049"/>
+                <pedal place="below" layer="1" dir="down" staff="1" startid="#n01" endid="#n02" xml:id="d022"/>
               </egXML>
             </exemplum>
             <exemplum>
@@ -563,7 +554,7 @@ CONTACT: info@music-encoding.org
                 in <att>startid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal place="below" layer="1" dir="down" staff="1" startid="n01" endid="#n02" xml:id="d050"/>
+                <pedal place="below" layer="1" dir="down" staff="1" startid="n01" endid="#n02" xml:id="d023"/>
               </egXML>
             </exemplum>
             <exemplum>
@@ -571,7 +562,7 @@ CONTACT: info@music-encoding.org
                   <att>startid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal place="below" xml:id="d051" dir="down" staff="1" layer="1"
+                <pedal place="below" xml:id="d024" dir="down" staff="1" layer="1"
                   startid="http://google.com#start" endid="#n02"/>
               </egXML>
             </exemplum>
@@ -587,7 +578,7 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid <gi>pedal</gi> element with a local URI reference in <att>endid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <pedal place="below" layer="1" dir="down" staff="1" startid="#n01" endid="#n02" xml:id="d049"/>
+                <pedal place="below" layer="1" dir="down" staff="1" startid="#n01" endid="#n02" xml:id="d025"/>
               </egXML>
             </exemplum>
             <exemplum>
@@ -595,7 +586,7 @@ CONTACT: info@music-encoding.org
                 in <att>endid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal place="below" layer="1" dir="down" staff="1" startid="#n01" endid="n02" xml:id="d050"/>
+                <pedal place="below" layer="1" dir="down" staff="1" startid="#n01" endid="n02" xml:id="d026"/>
               </egXML>
             </exemplum>
             <exemplum>
@@ -603,7 +594,7 @@ CONTACT: info@music-encoding.org
                   <att>endid</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal place="below" layer="1" xml:id="d051" dir="down" staff="1"
+                <pedal place="below" layer="1" xml:id="d027" dir="down" staff="1"
                   startid="#n01" endid="http://google.com#end"/>
               </egXML>
             </exemplum>
@@ -621,8 +612,8 @@ CONTACT: info@music-encoding.org
               <p>A valid <gi>clef</gi> with a <att>shape</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#inInitialStaffGrp">
-                <staffDef lines="5" xml:id="d142" n="2">
-                  <clef shape="G" line="2" xml:id="d143"/>
+                <staffDef lines="5" xml:id="d028" n="2">
+                  <clef shape="G" line="2" xml:id="d029"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -630,8 +621,8 @@ CONTACT: info@music-encoding.org
               <p>An invalid <gi>clef</gi> without a <att>shape</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#inInitialStaffGrp">
-                <staffDef lines="5" xml:id="d142" n="2">
-                  <clef line="2" xml:id="d143"/>
+                <staffDef lines="5" xml:id="d030" n="2">
+                  <clef line="2" xml:id="d031"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -649,8 +640,8 @@ CONTACT: info@music-encoding.org
               <p>A valid <gi>clef</gi> with a <att>line</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#inInitialStaffGrp">
-                <staffDef lines="5" xml:id="d142" n="2">
-                  <clef shape="G" line="2" xml:id="d143"/>
+                <staffDef lines="5" xml:id="d032" n="2">
+                  <clef shape="G" line="2" xml:id="d033"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -658,8 +649,8 @@ CONTACT: info@music-encoding.org
               <p>An invalid <gi>clef</gi> without a <att>line</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#inInitialStaffGrp">
-                <staffDef lines="5" xml:id="d142" n="2">
-                  <clef shape="G" xml:id="d143"/>
+                <staffDef lines="5" xml:id="d034" n="2">
+                  <clef shape="G" xml:id="d035"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -693,21 +684,21 @@ CONTACT: info@music-encoding.org
               <p>A valid <att>tstamp2</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterStaff">
-                <slur tstamp="1" tstamp2="0m+2" xml:id="d124"/>
+                <slur tstamp="1" tstamp2="0m+2" xml:id="d036"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <att>tstamp2</att> containing spaces</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <slur tstamp="1" tstamp2="0m + 2" xml:id="d124"/>
+                <slur tstamp="1" tstamp2="0m + 2" xml:id="d037"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <att>tstamp2</att> lacking a measure value</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <slur tstamp="1" tstamp2="2" xml:id="d124"/>
+                <slur tstamp="1" tstamp2="2" xml:id="d038"/>
               </egXML>
             </exemplum>
           </macroSpec>
@@ -870,13 +861,13 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid <gi>rest</gi> element containing the required <att>dur</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <rest dur="1" xml:id="d052"/>
+                <rest dur="1" xml:id="d039"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>rest</gi> element without the required <att>dur</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <rest xml:id="d053"/>
+                <rest xml:id="d040"/>
               </egXML>
             </exemplum>
           </classSpec>
@@ -890,13 +881,13 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid <gi>space</gi> element containing the required <att>dur</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <space dur="1" xml:id="d054"/>
+                <space dur="1" xml:id="d041"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>space</gi> element without the required <att>dur</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <space xml:id="d055"/>
+                <space xml:id="d042"/>
               </egXML>
             </exemplum>
           </classSpec>
@@ -951,69 +942,69 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid <gi>note</gi> element containing <att>pname</att>, <att>oct</att>, <att>dur</att> and <att>stem.dir</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <note pname="a" oct="4" dur="1" stem.dir="up" xml:id="d056"/>
+                <note pname="a" oct="4" dur="1" stem.dir="up" xml:id="d043"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>note</gi> element containing <att>loc</att>, <att>dur</att> and <att>stem.dir</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <note loc="4" dur="1" stem.dir="down" xml:id="d057"/>
+                <note loc="4" dur="1" stem.dir="down" xml:id="d044"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid standalone <att>note</att> element without a <att>stem.dir</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note pname="a" oct="4" dur="4" xml:id="d086"/>
+                <note pname="a" oct="4" dur="4" xml:id="d045"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid standalone <att>note</att> element without a <att>dur</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note pname="a" dur="4" stem.dir="down" xml:id="d087"/>
+                <note pname="a" dur="4" stem.dir="down" xml:id="d046"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <att>note</att> element with an <att>oct</att> but no <att>pname</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note oct="4" dur="4" stem.dir="up" xml:id="d088"/>
+                <note oct="4" dur="4" stem.dir="up" xml:id="d047"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <att>note</att> element with a <att>pname</att> but no <att>oct</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note pname="a" dur="4" stem.dir="up" xml:id="d089"/>
+                <note pname="a" dur="4" stem.dir="up" xml:id="d048"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <att>note</att> element missing duration, stem direction and pitch</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <note xml:id="d090"/>
+                <note xml:id="d049"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>chord</gi> element with a <att>stem.dir</att> attribute and child notes without <att>stem.dir</att> or <att>dur</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <chord xml:id="d093" dur="4" stem.dir="up">
-                  <note xml:id="d094" pname="a" oct="4"/>
-                  <note xml:id="d095" pname="c" oct="4"/>
+                <chord xml:id="d050" dur="4" stem.dir="up">
+                  <note xml:id="d051" pname="a" oct="4"/>
+                  <note xml:id="d052" pname="c" oct="4"/>
                 </chord>
               </egXML>
             </exemplum>
             <exemplum>
               <p>Invalid child <gi>note</gi> elements containing <att>stem.dir</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <chord xml:id="d096" dur="4" stem.dir="up">
-                  <note xml:id="d097" pname="a" oct="4" stem.dir="up"/>
-                  <note xml:id="d098" pname="c" oct="4" stem.dir="up"/>
+                <chord xml:id="d053" dur="4" stem.dir="up">
+                  <note xml:id="d054" pname="a" oct="4" stem.dir="up"/>
+                  <note xml:id="d055" pname="c" oct="4" stem.dir="up"/>
                 </chord>
               </egXML>
             </exemplum>
             <exemplum>
               <p>Invalid child <gi>note</gi> elements containing <att>dur</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
-                <chord xml:id="d096" dur="4" stem.dir="up">
-                  <note xml:id="d097" pname="a" oct="4" dur="4"/>
-                  <note xml:id="d098" pname="c" oct="4" dur="4"/>
+                <chord xml:id="d056" dur="4" stem.dir="up">
+                  <note xml:id="d057" pname="a" oct="4" dur="4"/>
+                  <note xml:id="d058" pname="c" oct="4" dur="4"/>
                 </chord>
               </egXML>
             </exemplum>
@@ -1027,18 +1018,18 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid <gi>chord</gi> element with a <att>stem.dir</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <chord dur="1" stem.dir="up" xml:id="d061">
-                  <note pname="a" oct="4" xml:id="d062"/>
-                  <note pname="a" oct="4" xml:id="d063"/>
+                <chord dur="1" stem.dir="up" xml:id="d059">
+                  <note pname="a" oct="4" xml:id="d060"/>
+                  <note pname="a" oct="4" xml:id="d061"/>
                 </chord>
               </egXML>
             </exemplum>
             <exemplum>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <p>An invalid <gi>chord</gi> element without the required <att>stem.dir</att> attribute</p>
-                <chord dur="4" xml:id="d064">
-                  <note pname="a" oct="4" xml:id="d065"/>
-                  <note pname="a" oct="4" xml:id="d066"/>
+                <chord dur="4" xml:id="d062">
+                  <note pname="a" oct="4" xml:id="d063"/>
+                  <note pname="a" oct="4" xml:id="d064"/>
                 </chord>
               </egXML>
             </exemplum>
@@ -1051,18 +1042,18 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid <gi>chord</gi> element with a <att>dur</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
-                <chord dur="1" stem.dir="up" xml:id="d061">
-                  <note pname="a" oct="4" xml:id="d062"/>
-                  <note pname="a" oct="4" xml:id="d063"/>
+                <chord dur="1" stem.dir="up" xml:id="d065">
+                  <note pname="a" oct="4" xml:id="d066"/>
+                  <note pname="a" oct="4" xml:id="d067"/>
                 </chord>
               </egXML>
             </exemplum>
             <exemplum>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inLayer">
                 <p>An invalid <gi>chord</gi> element without the required <att>dur</att> attribute</p>
-                <chord stem.dir="up" xml:id="d064">
-                  <note pname="a" oct="4" xml:id="d065"/>
-                  <note pname="a" oct="4" xml:id="d066"/>
+                <chord stem.dir="up" xml:id="d068">
+                  <note pname="a" oct="4" xml:id="d069"/>
+                  <note pname="a" oct="4" xml:id="d070"/>
                 </chord>
               </egXML>
             </exemplum>
@@ -1123,9 +1114,9 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid layer element with a positive integer <att>n</att> value</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inSection">
-                <measure n="1" xml:id="d103">
-                  <staff n="1" xml:id="d104">
-                    <layer n="1" xml:id="d105"/>
+                <measure n="1" xml:id="d071">
+                  <staff n="1" xml:id="d072">
+                    <layer n="1" xml:id="d073"/>
                   </staff>
                 </measure>
               </egXML>
@@ -1133,9 +1124,9 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>An invalid layer element missing <att>n</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inSection">
-                <measure n="1" xml:id="d106">
-                  <staff n="1" xml:id="d107">
-                    <layer xml:id="d108"/>
+                <measure n="1" xml:id="d074">
+                  <staff n="1" xml:id="d075">
+                    <layer xml:id="d076"/>
                   </staff>
                 </measure>
               </egXML>
@@ -1143,9 +1134,9 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>An invalid layer element with a non-integer <att>n</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inSection">
-                <measure n="1" xml:id="d109">
-                  <staff n="1" xml:id="d110">
-                    <layer n="s1" xml:id="d111"/>
+                <measure n="1" xml:id="d077">
+                  <staff n="1" xml:id="d078">
+                    <layer n="s1" xml:id="d079"/>
                   </staff>
                 </measure>
               </egXML>
@@ -1165,9 +1156,9 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid staff element with a positive integer <att>n</att> value</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inSection">
-                <measure n="1" xml:id="d112">
-                  <staff n="1" xml:id="d113">
-                    <layer n="1" xml:id="d114"/>
+                <measure n="1" xml:id="d080">
+                  <staff n="1" xml:id="d081">
+                    <layer n="1" xml:id="d082"/>
                   </staff>
                 </measure>
               </egXML>
@@ -1175,9 +1166,9 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>An invalid staff element missing <att>n</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inSection">
-                <measure n="1" xml:id="d115">
-                  <staff xml:id="d116">
-                    <layer n="1" xml:id="d117"/>
+                <measure n="1" xml:id="d083">
+                  <staff xml:id="d084">
+                    <layer n="1" xml:id="d085"/>
                   </staff>
                 </measure>
               </egXML>
@@ -1185,9 +1176,9 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>An invalid staff element with a non-integer <att>n</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#inSection">
-                <measure n="1" xml:id="d118">
-                  <staff n="s1" xml:id="d119">
-                    <layer n="1" xml:id="d120"/>
+                <measure n="1" xml:id="d086">
+                  <staff n="s1" xml:id="d087">
+                    <layer n="1" xml:id="d088"/>
                   </staff>
                 </measure>
               </egXML>
@@ -1200,46 +1191,46 @@ CONTACT: info@music-encoding.org
               <p>A valid <gi>slur</gi> with <att>tstamp</att> and <att>tstamp2</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterStaff">
-                <slur tstamp="1" tstamp2="0m+2" xml:id="d124"/>
+                <slur tstamp="1" tstamp2="0m+2" xml:id="d089"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>slur</gi> with <att>startid</att> and <att>endid</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterStaff">
-                <slur startid="#n01" endid="#n02" xml:id="d125"/>
+                <slur startid="#n01" endid="#n02" xml:id="d090"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>slur</gi> with <att>tstamp</att> and <att>endid</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterStaff">
-                <slur tstamp="1" endid="#n02" xml:id="d126"/>
+                <slur tstamp="1" endid="#n02" xml:id="d091"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>slur</gi> with <att>startid</att> and <att>tstamp2</att> attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterStaff">
-                <slur startid="#n01" tstamp2="0m+2" xml:id="d127"/>
+                <slur startid="#n01" tstamp2="0m+2" xml:id="d092"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>slur</gi> with a single value in <att>staff</att> and a <att>layer</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <slur xml:id="d128" layer="1" staff="1" tstamp="1" tstamp2="0m+2"/>
+                <slur xml:id="d093" layer="1" staff="1" tstamp="1" tstamp2="0m+2"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>slur</gi> without an attribute for the end point</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
-                <slur xml:id="d129" startid="#n01"/>
+                <slur xml:id="d094" startid="#n01"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>slur</gi> without an attribute for the start point</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
-                <slur xml:id="d130" endid="#n02"/>
+                <slur xml:id="d095" endid="#n02"/>
               </egXML>
             </exemplum>
             <remarks>
@@ -1266,70 +1257,70 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid <gi>hairpin</gi> with all required and optional attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1" place="above" xml:id="d131"/>
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1" place="above" xml:id="d096"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>hairpin</gi> with two values in <att>staff</att> and no <att>layer</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterTwoStaves">
-                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1 2" xml:id="d137"/>
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1 2" xml:id="d097"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>staff</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterTwoStaves">
-                <hairpin form="cres" tstamp="1" tstamp2="0m+2" xml:id="d137"/>
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" xml:id="d098"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>hairpin</gi> with a single value in <att>staff</att> and multiple values in <att>layer</att></p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#afterTwoStaves">
-                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1 2 3" place="below" xml:id="d139"
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1 2 3" place="below" xml:id="d099"
                 />
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> with a single value in <att>staff</att> missing the <att>place</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1" xml:id="d131"/>
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1" layer="1" xml:id="d100"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>form</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin tstamp="1" tstamp2="0m+2" staff="1 2" xml:id="d132"/>
+                <hairpin tstamp="1" tstamp2="0m+2" staff="1 2" xml:id="d101"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> using the <att>endid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" staff="1 2" endid="#n02" xml:id="d133-1"/>
+                <hairpin form="cres" tstamp="1" staff="1 2" endid="#n02" xml:id="d133-d102"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> using the <att>startid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" startid="#n01" staff="1 2" tstamp2="0m+2" xml:id="d133-2"/>
+                <hairpin form="cres" startid="#n01" staff="1 2" tstamp2="0m+2" xml:id="d133-d103"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>tstamp2</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" staff="1 2" xml:id="d133"/>
+                <hairpin form="cres" tstamp="1" staff="1 2" xml:id="d104"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> missing the <att>tstamp</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" tstamp2="0m+2" staff="1 2" xml:id="d134"/>
+                <hairpin form="cres" tstamp2="0m+2" staff="1 2" xml:id="d105"/>
               </egXML>
             </exemplum>
             <exemplum>
@@ -1337,7 +1328,7 @@ CONTACT: info@music-encoding.org
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterTwoStaves">
                 <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1 2" layer="1"
-                  xml:id="d138"/>
+                  xml:id="d106"/>
               </egXML>
             </exemplum>
             <remarks>
@@ -1364,22 +1355,22 @@ CONTACT: info@music-encoding.org
               <p>A valid <gi>staffDef</gi> with an <att>n</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#inInitialStaffGrp">
-                <staffDef lines="5" xml:id="d141" n="1"/>
+                <staffDef lines="5" xml:id="d107" n="1"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>staffDef</gi> missing the n attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#inInitialStaffGrp">
-                <staffDef lines="5" xml:id="d141"/>
+                <staffDef lines="5" xml:id="d108"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid <gi>staffDef</gi> containing all required attributes and a <gi>clef</gi> child element</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#inInitialStaffGrp">
-                <staffDef lines="5" xml:id="d142" n="2">
-                  <clef shape="G" line="2" xml:id="d143"/>
+                <staffDef lines="5" xml:id="d109" n="2">
+                  <clef shape="G" line="2" xml:id="d110"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -1387,8 +1378,8 @@ CONTACT: info@music-encoding.org
               <p>A valid <gi>staffDef</gi> containing all required attributes and a <gi>meterSig</gi> child element</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#inInitialStaffGrp">
-                <staffDef lines="5" xml:id="d144" n="3">
-                  <meterSig count="4" unit="4" xml:id="d145"/>
+                <staffDef lines="5" xml:id="d111" n="3">
+                  <meterSig count="4" unit="4" xml:id="d112"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -1408,8 +1399,8 @@ CONTACT: info@music-encoding.org
               <p>A valid <gi>meterSig</gi> containing all required attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#inInitialStaffGrp">
-                <staffDef n="1" lines="5" xml:id="d146">
-                  <meterSig xml:id="d147" count="4" unit="4"/>
+                <staffDef n="1" lines="5" xml:id="d113">
+                  <meterSig xml:id="d114" count="4" unit="4"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -1417,8 +1408,8 @@ CONTACT: info@music-encoding.org
               <p>An invalid <gi>meterSig</gi> without the <att>unit</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#inInitialStaffGrp">
-                <staffDef n="1" lines="5" xml:id="d148">
-                  <meterSig xml:id="d149" count="4"/>
+                <staffDef n="1" lines="5" xml:id="d115">
+                  <meterSig xml:id="d116" count="4"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -1426,8 +1417,8 @@ CONTACT: info@music-encoding.org
               <p>An invalid <gi>meterSig</gi> without the <att>count</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#inInitialStaffGrp">
-                <staffDef n="1" lines="5" xml:id="d150">
-                  <meterSig xml:id="d151" unit="4"/>
+                <staffDef n="1" lines="5" xml:id="d117">
+                  <meterSig xml:id="d118" unit="4"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -1447,8 +1438,8 @@ CONTACT: info@music-encoding.org
               <p>A valid <gi>keySig</gi> with all required attributes</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#inInitialStaffGrp">
-                <staffDef n="1" xml:id="d152">
-                  <keySig xml:id="d153" pname="f" mode="major"/>
+                <staffDef n="1" xml:id="d119">
+                  <keySig xml:id="d120" pname="f" mode="major"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -1456,8 +1447,8 @@ CONTACT: info@music-encoding.org
               <p>An invalid <gi>keySig</gi> with an <att>accid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
                 rendition="#inInitialStaffGrp">
-                <staffDef n="1" xml:id="d154">
-                  <keySig xml:id="d155" pname="f" accid="s" mode="major"/>
+                <staffDef n="1" xml:id="d121">
+                  <keySig xml:id="d122" pname="f" accid="s" mode="major"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -1465,8 +1456,8 @@ CONTACT: info@music-encoding.org
               <p>An invalid <gi>keySig</gi> without the <att>mode</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#inInitialStaffGrp">
-                <staffDef n="1" xml:id="d156">
-                  <keySig xml:id="d157" pname="f"/>
+                <staffDef n="1" xml:id="d123">
+                  <keySig xml:id="d124" pname="f"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -1474,8 +1465,8 @@ CONTACT: info@music-encoding.org
               <p>A invalid <gi>keySig</gi> without the <att>pname</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#inInitialStaffGrp">
-                <staffDef n="1" xml:id="d158">
-                  <keySig xml:id="d159" mode="major"/>
+                <staffDef n="1" xml:id="d125">
+                  <keySig xml:id="d126" mode="major"/>
                 </staffDef>
               </egXML>
             </exemplum>
@@ -1494,34 +1485,34 @@ CONTACT: info@music-encoding.org
             <exemplum>
               <p>A valid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <pedal place="below" layer="1" dir="down" tstamp="1" form="line" staff="1" xml:id="d160"/>
-                <pedal place="below" layer="1" dir="bounce" tstamp="1" form="line" staff="1" xml:id="d161"/>
-                <pedal place="below" layer="1" dir="up" tstamp="2" form="line" staff="1" xml:id="d162"/>
+                <pedal place="below" layer="1" dir="down" tstamp="1" form="line" staff="1" xml:id="d127"/>
+                <pedal place="below" layer="1" dir="bounce" tstamp="1" form="line" staff="1" xml:id="d128"/>
+                <pedal place="below" layer="1" dir="up" tstamp="2" form="line" staff="1" xml:id="d129"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal place="below" layer="1" dir="down" tstamp="1" form="line" staff="1" xml:id="d163"/>
-                <pedal place="below" layer="1" dir="bounce" tstamp="1" form="line" staff="1" xml:id="d164"/>
-                <pedal place="below" layer="1" dir="up" tstamp="2" form="pedstar" staff="1" xml:id="d165"/>
+                <pedal place="below" layer="1" dir="down" tstamp="1" form="line" staff="1" xml:id="d130"/>
+                <pedal place="below" layer="1" dir="bounce" tstamp="1" form="line" staff="1" xml:id="d131"/>
+                <pedal place="below" layer="1" dir="up" tstamp="2" form="pedstar" staff="1" xml:id="d132"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <pedal place="below" layer="1" dir="down" tstamp="1" form="line" staff="1" xml:id="d166"/>
-                <pedal place="below" layer="1" dir="bounce" tstamp="1" form="altpedstar" staff="1" xml:id="d167"/>
-                <pedal place="below" layer="1" dir="up" tstamp="2" form="line" staff="1" xml:id="d168"/>
+                <pedal place="below" layer="1" dir="down" tstamp="1" form="line" staff="1" xml:id="d133"/>
+                <pedal place="below" layer="1" dir="bounce" tstamp="1" form="altpedstar" staff="1" xml:id="d134"/>
+                <pedal place="below" layer="1" dir="up" tstamp="2" form="line" staff="1" xml:id="d135"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>A valid sequence of <gi>pedal</gi> elements</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
-                <pedal place="below" layer="1" dir="half" tstamp="1" form="altpedstar" staff="1" xml:id="d169"/>
-                <pedal place="below" layer="1" dir="up" tstamp="2" form="altpedstar" staff="1" xml:id="d170"/>
+                <pedal place="below" layer="1" dir="half" tstamp="1" form="altpedstar" staff="1" xml:id="d136"/>
+                <pedal place="below" layer="1" dir="up" tstamp="2" form="altpedstar" staff="1" xml:id="d137"/>
               </egXML>
             </exemplum>
           </elementSpec>
