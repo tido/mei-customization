@@ -123,7 +123,6 @@
           <item><gi>layer</gi></item>
           <item><gi>staff</gi></item>
           <item><gi>staffDef</gi></item>
-          <!-- <item><gi>verse</gi></item> -->
         </list></p>
       </div>
       <div>
@@ -434,7 +433,6 @@
           <classSpec ident="att.responsibility" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.rest.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.rest.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <!-- <classSpec ident="att.rest.vis" module="MEI.shared" type="atts" mode="delete"/> -->
           <classSpec ident="att.scalable" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.score.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.score.ges" module="MEI.shared" type="atts" mode="delete"/>
@@ -475,9 +473,6 @@
               </attDef>
             </attList>
           </classSpec>
-          <!-- <classSpec ident="att.syl.anl" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.syl.ges" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.syltext" module="MEI.shared" type="atts" mode="delete"/> -->
           <classSpec ident="att.systems" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.textstyle" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.tiepresent" module="MEI.shared" type="atts" mode="delete"/>
@@ -1096,19 +1091,6 @@
             </attList>
           </classSpec>
           <!-- === ELEMENT SPECIFICATIONS === -->
-          <!-- <elementSpec ident="meiHead" module="MEI.header" mode="change">
-            <content>
-              <rng:ref name="style"/>
-              <rng:zeroOrMore>
-                <rng:ref name="altId"/>
-              </rng:zeroOrMore>
-              <rng:ref name="fileDesc"/>
-              <rng:ref name="model.headerPart_sequenceOptional"/>
-              <rng:optional>
-                <rng:ref name="revisionDesc"/>
-              </rng:optional>
-            </content>
-          </elementSpec> -->
           <!-- === LAYER === -->
           <elementSpec ident="layer" module="MEI.shared" mode="change">
             <attList>
