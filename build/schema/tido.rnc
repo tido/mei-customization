@@ -2,11 +2,9 @@ default namespace = "http://www.music-encoding.org/ns/mei"
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
-namespace tido = "http://tido-music.com/ns/1.0"
-namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-09T15:27:08Z. .
+# Schema generated from ODD source 2016-05-10T10:22:45Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
@@ -616,6 +614,21 @@ tido_att.chord.log.attributes =
   tido_att.event.attributes,
   tido_att.articulation.attributes,
   tido_att.augmentdots.attributes
+sch:pattern [
+  id = "tido-att.chord.log-require_chord_stem.dir-constraint-2"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:chord"
+    "\x{a}" ~
+    "                  "
+    sch:assert [ test = "exists(@stem.dir)" "Must have dur attribute." ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
 tido_att.chord.vis.attributes =
   tido_att.stems.attributes,
   tido_att.typography.attributes,
@@ -632,7 +645,7 @@ tido_att.classcodeident.attribute.classcode =
   attribute classcode { tido_data.URI }?
 sch:pattern [
   id =
-    "tido-att.classcodeident-classcode-check_classcodeTarget-constraint-2"
+    "tido-att.classcodeident-classcode-check_classcodeTarget-constraint-3"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -698,7 +711,7 @@ tido_att.controlevent.attributes =
   tido_att.layerident.attributes
 sch:pattern [
   id =
-    "tido-att.controlevent-no_layer_with_multivalue_staff-constraint-3"
+    "tido-att.controlevent-no_layer_with_multivalue_staff-constraint-4"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -718,7 +731,7 @@ sch:pattern [
 ]
 sch:pattern [
   id =
-    "tido-att.controlevent-no_place_with_multivalue_staff-constraint-4"
+    "tido-att.controlevent-no_place_with_multivalue_staff-constraint-5"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -871,7 +884,7 @@ tido_att.name.attribute.nymref =
   ## Used to record a pointer to the regularized form of the name elsewhere in the document.
   attribute nymref { tido_data.URI }?
 sch:pattern [
-  id = "tido-att.name-nymref-check_nymrefTarget-constraint-5"
+  id = "tido-att.name-nymref-check_nymrefTarget-constraint-6"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -928,7 +941,7 @@ tido_att.note.log.attributes =
   tido_att.duration.musical.attributes,
   tido_att.pitched.attributes
 sch:pattern [
-  id = "tido-att.note.log-require_oct_and_pname_or_loc-constraint-6"
+  id = "tido-att.note.log-require_oct_and_pname_or_loc-constraint-7"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -936,10 +949,78 @@ sch:pattern [
     "\x{a}" ~
     "                  "
     sch:assert [
-      test =
-        "if (not(@pname and @oct) and not(@loc)) then false() else true()"
-      "either\x{a}" ~
-      "                    @pname and @oct or @loc must be specified on a note."
+      test = "(@pname and @oct) or @loc"
+      "either @pname and @oct or @loc \x{a}" ~
+      "                    must be specified on a note."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id = "tido-att.note.log-standalone_note_require_dur-constraint-8"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:note[not(ancestor::mei:chord)]"
+    "\x{a}" ~
+    "                  "
+    sch:assert [ test = "exists(@dur)" "Must have dur attribute." ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id = "tido-att.note.log-standalone_note_require_stem.dir-constraint-9"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:note[not(ancestor::mei:chord)]"
+    "\x{a}" ~
+    "                  "
+    sch:assert [
+      test = "exists(@stem.dir)"
+      "Must have stem.dir attribute."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id = "tido-att.note.log-no_note_dur_in_chord-constraint-10"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:note[ancestor::mei:chord]"
+    "\x{a}" ~
+    "                  "
+    sch:report [
+      test = "exists(@dur)"
+      "@dur attribute not permitted on notes within a chord."
+    ]
+    "\x{a}" ~
+    "                "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id = "tido-att.note.log-no_note_stem.dir_in_chord-constraint-11"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "mei:note[ancestor::mei:chord]"
+    "\x{a}" ~
+    "                  "
+    sch:report [
+      test = "@stem.dir"
+      "@stem.dir not permitted on notes within a chord."
     ]
     "\x{a}" ~
     "                "
@@ -1026,6 +1107,35 @@ tido_att.staffDef.vis.attribute.spacing =
   
   ## Records the absolute distance (as opposed to the relative distances recorded in <scoreDef> elements) between this staff and the preceding one in the same system. This value is meaningless for the first staff in a system since the spacing.system attribute indicates the spacing between systems.
   attribute spacing { tido_data.MEASUREMENT }?
+tido_att.staffgroupingsym.attributes =
+  tido_att.staffgroupingsym.attribute.symbol
+tido_att.staffgroupingsym.attribute.symbol =
+  
+  ## Specifies the symbol used to group a set of staves.
+  attribute symbol {
+    
+    ## Curved symbol, i.e., {.
+    "brace"
+    | 
+      ## Square symbol, i.e., [, but with curved/angled top and bottom segments.
+      "bracket"
+    | 
+      ## Square symbol, i.e., [, with horizontal top and bottom segments.
+      "bracketsq"
+    | 
+      ## Line symbol, i.e., |, (wide) line without top and bottom curved/horizontal segments.
+      "line"
+    | 
+      ## Grouping symbol missing.
+      "none"
+  }?
+tido_att.staffGrp.vis.attributes =
+  tido_att.staffgroupingsym.attributes,
+  tido_att.staffGrp.vis.attribute.barthru
+tido_att.staffGrp.vis.attribute.barthru =
+  
+  ## Indicates whether bar lines go across the space between staves (true) or are only drawn across the lines of each staff (false).
+  attribute barthru { tido_data.BOOLEAN }?
 tido_att.staffident.attributes = tido_att.staffident.attribute.staff
 tido_att.staffident.attribute.staff =
   
@@ -1045,7 +1155,7 @@ tido_att.startendid.attribute.endid =
   ## Indicates the final element in a sequence of events to which the feature applies.
   attribute endid { tido_data.URI.local }?
 sch:pattern [
-  id = "tido-att.startendid-endid-check_endidTarget-constraint-7"
+  id = "tido-att.startendid-endid-check_endidTarget-constraint-12"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -1079,7 +1189,7 @@ tido_att.startid.attribute.startid =
   ## Holds a reference to the first element in a sequence of events to which the feature applies.
   attribute startid { tido_data.URI.local }?
 sch:pattern [
-  id = "tido-att.startid-startid-check_startidTarget-constraint-8"
+  id = "tido-att.startid-startid-check_startidTarget-constraint-13"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -1204,7 +1314,7 @@ tido_att.typed.attribute.subtype =
   ## Provide any sub-classification for the element, additional to that given by its type attribute.
   attribute subtype { xsd:NMTOKEN }?
 sch:pattern [
-  id = "tido-att.typed-subtype-When_subtype-constraint-9"
+  id = "tido-att.typed-subtype-When_subtype-constraint-14"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -1539,7 +1649,7 @@ tido_clef =
   element clef {
     empty
     >> sch:pattern [
-         id = "tido-clef-Clef_position_lines-constraint-10"
+         id = "tido-clef-Clef_position_lines-constraint-15"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -1565,7 +1675,7 @@ tido_clef =
          "         "
        ]
     >> sch:pattern [
-         id = "tido-clef-Clef_position_nolines-constraint-11"
+         id = "tido-clef-Clef_position_nolines-constraint-16"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -1602,7 +1712,7 @@ tido_dynam =
     ((text | tido_model.textphraseLike.limited)*)
     >> sch:pattern [
          id =
-           "tido-dynam-dynam_start-type_attributes_required-constraint-12"
+           "tido-dynam-dynam_start-type_attributes_required-constraint-17"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -1621,7 +1731,7 @@ tido_dynam =
          "         "
        ]
     >> sch:pattern [
-         id = "tido-dynam-dynam_end-type_attributes-constraint-13"
+         id = "tido-dynam-dynam_end-type_attributes-constraint-18"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -1651,7 +1761,7 @@ tido_keySig =
   element keySig {
     (tido_model.keyAccidLike*)
     >> sch:pattern [
-         id = "tido-keySig-key_att_pair-constraint-14"
+         id = "tido-keySig-key_att_pair-constraint-19"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -1703,7 +1813,7 @@ tido_mei =
     tido_meiHead,
     tido_music
     >> sch:pattern [
-         id = "tido-mei-Check_staff-constraint-15"
+         id = "tido-mei-Check_staff-constraint-20"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -1740,65 +1850,7 @@ tido_note =
   
   ## A single pitched event. 
   element note {
-    ((tido_model.noteModifierLike)*)
-    >> sch:pattern [
-         id = "tido-note-require_out_of_chord-constraint-16"
-         "\x{a}" ~
-         "            "
-         sch:rule [
-           context = "mei:note"
-           "\x{a}" ~
-           "                  "
-           sch:assert [
-             test =
-               "if (not(ancestor::mei:chord) and not(@dur)) then false() else true()"
-             "\x{a}" ~
-             "                    Must have dur attribute."
-           ]
-           "\x{a}" ~
-           "                "
-         ]
-         "\x{a}" ~
-         "         "
-       ]
-    >> sch:pattern [
-         id = "tido-note-no_stem_in_chord-constraint-17"
-         "\x{a}" ~
-         "            "
-         sch:rule [
-           context = "mei:note[ancestor::mei:chord]"
-           "\x{a}" ~
-           "                  "
-           sch:report [
-             test =
-               "@stem.dir or @stem.len or @stem.pos or @stem.x or @stem.y"
-             " Stem\x{a}" ~
-             "                    attributes not permitted on notes within a chord."
-           ]
-           "\x{a}" ~
-           "                "
-         ]
-         "\x{a}" ~
-         "         "
-       ]
-    >> sch:pattern [
-         id = "tido-note-no_dur_in_chord-constraint-18"
-         "\x{a}" ~
-         "            "
-         sch:rule [
-           context = "mei:note[ancestor::mei:chord]"
-           "\x{a}" ~
-           "                  "
-           sch:report [
-             test = "@dur"
-             "@dur attribute not permitted on notes within a chord."
-           ]
-           "\x{a}" ~
-           "                "
-         ]
-         "\x{a}" ~
-         "         "
-       ],
+    (tido_model.noteModifierLike)*,
     tido_att.common.attributes,
     tido_att.note.log.attributes,
     tido_att.note.vis.attributes,
@@ -1812,7 +1864,7 @@ tido_ornam =
     ((text | tido_model.textphraseLike.limited)*)
     >> sch:pattern [
          id =
-           "tido-ornam-ornam_start-type_attributes_required-constraint-19"
+           "tido-ornam-ornam_start-type_attributes_required-constraint-21"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -1894,7 +1946,7 @@ tido_rest =
   element rest {
     empty
     >> sch:pattern [
-         id = "tido-rest-Check_restline-constraint-20"
+         id = "tido-rest-Check_restline-constraint-22"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -1953,7 +2005,7 @@ tido_section =
       | tido_model.annotLike
       | tido_model.sectionPart)*)
     >> sch:pattern [
-         id = "tido-section-Check_sectionexpansion-constraint-21"
+         id = "tido-section-Check_sectionexpansion-constraint-23"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2007,7 +2059,7 @@ tido_staffDef =
       | tido_model.layerDefLike
       | tido_model.staffDefPart)*)
     >> sch:pattern [
-         id = "tido-staffDef-Check_staffDefn-constraint-22"
+         id = "tido-staffDef-Check_staffDefn-constraint-24"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2043,7 +2095,7 @@ tido_staffDef =
          "         "
        ]
     >> sch:pattern [
-         id = "tido-staffDef-Check_ancestor_staff-constraint-23"
+         id = "tido-staffDef-Check_ancestor_staff-constraint-25"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2065,7 +2117,7 @@ tido_staffDef =
          "         "
        ]
     >> sch:pattern [
-         id = "tido-staffDef-Check_clef_position_staffDef-constraint-24"
+         id = "tido-staffDef-Check_clef_position_staffDef-constraint-26"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2085,7 +2137,7 @@ tido_staffDef =
        ]
     >> sch:pattern [
          id =
-           "tido-staffDef-Check_clef_position_staffDef_nolines-constraint-25"
+           "tido-staffDef-Check_clef_position_staffDef_nolines-constraint-27"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2114,7 +2166,7 @@ tido_staffDef =
          "         "
        ]
     >> sch:pattern [
-         id = "tido-staffDef-Check_tab_strings_lines-constraint-26"
+         id = "tido-staffDef-Check_tab_strings_lines-constraint-28"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2140,7 +2192,7 @@ tido_staffDef =
          "         "
        ]
     >> sch:pattern [
-         id = "tido-staffDef-Check_tab_strings_nolines-constraint-27"
+         id = "tido-staffDef-Check_tab_strings_nolines-constraint-29"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2290,7 +2342,7 @@ tido_staffGrp =
     ((tido_model.staffGrpLike | tido_model.staffDefLike)+)
     >> sch:pattern [
          id =
-           "tido-staffGrp-Check_staffGrp_unique_staff_n_values-constraint-32"
+           "tido-staffGrp-Check_staffGrp_unique_staff_n_values-constraint-34"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2322,6 +2374,7 @@ tido_staffGrp =
          "         "
        ],
     tido_att.common.attributes,
+    tido_att.staffGrp.vis.attributes,
     empty
   }
 mei_title =
@@ -2516,7 +2569,7 @@ tido_change =
     tido_changeDesc,
     (tido_model.dateLike?)
     >> sch:pattern [
-         id = "tido-change-change_requirements-constraint-33"
+         id = "tido-change-change_requirements-constraint-35"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3219,7 +3272,7 @@ tido_beam =
   element beam {
     ((tido_model.eventLike)*)
     >> sch:pattern [
-         id = "tido-beam-When_not_copyof_beam_content-constraint-35"
+         id = "tido-beam-When_not_copyof_beam_content-constraint-37"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3270,7 +3323,7 @@ tido_meterSig =
   element meterSig {
     empty
     >> sch:pattern [
-         id = "tido-meterSig-meter_att_pair-constraint-36"
+         id = "tido-meterSig-meter_att_pair-constraint-38"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3310,7 +3363,7 @@ tido_pedal =
   element pedal {
     empty
     >> sch:pattern [
-         id = "tido-pedal-pedal_style_consistent-constraint-37"
+         id = "tido-pedal-pedal_style_consistent-constraint-39"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3334,7 +3387,7 @@ tido_pedal =
        ]
     >> sch:pattern [
          id =
-           "tido-pedal-pedal_start-type_attributes_required-constraint-38"
+           "tido-pedal-pedal_start-type_attributes_required-constraint-40"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3364,7 +3417,7 @@ tido_slur =
   [
     sch:pattern [
       id =
-        "tido-slur-slur_start-_and_end-type_attributes_required-constraint-39"
+        "tido-slur-slur_start-_and_end-type_attributes_required-constraint-41"
       "\x{a}" ~
       "            "
       sch:rule [
@@ -3402,7 +3455,7 @@ tido_tie =
   [
     sch:pattern [
       id =
-        "tido-tie-tie_start-_and_end-type_attributes_required-constraint-40"
+        "tido-tie-tie_start-_and_end-type_attributes_required-constraint-42"
       "\x{a}" ~
       "            "
       sch:rule [
@@ -3428,7 +3481,7 @@ tido_tie =
       "         "
     ]
     sch:pattern [
-      id = "tido-tie-tie_containing_curve-constraint-41"
+      id = "tido-tie-tie_containing_curve-constraint-43"
       "\x{a}" ~
       "            "
       sch:rule [
@@ -3601,7 +3654,7 @@ tido_att.spanning.req.attributes =
   tido_att.layerident.attributes
 sch:pattern [
   id =
-    "tido-att.spanning.req-require_pricesely_one_start_spec-constraint-42"
+    "tido-att.spanning.req-require_pricesely_one_start_spec-constraint-44"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -3621,7 +3674,7 @@ sch:pattern [
 ]
 sch:pattern [
   id =
-    "tido-att.spanning.req-require_pricesely_one_end_spec-constraint-43"
+    "tido-att.spanning.req-require_pricesely_one_end_spec-constraint-45"
   "\x{a}" ~
   "      "
   sch:rule [
