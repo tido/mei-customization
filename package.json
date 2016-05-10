@@ -1,9 +1,9 @@
 {
-  "name": "mei-customization",
+  "name": "tido-mei-specs",
   "version": "0.1.0",
   "description": "Tido MEI Customization",
-  "author": "",
-  "license": "ISC",
+  "author": "Tido",
+  "license": "ECL-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/tido/mei-customization.git"

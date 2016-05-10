@@ -4,12 +4,12 @@ namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-10T17:03:55Z. .
+# Schema generated from ODD source 2016-05-10T17:11:35Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
 
-# Copyright 2014-2016 Tido Ltd. All rights reserved.
+# Copyright 2014-2016 Tido Ltd. Licensed under Educational Community License 2.0 you may not use this file except in compliance with the License. You may obtain a copy of the License at https://opensource.org/licenses/ECL-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 sch:ns [ prefix = "tei" uri = "http://www.tei-c.org/ns/1.0" ]
 tido_data.ACCIDENTAL.EXPLICIT =
@@ -1256,49 +1256,6 @@ tido_att.stems.attribute.stem.y =
   
   ## Records the output y coordinate of the stem's attachment point.
   attribute stem.y { xsd:decimal }?
-tido_att.syl.log.attribute.con =
-  
-  ## Describes the symbols typically used to indicate breaks between syllables and their functions.
-  attribute con {
-    
-    ## Space (word separator).
-    "s"
-    | 
-      ## Dash (syllable separator).
-      "d"
-    | 
-      ## Underscore (syllable extension).
-      "u"
-    | 
-      ## Tilde (syllable elision).
-      "t"
-    | 
-      ## Circumflex [angled line above] (syllable elision).
-      "c"
-    | 
-      ## Caron [angled line below] (syllable elision).
-      "v"
-    | 
-      ## Inverted breve [curved line above] (syllable elision).
-      "i"
-    | 
-      ## Breve [curved line below] (syllable elision).
-      "b"
-  }?
-tido_att.syl.log.attribute.wordpos =
-  
-  ## Records the position of a syllable within a word.
-  attribute wordpos {
-    
-    ## (initial) first syllable.
-    "i"
-    | 
-      ## (medial) neither first nor last syllable.
-      "m"
-    | 
-      ## (terminal) last syllable.
-      "t"
-  }?
 tido_att.syltext.attributes = tido_att.syltext.attribute.syl
 tido_att.syltext.attribute.syl =
   

@@ -1,21 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-© 2015 by the Music Encoding Initiative (MEI).
-Licensed under the Educational Community License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at http://opensource.org/licenses/ECL-2.0.
-Unless required by applicable law or agreed to in writing, software distributed
-under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
-This is a derivative work based on earlier versions of the schema
-
-© 2001-2006 Perry Roland and the Rector and Visitors of the University of Virginia;
-licensed under the Educational Community License version 1.0.
-
-CONTACT: info@music-encoding.org
--->
-
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
@@ -30,9 +13,20 @@ CONTACT: info@music-encoding.org
       </titleStmt>
       <publicationStmt>
         <publisher>Tido (UK) Ltd.</publisher>
-        <availability status="restricted">
+        <availability>
           <p>Copyright 2014-2016 Tido Ltd.</p>
-          <p>All rights reserved.</p>
+          <p>Licensed under <ref target="https://opensource.org/licenses/ECL-2.0">Educational Community License 2.0</ref>
+            you may not use this file except in compliance with the License. You may
+            obtain a copy of the License at
+
+            <ref target="https://opensource.org/licenses/ECL-2.0">https://opensource.org/licenses/ECL-2.0</ref>
+
+            Unless required by applicable law or agreed to in writing,
+            software distributed under the License is distributed on an "AS IS"
+            BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+            or implied. See the License for the specific language governing
+            permissions and limitations under the License.
+          </p>
         </availability>
       </publicationStmt>
       <sourceDesc>
@@ -100,7 +94,11 @@ CONTACT: info@music-encoding.org
           subset of elements with appropriate restrictions for basic use cases.
           For general information about MEI, please refer to the
           <ref target="http://music-encoding.org/documentation/guidelines2013/chapters">MEI
-          Guidelines</ref>. Each restriction is implemented using the
+            Guidelines</ref>. Please note however, that this customization builds on the
+          <ref target="https://github.com/tido/music-encoding/tree/develop">development branch</ref>
+          of the MEI project, which is more advanced than the current release.
+
+          Each restriction is implemented using the
           <ref target="http://www.tei-c.org/Guidelines/Customization/odds.xml">TEI ODD</ref> specification language,
           and documented in the prose section of this document, including examples (what is valid)
           and counter-examples (what is invalid).</p>
@@ -238,22 +236,25 @@ CONTACT: info@music-encoding.org
         </div>
         <div>
           <head>Control events</head>
-          <p>Control events like <!-- <gi>dir</gi>, --><gi>hairpin</gi> and <gi>dynam</gi> can be placed either directly
-            above or below a single staff or in the middle between two staves. Placement above or
-            below a staff is indicated by the <att>place</att> attribute,
+          <div>
+            <head>Placement relative to staves</head>
+            <p>Some control events, such as <gi>hairpin</gi>, <gi>dynam</gi>, etc. can be placed either directly
+              above or below a single staff or in the middle between two staves. Placement above or
+              below a staff is indicated by the <att>place</att> attribute,
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
                 <dynam tstamp="1" layer="1" xml:id="d017" place="below" staff="1"/>
               </egXML>
-            placement between two staves is expressed by specifying the numbers of both staves
-            in the <att>staff</att> attribute.
-            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
-              <dynam tstamp="1" xml:id="d018" staff="1 2"/>
-            </egXML>
-            When the <att>staff</att> attribute has multiple values,
-            <att>place</att> and <att>layer</att> are not allowed:</p>
+              placement between two staves is expressed by specifying the numbers of both staves
+              in the <att>staff</att> attribute.
+              <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterTwoStaves">
+                <dynam tstamp="1" xml:id="d018" staff="1 2"/>
+              </egXML>
+              When the <att>staff</att> attribute has multiple values,
+              <att>place</att> and <att>layer</att> are not allowed:</p>
             <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterTwoStaves">
               <dynam tstamp="1" layer="1" xml:id="d019" place="above" staff="1 2"/>
             </egXML>
+          </div>
           <div>
             <head>Spanning elements</head>
             <div>
@@ -264,9 +265,11 @@ CONTACT: info@music-encoding.org
               </p>
             </div>
             <div>
-              <head>Slurs</head>
-              <p>Start and end point of a <gi>slur</gi> can almost always be expressed using the
-                <att>startid</att> and <att>endid</att> attributes. The only exceptions are
+              <head>Slurs and Ties</head>
+              <p>In this customization, slurs and ties are always encoded as elements.</p>
+              <p>Since slurs almost always connect notes with other notes,
+                their start and end points can nearly always be expressed using the
+                <att>startid</att> and <att>endid</att> attributes. Only exceptions are
                 <soCalled>partial</soCalled> slurs, such as the ones at the boundary of
                 <gi>ending</gi> elements. Such slurs need to be encoded using the <att>tstamp</att>
                 or <att>tstamp2</att> attributes. When the inclompete slur starts at the barline,
@@ -278,10 +281,15 @@ CONTACT: info@music-encoding.org
                 slurs have to be supplied with a <att>curvedir</att> attribute indicating the direction of
                 the slur (values: <val>above</val> or <val>below</val>).
               </p>
-              <p>However, since tstamps are not always enough to describe start and end point of slurs,
-                and it is simply impractical to assert in which situation which encoding is expected,
-                no restrictions apply for using combinations of <att>startid</att>/<att>endid</att>
-                and <att>tstamp</att>/<att>tstamp2</att> to describe slur start and end points.</p>
+              <p>On the other hand, tstamps are not always enough to describe start and end point of slurs
+                (think of a slur in the upper voice, while the lower voice has no slur), therefore we must allow
+                the use of both <att>startid</att>/<att>endid</att> and <att>tstamp</att>/<att>tstamp2</att>.
+
+                Since it is simply impractical to assert in which situation which encoding is expected,
+                no asserted restrictions apply for using combinations of these attributes to describe
+                start and end points of slurs, however, it is required that when tstamps are used,
+                the tstamp has to be unambiguously resolved to a single note or chord event.
+              </p>
               <p>A typical slur: </p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
                 <slur xml:id="d020" startid="#n01" endid="#n02"/>
@@ -308,7 +316,7 @@ CONTACT: info@music-encoding.org
             head height identifier imprint incip keyAccid label layerDef lb librettist lyricist name
             num pad part parts pb pgDesc pgFoot pgFoot2 pgHead pgHead2 phrase physLoc publisher
             pubPlace recipient relatedItem repository resp role roleDesc sb series sponsor stack
-            tempo textLang titlePage width"/>
+            syl tempo textLang titlePage width"/>
           <moduleRef key="MEI.header"/>
           <moduleRef key="MEI.cmn" except=" arpeg beamSpan beatRpt bend breath bTrem fermata fTrem
             gliss halfmRpt harpPedal meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt octave ossia
@@ -324,6 +332,7 @@ CONTACT: info@music-encoding.org
           </constraintSpec>
 
           <macroSpec ident="data.STEMDIRECTION.extended" module="MEI" type="dt" mode="delete"/>
+
           <classSpec ident="att.accid.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.accid.ges" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.accid.vis" module="MEI.shared" type="atts" mode="delete"/>
@@ -1299,14 +1308,14 @@ CONTACT: info@music-encoding.org
               <p>An invalid <gi>hairpin</gi> using the <att>endid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" staff="1 2" endid="#n02" xml:id="d133-d102"/>
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1 2" endid="#n02" xml:id="d133-1"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> using the <att>startid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" startid="#n01" staff="1 2" tstamp2="0m+2" xml:id="d133-d103"/>
+                <hairpin form="cres" tstamp="1" startid="#n01" tstamp2="0m+2" staff="1 2" xml:id="d133-2"/>
               </egXML>
             </exemplum>
             <exemplum>
