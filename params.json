@@ -1,0 +1,6 @@
+{
+  "name": "mei-customization",
+  "tagline": "ODD specification and documentation for Tido music notation",
+  "body": "\r\n### Welcome to Tido MEI Customization\r\n\r\nMinimal MEI customization that defines a basic subset of elements with appropriate restrictions for basic use cases.\r\n\r\nFrom this page you can access the generated [[guidelines|build/guidelines/tido-guidelines.html]] and the [[RNG schema file|build/schema/tido.rng]]",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
