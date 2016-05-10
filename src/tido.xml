@@ -1308,14 +1308,14 @@
               <p>An invalid <gi>hairpin</gi> using the <att>endid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1 2" endid="#n02" xml:id="d133-1"/>
+                <hairpin form="cres" tstamp="1" tstamp2="0m+2" staff="1 2" endid="#n02" xml:id="d102"/>
               </egXML>
             </exemplum>
             <exemplum>
               <p>An invalid <gi>hairpin</gi> using the <att>startid</att> attribute</p>
               <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false"
                 rendition="#afterStaff">
-                <hairpin form="cres" tstamp="1" startid="#n01" tstamp2="0m+2" staff="1 2" xml:id="d133-2"/>
+                <hairpin form="cres" tstamp="1" startid="#n01" tstamp2="0m+2" staff="1 2" xml:id="d103"/>
               </egXML>
             </exemplum>
             <exemplum>
