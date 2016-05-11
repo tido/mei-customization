@@ -5,7 +5,7 @@ namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-11T15:50:49Z. .
+# Schema generated from ODD source 2016-05-11T18:33:43Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
@@ -2562,8 +2562,7 @@ tido_pedal =
            "\x{a}" ~
            "                  "
            sch:assert [
-             test =
-               "preceding::mei:pedal[@dir=('down', 'half')][1][@form=$form]"
+             test = "preceding::mei:pedal[1][@form=$form]"
              "\x{a}" ~
              "                    Pedal styles must be consistent between pedal down and pedal up."
            ]

@@ -249,7 +249,7 @@
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-pedal-pedal_style_consistent-constraint-39">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:pedal[@form][@dir=('bounce', 'up')]">
                   <sch:let name="form" value="@form"/>
-                  <sch:assert test="preceding::mei:pedal[@dir=('down', 'half')][1][@form=$form]">
+                  <sch:assert test="preceding::mei:pedal[1][@form=$form]">
                     Pedal styles must be consistent between pedal down and pedal up.</sch:assert>
                 </sch:rule>
          </pattern>
