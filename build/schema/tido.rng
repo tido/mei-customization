@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.music-encoding.org/ns/mei"><!--
-Schema generated from ODD source 2016-05-11T18:33:42Z. .
+Schema generated from ODD source 2016-05-11T19:04:46Z. .
 TEI Edition: Version 3.0.0
 TEI Edition Location: http://www.tei-c.org/Vault/P5//
   
@@ -837,7 +837,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <ref name="tido_att.timestamp2.musical.attributes"/>
    </define>
    <define name="tido_att.ornam.vis.attributes">
-      <ref name="tido_att.ornam.altsym.attributes"/>
+      <ref name="tido_att.ornam.extsym.attributes"/>
       <ref name="tido_att.placement.attributes"/>
    </define>
    <define name="tido_att.pitch.attributes">
@@ -3243,7 +3243,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       </optional>
    </define>
    <define name="tido_att.mordent.vis.attributes">
-      <ref name="tido_att.ornam.altsym.attributes"/>
+      <ref name="tido_att.ornam.extsym.attributes"/>
       <ref name="tido_att.placement.attributes"/>
       <ref name="tido_att.typography.attributes"/>
    </define>
@@ -3254,7 +3254,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <ref name="tido_att.timestamp2.musical.attributes"/>
    </define>
    <define name="tido_att.trill.vis.attributes">
-      <ref name="tido_att.ornam.altsym.attributes"/>
+      <ref name="tido_att.ornam.extsym.attributes"/>
       <ref name="tido_att.placement.attributes"/>
       <ref name="tido_att.typography.attributes"/>
    </define>
@@ -3286,7 +3286,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       </optional>
    </define>
    <define name="tido_att.turn.vis.attributes">
-      <ref name="tido_att.ornam.altsym.attributes"/>
+      <ref name="tido_att.ornam.extsym.attributes"/>
       <ref name="tido_att.placement.attributes"/>
       <ref name="tido_att.typography.attributes"/>
    </define>
@@ -3845,39 +3845,39 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <empty/>
       </element>
    </define>
-   <define name="tido_att.ornam.altsym.attributes">
-      <ref name="tido_att.ornam.altsym.attribute.altsym"/>
+   <define name="tido_att.ornam.extsym.attributes">
+      <ref name="tido_att.ornam.extsym.attribute.glyphname"/>
    </define>
-   <define name="tido_att.ornam.altsym.attribute.altsym">
+   <define name="tido_att.ornam.extsym.attribute.glyphname">
       <optional>
-         <attribute name="altsym">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a way of pointing to an ornament symbol. It must contain an ID of a symbolDef element in Tido's ornament symbol table.</a:documentation>
+         <attribute name="glyphname">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a way of pointing to an ornament glyph.</a:documentation>
             <choice>
-               <value>#ornamentMordent</value>
+               <value>ornamentMordent</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Inverted mordent (Tido default symbol for mordent[@inv='true']).</a:documentation>
-               <value>#ornamentMordentInverted</value>
+               <value>ornamentMordentInverted</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mordent (Tido default symbol for mordent[not(@inv='true')]).</a:documentation>
-               <value>#ornamentTurn</value>
+               <value>ornamentTurn</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Turn (Tido default symbol for turn[not(@inv='true')]).</a:documentation>
-               <value>#ornamentTurnSlash</value>
+               <value>ornamentTurnSlash</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Turn with slash (Tido default symbol for turn[@inv='true']).</a:documentation>
-               <value>#ornamentTrill</value>
+               <value>ornamentTrill</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Trill.</a:documentation>
-               <value>#ornamentPrecompSlideTrillDAnglebert</value>
+               <value>ornamentPrecompSlideTrillDAnglebert</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Slide trill (D'Anglebert).</a:documentation>
-               <value>#ornamentPrecompMordentUpperPrefix</value>
+               <value>ornamentPrecompMordentUpperPrefix</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mordent with upper prefix.</a:documentation>
-               <value>#ornamentPrecompTrillSuffixDandrieu</value>
+               <value>ornamentPrecompTrillSuffixDandrieu</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Trill with suffix (Dandrieu).</a:documentation>
-               <value>#ornamentPrecompTrillLowerSuffix</value>
+               <value>ornamentPrecompTrillLowerSuffix</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Trill with lower suffix.</a:documentation>
-               <value>#ornamentPrecompPortDeVoixMordent</value>
+               <value>ornamentPrecompPortDeVoixMordent</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Port de voix mordent.</a:documentation>
-               <value>#ornamentPrecompInvertedMordentUpperPrefix</value>
+               <value>ornamentPrecompInvertedMordentUpperPrefix</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Inverted mordent with upper prefix.</a:documentation>
-               <value>#ornamentPrecompAppoggTrill</value>
+               <value>ornamentPrecompAppoggTrill</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Appogiatura trill.</a:documentation>
-               <value>#ornamentTremblement</value>
+               <value>ornamentTremblement</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tremblement (Tido default symbol for mordent[@long='true']).</a:documentation>
             </choice>
          </attribute>

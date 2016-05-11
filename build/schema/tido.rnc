@@ -5,7 +5,7 @@ namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-11T18:33:43Z. .
+# Schema generated from ODD source 2016-05-11T19:04:46Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
@@ -807,7 +807,7 @@ tido_att.ornam.log.attributes =
   tido_att.startendid.attributes,
   tido_att.timestamp2.musical.attributes
 tido_att.ornam.vis.attributes =
-  tido_att.ornam.altsym.attributes, tido_att.placement.attributes
+  tido_att.ornam.extsym.attributes, tido_att.placement.attributes
 tido_att.pitch.attributes = tido_att.pitch.attribute.pname
 tido_att.pitch.attribute.pname =
   
@@ -2719,7 +2719,7 @@ tido_att.mordent.log.attribute.long =
   ## When the long attribute is set to 'yes', a double or long mordent, consisting of 5 notes, is indicated.
   attribute long { tido_data.BOOLEAN }?
 tido_att.mordent.vis.attributes =
-  tido_att.ornam.altsym.attributes,
+  tido_att.ornam.extsym.attributes,
   tido_att.placement.attributes,
   tido_att.typography.attributes
 tido_att.trill.log.attributes =
@@ -2728,7 +2728,7 @@ tido_att.trill.log.attributes =
   tido_att.startendid.attributes,
   tido_att.timestamp2.musical.attributes
 tido_att.trill.vis.attributes =
-  tido_att.ornam.altsym.attributes,
+  tido_att.ornam.extsym.attributes,
   tido_att.placement.attributes,
   tido_att.typography.attributes
 tido_att.turn.log.attributes =
@@ -2752,7 +2752,7 @@ tido_att.turn.log.attribute.form =
       "norm"
   }?
 tido_att.turn.vis.attributes =
-  tido_att.ornam.altsym.attributes,
+  tido_att.ornam.extsym.attributes,
   tido_att.placement.attributes,
   tido_att.typography.attributes
 tido_model.ornamentLike.cmn = tido_mordent | tido_trill | tido_turn
@@ -3135,51 +3135,51 @@ mei_symbol =
     tido_att.typography.attributes,
     empty
   }
-tido_att.ornam.altsym.attributes =
-  tido_att.ornam.altsym.attribute.altsym
-tido_att.ornam.altsym.attribute.altsym =
+tido_att.ornam.extsym.attributes =
+  tido_att.ornam.extsym.attribute.glyphname
+tido_att.ornam.extsym.attribute.glyphname =
   
-  ## provides a way of pointing to an ornament symbol. It must contain an ID of a symbolDef element in Tido's ornament symbol table.
-  attribute altsym {
+  ## provides a way of pointing to an ornament glyph.
+  attribute glyphname {
     
     ## Inverted mordent (Tido default symbol for mordent[@inv='true']).
-    "#ornamentMordent"
+    "ornamentMordent"
     | 
       ## Mordent (Tido default symbol for mordent[not(@inv='true')]).
-      "#ornamentMordentInverted"
+      "ornamentMordentInverted"
     | 
       ## Turn (Tido default symbol for turn[not(@inv='true')]).
-      "#ornamentTurn"
+      "ornamentTurn"
     | 
       ## Turn with slash (Tido default symbol for turn[@inv='true']).
-      "#ornamentTurnSlash"
+      "ornamentTurnSlash"
     | 
       ## Trill.
-      "#ornamentTrill"
+      "ornamentTrill"
     | 
       ## Slide trill (D'Anglebert).
-      "#ornamentPrecompSlideTrillDAnglebert"
+      "ornamentPrecompSlideTrillDAnglebert"
     | 
       ## Mordent with upper prefix.
-      "#ornamentPrecompMordentUpperPrefix"
+      "ornamentPrecompMordentUpperPrefix"
     | 
       ## Trill with suffix (Dandrieu).
-      "#ornamentPrecompTrillSuffixDandrieu"
+      "ornamentPrecompTrillSuffixDandrieu"
     | 
       ## Trill with lower suffix.
-      "#ornamentPrecompTrillLowerSuffix"
+      "ornamentPrecompTrillLowerSuffix"
     | 
       ## Port de voix mordent.
-      "#ornamentPrecompPortDeVoixMordent"
+      "ornamentPrecompPortDeVoixMordent"
     | 
       ## Inverted mordent with upper prefix.
-      "#ornamentPrecompInvertedMordentUpperPrefix"
+      "ornamentPrecompInvertedMordentUpperPrefix"
     | 
       ## Appogiatura trill.
-      "#ornamentPrecompAppoggTrill"
+      "ornamentPrecompAppoggTrill"
     | 
       ## Tremblement (Tido default symbol for mordent[@long='true']).
-      "#ornamentTremblement"
+      "ornamentTremblement"
   }?
 tido_att.stemdir.req.attributes =
   tido_att.stemdir.req.attribute.stem.dir
