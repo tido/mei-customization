@@ -7,21 +7,18 @@
                   attribute.</sch:assert>
               </sch:rule>
    </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.classcodeident-classcode-check_classcodeTarget-constraint-2">
-      <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="@classcode">
-                <sch:assert role="warning" test="not(normalize-space(.) eq '')">@classcode attribute
-                  has no content.</sch:assert>
-                <sch:assert role="warning" test="every $i in tokenize(., '\s+') satisfies substring($i,2)=//mei:classCode/@xml:id">The value in @classcode must correspond to the @xml:id attribute of a classCode
-                  element.</sch:assert>
-              </sch:rule>
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.controlevent-require_staff_attribute-constraint-2">
+      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn">
+                  <sch:assert test="ancestor-or-self::*[name()='staff' or @staff]">The element or one of its ancestors must be a staff or contain a @staff attribute.</sch:assert>
+                </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.controlevent-require_layer_with_singlevalue_staff-constraint-3">
-      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie', 'accid'))][@staff][not(contains(@staff, ' '))]">
+      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@layer)">@layer must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.controlevent-require_place_with_singlevalue_staff-constraint-4">
-      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie', 'accid'))][@staff][not(contains(@staff, ' '))]">
+      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@place)">@place must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>
@@ -232,45 +229,37 @@
               value for the n attribute.</sch:assert>
             </sch:rule>
          </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-change-change_requirements-constraint-36">
-            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:change">
-               <sch:assert test="@isodate or mei:date">The date of the change must be recorded in an
-              isodate attribute or date element.</sch:assert>
-               <sch:assert test="@resp or mei:respStmt">The person responsible for the change must be
-              recorded in a resp attribute or respStmt element.</sch:assert>
-            </sch:rule>
-         </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-beam-When_not_copyof_beam_content-constraint-38">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-beam-When_not_copyof_beam_content-constraint-36">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:beam[not(@copyof)]">
                <sch:assert test="count(descendant::*[local-name()='note' or local-name()='rest' or               local-name()='chord' or local-name()='space']) &gt; 1">A beam without a copyof attribute must have at least 2 note, rest, chord, or space
               descendants.</sch:assert>
             </sch:rule>
          </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-hairpin-hairpin_place_required_with_single_staff-constraint-39">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-hairpin-hairpin_place_required_with_single_staff-constraint-37">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:hairpin[not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@place)">Must have place attribute.</sch:assert>
                 </sch:rule>
          </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-meterSig-meter_att_pair-constraint-40">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-meterSig-meter_att_pair-constraint-38">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:meterSig">
                   <sch:report test="not(@count and @unit)">Time signature must be complete (both
                     @count and @unit are required).</sch:report>
                 </sch:rule>
          </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-pedal-pedal_style_consistent-constraint-41">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-pedal-pedal_style_consistent-constraint-39">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:pedal[@form][@dir=('bounce', 'up')]">
                   <sch:let name="form" value="@form"/>
                   <sch:assert test="preceding::mei:pedal[@dir=('down', 'half')][1][@form=$form]">
                     Pedal styles must be consistent between pedal down and pedal up.</sch:assert>
                 </sch:rule>
          </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-pedal-pedal_start-type_attributes_required-constraint-42">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-pedal-pedal_start-type_attributes_required-constraint-40">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:pedal">
                <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
               the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
             </sch:rule>
          </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-slur-slur_start-_and_end-type_attributes_required-constraint-43">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-slur-slur_start-_and_end-type_attributes_required-constraint-41">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:slur">
                <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
               the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
@@ -278,7 +267,7 @@
               attributes: dur, dur.ges, endid, or tstamp2</sch:assert>
             </sch:rule>
          </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-tie-tie_start-_and_end-type_attributes_required-constraint-44">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-tie-tie_start-_and_end-type_attributes_required-constraint-42">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:tie">
                <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
               the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
@@ -286,7 +275,7 @@
               attributes: dur, dur.ges, endid, or tstamp2</sch:assert>
             </sch:rule>
          </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-tie-tie_containing_curve-constraint-45">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-tie-tie_containing_curve-constraint-43">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:tie[mei:curve[@bezier or @bulge or @curvedir or @lform or @lwidth or             @ho or @startho or @endho or @to or @startto or @endto or @vo or @startvo or             @endvo or @x or @y or @x2 or @y2]]">
                <sch:assert test="not(@bezier or @bulge or @curvedir or @lform or @lwidth or @ho or @startho or               @endho or @to or @startto or @endto or @vo or @startvo or @endvo or @x or @y or @x2 or @y2)" role="warning">The visual attributes of the tie (@bezier, @bulge, @curvedir, @lform,
               @lwidth, @ho, @startho, @endho, @to, @startto, @endto, @vo, @startvo, @endvo, @x, @y,
@@ -294,12 +283,53 @@
               elements.</sch:assert>
             </sch:rule>
          </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.spanning.req-require_precisely_one_start_spec-constraint-46">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-mordent-mordent_start-type_attributes_required-constraint-44">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:mordent">
+               <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
+              the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
+            </sch:rule>
+         </pattern>
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-trill-trill_start-type_attributes_required-constraint-45">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:trill">
+               <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
+              the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
+            </sch:rule>
+         </pattern>
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-turn-turn_start-type_attributes_required-constraint-46">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:turn">
+               <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
+              the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
+            </sch:rule>
+         </pattern>
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-fing-stack_exclusion-constraint-47">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:fing">
+               <sch:assert test="not(descendant::mei:stack)">The stack element is not allowed anywhere
+              in fing.</sch:assert>
+            </sch:rule>
+         </pattern>
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-fingGrp-require_fingeringLike_children-constraint-48">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" context="mei:fingGrp">
+               <sch:assert test="count(mei:fing) + count(mei:fingGrp) &gt; 1">At least 2 fing or
+              fingGrp elements are required.</sch:assert>
+            </sch:rule>
+         </pattern>
+   <sch:pattern xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <sch:rule context="mei:fingGrp[not(ancestor::mei:fingGrp)][@tstamp or @startid]">
+              <sch:assert test="not(child::mei:*[@tstamp or @startid])">When @tstamp or @startid is
+                present on fingGrp, its child elements cannot have a @tstamp or @startid
+                attribute.</sch:assert>
+            </sch:rule>
+            <sch:rule context="mei:fingGrp[not(ancestor::mei:fingGrp)][not(@tstamp or @startid)]">
+              <sch:assert test="count(descendant::mei:*[@tstamp or @startid]) = count(child::mei:*[local-name()='fing' or local-name()='fingGrp'])">When @tstamp or @startid is not present on fingGrp, each of its child elements must
+                have a @tstamp or @startid attribute.</sch:assert>
+            </sch:rule>
+          </sch:pattern>
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.spanning.req-require_precisely_one_start_spec-constraint-51">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:slur">
                   <sch:assert test="(@tstamp and not(@startid)) or (not(@tstamp) and @startid)">precisely one of @tstamp or @startid must be defined</sch:assert>
                 </sch:rule>
    </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.spanning.req-require_precisely_one_end_spec-constraint-47">
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.spanning.req-require_precisely_one_end_spec-constraint-52">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:slur">
                   <sch:assert test="(@tstamp2 and not(@endid)) or (not(@tstamp2) and @endid)">precisely one of @tstamp2 or @endid must be defined</sch:assert>
                 </sch:rule>

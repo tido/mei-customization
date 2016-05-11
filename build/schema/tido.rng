@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.music-encoding.org/ns/mei"><!--
-Schema generated from ODD source 2016-05-10T17:13:24Z. .
+Schema generated from ODD source 2016-05-11T15:50:48Z. .
 TEI Edition: Version 3.0.0
 TEI Edition Location: http://www.tei-c.org/Vault/P5//
   
@@ -126,70 +126,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mixed black and white keys.</a:documentation>
       </choice>
    </define>
-   <define name="tido_data.COLORNAMES">
-      <choice>
-         <value>aqua</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>black</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>blue</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>fuchsia</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>gray</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>green</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>lime</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>maroon</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>navy</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>olive</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>purple</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>red</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>silver</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>teal</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>white</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>yellow</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-      </choice>
-   </define>
-   <define name="tido_data.COLORVALUES">
-      <choice>
-         <data type="token">
-            <param name="pattern">#[0-9A-Fa-f]{6,6}</param>
-         </data>
-         <data type="token">
-            <param name="pattern">#[0-9A-Fa-f]{8,8}</param>
-         </data>
-         <data type="token">
-            <param name="pattern">rgb\((\s*(([01]?[0-9]?[0-9])|2[0-4][0-9]|25[0-5])\s*,\s*){2}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*\)</param>
-         </data>
-         <data type="token">
-            <param name="pattern">rgba\(\s*(([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*){3}(0(\.\d+)?|1(\.0+)?)\s*\)|rgba\(\s*(((\d{1,2})?%|100%)\s*,\s*){2}(\d{1,2}%|100%)\s*,\s*(0(\.\d+)?|1(\.0+)?)\s*\)</param>
-         </data>
-         <data type="token">
-            <param name="pattern">hsl\(\s*((\d{1,2})|[12]\d{2}|3[0-5]\d|360)\s*,\s*(\d{1,2}%|100%)\s*,\s*(\d{1,2}%|100%)\s*\)</param>
-         </data>
-         <data type="token">
-            <param name="pattern">hsla\(\s*(\d{1,2}|[12]\d{2}|3[0-5]\d|360)\s*,\s*(\d{1,2}%|100%)\s*,\s*(\d{1,2}%|100%)\s*,\s*(0(\.\d+)?|1(\.0+)?)\s*\)</param>
-         </data>
-      </choice>
-   </define>
-   <define name="tido_data.COLOR">
-      <choice>
-          <ref name="tido_data.COLORNAMES"/>
-          <ref name="tido_data.COLORVALUES"/>
-        </choice>
-   </define>
    <define name="tido_data.DEGREES">
       <data type="decimal">
          <param name="maxInclusive">360.0</param>
@@ -225,16 +161,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
       </choice>
    </define>
-   <define name="tido_data.GLISSANDO">
-      <choice>
-         <value>i</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">First note/chord in glissando.</a:documentation>
-         <value>m</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Note/chord that's neither first nor last in glissando.</a:documentation>
-         <value>t</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Last note in glissando.</a:documentation>
-      </choice>
-   </define>
    <define name="tido_data.GRACE">
       <choice>
          <value>acc</value>
@@ -245,37 +171,10 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">No interpretation regarding performed value of grace note.</a:documentation>
       </choice>
    </define>
-   <define name="tido_data.LAYERSCHEME">
-      <choice>
-         <value>1</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Single layer.</a:documentation>
-         <value>2o</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Two layers with opposing stems.</a:documentation>
-         <value>2f</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Two layers with 'floating' stems.</a:documentation>
-         <value>3o</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <value>3f</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-      </choice>
-   </define>
    <define name="tido_data.MEASUREBEAT">
       <data type="token">
          <param name="pattern">[0-9]+m\+[0-9]+(\.?[0-9]*)?</param>
       </data>
-   </define>
-   <define name="tido_data.MEASUREMENT">
-      <data type="token">
-         <param name="pattern">(\+|-)?\d+(\.\d+)?(cm|mm|in|pt|pc|px|vu)?</param>
-      </data>
-   </define>
-   <define name="tido_data.MENSURATIONSIGN">
-      <choice>
-         <value>C</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tempus imperfectum.</a:documentation>
-         <value>O</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tempus perfectum.</a:documentation>
-      </choice>
    </define>
    <define name="tido_data.METERSIGN">
       <choice>
@@ -310,28 +209,9 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <param name="maxInclusive">9</param>
       </data>
    </define>
-   <define name="tido_data.PERCENT">
-      <data type="token">
-         <param name="pattern">[0-9]+(\.?[0-9]*)?%</param>
-      </data>
-   </define>
    <define name="tido_data.PITCHNAME">
       <data type="token">
          <param name="pattern">[a-g]</param>
-      </data>
-   </define>
-   <define name="tido_data.PITCHNAME.GES">
-      <data type="token">
-         <param name="pattern">[a-g]|none</param>
-      </data>
-   </define>
-   <define name="tido_data.PITCHNUMBER">
-      <data type="nonNegativeInteger"/>
-   </define>
-   <define name="tido_data.SLASH">
-      <data type="positiveInteger">
-         <param name="minInclusive">1</param>
-         <param name="maxInclusive">6</param>
       </data>
    </define>
    <define name="tido_data.STAFFLOC">
@@ -359,38 +239,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Stem points upwards.</a:documentation>
          <value>down</value>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Stem points downwards.</a:documentation>
-      </choice>
-   </define>
-   <define name="tido_data.STEMMODIFIER">
-      <choice>
-         <value>none</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">No modifications to stem.</a:documentation>
-         <value>1slash</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">1 slash through stem.</a:documentation>
-         <value>2slash</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">2 slashes through stem.</a:documentation>
-         <value>3slash</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">3 slashes through stem.</a:documentation>
-         <value>4slash</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">4 slashes through stem.</a:documentation>
-         <value>5slash</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">5 slashes through stem.</a:documentation>
-         <value>6slash</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">6 slashes through stem.</a:documentation>
-         <value>sprech</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">X placed on stem.</a:documentation>
-         <value>z</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Z placed on stem.</a:documentation>
-      </choice>
-   </define>
-   <define name="tido_data.STEMPOSITION">
-      <choice>
-         <value>left</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Stem attached to left side of note head.</a:documentation>
-         <value>right</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Stem attached to right side of note head.</a:documentation>
-         <value>center</value>
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Stem is originates from center of note head.</a:documentation>
       </choice>
    </define>
    <define name="tido_data.TEXTRENDITIONLIST">
@@ -484,41 +332,21 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    </define>
    <define name="tido_macro.musicPart">
       <optional>
+         <ref name="tido_model.frontLike"/>
+      </optional>
+      <optional>
          <choice>
             <ref name="tido_body"/>
          </choice>
       </optional>
+      <optional>
+         <ref name="tido_model.backLike"/>
+      </optional>
    </define>
    <define name="tido_macro.availabilityPart">
-      <zeroOrMore>
-         <ref name="tido_acqSource"/>
-         <zeroOrMore>
-            <ref name="tido_accessRestrict"/>
-            <optional>
-               <ref name="tido_price"/>
-            </optional>
-         </zeroOrMore>
-      </zeroOrMore>
       <optional>
          <ref name="tido_useRestrict"/>
       </optional>
-      <optional>
-         <ref name="tido_sysReq"/>
-      </optional>
-   </define>
-   <define name="tido_macro.bibldescPart">
-      <optional>
-         <ref name="tido_editionStmt"/>
-      </optional>
-      <optional>
-         <ref name="tido_pubStmt"/>
-      </optional>
-      <zeroOrMore>
-         <ref name="tido_physDesc"/>
-      </zeroOrMore>
-      <zeroOrMore>
-         <ref name="tido_seriesStmt"/>
-      </zeroOrMore>
    </define>
    <define name="tido_data.DURATION.cmn">
       <choice>
@@ -559,21 +387,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    </define>
    <define name="tido_att.accid.log.attributes">
       <ref name="tido_att.accidental.attributes"/>
-      <ref name="tido_att.controlevent.attributes"/>
-      <ref name="tido_att.accid.log.attribute.func"/>
-   </define>
-   <define name="tido_att.accid.log.attribute.func">
-      <optional>
-         <attribute name="func">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the function of an accidental.</a:documentation>
-            <choice>
-               <value>caution</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Cautionary accidental.</a:documentation>
-               <value>edit</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Editorial accidental.</a:documentation>
-            </choice>
-         </attribute>
-      </optional>
    </define>
    <define name="tido_att.accidental.attributes">
       <ref name="tido_att.accidental.attribute.accid"/>
@@ -639,7 +452,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <ref name="tido_att.event.attributes"/>
       <ref name="tido_att.articulation.attributes"/>
       <ref name="tido_att.augmentdots.attributes"/>
-      <ref name="tido_att.syltext.attributes"/>
    </define>
    <define name="tido_att.chord.vis.attributes">
       <ref name="tido_att.stemdir.req.attributes"/>
@@ -654,44 +466,10 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          </attribute>
       </optional>
    </define>
-   <define name="tido_att.classcodeident.attributes">
-      <ref name="tido_att.classcodeident.attribute.classcode"/>
-   </define>
-   <define name="tido_att.classcodeident.attribute.classcode">
-      <optional>
-         <attribute name="classcode">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Contains a reference to the controlled vocabulary from which the term is drawn. The value must match the value of an ID attribute on a classCode element given elsewhere in the document.</a:documentation>
-            <ref name="tido_data.URI"/>
-         </attribute>
-      </optional>
-   </define>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tido-att.classcodeident-classcode-check_classcodeTarget-constraint-2">
-      <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                xmlns="http://www.tei-c.org/ns/1.0"
-                xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                context="@classcode">
-                <sch:assert role="warning" test="not(normalize-space(.) eq '')">@classcode attribute
-                  has no content.</sch:assert>
-                <sch:assert role="warning"
-                     test="every $i in tokenize(., '\s+') satisfies substring($i,2)=//mei:classCode/@xml:id">The value in @classcode must correspond to the @xml:id attribute of a classCode
-                  element.</sch:assert>
-              </sch:rule>
-   </pattern>
    <define name="tido_att.clef.log.attributes">
       <ref name="tido_att.clefshape.attributes"/>
       <ref name="tido_att.lineloc.attributes"/>
       <ref name="tido_att.octave.attributes"/>
-      <ref name="tido_att.clef.log.attribute.cautionary"/>
-   </define>
-   <define name="tido_att.clef.log.attribute.cautionary">
-      <optional>
-         <attribute name="cautionary">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the function of the clef. A "cautionary" clef does not change the following pitches.</a:documentation>
-            <ref name="tido_data.BOOLEAN"/>
-         </attribute>
-      </optional>
    </define>
    <define name="tido_att.clefshape.attributes">
       <ref name="tido_att.clefshape.attribute.shape"/>
@@ -735,16 +513,25 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       </optional>
    </define>
    <define name="tido_att.controlevent.attributes">
-      <ref name="tido_att.staffident.req.attributes"/>
       <ref name="tido_att.timestamp.musical.attributes"/>
+      <ref name="tido_att.staffident.attributes"/>
       <ref name="tido_att.layerident.attributes"/>
    </define>
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+            id="tido-att.controlevent-require_staff_attribute-constraint-2">
+      <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn">
+                  <sch:assert test="ancestor-or-self::*[name()='staff' or @staff]">The element or one of its ancestors must be a staff or contain a @staff attribute.</sch:assert>
+                </sch:rule>
+   </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
             id="tido-att.controlevent-require_layer_with_singlevalue_staff-constraint-3">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                context="mei:*[not(name() = ('slur', 'tie', 'accid'))][@staff][not(contains(@staff, ' '))]">
+                context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@layer)">@layer must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>
@@ -753,7 +540,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                context="mei:*[not(name() = ('slur', 'tie', 'accid'))][@staff][not(contains(@staff, ' '))]">
+                context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@place)">@place must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>
@@ -783,26 +570,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <attribute name="dur">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the duration of a feature using the relative durational values provided by the data.DURATION datatype.</a:documentation>
             <ref name="tido_data.DURATION"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.duration.ratio.attributes">
-      <ref name="tido_att.duration.ratio.attribute.num"/>
-      <ref name="tido_att.duration.ratio.attribute.numbase"/>
-   </define>
-   <define name="tido_att.duration.ratio.attribute.num">
-      <optional>
-         <attribute name="num">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Along with numbase, describes duration as a ratio. num is the first value in the ratio, while numbase is the second.</a:documentation>
-            <data type="positiveInteger"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.duration.ratio.attribute.numbase">
-      <optional>
-         <attribute name="numbase">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Along with num, describes duration as a ratio. num is the first value in the ratio, while numbase is the second.</a:documentation>
-            <data type="positiveInteger"/>
          </attribute>
       </optional>
    </define>
@@ -840,17 +607,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Regularizes the naming of an element and thus facilitates building links between it and other resources. Each id attribute within a document must have a unique value.</a:documentation>
          <data type="ID"/>
       </attribute>
-   </define>
-   <define name="tido_att.internetmedia.attributes">
-      <ref name="tido_att.internetmedia.attribute.mimetype"/>
-   </define>
-   <define name="tido_att.internetmedia.attribute.mimetype">
-      <optional>
-         <attribute name="mimetype">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the applicable MIME (multimedia internet mail extension) type. The value should be a valid MIME media type defined by the Internet Engineering Task Force in RFC 2046.</a:documentation>
-            <data type="string"/>
-         </attribute>
-      </optional>
    </define>
    <define name="tido_att.keySig.log.attributes">
       <ref name="tido_att.accidental.attributes"/>
@@ -910,17 +666,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          </attribute>
       </optional>
    </define>
-   <define name="tido_att.medium.attributes">
-      <ref name="tido_att.medium.attribute.medium"/>
-   </define>
-   <define name="tido_att.medium.attribute.medium">
-      <optional>
-         <attribute name="medium">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Describes the writing medium.</a:documentation>
-            <data type="string"/>
-         </attribute>
-      </optional>
-   </define>
    <define name="tido_att.meiversion.attributes">
       <ref name="tido_att.meiversion.attribute.meiversion"/>
    </define>
@@ -937,44 +682,13 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          </attribute>
       </optional>
    </define>
-   <define name="tido_att.mensur.log.attributes">
-      <ref name="tido_att.duration.ratio.attributes"/>
-      <ref name="tido_att.slashcount.attributes"/>
-      <ref name="tido_att.mensur.log.attribute.dot"/>
-      <ref name="tido_att.mensur.log.attribute.sign"/>
-   </define>
-   <define name="tido_att.mensur.log.attribute.dot">
-      <optional>
-         <attribute name="dot">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies whether a dot is to be added to the base symbol.</a:documentation>
-            <ref name="tido_data.BOOLEAN"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.mensur.log.attribute.sign">
-      <optional>
-         <attribute name="sign">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The base symbol in the mensuration sign/time signature of mensural notation.</a:documentation>
-            <ref name="tido_data.MENSURATIONSIGN"/>
-         </attribute>
-      </optional>
-   </define>
    <define name="tido_att.meterconformance.bar.attributes">
       <ref name="tido_att.meterconformance.bar.attribute.metcon"/>
-      <ref name="tido_att.meterconformance.bar.attribute.control"/>
    </define>
    <define name="tido_att.meterconformance.bar.attribute.metcon">
       <optional>
          <attribute name="metcon">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the relationship between the content of a measure and the prevailing meter.</a:documentation>
-            <ref name="tido_data.BOOLEAN"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.meterconformance.bar.attribute.control">
-      <optional>
-         <attribute name="control">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates whether or not a bar line is "controlling"; that is, if it indicates a point of alignment across all the parts. Bar lines within a score are usually controlling; that is, they "line up". Bar lines within parts may or may not be controlling. When applied to &lt;measure&gt;, this attribute indicates the nature of the right barline but not the left.</a:documentation>
             <ref name="tido_data.BOOLEAN"/>
          </attribute>
       </optional>
@@ -1047,33 +761,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    <define name="tido_att.note.ges.attributes">
       <ref name="tido_att.accidental.performed.attributes"/>
       <ref name="tido_att.note.ges.cmn.attributes"/>
-      <ref name="tido_att.note.ges.attribute.oct.ges"/>
-      <ref name="tido_att.note.ges.attribute.pname.ges"/>
-      <ref name="tido_att.note.ges.attribute.pnum"/>
-   </define>
-   <define name="tido_att.note.ges.attribute.oct.ges">
-      <optional>
-         <attribute name="oct.ges">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records performed octave information that differs from the written value.</a:documentation>
-            <ref name="tido_data.OCTAVE"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.note.ges.attribute.pname.ges">
-      <optional>
-         <attribute name="pname.ges">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Contains a performed pitch name that differs from the written value.</a:documentation>
-            <ref name="tido_data.PITCHNAME.GES"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.note.ges.attribute.pnum">
-      <optional>
-         <attribute name="pnum">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Holds a pitch-to-number mapping, a base-40 or MIDI note number, for example.</a:documentation>
-            <ref name="tido_data.PITCHNUMBER"/>
-         </attribute>
-      </optional>
    </define>
    <define name="tido_att.note.log.attributes">
       <ref name="tido_att.event.attributes"/>
@@ -1081,7 +768,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <ref name="tido_att.augmentdots.attributes"/>
       <ref name="tido_att.duration.musical.attributes"/>
       <ref name="tido_att.pitched.attributes"/>
-      <ref name="tido_att.syltext.attributes"/>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
             id="tido-att.note.log-require_oct_and_pname_or_loc-constraint-8">
@@ -1151,6 +837,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <ref name="tido_att.timestamp2.musical.attributes"/>
    </define>
    <define name="tido_att.ornam.vis.attributes">
+      <ref name="tido_att.ornam.altsym.attributes"/>
       <ref name="tido_att.placement.attributes"/>
    </define>
    <define name="tido_att.pitch.attributes">
@@ -1179,17 +866,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          </attribute>
       </optional>
    </define>
-   <define name="tido_att.quantity.attributes">
-      <ref name="tido_att.quantity.attribute.quantity"/>
-   </define>
-   <define name="tido_att.quantity.attribute.quantity">
-      <optional>
-         <attribute name="quantity">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Numeric value capturing a measurement or count. Can only be interpreted in combination with the unit or currency attribute.</a:documentation>
-            <data type="decimal"/>
-         </attribute>
-      </optional>
-   </define>
    <define name="tido_att.rest.log.attributes">
       <ref name="tido_att.duration.musical.req.attributes"/>
       <ref name="tido_att.augmentdots.attributes"/>
@@ -1197,18 +873,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    </define>
    <define name="tido_att.rest.vis.attributes">
       <ref name="tido_att.staffloc.attributes"/>
-      <ref name="tido_att.typography.attributes"/>
-   </define>
-   <define name="tido_att.slashcount.attributes">
-      <ref name="tido_att.slashcount.attribute.slash"/>
-   </define>
-   <define name="tido_att.slashcount.attribute.slash">
-      <optional>
-         <attribute name="slash">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the number of slashes present.</a:documentation>
-            <ref name="tido_data.SLASH"/>
-         </attribute>
-      </optional>
    </define>
    <define name="tido_att.space.log.attributes">
       <ref name="tido_att.duration.musical.req.attributes"/>
@@ -1216,96 +880,13 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <ref name="tido_att.event.attributes"/>
    </define>
    <define name="tido_att.staffDef.vis.attributes">
-      <ref name="tido_att.staffDef.vis.attribute.grid.show"/>
-      <ref name="tido_att.staffDef.vis.attribute.layerscheme"/>
       <ref name="tido_att.staffDef.vis.attribute.lines"/>
-      <ref name="tido_att.staffDef.vis.attribute.lines.color"/>
-      <ref name="tido_att.staffDef.vis.attribute.lines.visible"/>
-      <ref name="tido_att.staffDef.vis.attribute.spacing"/>
-   </define>
-   <define name="tido_att.staffDef.vis.attribute.grid.show">
-      <optional>
-         <attribute name="grid.show">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Determines whether to display guitar chord grids.</a:documentation>
-            <ref name="tido_data.BOOLEAN"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.staffDef.vis.attribute.layerscheme">
-      <optional>
-         <attribute name="layerscheme">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the number of layers and their stem directions.</a:documentation>
-            <ref name="tido_data.LAYERSCHEME"/>
-         </attribute>
-      </optional>
    </define>
    <define name="tido_att.staffDef.vis.attribute.lines">
       <optional>
          <attribute name="lines">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the number of staff lines.</a:documentation>
             <data type="positiveInteger"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.staffDef.vis.attribute.lines.color">
-      <optional>
-         <attribute name="lines.color">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Captures the colors of the staff lines. The value is structured; that is, it should have the same number of space-separated RGB values as the number of lines indicated by the lines attribute. A line can be made invisible by assigning it the same RGB value as the background, usually white.</a:documentation>
-            <list>
-               <oneOrMore>
-                  <ref name="tido_data.COLOR"/>
-               </oneOrMore>
-            </list>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.staffDef.vis.attribute.lines.visible">
-      <optional>
-         <attribute name="lines.visible">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records whether all staff lines are visible.</a:documentation>
-            <ref name="tido_data.BOOLEAN"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.staffDef.vis.attribute.spacing">
-      <optional>
-         <attribute name="spacing">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the absolute distance (as opposed to the relative distances recorded in &lt;scoreDef&gt; elements) between this staff and the preceding one in the same system. This value is meaningless for the first staff in a system since the spacing.system attribute indicates the spacing between systems.</a:documentation>
-            <ref name="tido_data.MEASUREMENT"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.staffgroupingsym.attributes">
-      <ref name="tido_att.staffgroupingsym.attribute.symbol"/>
-   </define>
-   <define name="tido_att.staffgroupingsym.attribute.symbol">
-      <optional>
-         <attribute name="symbol">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the symbol used to group a set of staves.</a:documentation>
-            <choice>
-               <value>brace</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Curved symbol, i.e., {.</a:documentation>
-               <value>bracket</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Square symbol, i.e., [, but with curved/angled top and bottom segments.</a:documentation>
-               <value>bracketsq</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Square symbol, i.e., [, with horizontal top and bottom segments.</a:documentation>
-               <value>line</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Line symbol, i.e., |, (wide) line without top and bottom curved/horizontal segments.</a:documentation>
-               <value>none</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grouping symbol missing.</a:documentation>
-            </choice>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.staffGrp.vis.attributes">
-      <ref name="tido_att.staffgroupingsym.attributes"/>
-      <ref name="tido_att.staffGrp.vis.attribute.barthru"/>
-   </define>
-   <define name="tido_att.staffGrp.vis.attribute.barthru">
-      <optional>
-         <attribute name="barthru">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates whether bar lines go across the space between staves (true) or are only drawn across the lines of each staff (false).</a:documentation>
-            <ref name="tido_data.BOOLEAN"/>
          </attribute>
       </optional>
    </define>
@@ -1388,11 +969,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    </pattern>
    <define name="tido_att.stems.attributes">
       <ref name="tido_att.stems.attribute.stem.dir"/>
-      <ref name="tido_att.stems.attribute.stem.len"/>
-      <ref name="tido_att.stems.attribute.stem.mod"/>
-      <ref name="tido_att.stems.attribute.stem.pos"/>
-      <ref name="tido_att.stems.attribute.stem.x"/>
-      <ref name="tido_att.stems.attribute.stem.y"/>
    </define>
    <define name="tido_att.stems.attribute.stem.dir">
       <optional>
@@ -1402,56 +978,52 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          </attribute>
       </optional>
    </define>
-   <define name="tido_att.stems.attribute.stem.len">
+   <define name="tido_att.syl.log.attributes">
+      <ref name="tido_att.syl.log.attribute.con"/>
+      <ref name="tido_att.syl.log.attribute.wordpos"/>
+   </define>
+   <define name="tido_att.syl.log.attribute.con">
       <optional>
-         <attribute name="stem.len">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Encodes the stem length.</a:documentation>
-            <ref name="tido_data.MEASUREMENT"/>
+         <attribute name="con">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Describes the symbols typically used to indicate breaks between syllables and their functions.</a:documentation>
+            <choice>
+               <value>s</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Space (word separator).</a:documentation>
+               <value>d</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Dash (syllable separator).</a:documentation>
+               <value>u</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Underscore (syllable extension).</a:documentation>
+               <value>t</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tilde (syllable elision).</a:documentation>
+               <value>c</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Circumflex [angled line above] (syllable elision).</a:documentation>
+               <value>v</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Caron [angled line below] (syllable elision).</a:documentation>
+               <value>i</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Inverted breve [curved line above] (syllable elision).</a:documentation>
+               <value>b</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Breve [curved line below] (syllable elision).</a:documentation>
+            </choice>
          </attribute>
       </optional>
    </define>
-   <define name="tido_att.stems.attribute.stem.mod">
+   <define name="tido_att.syl.log.attribute.wordpos">
       <optional>
-         <attribute name="stem.mod">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Encodes any stem "modifiers"; that is, symbols rendered on the stem, such as tremolo or Sprechstimme indicators.</a:documentation>
-            <ref name="tido_data.STEMMODIFIER"/>
+         <attribute name="wordpos">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the position of a syllable within a word.</a:documentation>
+            <choice>
+               <value>i</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(initial) first syllable.</a:documentation>
+               <value>m</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(medial) neither first nor last syllable.</a:documentation>
+               <value>t</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(terminal) last syllable.</a:documentation>
+            </choice>
          </attribute>
       </optional>
    </define>
-   <define name="tido_att.stems.attribute.stem.pos">
-      <optional>
-         <attribute name="stem.pos">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the position of the stem in relation to the note head(s).</a:documentation>
-            <ref name="tido_data.STEMPOSITION"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.stems.attribute.stem.x">
-      <optional>
-         <attribute name="stem.x">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the output x coordinate of the stem's attachment point.</a:documentation>
-            <data type="decimal"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.stems.attribute.stem.y">
-      <optional>
-         <attribute name="stem.y">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the output y coordinate of the stem's attachment point.</a:documentation>
-            <data type="decimal"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.syltext.attributes">
-      <ref name="tido_att.syltext.attribute.syl"/>
-   </define>
-   <define name="tido_att.syltext.attribute.syl">
-      <optional>
-         <attribute name="syl">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Holds an associated sung text syllable.</a:documentation>
-            <data type="string"/>
-         </attribute>
-      </optional>
+   <define name="tido_att.syl.vis.attributes">
+      <ref name="tido_att.typography.attributes"/>
    </define>
    <define name="tido_att.timestamp.musical.attributes">
       <ref name="tido_att.timestamp.musical.attribute.tstamp"/>
@@ -1624,6 +1196,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <ref name="tido_dynam"/>
          <ref name="tido_ornam"/>
          <ref name="tido_model.controleventLike.cmn"/>
+         <ref name="tido_model.fingeringLike"/>
       </choice>
    </define>
    <define name="tido_model.dateLike">
@@ -1642,12 +1215,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <empty/>
    </define>
    <define name="tido_model.dateLike_sequenceRepeatable">
-      <notAllowed/>
-   </define>
-   <define name="tido_model.dimLike">
-      <notAllowed/>
-   </define>
-   <define name="tido_model.editionLike">
       <notAllowed/>
    </define>
    <define name="tido_model.editorialLike">
@@ -1701,9 +1268,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <empty/>
    </define>
    <define name="tido_model.identifierLike_sequenceRepeatable">
-      <notAllowed/>
-   </define>
-   <define name="tido_model.incipLike">
       <notAllowed/>
    </define>
    <define name="tido_model.instrDefLike">
@@ -1907,6 +1471,11 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    <define name="tido_model.paracontentPart">
       <choice>
          <ref name="tido_model.textphraseLike"/>
+         <ref name="tido_model.editLike"/>
+         <ref name="tido_model.transcriptionLike"/>
+         <ref name="tido_model.lgLike"/>
+         <ref name="tido_model.listLike"/>
+         <ref name="tido_model.quoteLike"/>
       </choice>
    </define>
    <define name="tido_model.partsLike">
@@ -2053,11 +1622,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <ref name="tido_model.ossiaLike"/>
       </choice>
    </define>
-   <define name="tido_model.textcomponentLike">
-      <choice>
-         <ref name="tido_model.pLike"/>
-      </choice>
-   </define>
    <define name="tido_model.textphraseLike">
       <choice>
          <ref name="tido_model.pbLike"/>
@@ -2079,6 +1643,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <ref name="tido_model.titleLike"/>
          <ref name="tido_model.nameLike.label"/>
          <ref name="tido_model.locrefLike"/>
+         <ref name="mei_symbol"/>
       </choice>
    </define>
    <define name="tido_model.textphraseLike.limited_alternation">
@@ -2096,6 +1661,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <ref name="tido_model.titleLike_alternation"/>
          <ref name="tido_model.nameLike.label_alternation"/>
          <ref name="tido_model.locrefLike_alternation"/>
+         <ref name="mei_symbol"/>
       </choice>
    </define>
    <define name="tido_model.textphraseLike.limited_sequence">
@@ -2112,6 +1678,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <ref name="tido_model.titleLike_sequence"/>
       <ref name="tido_model.nameLike.label_sequence"/>
       <ref name="tido_model.locrefLike_sequence"/>
+      <ref name="mei_symbol"/>
    </define>
    <define name="tido_model.textphraseLike.limited_sequenceOptional">
       <optional>
@@ -2152,6 +1719,9 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       </optional>
       <optional>
          <ref name="tido_model.locrefLike_sequenceOptional"/>
+      </optional>
+      <optional>
+         <ref name="mei_symbol"/>
       </optional>
    </define>
    <define name="tido_model.textphraseLike.limited_sequenceOptionalRepeatable">
@@ -2194,6 +1764,9 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <zeroOrMore>
          <ref name="tido_model.locrefLike_sequenceOptionalRepeatable"/>
       </zeroOrMore>
+      <zeroOrMore>
+         <ref name="mei_symbol"/>
+      </zeroOrMore>
    </define>
    <define name="tido_model.textphraseLike.limited_sequenceRepeatable">
       <oneOrMore>
@@ -2234,6 +1807,9 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       </oneOrMore>
       <oneOrMore>
          <ref name="tido_model.locrefLike_sequenceRepeatable"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="mei_symbol"/>
       </oneOrMore>
    </define>
    <define name="tido_model.titleLike">
@@ -2290,6 +1866,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             <choice>
                <text/>
                <ref name="tido_model.textphraseLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
             </choice>
          </zeroOrMore>
          <ref name="tido_att.common.attributes"/>
@@ -2312,6 +1890,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <zeroOrMore>
             <choice>
                <ref name="tido_note"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
             </choice>
          </zeroOrMore>
          <ref name="tido_att.common.attributes"/>
@@ -2361,6 +1941,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             <choice>
                <text/>
                <ref name="tido_model.textphraseLike.limited"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -2397,8 +1979,13 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Alternative ending for a repeated passage of music; i.e., prima volta, seconda volta, etc.</a:documentation>
          <zeroOrMore>
             <choice>
+               <ref name="tido_model.appLike"/>
+               <ref name="tido_model.divLike"/>
                <ref name="tido_model.milestoneLike.music"/>
                <ref name="tido_model.annotLike"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
                <ref name="tido_model.sectionPart"/>
             </choice>
          </zeroOrMore>
@@ -2437,8 +2024,13 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An independent stream of events on a staff.</a:documentation>
          <zeroOrMore>
             <choice>
+               <ref name="tido_model.appLike"/>
+               <ref name="tido_model.divLike"/>
                <ref name="tido_model.milestoneLike.music"/>
                <ref name="tido_model.annotLike"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
                <ref name="tido_model.layerPart"/>
             </choice>
          </zeroOrMore>
@@ -2510,6 +2102,11 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <zeroOrMore>
             <choice>
                <ref name="tido_model.noteModifierLike"/>
+               <ref name="tido_model.verseLike"/>
+               <ref name="tido_model.sylLike"/>
+               <ref name="tido_model.appLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
             </choice>
          </zeroOrMore>
          <ref name="tido_att.common.attributes"/>
@@ -2526,6 +2123,9 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             <choice>
                <text/>
                <ref name="tido_model.textphraseLike.limited"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -2566,6 +2166,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             <choice>
                <text/>
                <ref name="tido_model.textphraseLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
             </choice>
          </zeroOrMore>
          <ref name="tido_att.common.attributes"/>
@@ -2653,8 +2255,13 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Full score view of the musical content.</a:documentation>
          <zeroOrMore>
             <choice>
+               <ref name="tido_model.appLike"/>
+               <ref name="tido_model.divLike"/>
                <ref name="tido_model.milestoneLike.music"/>
                <ref name="tido_model.annotLike"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
                <ref name="tido_model.scorePart"/>
             </choice>
          </zeroOrMore>
@@ -2667,12 +2274,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <element name="scoreDef">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(score definition) – Container for score meta-information.</a:documentation>
          <optional>
-            <ref name="tido_model.keySigLike"/>
-         </optional>
-         <optional>
-            <ref name="tido_model.meterSigLike"/>
-         </optional>
-         <optional>
             <ref name="tido_model.staffGrpLike"/>
          </optional>
          <ref name="tido_att.common.attributes"/>
@@ -2684,8 +2285,13 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Segment of music data.</a:documentation>
          <zeroOrMore>
             <choice>
+               <ref name="tido_model.appLike"/>
+               <ref name="tido_model.divLike"/>
                <ref name="tido_model.milestoneLike.music"/>
                <ref name="tido_model.annotLike"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
                <ref name="tido_model.sectionPart"/>
             </choice>
          </zeroOrMore>
@@ -2719,8 +2325,13 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A group of equidistant horizontal lines on which notes are placed in order to represent pitch or a grouping element for individual 'strands' of notes, rests, etc. that may or may not actually be rendered on staff lines; that is, both diastematic and non-diastematic signs.</a:documentation>
          <zeroOrMore>
             <choice>
+               <ref name="tido_model.appLike"/>
+               <ref name="tido_model.divLike"/>
                <ref name="tido_model.milestoneLike.music"/>
                <ref name="tido_model.annotLike"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
                <ref name="tido_model.staffPart"/>
             </choice>
          </zeroOrMore>
@@ -2904,7 +2515,23 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </sch:rule>
          </pattern>
          <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.staffGrp.vis.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_syl">
+      <element name="syl">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(syllable) – Individual lyric syllable.</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="tido_model.textphraseLike.limited"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
+            </choice>
+         </zeroOrMore>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.syl.log.attributes"/>
+         <ref name="tido_att.syl.vis.attributes"/>
          <empty/>
       </element>
    </define>
@@ -2915,6 +2542,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             <choice>
                <text/>
                <ref name="tido_model.textphraseLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
             </choice>
          </zeroOrMore>
          <ref name="tido_att.common.attributes"/>
@@ -2965,80 +2594,15 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <empty/>
       </element>
    </define>
-   <define name="tido_att.regularmethod.attributes">
-      <ref name="tido_att.regularmethod.attribute.method"/>
-   </define>
-   <define name="tido_att.regularmethod.attribute.method">
-      <optional>
-         <attribute name="method">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the method employed to mark corrections and normalizations.</a:documentation>
-            <choice>
-               <value>silent</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Corrections and normalizations made silently.</a:documentation>
-               <value>tags</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Corrections and normalizations indicated using elements.</a:documentation>
-            </choice>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_model.editorialDeclPart">
-      <choice>
-         <ref name="tido_correction"/>
-         <ref name="tido_interpretation"/>
-         <ref name="tido_normalization"/>
-         <ref name="tido_segmentation"/>
-         <ref name="tido_stdVals"/>
-      </choice>
-   </define>
    <define name="tido_model.encodingPart_sequenceOptional">
-      <optional>
-         <ref name="tido_appInfo"/>
-      </optional>
-      <optional>
-         <ref name="tido_editorialDecl"/>
-      </optional>
       <optional>
          <ref name="tido_projectDesc"/>
       </optional>
-      <optional>
-         <ref name="tido_samplingDecl"/>
-      </optional>
-   </define>
-   <define name="tido_model.frontPart">
-      <notAllowed/>
    </define>
    <define name="tido_model.headerPart_sequenceOptional">
       <optional>
          <ref name="tido_encodingDesc"/>
       </optional>
-      <optional>
-         <ref name="tido_workDesc"/>
-      </optional>
-   </define>
-   <define name="tido_model.physDescPart">
-      <choice>
-         <ref name="tido_model.frontPart"/>
-         <ref name="tido_captureMode"/>
-         <ref name="tido_carrierForm"/>
-         <ref name="tido_condition"/>
-         <ref name="tido_dimensions"/>
-         <ref name="tido_exhibHist"/>
-         <ref name="tido_fileChar"/>
-         <ref name="tido_fingerprint"/>
-         <ref name="tido_handList"/>
-         <ref name="tido_inscription"/>
-         <ref name="tido_perfDuration"/>
-         <ref name="tido_physMedium"/>
-         <ref name="tido_plateNum"/>
-         <ref name="tido_playingSpeed"/>
-         <ref name="tido_scoreFormat"/>
-         <ref name="tido_soundChan"/>
-         <ref name="tido_specRepro"/>
-         <ref name="tido_trackConfig"/>
-         <ref name="tido_treatHist"/>
-         <ref name="tido_treatSched"/>
-         <ref name="tido_watermark"/>
-      </choice>
    </define>
    <define name="tido_model.pubStmtPart">
       <choice>
@@ -3049,325 +2613,10 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <ref name="tido_availability"/>
       </choice>
    </define>
-   <define name="tido_model.workIdent">
-      <choice>
-         <ref name="tido_model.incipLike"/>
-         <ref name="tido_key"/>
-         <ref name="tido_mensuration"/>
-         <ref name="tido_meter"/>
-      </choice>
-   </define>
-   <define name="tido_accessRestrict">
-      <element name="accessRestrict">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(access restriction) – Describes the conditions that affect the accessibility of material.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_acqSource">
-      <element name="acqSource">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(acquisition source) – Post-publication source, such as a vendor or distributor, from which access to a bibliographic item may be obtained, including electronic access.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_altId">
-      <element name="altId">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(alternative identifier) – May contain a bibliographic identifier that does not fit within the meiHead element's id attribute, for example because the identifier does not fit the definition of an XML id or because multiple identifiers are needed.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.lbLike"/>
-               <ref name="tido_model.rendLike"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_appInfo">
-      <element name="appInfo">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(application information) – Groups information about applications which have acted upon the MEI file.</a:documentation>
-         <zeroOrMore>
-            <ref name="tido_application"/>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_application">
-      <element name="application">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Provides information about an application which has acted upon the current document.</a:documentation>
-         <choice>
-            <zeroOrMore>
-               <ref name="tido_model.locrefLike"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tido_model.pLike"/>
-            </zeroOrMore>
-         </choice>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <optional>
-            <attribute name="version">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Supplies a version number for an application, independent of its identifier or display name.</a:documentation>
-               <data type="NMTOKEN"/>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_audience">
-      <element name="audience">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Defines the class of user for which the work is intended, as defined by age group (e.g., children, young adults, adults, etc.), educational level (e.g., primary, secondary, etc.), or other categorization.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
    <define name="tido_availability">
       <element name="availability">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Groups elements that describe the availability of and access to a bibliographic item, including an MEI-encoded document.</a:documentation>
          <ref name="tido_macro.availabilityPart"/>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_captureMode">
-      <element name="captureMode">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(capture mode) – The means used to record notation, sound, or images in the production of a source/manifestation (e.g., analogue, acoustic, electric, digital, optical etc.).</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_carrierForm">
-      <element name="carrierForm">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(carrier form) – The specific class of material to which the physical carrier of the source/manifestation belongs (e.g., sound cassette, videodisc, microfilm cartridge, transparency, etc.). The carrier for a manifestation comprising multiple physical components may include more than one form (e.g., a filmstrip with an accompanying booklet, a separate sound disc carrying the sound track for a film, etc.).</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_change">
-      <element name="change">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Individual change within the revision description.</a:documentation>
-         <optional>
-            <ref name="tido_respStmt"/>
-         </optional>
-         <ref name="tido_changeDesc"/>
-         <optional>
-            <ref name="tido_model.dateLike"/>
-         </optional>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-change-change_requirements-constraint-36">
-            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                      xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="mei:change">
-               <sch:assert test="@isodate or mei:date">The date of the change must be recorded in an
-              isodate attribute or date element.</sch:assert>
-               <sch:assert test="@resp or mei:respStmt">The person responsible for the change must be
-              recorded in a resp attribute or respStmt element.</sch:assert>
-            </sch:rule>
-         </pattern>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_changeDesc">
-      <element name="changeDesc">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(change description) – Description of a revision of the MEI file.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_model.pLike"/>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_classCode">
-      <element name="classCode">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(classification code) – Holds a citation to the source of controlled-vocabulary terms used in the &lt;termList&gt; element; for example, Library of Congress Subject Headings (LCSH), Library of Congress Classification (LCC), Library of Congress Name Authority File (LCNAF), or other thesaurus or ontology.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.lbLike"/>
-               <ref name="tido_model.rendLike"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_classification">
-      <element name="classification">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Groups information which describes the nature or topic of an entity.</a:documentation>
-         <oneOrMore>
-            <choice>
-               <ref name="tido_classCode"/>
-               <ref name="tido_termList"/>
-            </choice>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_condition">
-      <element name="condition">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The physical condition of an item, particularly any variances between the physical make-up of the item and that of other copies of the same item (e.g., missing pages or plates, brittleness, faded images, etc.).</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_contentItem">
-      <element name="contentItem">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Contains a single entry within a content description element.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_contents">
-      <element name="contents">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Description of the material contained within a resource.</a:documentation>
-         <choice>
-            <optional>
-               <ref name="tido_model.pLike"/>
-            </optional>
-            <oneOrMore>
-               <optional>
-                  <ref name="tido_model.labelLike"/>
-               </optional>
-               <ref name="tido_contentItem"/>
-            </oneOrMore>
-         </choice>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_context">
-      <element name="context">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The historical, social, intellectual, artistic, or other context within which the work was originally conceived (e.g., the 17th century restoration of the monarchy in England, the aesthetic movement of the late 19th century, etc.) or the historical, social, intellectual, artistic, or other context within which the expression was realized.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_correction">
-      <element name="correction">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">States how and under what circumstances corrections have been made in the text.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_model.pLike"/>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.regularmethod.attributes"/>
-         <optional>
-            <attribute name="corrlevel">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the degree of correction applied to the text.</a:documentation>
-               <choice>
-                  <value>high</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The text has been thoroughly checked and proofread.</a:documentation>
-                  <value>medium</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The text has been checked at least once.</a:documentation>
-                  <value>low</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The text has not been checked.</a:documentation>
-                  <value>unknown</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The correction status of the text is unknown.</a:documentation>
-               </choice>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_dimensions">
-      <element name="dimensions">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Information about the physical size of a bibliographic source; usually includes numerical data.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-               <ref name="tido_model.dimLike"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_editionStmt">
-      <element name="editionStmt">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(edition statement) – Container for meta-data pertaining to a particular edition of the material being described.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_model.editionLike"/>
-            <zeroOrMore>
-               <ref name="tido_respStmt"/>
-            </zeroOrMore>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_editorialDecl">
-      <element name="editorialDecl">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(editorial declaration) – Used to provide details of editorial principles and practices applied during the encoding of musical text.</a:documentation>
-         <choice>
-            <oneOrMore>
-               <ref name="tido_model.pLike"/>
-            </oneOrMore>
-            <group>
-               <oneOrMore>
-                  <ref name="tido_model.editorialDeclPart"/>
-               </oneOrMore>
-               <zeroOrMore>
-                  <ref name="tido_model.pLike"/>
-               </zeroOrMore>
-            </group>
-         </choice>
          <ref name="tido_att.common.attributes"/>
          <empty/>
       </element>
@@ -3380,153 +2629,14 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <empty/>
       </element>
    </define>
-   <define name="tido_exhibHist">
-      <element name="exhibHist">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(exhibition history) – A record of public exhibitions, including dates, venues, etc.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_fileChar">
-      <element name="fileChar">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(file characteristics) – Standards or schemes used to encode the file (e.g., ASCII, SGML, etc.), physical characteristics of the file (e.g., recording density, parity, blocking, etc.), and other characteristics that have a bearing on how the file can be processed.</a:documentation>
-         <text/>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
    <define name="tido_fileDesc">
       <element name="fileDesc">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(file description) – Contains a full bibliographic description of the MEI file.</a:documentation>
          <ref name="tido_titleStmt"/>
-         <optional>
-            <ref name="tido_editionStmt"/>
-         </optional>
          <ref name="tido_pubStmt"/>
          <optional>
             <ref name="tido_seriesStmt"/>
          </optional>
-         <optional>
-            <ref name="tido_notesStmt"/>
-         </optional>
-         <optional>
-            <ref name="tido_sourceDesc"/>
-         </optional>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_fingerprint">
-      <element name="fingerprint">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Contains a string that uniquely identifies an item, such as those constructed by combining groups of characters transcribed from specified pages of a printed item or a file's checksum.</a:documentation>
-         <text/>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_hand">
-      <element name="hand">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Defines a distinct scribe or handwriting style.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.medium.attributes"/>
-         <optional>
-            <attribute name="initial">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marks this hand as the first one of the document.</a:documentation>
-               <ref name="tido_data.BOOLEAN"/>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_handList">
-      <element name="handList">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Container for one or more hand elements.</a:documentation>
-         <zeroOrMore>
-            <optional>
-               <ref name="tido_model.labelLike"/>
-            </optional>
-            <ref name="tido_hand"/>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_history">
-      <element name="history">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Provides a container for information about the history of a resource. To facilitate efficient data interchange, basic information about the circumstances surrounding the creation of bibliographic resources should be recorded within the creation element.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <ref name="tido_model.textcomponentLike"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_inscription">
-      <element name="inscription">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An inscription added to an item, such as a bookplate, a note designating the item as a gift, and/or the author's signature.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_interpretation">
-      <element name="interpretation">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Describes the scope of any analytic or interpretive information added to the transcription of the music.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_model.pLike"/>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_key">
-      <element name="key">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Key captures information about tonal center and mode.</a:documentation>
-         <text/>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.keySig.log.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_language">
-      <element name="language">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Description of a language used in the document.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_langUsage">
-      <element name="langUsage">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(language usage) – Groups elements describing the languages, sub-languages, dialects, etc., represented within the encoded resource.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_language"/>
-         </oneOrMore>
          <ref name="tido_att.common.attributes"/>
          <empty/>
       </element>
@@ -3534,14 +2644,9 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
    <define name="tido_meiHead">
       <element name="meiHead">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(MEI header) – Supplies the descriptive and declarative metadata prefixed to every MEI-conformant text.</a:documentation>
-         <zeroOrMore>
-            <ref name="tido_altId"/>
-         </zeroOrMore>
+         <ref name="tido_style"/>
          <ref name="tido_fileDesc"/>
          <ref name="tido_model.headerPart_sequenceOptional"/>
-         <optional>
-            <ref name="tido_revisionDesc"/>
-         </optional>
          <ref name="tido_att.common.attributes"/>
          <ref name="tido_att.meiversion.attributes"/>
          <optional>
@@ -3558,206 +2663,12 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <empty/>
       </element>
    </define>
-   <define name="tido_mensuration">
-      <element name="mensuration">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Captures information about mensuration within bibliographic descriptions.</a:documentation>
-         <text/>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.mensur.log.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_meter">
-      <element name="meter">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Captures information about the time signature within bibliographic descriptions.</a:documentation>
-         <text/>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.meterSig.log.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_normalization">
-      <element name="normalization">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the extent of normalization or regularization of the original source carried out in converting it to electronic form.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_model.pLike"/>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.regularmethod.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_notesStmt">
-      <element name="notesStmt">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(notes statement)– Collects any notes providing information about a text additional to that recorded in other parts of the bibliographic description.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_model.annotLike"/>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_otherChar">
-      <element name="otherChar">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(other distinguishing characteristic) – Any characteristic that serves to differentiate a work or expression from another.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_perfDuration">
-      <element name="perfDuration">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(performance duration) – Used to express the duration of performance of printed or manuscript music or the playing time for a sound recording, videorecording, etc.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <optional>
-            <attribute name="isodur">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Holds a W3C duration value, e.g., "PT2H34M45.67S".</a:documentation>
-               <data type="duration"/>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_perfMedium">
-      <element name="perfMedium">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(performance medium) – Indicates the number and character of the performing forces used in a musical composition.</a:documentation>
-         <optional>
-            <ref name="tido_perfResList"/>
-         </optional>
-         <zeroOrMore>
-            <ref name="tido_model.annotLike"/>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_perfRes">
-      <element name="perfRes">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(performance resource) – Name of an instrument on which a performer plays, a performer's voice range, or a standard performing ensemble designation.</a:documentation>
-         <zeroOrMore>
-            <text/>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <optional>
-            <attribute name="count">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the number of performers.</a:documentation>
-               <data type="positiveInteger"/>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="solo">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marks this instrument or vocal part as a soloist. Do not use this attribute for a solo instrument which is not accompanied.</a:documentation>
-               <ref name="tido_data.BOOLEAN"/>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_perfResList">
-      <element name="perfResList">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Several instrumental or vocal resources treated as a group.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <ref name="tido_perfRes"/>
-               <ref name="tido_perfResList"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <optional>
-            <attribute name="count">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the number of performers.</a:documentation>
-               <data type="positiveInteger"/>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_physDesc">
-      <element name="physDesc">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(physical description) – Container for information about the appearance, construction, or handling of physical materials, such as their dimension, quantity, color, style, and technique of creation.</a:documentation>
-         <zeroOrMore>
-            <ref name="tido_model.pLike"/>
-         </zeroOrMore>
-         <zeroOrMore>
-            <ref name="tido_model.physDescPart"/>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_physMedium">
-      <element name="physMedium">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(physical medium) – Records the physical materials used in the source, such as ink and paper.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_plateNum">
-      <element name="plateNum">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(plate number) – Designation assigned to a resource by a music publisher, usually printed at the bottom of each page, and sometimes appearing also on the title page.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_playingSpeed">
-      <element name="playingSpeed">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Playing speed for a sound recording is the speed at which the carrier must be operated to produce the sound intended (e.g., 33 1/3 rpm, 19 cm/s, etc.).</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_price">
-      <element name="price">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The cost of access to a bibliographic item.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.quantity.attributes"/>
-         <optional>
-            <attribute name="currency">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Monetary unit.</a:documentation>
-               <data type="NMTOKEN"/>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
    <define name="tido_projectDesc">
       <element name="projectDesc">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(project description) – Project-level meta-data describing the aim or purpose for which the electronic file was encoded, funding agencies, etc. together with any other relevant information concerning the process by which it was assembled or collected.</a:documentation>
+         <zeroOrMore>
+            <ref name="tido_model.headLike"/>
+         </zeroOrMore>
          <oneOrMore>
             <ref name="tido_model.pLike"/>
          </oneOrMore>
@@ -3769,51 +2680,10 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <element name="pubStmt">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(publication statement) – Container for information regarding the publication or distribution of a bibliographic item, including the publisher's name and address, the date of publication, and other relevant details.</a:documentation>
          <choice>
-            <optional>
-               <ref name="tido_unpub"/>
-            </optional>
             <zeroOrMore>
                <ref name="tido_model.pubStmtPart"/>
             </zeroOrMore>
          </choice>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_revisionDesc">
-      <element name="revisionDesc">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(revision description) – Container for information about alterations that have been made to an MEI file.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_change"/>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_samplingDecl">
-      <element name="samplingDecl">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(sampling declaration) – Contains a prose description of the rationale and methods used in sampling texts in the creation of a corpus or collection.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_model.pLike"/>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_scoreFormat">
-      <element name="scoreFormat">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Describes the type of score used to represent a musical composition (e.g., short score, full score, condensed score, close score, etc.).</a:documentation>
-         <text/>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_segmentation">
-      <element name="segmentation">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Describes the principles according to which the musical text has been segmented, for example into movements, sections, etc.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_model.pLike"/>
-         </oneOrMore>
          <ref name="tido_att.common.attributes"/>
          <empty/>
       </element>
@@ -3832,136 +2702,10 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <zeroOrMore>
             <choice>
                <ref name="tido_model.identifierLike"/>
-               <ref name="tido_contents"/>
                <ref name="tido_seriesStmt"/>
             </choice>
          </zeroOrMore>
          <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_soundChan">
-      <element name="soundChan">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(sound channels) – Reflects the number of apparent sound channels in the playback of a recording (monaural, stereophonic, quadraphonic, etc.).</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <optional>
-            <attribute name="num">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the channel configuration in numeric form.</a:documentation>
-               <data type="positiveInteger"/>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_source">
-      <element name="source">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A bibliographic description of a source used in the creation of the electronic file.</a:documentation>
-         <zeroOrMore>
-            <ref name="tido_model.identifierLike"/>
-         </zeroOrMore>
-         <optional>
-            <ref name="tido_titleStmt"/>
-         </optional>
-         <ref name="tido_macro.bibldescPart"/>
-         <optional>
-            <ref name="tido_history"/>
-         </optional>
-         <optional>
-            <ref name="tido_langUsage"/>
-         </optional>
-         <optional>
-            <ref name="tido_contents"/>
-         </optional>
-         <optional>
-            <ref name="tido_notesStmt"/>
-         </optional>
-         <optional>
-            <ref name="tido_classification"/>
-         </optional>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_sourceDesc">
-      <element name="sourceDesc">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(source description) – A container for the descriptions of the source(s) used in the creation of the electronic file.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_source"/>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_specRepro">
-      <element name="specRepro">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(special reproduction characteristic) – The equalization system, noise reduction system, etc. used in making the recording (e.g., NAB, DBX, Dolby, etc.).</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_stdVals">
-      <element name="stdVals">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(standard values) – Specifies the format used when standardized date or number values are supplied.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_model.pLike"/>
-         </oneOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_sysReq">
-      <element name="sysReq">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(system requirements) – System requirements for using the electronic item.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_term">
-      <element name="term">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Keyword or phrase which describes a resource.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_term"/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.classcodeident.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_termList">
-      <element name="termList">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Collection of text phrases which describe a resource.</a:documentation>
-         <zeroOrMore>
-            <optional>
-               <ref name="tido_model.labelLike"/>
-            </optional>
-            <ref name="tido_term"/>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.classcodeident.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
          <empty/>
       </element>
    </define>
@@ -3978,59 +2722,6 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <empty/>
       </element>
    </define>
-   <define name="tido_trackConfig">
-      <element name="trackConfig">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(track configuration) – Number of physical/input tracks on a sound medium (e.g., eight track, twelve track).</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <optional>
-            <attribute name="num">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the track configuration in numeric form.</a:documentation>
-               <data type="positiveInteger"/>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_treatHist">
-      <element name="treatHist">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(treatment history) – A record of the treatment the item has undergone (e.g., de-acidification, restoration, etc.).</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_treatSched">
-      <element name="treatSched">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(treatment scheduled) – Scheduled treatment, e.g. de-acidification, restoration, etc., for an item.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_unpub">
-      <element name="unpub">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(unpublished) – Used to explicitly indicate that a bibliographic resource is unpublished.</a:documentation>
-         <text/>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
    <define name="tido_useRestrict">
       <element name="useRestrict">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(usage restrictions) – Container for information about the conditions that affect use of a bibliographic item after access has been granted.</a:documentation>
@@ -4040,75 +2731,6 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
                <ref name="tido_model.textphraseLike.limited"/>
             </choice>
          </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_watermark">
-      <element name="watermark">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Contains a description of a watermark or similar device.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike.limited"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_work">
-      <element name="work">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Provides a detailed description of a work, specifically its history, language use, and high-level musical attributes: key, tempo, meter, medium of performance, and intended duration.</a:documentation>
-         <zeroOrMore>
-            <ref name="tido_model.identifierLike"/>
-         </zeroOrMore>
-         <optional>
-            <ref name="tido_titleStmt"/>
-         </optional>
-         <zeroOrMore>
-            <ref name="tido_model.workIdent"/>
-         </zeroOrMore>
-         <zeroOrMore>
-            <ref name="tido_otherChar"/>
-         </zeroOrMore>
-         <optional>
-            <ref name="tido_history"/>
-         </optional>
-         <optional>
-            <ref name="tido_langUsage"/>
-         </optional>
-         <optional>
-            <ref name="tido_perfMedium"/>
-         </optional>
-         <optional>
-            <ref name="tido_perfDuration"/>
-         </optional>
-         <optional>
-            <ref name="tido_audience"/>
-         </optional>
-         <optional>
-            <ref name="tido_contents"/>
-         </optional>
-         <optional>
-            <ref name="tido_context"/>
-         </optional>
-         <optional>
-            <ref name="tido_notesStmt"/>
-         </optional>
-         <optional>
-            <ref name="tido_classification"/>
-         </optional>
-         <ref name="tido_att.common.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_workDesc">
-      <element name="workDesc">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(work description) – Grouping mechanism for information describing non-bibliographic aspects of a text.</a:documentation>
-         <oneOrMore>
-            <ref name="tido_work"/>
-         </oneOrMore>
          <ref name="tido_att.common.attributes"/>
          <empty/>
       </element>
@@ -4129,21 +2751,12 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
    </define>
    <define name="tido_att.graced.attributes">
       <ref name="tido_att.graced.attribute.grace"/>
-      <ref name="tido_att.graced.attribute.grace.time"/>
    </define>
    <define name="tido_att.graced.attribute.grace">
       <optional>
          <attribute name="grace">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Marks a note or chord as a "grace" (without a definitive written duration) and records from which other note/chord it should "steal" time.</a:documentation>
             <ref name="tido_data.GRACE"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tido_att.graced.attribute.grace.time">
-      <optional>
-         <attribute name="grace.time">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the amount of time to be "stolen" from a non-grace note/chord.</a:documentation>
-            <ref name="tido_data.PERCENT"/>
          </attribute>
       </optional>
    </define>
@@ -4164,15 +2777,6 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
    </define>
    <define name="tido_att.hairpin.vis.attributes">
       <ref name="tido_att.placement.attributes"/>
-      <ref name="tido_att.hairpin.vis.attribute.opening"/>
-   </define>
-   <define name="tido_att.hairpin.vis.attribute.opening">
-      <optional>
-         <attribute name="opening">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the distance between the points of the open end of a hairpin dynamic mark.</a:documentation>
-            <ref name="tido_data.MEASUREMENT"/>
-         </attribute>
-      </optional>
    </define>
    <define name="tido_att.mRest.anl.attributes">
       <empty/>
@@ -4191,15 +2795,6 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
    </define>
    <define name="tido_att.note.ges.cmn.attributes">
       <ref name="tido_att.graced.attributes"/>
-      <ref name="tido_att.note.ges.cmn.attribute.gliss"/>
-   </define>
-   <define name="tido_att.note.ges.cmn.attribute.gliss">
-      <optional>
-         <attribute name="gliss">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates that this element participates in a glissando.</a:documentation>
-            <ref name="tido_data.GLISSANDO"/>
-         </attribute>
-      </optional>
    </define>
    <define name="tido_att.pedal.log.attributes">
       <ref name="tido_att.controlevent.attributes"/>
@@ -4255,6 +2850,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <ref name="tido_pedal"/>
          <ref name="tido_slur"/>
          <ref name="tido_tie"/>
+         <ref name="tido_model.ornamentLike.cmn"/>
       </choice>
    </define>
    <define name="tido_model.controleventLike.cmn_alternation">
@@ -4263,6 +2859,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <ref name="tido_pedal"/>
          <ref name="tido_slur"/>
          <ref name="tido_tie"/>
+         <ref name="tido_model.ornamentLike.cmn_alternation"/>
       </choice>
    </define>
    <define name="tido_model.controleventLike.cmn_sequence">
@@ -4270,6 +2867,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <ref name="tido_pedal"/>
       <ref name="tido_slur"/>
       <ref name="tido_tie"/>
+      <ref name="tido_model.ornamentLike.cmn_sequence"/>
    </define>
    <define name="tido_model.controleventLike.cmn_sequenceOptional">
       <optional>
@@ -4283,6 +2881,9 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       </optional>
       <optional>
          <ref name="tido_tie"/>
+      </optional>
+      <optional>
+         <ref name="tido_model.ornamentLike.cmn_sequenceOptional"/>
       </optional>
    </define>
    <define name="tido_model.controleventLike.cmn_sequenceOptionalRepeatable">
@@ -4298,6 +2899,9 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <zeroOrMore>
          <ref name="tido_tie"/>
       </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tido_model.ornamentLike.cmn_sequenceOptionalRepeatable"/>
+      </zeroOrMore>
    </define>
    <define name="tido_model.controleventLike.cmn_sequenceRepeatable">
       <oneOrMore>
@@ -4311,6 +2915,9 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       </oneOrMore>
       <oneOrMore>
          <ref name="tido_tie"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tido_model.ornamentLike.cmn_sequenceRepeatable"/>
       </oneOrMore>
    </define>
    <define name="tido_model.eventLike.cmn">
@@ -4407,6 +3014,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <ref name="tido_model.controleventLike"/>
          <ref name="tido_model.staffLike"/>
          <ref name="tido_model.ossiaLike"/>
+         <ref name="tido_model.lyricsLike"/>
       </choice>
    </define>
    <define name="tido_model.ossiaLike">
@@ -4423,10 +3031,13 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <zeroOrMore>
             <choice>
                <ref name="tido_model.eventLike"/>
+               <ref name="tido_model.appLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-beam-When_not_copyof_beam_content-constraint-38">
+                  id="tido-beam-When_not_copyof_beam_content-constraint-36">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4445,7 +3056,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates continuous dynamics expressed on the score as wedge-shaped graphics, e.g. &lt; and &gt;.</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-hairpin-hairpin_place_required_with_single_staff-constraint-39">
+                  id="tido-hairpin-hairpin_place_required_with_single_staff-constraint-37">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4465,9 +3076,14 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Unit of musical time consisting of a fixed number of note-values of a given type, as determined by the prevailing meter, and delimited in musical notation by bar lines.</a:documentation>
          <zeroOrMore>
             <choice>
+               <ref name="tido_model.appLike"/>
+               <ref name="tido_model.divLike"/>
                <ref name="tido_model.milestoneLike.music"/>
                <ref name="tido_model.staffDefLike"/>
                <ref name="tido_model.annotLike"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
                <ref name="tido_model.measurePart"/>
             </choice>
          </zeroOrMore>
@@ -4482,7 +3098,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(meter signature) – Written meter signature.</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-meterSig-meter_att_pair-constraint-40">
+                  id="tido-meterSig-meter_att_pair-constraint-38">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4513,7 +3129,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Piano pedal mark.</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-pedal-pedal_style_consistent-constraint-41">
+                  id="tido-pedal-pedal_style_consistent-constraint-39">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4524,7 +3140,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
                 </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-pedal-pedal_start-type_attributes_required-constraint-42">
+                  id="tido-pedal-pedal_start-type_attributes_required-constraint-40">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4545,7 +3161,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <element name="slur">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indication of 1) a "unified melodic idea" or 2) performance technique.</a:documentation>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-slur-slur_start-_and_end-type_attributes_required-constraint-43">
+                  id="tido-slur-slur_start-_and_end-type_attributes_required-constraint-41">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4567,7 +3183,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <element name="tie">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An indication that two notes of the same pitch form a single note with their combined rhythmic values.</a:documentation>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-tie-tie_start-_and_end-type_attributes_required-constraint-44">
+                  id="tido-tie-tie_start-_and_end-type_attributes_required-constraint-42">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4580,7 +3196,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-tie-tie_containing_curve-constraint-45">
+                  id="tido-tie-tie_containing_curve-constraint-43">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4599,113 +3215,525 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <empty/>
       </element>
    </define>
+   <define name="tido_att.mordent.log.attributes">
+      <ref name="tido_att.controlevent.attributes"/>
+      <ref name="tido_att.startendid.attributes"/>
+      <ref name="tido_att.mordent.log.attribute.form"/>
+      <ref name="tido_att.mordent.log.attribute.long"/>
+   </define>
+   <define name="tido_att.mordent.log.attribute.form">
+      <optional>
+         <attribute name="form">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Traditionally, the 'normal' mordent is written as a short wavy line with a vertical line through it and the inverted mordent is written without the vertical line. However, the meaning of these signs is sometimes reversed. See Read, p. 245-246. Another attribute in the visual domain would be necessary in order to be completely explicit about which visual symbol is actually to be rendered.</a:documentation>
+            <choice>
+               <value>inv</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Inverted mordent, e.g., performed as the principal note, followed by its upper neighbor, with a return to the principal note.</a:documentation>
+               <value>norm</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">"normal" mordent, e.g., performed as the written note, followed by its lower neighbor, with a return to the written note.</a:documentation>
+            </choice>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.mordent.log.attribute.long">
+      <optional>
+         <attribute name="long">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">When the long attribute is set to 'yes', a double or long mordent, consisting of 5 notes, is indicated.</a:documentation>
+            <ref name="tido_data.BOOLEAN"/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.mordent.vis.attributes">
+      <ref name="tido_att.ornam.altsym.attributes"/>
+      <ref name="tido_att.placement.attributes"/>
+      <ref name="tido_att.typography.attributes"/>
+   </define>
+   <define name="tido_att.trill.log.attributes">
+      <ref name="tido_att.controlevent.attributes"/>
+      <ref name="tido_att.augmentdots.attributes"/>
+      <ref name="tido_att.startendid.attributes"/>
+      <ref name="tido_att.timestamp2.musical.attributes"/>
+   </define>
+   <define name="tido_att.trill.vis.attributes">
+      <ref name="tido_att.ornam.altsym.attributes"/>
+      <ref name="tido_att.placement.attributes"/>
+      <ref name="tido_att.typography.attributes"/>
+   </define>
+   <define name="tido_att.turn.log.attributes">
+      <ref name="tido_att.controlevent.attributes"/>
+      <ref name="tido_att.startid.attributes"/>
+      <ref name="tido_att.turn.log.attribute.delayed"/>
+      <ref name="tido_att.turn.log.attribute.form"/>
+   </define>
+   <define name="tido_att.turn.log.attribute.delayed">
+      <optional>
+         <attribute name="delayed">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">When the delayed attribute is set to 'true', the turn begins on the second half of the beat. See Read, p. 246.</a:documentation>
+            <ref name="tido_data.BOOLEAN"/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.turn.log.attribute.form">
+      <optional>
+         <attribute name="form">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the style of the turn.</a:documentation>
+            <choice>
+               <value>inv</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Inverted turn, e.g., begins on the note below the written note.</a:documentation>
+               <value>norm</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">"normal" turn, e.g., begins on the note above the written note.</a:documentation>
+            </choice>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.turn.vis.attributes">
+      <ref name="tido_att.ornam.altsym.attributes"/>
+      <ref name="tido_att.placement.attributes"/>
+      <ref name="tido_att.typography.attributes"/>
+   </define>
+   <define name="tido_model.ornamentLike.cmn">
+      <choice>
+         <ref name="tido_mordent"/>
+         <ref name="tido_trill"/>
+         <ref name="tido_turn"/>
+      </choice>
+   </define>
+   <define name="tido_model.ornamentLike.cmn_alternation">
+      <choice>
+         <ref name="tido_mordent"/>
+         <ref name="tido_trill"/>
+         <ref name="tido_turn"/>
+      </choice>
+   </define>
+   <define name="tido_model.ornamentLike.cmn_sequence">
+      <ref name="tido_mordent"/>
+      <ref name="tido_trill"/>
+      <ref name="tido_turn"/>
+   </define>
+   <define name="tido_model.ornamentLike.cmn_sequenceOptional">
+      <optional>
+         <ref name="tido_mordent"/>
+      </optional>
+      <optional>
+         <ref name="tido_trill"/>
+      </optional>
+      <optional>
+         <ref name="tido_turn"/>
+      </optional>
+   </define>
+   <define name="tido_model.ornamentLike.cmn_sequenceOptionalRepeatable">
+      <zeroOrMore>
+         <ref name="tido_mordent"/>
+      </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tido_trill"/>
+      </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tido_turn"/>
+      </zeroOrMore>
+   </define>
+   <define name="tido_model.ornamentLike.cmn_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="tido_mordent"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tido_trill"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tido_turn"/>
+      </oneOrMore>
+   </define>
+   <define name="tido_mordent">
+      <element name="mordent">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An ornament indicating rapid alternation of the main note with a secondary note, usually a step below, but sometimes a step above. </a:documentation>
+         <empty/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-mordent-mordent_start-type_attributes_required-constraint-44">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:mordent">
+               <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
+              the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.mordent.log.attributes"/>
+         <ref name="tido_att.mordent.vis.attributes"/>
+         <ref name="tido_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_trill">
+      <element name="trill">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Rapid alternation of a note with another (usually at the interval of a second above).</a:documentation>
+         <empty/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-trill-trill_start-type_attributes_required-constraint-45">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:trill">
+               <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
+              the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.trill.log.attributes"/>
+         <ref name="tido_att.trill.vis.attributes"/>
+         <ref name="tido_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_turn">
+      <element name="turn">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An ornament consisting of four notes — the upper neighbor of the written note, the written note, the lower neighbor, and the written note.</a:documentation>
+         <empty/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-turn-turn_start-type_attributes_required-constraint-46">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:turn">
+               <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
+              the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.turn.log.attributes"/>
+         <ref name="tido_att.turn.vis.attributes"/>
+         <ref name="tido_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_model.appLike">
+      <notAllowed/>
+   </define>
+   <define name="tido_model.choicePart">
+      <choice>
+         <ref name="tido_model.editorialLike"/>
+         <ref name="tido_model.editLike"/>
+         <ref name="tido_orig"/>
+         <ref name="tido_reg"/>
+      </choice>
+   </define>
+   <define name="tido_model.editLike">
+      <choice>
+         <ref name="tido_choice"/>
+      </choice>
+   </define>
+   <define name="tido_model.transcriptionLike">
+      <choice>
+         <ref name="tido_orig"/>
+         <ref name="tido_reg"/>
+      </choice>
+   </define>
+   <define name="tido_choice">
+      <element name="choice">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Groups a number of alternative encodings for the same point in a text.</a:documentation>
+         <zeroOrMore>
+            <ref name="tido_model.choicePart"/>
+         </zeroOrMore>
+         <ref name="tido_att.common.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_orig">
+      <element name="orig">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(original) – Contains material which is marked as following the original, rather than being normalized or corrected.</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="tido_model.textphraseLike"/>
+               <ref name="tido_model.eventLike"/>
+               <ref name="tido_model.controleventLike"/>
+               <ref name="tido_model.lyricsLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
+               <ref name="tido_model.eventLike.measureFilling"/>
+               <ref name="tido_model.noteModifierLike"/>
+               <ref name="tido_model.sectionLike"/>
+               <ref name="tido_model.measureLike"/>
+               <ref name="tido_model.staffLike"/>
+               <ref name="tido_model.layerLike"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+            </choice>
+         </zeroOrMore>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_reg">
+      <element name="reg">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(regularization) – Contains material which has been regularized or normalized in some sense.</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="tido_model.textphraseLike"/>
+               <ref name="tido_model.eventLike"/>
+               <ref name="tido_model.controleventLike"/>
+               <ref name="tido_model.lyricsLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
+               <ref name="tido_model.eventLike.measureFilling"/>
+               <ref name="tido_model.noteModifierLike"/>
+               <ref name="tido_model.sectionLike"/>
+               <ref name="tido_model.measureLike"/>
+               <ref name="tido_model.staffLike"/>
+               <ref name="tido_model.layerLike"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+            </choice>
+         </zeroOrMore>
+         <ref name="tido_att.common.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_att.fing.log.attributes">
+      <ref name="tido_att.controlevent.attributes"/>
+      <ref name="tido_att.augmentdots.attributes"/>
+      <ref name="tido_att.startendid.attributes"/>
+      <ref name="tido_att.timestamp2.musical.attributes"/>
+   </define>
+   <define name="tido_att.fing.vis.attributes">
+      <ref name="tido_att.placement.attributes"/>
+   </define>
+   <define name="tido_att.fingGrp.log.attributes">
+      <ref name="tido_att.controlevent.attributes"/>
+      <ref name="tido_att.augmentdots.attributes"/>
+      <ref name="tido_att.startendid.attributes"/>
+      <ref name="tido_att.timestamp2.musical.attributes"/>
+      <ref name="tido_att.fingGrp.log.attribute.form"/>
+   </define>
+   <define name="tido_att.fingGrp.log.attribute.form">
+      <optional>
+         <attribute name="form">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            <choice>
+               <value>alter</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">alternation of fingers.</a:documentation>
+               <value>combi</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">combination of fingers.</a:documentation>
+               <value>subst</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">substitution of fingers.</a:documentation>
+            </choice>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.fingGrp.vis.attributes">
+      <ref name="tido_att.placement.attributes"/>
+   </define>
+   <define name="tido_model.fingeringLike">
+      <choice>
+         <ref name="tido_fing"/>
+         <ref name="tido_fingGrp"/>
+      </choice>
+   </define>
+   <define name="tido_model.fingeringLike_alternation">
+      <choice>
+         <ref name="tido_fing"/>
+         <ref name="tido_fingGrp"/>
+      </choice>
+   </define>
+   <define name="tido_model.fingeringLike_sequence">
+      <ref name="tido_fing"/>
+      <ref name="tido_fingGrp"/>
+   </define>
+   <define name="tido_model.fingeringLike_sequenceOptional">
+      <optional>
+         <ref name="tido_fing"/>
+      </optional>
+      <optional>
+         <ref name="tido_fingGrp"/>
+      </optional>
+   </define>
+   <define name="tido_model.fingeringLike_sequenceOptionalRepeatable">
+      <zeroOrMore>
+         <ref name="tido_fing"/>
+      </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tido_fingGrp"/>
+      </zeroOrMore>
+   </define>
+   <define name="tido_model.fingeringLike_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="tido_fing"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tido_fingGrp"/>
+      </oneOrMore>
+   </define>
+   <define name="tido_fing">
+      <element name="fing">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">finger – An individual finger in a fingering indication.</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="tido_model.textphraseLike.limited"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
+            </choice>
+         </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-fing-stack_exclusion-constraint-47">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:fing">
+               <sch:assert test="not(descendant::mei:stack)">The stack element is not allowed anywhere
+              in fing.</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.fing.log.attributes"/>
+         <ref name="tido_att.fing.vis.attributes"/>
+         <ref name="tido_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_fingGrp">
+      <element name="fingGrp">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(finger group)– A group of individual fingers in a fingering indication.</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <ref name="tido_model.fingeringLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
+            </choice>
+         </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-fingGrp-require_fingeringLike_children-constraint-48">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:fingGrp">
+               <sch:assert test="count(mei:fing) + count(mei:fingGrp) &gt; 1">At least 2 fing or
+              fingGrp elements are required.</sch:assert>
+            </sch:rule>
+         </pattern>
+         <sch:pattern xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+            <sch:rule context="mei:fingGrp[not(ancestor::mei:fingGrp)][@tstamp or @startid]">
+              <sch:assert test="not(child::mei:*[@tstamp or @startid])">When @tstamp or @startid is
+                present on fingGrp, its child elements cannot have a @tstamp or @startid
+                attribute.</sch:assert>
+            </sch:rule>
+            <sch:rule context="mei:fingGrp[not(ancestor::mei:fingGrp)][not(@tstamp or @startid)]">
+              <sch:assert test="count(descendant::mei:*[@tstamp or @startid]) = count(child::mei:*[local-name()='fing' or local-name()='fingGrp'])">When @tstamp or @startid is not present on fingGrp, each of its child elements must
+                have a @tstamp or @startid attribute.</sch:assert>
+            </sch:rule>
+          </sch:pattern>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.fingGrp.log.attributes"/>
+         <ref name="tido_att.fingGrp.vis.attributes"/>
+         <ref name="tido_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_model.lyricsLike">
+      <notAllowed/>
+   </define>
+   <define name="tido_model.sylLike">
+      <choice>
+         <ref name="tido_syl"/>
+      </choice>
+   </define>
+   <define name="tido_model.verseLike">
+      <choice>
+         <ref name="tido_verse"/>
+      </choice>
+   </define>
+   <define name="tido_verse">
+      <element name="verse">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Lyric verse.</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <ref name="tido_dynam"/>
+               <ref name="tido_space"/>
+            </choice>
+         </zeroOrMore>
+         <oneOrMore>
+            <choice>
+               <ref name="tido_model.sylLike"/>
+               <ref name="tido_model.appLike"/>
+            </choice>
+         </oneOrMore>
+         <zeroOrMore>
+            <ref name="tido_model.lbLike"/>
+         </zeroOrMore>
+         <ref name="tido_att.common.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tido_model.nameLike.agent">
       <choice>
          <ref name="tido_corpName"/>
-         <ref name="tido_persName"/>
       </choice>
    </define>
    <define name="tido_model.nameLike.agent_alternation">
       <choice>
          <ref name="tido_corpName"/>
-         <ref name="tido_persName"/>
       </choice>
    </define>
    <define name="tido_model.nameLike.agent_sequence">
       <ref name="tido_corpName"/>
-      <ref name="tido_persName"/>
    </define>
    <define name="tido_model.nameLike.agent_sequenceOptional">
       <optional>
          <ref name="tido_corpName"/>
-      </optional>
-      <optional>
-         <ref name="tido_persName"/>
       </optional>
    </define>
    <define name="tido_model.nameLike.agent_sequenceOptionalRepeatable">
       <zeroOrMore>
          <ref name="tido_corpName"/>
       </zeroOrMore>
-      <zeroOrMore>
-         <ref name="tido_persName"/>
-      </zeroOrMore>
    </define>
    <define name="tido_model.nameLike.agent_sequenceRepeatable">
       <oneOrMore>
          <ref name="tido_corpName"/>
       </oneOrMore>
-      <oneOrMore>
-         <ref name="tido_persName"/>
-      </oneOrMore>
    </define>
    <define name="tido_model.nameLike.geogName">
-      <choice>
-         <ref name="tido_geogName"/>
-      </choice>
+      <notAllowed/>
    </define>
    <define name="tido_model.nameLike.geogName_alternation">
-      <choice>
-         <ref name="tido_geogName"/>
-      </choice>
+      <notAllowed/>
    </define>
    <define name="tido_model.nameLike.geogName_sequence">
-      <ref name="tido_geogName"/>
+      <empty/>
    </define>
    <define name="tido_model.nameLike.geogName_sequenceOptional">
-      <optional>
-         <ref name="tido_geogName"/>
-      </optional>
+      <empty/>
    </define>
    <define name="tido_model.nameLike.geogName_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="tido_geogName"/>
-      </zeroOrMore>
+      <empty/>
    </define>
    <define name="tido_model.nameLike.geogName_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="tido_geogName"/>
-      </oneOrMore>
+      <notAllowed/>
    </define>
    <define name="tido_model.nameLike.label">
-      <choice>
-         <ref name="tido_periodName"/>
-         <ref name="tido_styleName"/>
-      </choice>
+      <notAllowed/>
    </define>
    <define name="tido_model.nameLike.label_alternation">
-      <choice>
-         <ref name="tido_periodName"/>
-         <ref name="tido_styleName"/>
-      </choice>
+      <notAllowed/>
    </define>
    <define name="tido_model.nameLike.label_sequence">
-      <ref name="tido_periodName"/>
-      <ref name="tido_styleName"/>
+      <empty/>
    </define>
    <define name="tido_model.nameLike.label_sequenceOptional">
-      <optional>
-         <ref name="tido_periodName"/>
-      </optional>
-      <optional>
-         <ref name="tido_styleName"/>
-      </optional>
+      <empty/>
    </define>
    <define name="tido_model.nameLike.label_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="tido_periodName"/>
-      </zeroOrMore>
-      <zeroOrMore>
-         <ref name="tido_styleName"/>
-      </zeroOrMore>
+      <empty/>
    </define>
    <define name="tido_model.nameLike.label_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="tido_periodName"/>
-      </oneOrMore>
-      <oneOrMore>
-         <ref name="tido_styleName"/>
-      </oneOrMore>
+      <notAllowed/>
    </define>
    <define name="tido_model.nameLike.place">
       <choice>
@@ -4754,66 +3782,8 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
             <choice>
                <text/>
                <ref name="tido_model.textphraseLike"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.name.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_geogName">
-      <element name="geogName">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(geographic name) – The proper noun designation for a place, natural feature, or political jurisdiction.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.name.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_periodName">
-      <element name="periodName">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(period name) – A label that describes a period of time, such as 'Baroque' or '3rd Style period'.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.name.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_persName">
-      <element name="persName">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(personal name) – Designation for an individual, including any or all of that individual's forenames, surnames, honorific titles, and added names.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.name.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_styleName">
-      <element name="styleName">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(style name) – A label for a characteristic style of writing or performance, such as 'bebop' or 'rock-n-roll'.</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
             </choice>
          </zeroOrMore>
          <ref name="tido_att.common.attributes"/>
@@ -4823,82 +3793,95 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       </element>
    </define>
    <define name="tido_model.locrefLike">
-      <choice>
-         <ref name="tido_ptr"/>
-         <ref name="tido_ref"/>
-      </choice>
+      <notAllowed/>
    </define>
    <define name="tido_model.locrefLike_alternation">
-      <choice>
-         <ref name="tido_ptr"/>
-         <ref name="tido_ref"/>
-      </choice>
+      <notAllowed/>
    </define>
    <define name="tido_model.locrefLike_sequence">
-      <ref name="tido_ptr"/>
-      <ref name="tido_ref"/>
+      <empty/>
    </define>
    <define name="tido_model.locrefLike_sequenceOptional">
-      <optional>
-         <ref name="tido_ptr"/>
-      </optional>
-      <optional>
-         <ref name="tido_ref"/>
-      </optional>
+      <empty/>
    </define>
    <define name="tido_model.locrefLike_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="tido_ptr"/>
-      </zeroOrMore>
-      <zeroOrMore>
-         <ref name="tido_ref"/>
-      </zeroOrMore>
+      <empty/>
    </define>
    <define name="tido_model.locrefLike_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="tido_ptr"/>
-      </oneOrMore>
-      <oneOrMore>
-         <ref name="tido_ref"/>
-      </oneOrMore>
+      <notAllowed/>
    </define>
-   <define name="tido_ptr">
-      <element name="ptr">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(pointer) – Defines a pointer to another location, using only attributes to describe the destination.</a:documentation>
+   <define name="tido_model.backLike">
+      <notAllowed/>
+   </define>
+   <define name="tido_model.divLike">
+      <notAllowed/>
+   </define>
+   <define name="tido_model.frontLike">
+      <notAllowed/>
+   </define>
+   <define name="tido_model.headLike">
+      <notAllowed/>
+   </define>
+   <define name="tido_model.lgLike">
+      <notAllowed/>
+   </define>
+   <define name="tido_model.listLike">
+      <notAllowed/>
+   </define>
+   <define name="tido_model.quoteLike">
+      <notAllowed/>
+   </define>
+   <define name="tido_model.graphicprimitiveLike">
+      <notAllowed/>
+   </define>
+   <define name="mei_symbol">
+      <element name="symbol">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A reference to a previously defined symbol.</a:documentation>
          <empty/>
          <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.internetmedia.attributes"/>
+         <ref name="tido_att.startid.attributes"/>
          <ref name="tido_att.typed.attributes"/>
+         <ref name="tido_att.typography.attributes"/>
          <empty/>
       </element>
    </define>
-   <define name="tido_ref">
-      <element name="ref">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) – Defines a reference to another location that may contain text and sub-elements to describe the destination.</a:documentation>
-         <zeroOrMore>
+   <define name="tido_att.ornam.altsym.attributes">
+      <ref name="tido_att.ornam.altsym.attribute.altsym"/>
+   </define>
+   <define name="tido_att.ornam.altsym.attribute.altsym">
+      <optional>
+         <attribute name="altsym">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a way of pointing to an ornament symbol. It must contain an ID of a symbolDef element in Tido's ornament symbol table.</a:documentation>
             <choice>
-               <text/>
-               <ref name="tido_model.textphraseLike"/>
+               <value>#ornamentMordent</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Inverted mordent (Tido default symbol for mordent[@inv='true']).</a:documentation>
+               <value>#ornamentMordentInverted</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mordent (Tido default symbol for mordent[not(@inv='true')]).</a:documentation>
+               <value>#ornamentTurn</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Turn (Tido default symbol for turn[not(@inv='true')]).</a:documentation>
+               <value>#ornamentTurnSlash</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Turn with slash (Tido default symbol for turn[@inv='true']).</a:documentation>
+               <value>#ornamentTrill</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Trill.</a:documentation>
+               <value>#ornamentPrecompSlideTrillDAnglebert</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Slide trill (D'Anglebert).</a:documentation>
+               <value>#ornamentPrecompMordentUpperPrefix</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Mordent with upper prefix.</a:documentation>
+               <value>#ornamentPrecompTrillSuffixDandrieu</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Trill with suffix (Dandrieu).</a:documentation>
+               <value>#ornamentPrecompTrillLowerSuffix</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Trill with lower suffix.</a:documentation>
+               <value>#ornamentPrecompPortDeVoixMordent</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Port de voix mordent.</a:documentation>
+               <value>#ornamentPrecompInvertedMordentUpperPrefix</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Inverted mordent with upper prefix.</a:documentation>
+               <value>#ornamentPrecompAppoggTrill</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Appogiatura trill.</a:documentation>
+               <value>#ornamentTremblement</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Tremblement (Tido default symbol for mordent[@long='true']).</a:documentation>
             </choice>
-         </zeroOrMore>
-         <ref name="tido_att.common.attributes"/>
-         <ref name="tido_att.internetmedia.attributes"/>
-         <ref name="tido_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tido_att.staffident.req.attributes">
-      <ref name="tido_att.staffident.req.attribute.staff"/>
-   </define>
-   <define name="tido_att.staffident.req.attribute.staff">
-      <attribute name="staff">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-         <list>
-            <oneOrMore>
-               <data type="positiveInteger"/>
-            </oneOrMore>
-         </list>
-      </attribute>
+         </attribute>
+      </optional>
    </define>
    <define name="tido_att.stemdir.req.attributes">
       <ref name="tido_att.stemdir.req.attribute.stem.dir"/>
@@ -4944,7 +3927,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <ref name="tido_att.layerident.attributes"/>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tido-att.spanning.req-require_precisely_one_start_spec-constraint-46">
+            id="tido-att.spanning.req-require_precisely_one_start_spec-constraint-51">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4953,7 +3936,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
                 </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tido-att.spanning.req-require_precisely_one_end_spec-constraint-47">
+            id="tido-att.spanning.req-require_precisely_one_end_spec-constraint-52">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4966,6 +3949,20 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <ref name="tido_att.timestamp2.musical.req.attributes"/>
       <ref name="tido_att.staffident.attributes"/>
       <ref name="tido_att.layerident.attributes"/>
+   </define>
+   <define name="tido_style">
+      <element name="style" ns="http://tido-music.com/ns/1.0">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Contains a reference to a Tido Stylesheet (TSS).</a:documentation>
+         <text/>
+         <ref name="tido_att.id.attributes"/>
+         <optional>
+            <attribute name="src">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the location of the associated Tido Stylesheet (TSS).</a:documentation>
+               <ref name="tido_data.URI"/>
+            </attribute>
+         </optional>
+         <empty/>
+      </element>
    </define>
    <start>
       <choice>
