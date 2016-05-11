@@ -298,6 +298,13 @@
                 <slur xml:id="d021" tstamp="0" endid="#n02"/>
               </egXML>
             </div>
+            <div>
+              <head>Pedals</head>
+              <p><gi>pedal</gi> elements are required to form consistent sequences: Each
+                <gi>pedal</gi> with a <att>dir</att> value of <val>bounce</val> or <val>up</val>
+                must match its closest preceding <gi>pedal</gi> element in its <att>form</att>
+                attribute.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1462,13 +1469,14 @@
               </egXML>
             </exemplum>
           </elementSpec>
+
           <!-- === PEDAL === -->
           <elementSpec ident="pedal" module="MEI.cmn" mode="change">
             <constraintSpec ident="pedal_style_consistent" scheme="isoschematron" mode="add">
               <constraint>
                 <sch:rule context="mei:pedal[@form][@dir=('bounce', 'up')]">
                   <sch:let name="form" value="@form"/>
-                  <sch:assert test="preceding::mei:pedal[@dir=('down', 'half')][1][@form=$form]">
+                  <sch:assert test="preceding::mei:pedal[1][@form=$form]">
                     Pedal styles must be consistent between pedal down and pedal up.</sch:assert>
                 </sch:rule>
               </constraint>

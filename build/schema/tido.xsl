@@ -953,7 +953,7 @@
 
 		    <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="preceding::mei:pedal[@dir=('down', 'half')][1][@form=$form]"/>
+         <xsl:when test="preceding::mei:pedal[1][@form=$form]"/>
          <xsl:otherwise>&#x2028;Pedal styles must be consistent between pedal down and pedal up. </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="*" mode="M40"/>

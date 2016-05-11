@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.music-encoding.org/ns/mei"><!--
-Schema generated from ODD source 2016-05-10T17:13:24Z. .
+Schema generated from ODD source 2016-05-11T13:23:52Z. .
 TEI Edition: Version 3.0.0
 TEI Edition Location: http://www.tei-c.org/Vault/P5//
   
@@ -4519,7 +4519,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="mei:pedal[@form][@dir=('bounce', 'up')]">
                   <sch:let name="form" value="@form"/>
-                  <sch:assert test="preceding::mei:pedal[@dir=('down', 'half')][1][@form=$form]">
+                  <sch:assert test="preceding::mei:pedal[1][@form=$form]">
                     Pedal styles must be consistent between pedal down and pedal up.</sch:assert>
                 </sch:rule>
          </pattern>
