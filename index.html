@@ -29,9 +29,13 @@
         <h3>
 <a id="welcome-to-tido-mei-customization" class="anchor" href="#welcome-to-tido-mei-customization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to Tido MEI Customization</h3>
 
-<p>A minimal MEI customization that defines a basic subset of
-  elements with appropriate restrictions for basic use cases. Note that
-  this is still very much under developmen. A lot more elements are needed to be
+<h4>A compact, tightly constrained, MEI customization.
+</h4> 
+
+<p>This MEI customization is minimal by design and applies appropriate constraints to a select number of elements.
+  We are starting with a small set of elements, but eventually this will reflect Tido's application profile, i.e. the
+  MEI files that Tido software is able to handle without errors or omissions.</p>
+<p> <em>This is still under development!</em> A lot more elements are needed to be
   documented in order to properly reflect Tido's application profile.
 </p>
 
@@ -42,10 +46,9 @@
 </p>
 
 <p>
-  Even though this schema is intended to become the documentation of Tido's
-  input format, we would also like to offer our work as a starting point
-  for a basic MEI customization, that could be shared between several projects in the
-  future. To this end, we would like to welcome comments and suggestions through
+  <strong>We hope this customization can also be the starting point
+  for a common basic MEI customization</strong> to be shared between several projects in the
+  future. We welcome comments and suggestions through
   <ref target="https://github.com/tido/mei-customization/issues">GitHub issues</ref>.
 </p>
 
@@ -53,13 +56,36 @@
 <p><a href="build/schema/tido.rng">RNG schema file</a></p>
 <p><a href="build/guidelines/tido-guidelines.html">Documentation</a></p>
 
+<h3>Examples</h3>
+<h4>Elements over attributes</h4>
+<p>Bad:</p>
+<pre><code>&lt;staffDef key.accid="s" key.pname="f" key.mode="major"></staffDef></code></pre>
+<p>Good:</p>
+<pre><code>&lt;staffDef xml:id="d003">
+ &lt;keySig pname="f" accid="s" mode="major"
+  xml:id="d004"/>
+&lt;/staffDef></code></pre>
+
+<h4>Clearly defined control event behaviour</h4>
+<p>Bad:</p>
+<pre><code>&lt;dynam tstamp="1" layer="1" xml:id="d019"
+ place="above" staff="1 2"/></code></pre>
+<p>Good:</p>
+<pre><code>&lt;dynam tstamp="1" xml:id="d018" staff="1 2"/></code></pre>
+
 <h3>Node.js Test Framework</h3>
 <p>The project also contains a test environment in
   <a href="https://nodejs.org/">Node.js</a> and available
   as an <a href="https://www.npmjs.com/">npm</a> package.
-  For more information regarding the internals please see
-  the <a href="https://github.com/tido/mei-customization">GitHub repository</a>
 </p>
+<p>In true literate-programming fashion, tests are defined directly in the ODD customization using &lt;egXML> elements:</p>
+<pre><code>&lt;egXML xmlns="http://www.tei-c.org/ns/Examples" 
+       <strong>valid="true"</strong> rendition="#inLayer">
+  &lt;chord dur="4" stem.dir="up" xml:id="d008">
+    &lt;note pname="a" oct="4" xml:id="d009"/>
+    &lt;note pname="f" oct="4" xml:id="d010"/>
+  &lt;/chord>
+&lt;/egXML></code></pre>
 
       </section>
       <footer>
