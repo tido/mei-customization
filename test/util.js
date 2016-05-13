@@ -1,5 +1,5 @@
 
-import { validateSync } from 'mei-validation-js';
+import { validateSync } from 'tido-mei-validation';
 
 import jade from 'jade';
 import _ from 'lodash';
