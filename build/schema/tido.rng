@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.music-encoding.org/ns/mei"><!--
-Schema generated from ODD source 2016-05-11T19:04:46Z. .
+Schema generated from ODD source 2016-05-13T11:41:08Z. .
 TEI Edition: Version 3.0.0
 TEI Edition Location: http://www.tei-c.org/Vault/P5//
   
@@ -887,6 +887,40 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <attribute name="lines">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates the number of staff lines.</a:documentation>
             <data type="positiveInteger"/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.staffgroupingsym.attributes">
+      <ref name="tido_att.staffgroupingsym.attribute.symbol"/>
+   </define>
+   <define name="tido_att.staffgroupingsym.attribute.symbol">
+      <optional>
+         <attribute name="symbol">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the symbol used to group a set of staves.</a:documentation>
+            <choice>
+               <value>brace</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Curved symbol, i.e., {.</a:documentation>
+               <value>bracket</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Square symbol, i.e., [, but with curved/angled top and bottom segments.</a:documentation>
+               <value>bracketsq</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Square symbol, i.e., [, with horizontal top and bottom segments.</a:documentation>
+               <value>line</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Line symbol, i.e., |, (wide) line without top and bottom curved/horizontal segments.</a:documentation>
+               <value>none</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Grouping symbol missing.</a:documentation>
+            </choice>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.staffGrp.vis.attributes">
+      <ref name="tido_att.staffgroupingsym.attributes"/>
+      <ref name="tido_att.staffGrp.vis.attribute.barthru"/>
+   </define>
+   <define name="tido_att.staffGrp.vis.attribute.barthru">
+      <optional>
+         <attribute name="barthru">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates whether bar lines go across the space between staves (true) or are only drawn across the lines of each staff (false).</a:documentation>
+            <ref name="tido_data.BOOLEAN"/>
          </attribute>
       </optional>
    </define>
@@ -2515,6 +2549,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </sch:rule>
          </pattern>
          <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.staffGrp.vis.attributes"/>
          <empty/>
       </element>
    </define>

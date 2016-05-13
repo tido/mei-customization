@@ -5,7 +5,7 @@ namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-11T19:04:46Z. .
+# Schema generated from ODD source 2016-05-13T11:41:09Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
@@ -834,6 +834,35 @@ tido_att.staffDef.vis.attribute.lines =
   
   ## Indicates the number of staff lines.
   attribute lines { xsd:positiveInteger }?
+tido_att.staffgroupingsym.attributes =
+  tido_att.staffgroupingsym.attribute.symbol
+tido_att.staffgroupingsym.attribute.symbol =
+  
+  ## Specifies the symbol used to group a set of staves.
+  attribute symbol {
+    
+    ## Curved symbol, i.e., {.
+    "brace"
+    | 
+      ## Square symbol, i.e., [, but with curved/angled top and bottom segments.
+      "bracket"
+    | 
+      ## Square symbol, i.e., [, with horizontal top and bottom segments.
+      "bracketsq"
+    | 
+      ## Line symbol, i.e., |, (wide) line without top and bottom curved/horizontal segments.
+      "line"
+    | 
+      ## Grouping symbol missing.
+      "none"
+  }?
+tido_att.staffGrp.vis.attributes =
+  tido_att.staffgroupingsym.attributes,
+  tido_att.staffGrp.vis.attribute.barthru
+tido_att.staffGrp.vis.attribute.barthru =
+  
+  ## Indicates whether bar lines go across the space between staves (true) or are only drawn across the lines of each staff (false).
+  attribute barthru { tido_data.BOOLEAN }?
 tido_att.staffident.attributes = tido_att.staffident.attribute.staff
 tido_att.staffident.attribute.staff =
   
@@ -2114,6 +2143,7 @@ tido_staffGrp =
          "         "
        ],
     tido_att.common.attributes,
+    tido_att.staffGrp.vis.attributes,
     empty
   }
 tido_syl =

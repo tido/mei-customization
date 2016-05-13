@@ -183,6 +183,27 @@
         </div>
       </div>
       <div>
+        <head>Staff groups</head>
+        <p>Like in mei_all, <gi>staffGrp</gi> elements may contain <att>barthru</att> and <att>symbol</att>
+          attributes to specify the appearance of a staff group.</p>
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inInitialScoreDef">
+          <staffGrp symbol="bracket" barthru="true" xml:id="d003">
+            <staffDef lines="5" xml:id="d052" n="2">
+              <clef shape="G" line="2" xml:id="d053"/>
+            </staffDef>
+          </staffGrp>
+        </egXML>
+        <p>Both attributes are optional.</p>
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inInitialScoreDef">
+          <staffGrp xml:id="d003">
+            <staffDef lines="5" xml:id="d052" n="2">
+              <clef shape="G" line="2" xml:id="d053"/>
+            </staffDef>
+          </staffGrp>
+        </egXML>
+        <p>When omitted, <att>symbol</att> defaults to <val>none</val>; <att>barthru</att> to <val>false</val>.</p>
+      </div>
+      <div>
         <head>Events</head>
         <p>This section describes restrictions to timed events on staves, such as notes or rests.</p>
         <div>
@@ -631,7 +652,6 @@
           <classSpec ident="att.staffGrp.anl" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.staffGrp.ges" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.staffGrp.log" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.staffGrp.vis" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.staffloc.pitched" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.stems" module="MEI.shared" type="atts" mode="change">
             <attList>
