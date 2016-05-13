@@ -336,7 +336,30 @@
                 attribute.</p>
             </div>
           </div>
-
+          <div>
+            <head>Fermatas</head>
+            <p><gi>fermata</gi> elements must have <att>tstamp</att> and <att>place</att> attributes.</p>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+              <fermata staff="1" layer="1" tstamp="2" place="above" xml:id="d020"/>
+            </egXML>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+              <fermata staff="1" layer="1" place="above" xml:id="d020"/>
+            </egXML>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+              <fermata staff="1" layer="1" tstamp="2" xml:id="d020"/>
+            </egXML>
+            <p><att>tstamp2</att>, <att>startid</att> and <att>endid</att> are not allowed on <gi>fermata</gi>
+              elements.</p>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+              <fermata staff="1" layer="1" tstamp="2" tstamp2="2m+2" place="above" xml:id="d020"/>
+            </egXML>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+              <fermata staff="1" layer="1" tstamp="2" startid="#n01" xml:id="d020"/>
+            </egXML>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+              <fermata staff="1" layer="1" tstamp="2" endid="#n01" xml:id="d020"/>
+            </egXML>
+          </div>
           <div>
             <head>Ornamentation</head>
             <!-- TODO update paragraphs -->
@@ -453,7 +476,7 @@
             perfResList physDesc physMedium plateNum playingSpeed price provenance revisionDesc
             samplingDecl scoreFormat segmentation soundChan source sourceDesc specRepro stdVals
             sysReq term termList trackConfig treatHist treatSched unpub watermark work workDesc"/>
-          <moduleRef key="MEI.cmn" except=" arpeg beamSpan beatRpt bend breath bTrem fermata fTrem
+          <moduleRef key="MEI.cmn" except=" arpeg beamSpan beatRpt bend breath bTrem fTrem
             gliss halfmRpt harpPedal meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt octave ossia
             phrase reh tuplet tupletSpan"/>
           <moduleRef key="MEI.cmnOrnaments"/>
@@ -517,6 +540,15 @@
           <classSpec ident="att.endings" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.extender" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.fermatapresent" module="MEI.shared" type="atts" mode="delete"/>
+          <classSpec ident="att.fermata.vis" module="MEI.cmn" type="atts" mode="change">
+            <classes mode="change">
+              <memberOf key="att.typography" mode="delete"/>
+            </classes>
+            <attList>
+              <attDef ident="form" usage="opt" mode="delete"/>
+              <attDef ident="shape" usage="opt" mode="delete"/>
+            </attList>
+          </classSpec>
           <classSpec ident="att.filing" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.horizontalalign" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.id" module="MEI.shared" type="atts" mode="change">
@@ -702,6 +734,8 @@
           <classSpec ident="att.beamsecondary" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.chord.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.chord.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.fermata.anl" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.fermata.ges" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.graced" module="MEI.cmn" type="atts" mode="change">
             <attList>
               <attDef ident="grace.time" usage="opt" mode="delete"/>
@@ -1105,7 +1139,7 @@
             <constraintSpec ident="require_staff_attribute" scheme="isoschematron" mode="add">
               <desc>Require <att>staff</att> or <gi>staff</gi>.</desc>
               <constraint>
-                <sch:rule context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn">
+                <sch:rule context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata">
                   <sch:assert test="ancestor-or-self::*[name()='staff' or @staff]"
                     >The element or one of its ancestors must be a staff or contain a @staff attribute.</sch:assert>
                 </sch:rule>
@@ -1837,6 +1871,13 @@
                 </staffDef>
               </egXML>
             </exemplum>
+          </elementSpec>
+
+          <!-- === FERMATA === -->
+          <elementSpec ident="fermata" module="MEI.cmn" mode="change">
+            <classes mode="change">
+              <memberOf key="att.typed" mode="delete"/>
+            </classes>
           </elementSpec>
 
           <!-- === PEDAL === -->

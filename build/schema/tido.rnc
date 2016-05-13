@@ -5,7 +5,7 @@ namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-13T11:41:09Z. .
+# Schema generated from ODD source 2016-05-13T13:12:59Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
@@ -473,7 +473,7 @@ sch:pattern [
   "      "
   sch:rule [
     context =
-      "mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn"
+      "mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata"
     "\x{a}" ~
     "                  "
     sch:assert [
@@ -2320,6 +2320,9 @@ tido_att.cutout.attribute.cutout =
     ## The staff lines should not be drawn.
     "cutout"
   }?
+tido_att.fermata.log.attributes =
+  tido_att.controlevent.attributes, tido_att.startendid.attributes
+tido_att.fermata.vis.attributes = tido_att.placement.attributes
 tido_att.graced.attributes = tido_att.graced.attribute.grace
 tido_att.graced.attribute.grace =
   
@@ -2394,36 +2397,42 @@ tido_att.tie.log.attributes =
   tido_att.startendid.attributes,
   tido_att.timestamp2.musical.attributes
 tido_model.controleventLike.cmn =
-  tido_hairpin
+  tido_fermata
+  | tido_hairpin
   | tido_pedal
   | tido_slur
   | tido_tie
   | tido_model.ornamentLike.cmn
 tido_model.controleventLike.cmn_alternation =
-  tido_hairpin
+  tido_fermata
+  | tido_hairpin
   | tido_pedal
   | tido_slur
   | tido_tie
   | tido_model.ornamentLike.cmn_alternation
 tido_model.controleventLike.cmn_sequence =
+  tido_fermata,
   tido_hairpin,
   tido_pedal,
   tido_slur,
   tido_tie,
   tido_model.ornamentLike.cmn_sequence
 tido_model.controleventLike.cmn_sequenceOptional =
+  tido_fermata?,
   tido_hairpin?,
   tido_pedal?,
   tido_slur?,
   tido_tie?,
   tido_model.ornamentLike.cmn_sequenceOptional?
 tido_model.controleventLike.cmn_sequenceOptionalRepeatable =
+  tido_fermata*,
   tido_hairpin*,
   tido_pedal*,
   tido_slur*,
   tido_tie*,
   tido_model.ornamentLike.cmn_sequenceOptionalRepeatable*
 tido_model.controleventLike.cmn_sequenceRepeatable =
+  tido_fermata+,
   tido_hairpin+,
   tido_pedal+,
   tido_slur+,
@@ -2487,6 +2496,36 @@ tido_beam =
     tido_att.common.attributes,
     empty
   }
+tido_fermata =
+  
+  ## An indication placed over a note or rest to indicate that it should be held longer than its written value. May also occur over a bar line to indicate the end of a phrase or section. Sometimes called a 'hold' or 'pause'.
+  element fermata {
+    empty
+    >> sch:pattern [
+         id =
+           "tido-fermata-fermata_start-type_attributes_required-constraint-37"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:fermata"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@startid or @tstamp or @tstamp.ges or @tstamp.real"
+             "Must have one of\x{a}" ~
+             "              the attributes: startid, tstamp, tstamp.ges or tstamp.real"
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.fermata.log.attributes,
+    tido_att.fermata.vis.attributes,
+    empty
+  }
 tido_hairpin =
   
   ## Indicates continuous dynamics expressed on the score as wedge-shaped graphics, e.g. < and >.
@@ -2494,7 +2533,7 @@ tido_hairpin =
     empty
     >> sch:pattern [
          id =
-           "tido-hairpin-hairpin_place_required_with_single_staff-constraint-37"
+           "tido-hairpin-hairpin_place_required_with_single_staff-constraint-38"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2541,7 +2580,7 @@ tido_meterSig =
   element meterSig {
     empty
     >> sch:pattern [
-         id = "tido-meterSig-meter_att_pair-constraint-38"
+         id = "tido-meterSig-meter_att_pair-constraint-39"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2581,7 +2620,7 @@ tido_pedal =
   element pedal {
     empty
     >> sch:pattern [
-         id = "tido-pedal-pedal_style_consistent-constraint-39"
+         id = "tido-pedal-pedal_style_consistent-constraint-40"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2604,7 +2643,7 @@ tido_pedal =
        ]
     >> sch:pattern [
          id =
-           "tido-pedal-pedal_start-type_attributes_required-constraint-40"
+           "tido-pedal-pedal_start-type_attributes_required-constraint-41"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2634,7 +2673,7 @@ tido_slur =
   [
     sch:pattern [
       id =
-        "tido-slur-slur_start-_and_end-type_attributes_required-constraint-41"
+        "tido-slur-slur_start-_and_end-type_attributes_required-constraint-42"
       "\x{a}" ~
       "            "
       sch:rule [
@@ -2672,7 +2711,7 @@ tido_tie =
   [
     sch:pattern [
       id =
-        "tido-tie-tie_start-_and_end-type_attributes_required-constraint-42"
+        "tido-tie-tie_start-_and_end-type_attributes_required-constraint-43"
       "\x{a}" ~
       "            "
       sch:rule [
@@ -2698,7 +2737,7 @@ tido_tie =
       "         "
     ]
     sch:pattern [
-      id = "tido-tie-tie_containing_curve-constraint-43"
+      id = "tido-tie-tie_containing_curve-constraint-44"
       "\x{a}" ~
       "            "
       sch:rule [
@@ -2803,7 +2842,7 @@ tido_mordent =
     empty
     >> sch:pattern [
          id =
-           "tido-mordent-mordent_start-type_attributes_required-constraint-44"
+           "tido-mordent-mordent_start-type_attributes_required-constraint-45"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2834,7 +2873,7 @@ tido_trill =
     empty
     >> sch:pattern [
          id =
-           "tido-trill-trill_start-type_attributes_required-constraint-45"
+           "tido-trill-trill_start-type_attributes_required-constraint-46"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2865,7 +2904,7 @@ tido_turn =
     empty
     >> sch:pattern [
          id =
-           "tido-turn-turn_start-type_attributes_required-constraint-46"
+           "tido-turn-turn_start-type_attributes_required-constraint-47"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2986,7 +3025,7 @@ tido_fing =
       | tido_model.editLike
       | tido_model.transcriptionLike)*)
     >> sch:pattern [
-         id = "tido-fing-stack_exclusion-constraint-47"
+         id = "tido-fing-stack_exclusion-constraint-48"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3019,7 +3058,7 @@ tido_fingGrp =
       | tido_model.transcriptionLike)*)
     >> sch:pattern [
          id =
-           "tido-fingGrp-require_fingeringLike_children-constraint-48"
+           "tido-fingGrp-require_fingeringLike_children-constraint-49"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3243,7 +3282,7 @@ tido_att.spanning.req.attributes =
   tido_att.layerident.attributes
 sch:pattern [
   id =
-    "tido-att.spanning.req-require_precisely_one_start_spec-constraint-51"
+    "tido-att.spanning.req-require_precisely_one_start_spec-constraint-52"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -3263,7 +3302,7 @@ sch:pattern [
 ]
 sch:pattern [
   id =
-    "tido-att.spanning.req-require_precisely_one_end_spec-constraint-52"
+    "tido-att.spanning.req-require_precisely_one_end_spec-constraint-53"
   "\x{a}" ~
   "      "
   sch:rule [
