@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import {
   flow, property, forEach, invokeMap, join, find, map, flatten, toArray,
+  keyBy, mapValues,
 } from 'lodash/fp';
 
 import { wrapFragment, parseXML } from './util';
@@ -28,6 +29,14 @@ describe(`ODD at ${oddPath}`, () => {
       .then(() => fs.readFileSync(oddPath, 'utf-8'))
       .then(parseXML)
       .then(oddDocument => {
+        const renditionToWrapperPath = flow(
+          getElementsByTagName('rendition'),
+          keyBy(element => element.getAttribute('xml:id')),
+          mapValues(element =>
+            getElementsByTagName('ptr')(element)[0].getAttribute('target')
+          )
+        )(oddDocument);
+
         const schemaSpecNames = flow(
           getElementsByTagName('schemaSpec'),
           map(getAttribute('ident'))
@@ -36,7 +45,7 @@ describe(`ODD at ${oddPath}`, () => {
           schemaSpecName =>
             flow(
               getTestElements(schemaSpecName),
-              forEach(validateElement(schemaSpecName))
+              forEach(validateElement(renditionToWrapperPath, schemaSpecName))
             )(oddDocument),
           schemaSpecNames
         );
@@ -75,27 +84,36 @@ const getTestElements = (schemaSpecName) => (xml) => {
   return testElements;
 };
 
-const validateElement = (schemaSpecName) => (element) => {
+const validateElement = (renditionToWrapperPath, schemaSpecName) => (element) => {
   const schemaPaths = getSchemaPaths(schemaSpecName);
   const fragment = getInnerXMLString(element);
   const validAttribute = getAttribute('valid')(element);
-  const wrapperName = getAttribute('rendition')(element).substr(1);
+  const rendition = getAttribute(renditionAttributeName)(element).substr(1);
+  const wrapperPath = renditionToWrapperPath[rendition];
 
   describe(fragment, () => {
     switch (validAttribute) {
       case 'true':
         it(`should be valid against schema spec "${schemaSpecName}"`, () => {
-          wrapFragment(wrapperName, fragment, undefined, true, 'always', schemaPaths);
+          assertWrapper(wrapperPath, rendition);
+          wrapFragment(path.resolve(__dirname, wrapperPath), fragment, true, schemaPaths);
         });
         break;
       case 'false':
         it(`should be invalid against schema spec "${schemaSpecName}"`, () => {
-          wrapFragment(wrapperName, fragment, undefined, false, 'always', schemaPaths);
+          assertWrapper(wrapperPath, rendition);
+          wrapFragment(path.resolve(__dirname, wrapperPath), fragment, false, schemaPaths);
         });
         break;
       default:
     }
   });
+};
+
+const assertWrapper = (wrapperPath, rendition) => {
+  if (!wrapperPath) {
+    throw new Error(`could not find wrapper for rendition "#${rendition}"`);
+  }
 };
 
 const getInnerXMLString = flow(

@@ -23,7 +23,7 @@ customization format.
 
 # The source
 
-Tido ODD customization file is located at `src/tido.xml`.
+The Tido ODD customization file is located at `src/tido.xml`.
 In addition to the schema specifications, this file contains examples of
 valid and invalid fragments.
 
@@ -31,10 +31,8 @@ valid and invalid fragments.
 
 ## Java dependencies
 In order to build the schema and guidelines you will need
-- `java` runtime environment
-- `JDK`
-- `ant`
-- `saxon`
+- a Java Development Kit (JDK)
+- `ANT`
 
 ## MEI and TEI dependencies
 The Tido MEI Customization project contains copies of `https://github.com/music-encoding/music-encoding` and `https://github.com/TEIC/Stylesheets` in the `vendor` folder. In case these dependencies need to be updated, run `./update-git-dependencies.sh` and commit the updated project.
@@ -43,24 +41,17 @@ The Tido MEI Customization project contains copies of `https://github.com/music-
 
 In order to build the schema:
 ```
-ant -lib vendor/stylesheets/lib/saxon9he.jar schema
+ant -lib vendor/stylesheets/lib schema
 ```
 The output schema will be placed in `build/schema`
 
 To build the HTML guidelines:
 ```
-ant -lib vendor/stylesheets/lib/saxon9he.jar html-guidelines
+ant -lib vendor/stylesheets/lib html-guidelines
 ```
 The output of this will be placed in `build/guidelines`
 
-If you run [node](http://nodejs.org) you can also run the build commands via npm:
-
-```
-npm run schema
-npm run html-guidelines
-```
-
-## Test environment
+## Test environment for Node
 
 In addition to providing documentation, the provided examples also serve validation
 test for the schema. A [node](https://nodejs.org) test environment is included in order to make sure
@@ -68,12 +59,20 @@ that provided examples (or counter-examples) are indeed validated (or invalidate
 by the compiled schema.
 
 ### Run the tests
+
 ```
 npm test
 ```
 
-### To build and test
-In order to build both the schema and the documentation and run the tests:
+### Build and test
+
+In Node you can also run the build scripts through npm scripts:
+```
+npm run schema
+npm run html-guidelines
+```
+
+And if you want to do all the above at once, that is build the schema, build the documentation and run the tests:
 ```
 npm run refresh
 ```
@@ -96,10 +95,10 @@ with `@valid="feasible"`. In that case, its content will be skipped when running
 the validation tests.
 
 The test environment uses the `jade` template library to construct complete MEI
-fragments. `test/jade` folder contains wrappers and mixins that help to
-contextualise the provided examples. In order to do this, the `<egXML>` element
-refer to a wrappers, this instructs the test environment to insert the provided
-example into the appropriate context, thus providing a valid MEI document.
+documents from the MEI fragments in `<egXML>`. The `test/jade` folder contains
+wrappers and mixins that help to contextualise the provided examples. In order to
+assign a wrapper to a fragment, the `<egXML>` elements link to `<rendition>`
+declarations in the `<teiHeader>` which point to the Jade template files in concern.
 
 Here's a full example of a class specification with a single test case:
 
@@ -115,7 +114,7 @@ Here's a full example of a class specification with a single test case:
   <exemplum>
     <p>A valid <gi>pedal</gi> element with local URI references in
       <att>startid</att> and <att>endid</att></p>
-    <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" tido:wrapper="afterStaff">
+    <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
       <pedal dir="down" staff="1" layer="1" startid="#n01" endid="#n02"/>
     </egXML>
   </exemplum>
