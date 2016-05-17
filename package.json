@@ -1,6 +1,6 @@
 {
-  "name": "tido-mei-specs",
-  "version": "0.1.0",
+  "name": "tido-mei-customization",
+  "version": "0.1.1",
   "description": "Tido MEI Customization",
   "author": "Tido",
   "license": "ECL-2.0",
@@ -8,7 +8,6 @@
     "type": "git",
     "url": "https://github.com/tido/mei-customization.git"
   },
-  "private": true,
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require babel-polyfill",
     "schema": "ant -lib vendor/stylesheets/lib schema",
@@ -35,7 +34,7 @@
     "eslint-plugin-react": "^4.2.0",
     "jade": "^1.11.0",
     "mocha": "^2.2.5",
-    "mei-validation-js": "git+ssh://github.com/tido/mei-validation-js",
+    "tido-mei-validation": "^1.0.0",
     "xmldom": "^0.1.22"
   },
   "bugs": {
