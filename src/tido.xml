@@ -523,6 +523,16 @@
               </egXML>
              </div>
           </div>
+          <div>
+            <head>Musical Symbols</head>
+            <p>Musical symbols can be included in text elements by providing a <gi>symbol</gi>
+              element with a <att>glyphname</att> attribute containing the SMuFL name of the
+              glyph. For a list of available glyphs, see <ref target="http://www.smufl.org/version/latest/"/>.</p>
+            <p>A valid <gi>symbol</gi> element referencing a quarter note glyph</p>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+              <tempo staff="1" layer="1" tstamp="2" place="above" xml:id="d020"><symbol xml:id="d021" glyphname="noteQuarterUp"/></tempo>
+            </egXML>
+          </div>
         </div>
       </div>
     </body>
@@ -712,6 +722,7 @@
           <classSpec ident="att.ornam.ges" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.ornam.vis" module="MEI.shared" type="atts" mode="change">
             <classes mode="change">
+              <memberOf key="att.extsym" mode="delete"/>
               <memberOf key="att.ornam.extsym" mode="add"/>
             </classes>
           </classSpec>
@@ -862,6 +873,7 @@
           <classSpec ident="att.mordent.ges" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
           <classSpec ident="att.mordent.vis" module="MEI.cmnOrnaments" type="atts" mode="change">
             <classes mode="change">
+              <memberOf key="att.extsym" mode="delete"/>
               <memberOf key="att.ornam.extsym" mode="add"/>
             </classes>
           </classSpec>
@@ -871,6 +883,7 @@
           <classSpec ident="att.trill.ges" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
           <classSpec ident="att.trill.vis" module="MEI.cmnOrnaments" type="atts" mode="change">
             <classes mode="change">
+              <memberOf key="att.extsym" mode="delete"/>
               <memberOf key="att.ornam.extsym" mode="add"/>
             </classes>
           </classSpec>
@@ -878,13 +891,18 @@
           <classSpec ident="att.turn.ges" module="MEI.cmnOrnaments" type="atts" mode="delete"/>
           <classSpec ident="att.turn.vis" module="MEI.cmnOrnaments" type="atts" mode="change">
             <classes mode="change">
+              <memberOf key="att.extsym" mode="delete"/>
               <memberOf key="att.ornam.extsym" mode="add"/>
             </classes>
           </classSpec>
           <classSpec ident="att.source" module="MEI.critapp" type="atts" mode="delete"/>
           <classSpec ident="att.edit" module="MEI.edittrans" type="atts" mode="delete"/>
           <classSpec ident="att.evidence" module="MEI.edittrans" type="atts" mode="delete"/>
-          <classSpec ident="att.extsym" module="MEI.externalsymbols" type="atts" mode="delete"/>
+          <classSpec ident="att.extsym" module="MEI.externalsymbols" type="atts" mode="change">
+            <attList>
+              <attDef ident="glyphnum" usage="opt" mode="delete"/>
+            </attList>
+          </classSpec>
           <classSpec ident="att.fing.anl" module="MEI.fingering" type="atts" mode="delete"/>
           <classSpec ident="att.fing.ges" module="MEI.fingering" type="atts" mode="delete"/>
           <classSpec ident="att.fingGrp.anl" module="MEI.fingering" type="atts" mode="delete"/>

@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.music-encoding.org/ns/mei"><!--
-Schema generated from ODD source 2016-05-17T15:40:42Z. .
+Schema generated from ODD source 2016-05-17T18:07:02Z. .
 TEI Edition: Version 3.0.0
 TEI Edition Location: http://www.tei-c.org/Vault/P5//
   
@@ -455,6 +455,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    </define>
    <define name="tido_att.chord.vis.attributes">
       <ref name="tido_att.stemdir.req.attributes"/>
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.typography.attributes"/>
       <ref name="tido_att.chord.vis.attribute.cluster"/>
    </define>
@@ -831,6 +832,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
                 </sch:rule>
    </pattern>
    <define name="tido_att.note.vis.attributes">
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.staffloc.attributes"/>
       <ref name="tido_att.stems.attributes"/>
       <ref name="tido_att.typography.attributes"/>
@@ -2903,6 +2905,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <ref name="tido_att.startendid.attributes"/>
    </define>
    <define name="tido_att.fermata.vis.attributes">
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.placement.attributes"/>
    </define>
    <define name="tido_att.graced.attributes">
@@ -2946,6 +2949,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
    </define>
    <define name="tido_att.mRest.vis.attributes">
       <ref name="tido_att.cutout.attributes"/>
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.staffloc.attributes"/>
       <ref name="tido_att.typography.attributes"/>
    </define>
@@ -2973,6 +2977,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       </attribute>
    </define>
    <define name="tido_att.pedal.vis.attributes">
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.placement.attributes"/>
       <ref name="tido_att.typography.attributes"/>
       <ref name="tido_att.pedal.vis.attribute.form"/>
@@ -3680,6 +3685,17 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <empty/>
       </element>
    </define>
+   <define name="tido_att.extsym.attributes">
+      <ref name="tido_att.extsym.attribute.glyphname"/>
+   </define>
+   <define name="tido_att.extsym.attribute.glyphname">
+      <optional>
+         <attribute name="glyphname">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Glyph name.</a:documentation>
+            <data type="string"/>
+         </attribute>
+      </optional>
+   </define>
    <define name="tido_att.fing.log.attributes">
       <ref name="tido_att.controlevent.attributes"/>
       <ref name="tido_att.augmentdots.attributes"/>
@@ -4030,6 +4046,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A reference to a previously defined symbol.</a:documentation>
          <empty/>
          <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.extsym.attributes"/>
          <ref name="tido_att.startid.attributes"/>
          <ref name="tido_att.typed.attributes"/>
          <ref name="tido_att.typography.attributes"/>

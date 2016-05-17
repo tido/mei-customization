@@ -5,7 +5,7 @@ namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-17T15:40:43Z. .
+# Schema generated from ODD source 2016-05-17T18:07:03Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
@@ -430,6 +430,7 @@ tido_att.chord.log.attributes =
   tido_att.augmentdots.attributes
 tido_att.chord.vis.attributes =
   tido_att.stemdir.req.attributes,
+  tido_att.extsym.attributes,
   tido_att.typography.attributes,
   tido_att.chord.vis.attribute.cluster
 tido_att.chord.vis.attribute.cluster =
@@ -802,6 +803,7 @@ sch:pattern [
   "   "
 ]
 tido_att.note.vis.attributes =
+  tido_att.extsym.attributes,
   tido_att.staffloc.attributes,
   tido_att.stems.attributes,
   tido_att.typography.attributes
@@ -2451,7 +2453,8 @@ tido_att.cutout.attribute.cutout =
   }?
 tido_att.fermata.log.attributes =
   tido_att.controlevent.attributes, tido_att.startendid.attributes
-tido_att.fermata.vis.attributes = tido_att.placement.attributes
+tido_att.fermata.vis.attributes =
+  tido_att.extsym.attributes, tido_att.placement.attributes
 tido_att.graced.attributes = tido_att.graced.attribute.grace
 tido_att.graced.attribute.grace =
   
@@ -2478,6 +2481,7 @@ tido_att.mRest.log.attributes =
   tido_att.duration.musical.attributes, tido_att.event.attributes
 tido_att.mRest.vis.attributes =
   tido_att.cutout.attributes,
+  tido_att.extsym.attributes,
   tido_att.staffloc.attributes,
   tido_att.typography.attributes
 tido_att.note.ges.cmn.attributes = tido_att.graced.attributes
@@ -2503,6 +2507,7 @@ tido_att.pedal.log.attribute.dir =
       "bounce"
   }
 tido_att.pedal.vis.attributes =
+  tido_att.extsym.attributes,
   tido_att.placement.attributes,
   tido_att.typography.attributes,
   tido_att.pedal.vis.attribute.form
@@ -3111,6 +3116,11 @@ tido_reg =
     tido_att.common.attributes,
     empty
   }
+tido_att.extsym.attributes = tido_att.extsym.attribute.glyphname
+tido_att.extsym.attribute.glyphname =
+  
+  ## Glyph name.
+  attribute glyphname { xsd:string }?
 tido_att.fing.log.attributes =
   tido_att.controlevent.attributes,
   tido_att.augmentdots.attributes,
@@ -3328,6 +3338,7 @@ mei_symbol =
   element symbol {
     empty,
     tido_att.common.attributes,
+    tido_att.extsym.attributes,
     tido_att.startid.attributes,
     tido_att.typed.attributes,
     tido_att.typography.attributes,
