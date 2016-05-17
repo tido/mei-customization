@@ -359,6 +359,65 @@
             </div>
           </div>
           <div>
+            <head>Directives</head>
+            <p>MEI provides the general-purpose element <gi>dir</gi> for directives of any kind; for a
+              set of directives like tempo, fingering, etc., dedicated elements are available
+              (e.g. <gi>tempo</gi>, <gi>fing</gi> and <gi>fingGrp</gi>). In the Tido customization,
+              using the dedicated elements is required whenever such an element is available. When
+              the <gi>dir</gi> element is used, it needs to contain a <att>type</att> attribute with
+              one of the pre-defined values.</p>
+            <list rend="bulleted">
+              <item>
+                <label>A valid fingering encoded using the <gi>fing</gi> element</label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                  <fing staff="1" layer="1" tstamp="2" place="above" xml:id="d020">1</fing>
+                </egXML>
+              </item>
+              <item>
+                <label>An invalid fingering encoded as a <gi>dir</gi> element of type <val>fingering</val></label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                  <dir type="fingering" staff="1" layer="1" tstamp="2" place="above" xml:id="d020">1</dir>
+                </egXML>
+              </item>
+              <item>
+                <label>A valid expression marking encoded as a <gi>dir</gi> element of type <val>expression</val></label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                  <dir type="expression" staff="1" layer="1" tstamp="2" place="above" xml:id="d020">dolce</dir>
+                </egXML>
+              </item>
+              <item>
+                <label>A valid technical directive encoded as a <gi>dir</gi> element of type <val>technique</val></label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                  <dir type="technique" staff="1" layer="1" tstamp="2" place="above" xml:id="d020">con legno</dir>
+                </egXML>
+              </item>
+              <item>
+                <label>A valid tempo directive using the <gi>tempo</gi> element</label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                  <tempo staff="1" layer="1" tstamp="2" place="above" xml:id="d020">Andante</tempo>
+                </egXML>
+              </item>
+              <item>
+                <label>An invalid tempo directive encoded as a <gi>dir</gi> element of type <val>tempo</val></label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                  <dir type="tempo" staff="1" layer="1" tstamp="2" place="above" xml:id="d020">Andante</dir>
+                </egXML>
+              </item>
+              <item>
+                <label>An invalid directive encoded without a <att>type</att> attribute</label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                  <dir staff="1" layer="1" tstamp="2" place="above" xml:id="d020">dolce</dir>
+                </egXML>
+              </item>
+              <item>
+                <label>An invalid directive with an unsupported value in <att>type</att></label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                  <dir type="unsupported" staff="1" layer="1" tstamp="2" place="above" xml:id="d020">unsupported</dir>
+                </egXML>
+              </item>
+            </list>
+          </div>
+          <div>
             <head>Fermatas</head>
             <p><gi>fermata</gi> elements must have <att>tstamp</att> and <att>place</att> attributes.</p>
             <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
@@ -483,12 +542,12 @@
           <moduleRef key="MEI"/>
           <moduleRef key="MEI.shared"
             except=" actor annot arranger artic author barLine bibl biblList biblScope caption
-            castGrp castItem castList clefGrp composer creation custos date depth dir distributor
+            castGrp castItem castList clefGrp composer creation custos date depth distributor
             div dot edition editor event eventList expansion extent funder genre group grpSym
             head height identifier imprint incip keyAccid label layerDef lb librettist lyricist name
             num pad part parts pb pgDesc pgFoot pgFoot2 pgHead pgHead2 phrase physLoc publisher
             pubPlace recipient relatedItem repository resp role roleDesc sb series sponsor stack
-            tempo textLang titlePage width"/>
+            textLang titlePage width"/>
           <moduleRef key="MEI.header"
             except=" accessRestrict acqSource altId appInfo application audience byline captureMode
             carrierForm change changeDesc classCode classification condition contentItem contents
@@ -1893,6 +1952,17 @@
                 </staffDef>
               </egXML>
             </exemplum>
+          </elementSpec>
+
+          <elementSpec ident="dir" module="MEI.shared" mode="change">
+            <constraintSpec ident="dir_type_required_closed_list" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="mei:dir">
+                  <sch:assert test="@type=('expression', 'technique')"
+                    >Must have a @type of 'expression' or 'technique'</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
           </elementSpec>
 
           <!-- === FERMATA === -->
