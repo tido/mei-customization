@@ -13,12 +13,12 @@
                 </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.controlevent-require_layer_with_singlevalue_staff-constraint-3">
-      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
+      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@layer)">@layer must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.controlevent-require_place_with_singlevalue_staff-constraint-4">
-      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
+      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@place)">@place must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>

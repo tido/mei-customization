@@ -246,7 +246,7 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]" priority="1000" mode="M4">
+   <xsl:template match="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]" priority="1000" mode="M4">
 
 		<!--ASSERT -->
       <xsl:choose>
@@ -264,7 +264,7 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]" priority="1000" mode="M5">
+   <xsl:template match="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]" priority="1000" mode="M5">
 
 		<!--ASSERT -->
       <xsl:choose>

@@ -77,8 +77,8 @@
         <rendition xml:id="inStaffDefAfterLastMeasure" scheme="free">
           <ptr target="../test/jade/wrappers/inStaffDefAfterLastMeasure.jade"/>
         </rendition>
-        <rendition xml:id="twoStavesInSection" scheme="free">
-          <ptr target="../test/jade/wrappers/twoStavesInSection.jade"/>
+        <rendition xml:id="twoStavesInMeasure" scheme="free">
+          <ptr target="../test/jade/wrappers/twoStavesInMeasure.jade"/>
         </rendition>
       </tagsDecl>
     </encodingDesc>
@@ -214,6 +214,28 @@
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inLayer">
             <note pname="a" oct="4" dur="4" stem.dir="up" xml:id="d007"/>
           </egXML>
+        </div>
+        <div>
+          <head>Chords</head>
+          <p>Cross-staff chords can be encoded by adding a <att>staff</att> attribute to each note that
+            should get rendered in a different staff.</p>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#twoStavesInMeasure">
+              <measure n="1" xml:id="d001">
+                <staff n="1" xml:id="d002">
+                  <layer n="1" xml:id="d003">
+                    <chord tstamp="1" stem.dir="up" dur="4" xml:id="d004">
+                      <note pname="c" oct="4" xml:id="d005"/>
+                      <note pname="g" oct="2" staff="2" xml:id="d006"/>
+                    </chord>
+                  </layer>
+                </staff>
+                <staff n="2" xml:id="d007">
+                  <layer n="1" xml:id="d008">
+                    <note pname="c" oct="2" dur="4" stem.dir="down" xml:id="d009"/>
+                  </layer>
+                </staff>
+              </measure>
+            </egXML>
         </div>
         <div>
           <head>Duration and stem direction</head>
@@ -1148,7 +1170,7 @@
             <constraintSpec ident="require_layer_with_singlevalue_staff" scheme="isoschematron" mode="add">
               <desc>Require <att>layer</att> when <att>staff</att> has a single value and the element is not excluded from the rule.</desc>
               <constraint>
-                <sch:rule context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
+                <sch:rule context="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@layer)"
                     >@layer must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
@@ -1157,7 +1179,7 @@
             <constraintSpec ident="require_place_with_singlevalue_staff" scheme="isoschematron" mode="add">
               <desc>Require <att>place</att> when <att>staff</att> has a single value and the element is not excluded from the rule.</desc>
               <constraint>
-                <sch:rule context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
+                <sch:rule context="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@place)"
                     >@place must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
