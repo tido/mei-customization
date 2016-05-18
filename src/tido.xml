@@ -418,6 +418,56 @@
             </list>
           </div>
           <div>
+            <head>Fingerings</head>
+            <p>Fingerings must be encoded using the <gi>fing</gi> element. fingerings
+              can be grouped by using the <gi>fingGrp</gi> element which has a mandatory
+              <att>form</att> attribute. <gi>fingGrp</gi> elements can be nested to
+              express more complex fingerings.</p>
+            <list rend="bulleted">
+              <item>
+                <label>A valid encoding of a fingering change</label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                  <fingGrp staff="1" layer="1" tstamp="2" place="above" xml:id="d020" form="subst">
+                    <fing xml:id="d021">1</fing>
+                    <fing xml:id="d022">2</fing>
+                  </fingGrp>
+                </egXML>
+              </item>
+              <item>
+                <label>A valid encoding of a combination of fingerings</label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                  <fingGrp staff="1" layer="1" tstamp="2" place="above" xml:id="d020" form="combi">
+                    <fing xml:id="d021">1</fing>
+                    <fing xml:id="d023">3</fing>
+                    <fing xml:id="d024">5</fing>
+                  </fingGrp>
+                </egXML>
+              </item>
+              <item>
+                <label>A valid encoding of a combination of fingerings in which the upper finger changes</label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                  <fingGrp staff="1" layer="1" tstamp="2" place="above" xml:id="d020" form="combi">
+                    <fingGrp form="subst" xml:id="d026">
+                      <fing xml:id="d021">1</fing>
+                      <fing xml:id="d022">2</fing>
+                    </fingGrp>
+                    <fing xml:id="d023">3</fing>
+                    <fing xml:id="d024">5</fing>
+                  </fingGrp>
+                </egXML>
+              </item>
+              <item>
+                <label>An invalid fingering group without the <att>form</att> attribute</label>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                  <fingGrp staff="1" layer="1" tstamp="2" place="above" xml:id="d020">
+                    <fing xml:id="d021">1</fing>
+                    <fing xml:id="d022">2</fing>
+                  </fingGrp>
+                </egXML>
+              </item>
+            </list>
+          </div>
+          <div>
             <head>Fermatas</head>
             <p><gi>fermata</gi> elements must have <att>tstamp</att> and <att>place</att> attributes.</p>
             <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
@@ -908,6 +958,23 @@
           <classSpec ident="att.fing.ges" module="MEI.fingering" type="atts" mode="delete"/>
           <classSpec ident="att.fingGrp.anl" module="MEI.fingering" type="atts" mode="delete"/>
           <classSpec ident="att.fingGrp.ges" module="MEI.fingering" type="atts" mode="delete"/>
+          <classSpec ident="att.fingGrp.log" module="MEI.fingering" type="atts" mode="change">
+            <attList>
+              <attDef ident="form" usage="req" mode="change">
+                <valList type="closed">
+                  <valItem ident="alter">
+                    <desc>alternation of fingers.</desc>
+                  </valItem>
+                  <valItem ident="combi">
+                    <desc>combination of fingers.</desc>
+                  </valItem>
+                  <valItem ident="subst">
+                    <desc>substitution of fingers.</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </classSpec>
           <classSpec ident="att.fingGrp.vis" module="MEI.fingering" type="atts" mode="change">
             <attList>
               <attDef ident="orient" usage="opt" mode="delete"/>

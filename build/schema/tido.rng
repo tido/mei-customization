@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.music-encoding.org/ns/mei"><!--
-Schema generated from ODD source 2016-05-17T18:07:02Z. .
+Schema generated from ODD source 2016-05-18T10:09:40Z. .
 TEI Edition: Version 3.0.0
 TEI Edition Location: http://www.tei-c.org/Vault/P5//
   
@@ -3713,19 +3713,17 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <ref name="tido_att.fingGrp.log.attribute.form"/>
    </define>
    <define name="tido_att.fingGrp.log.attribute.form">
-      <optional>
-         <attribute name="form">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-            <choice>
-               <value>alter</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">alternation of fingers.</a:documentation>
-               <value>combi</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">combination of fingers.</a:documentation>
-               <value>subst</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">substitution of fingers.</a:documentation>
-            </choice>
-         </attribute>
-      </optional>
+      <attribute name="form">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <choice>
+            <value>alter</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">alternation of fingers.</a:documentation>
+            <value>combi</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">combination of fingers.</a:documentation>
+            <value>subst</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">substitution of fingers.</a:documentation>
+         </choice>
+      </attribute>
    </define>
    <define name="tido_att.fingGrp.vis.attributes">
       <ref name="tido_att.placement.attributes"/>
