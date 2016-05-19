@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.music-encoding.org/ns/mei"><!--
-Schema generated from ODD source 2016-05-19T10:41:27Z. .
+Schema generated from ODD source 2016-05-19T11:46:28Z. .
 TEI Edition: Version 3.0.0
 TEI Edition Location: http://www.tei-c.org/Vault/P5//
   
@@ -209,10 +209,23 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <param name="maxInclusive">9</param>
       </data>
    </define>
+   <define name="tido_data.OCTAVE.DIS">
+      <data type="positiveInteger">
+         <param name="pattern">8|15|22</param>
+      </data>
+   </define>
    <define name="tido_data.PITCHNAME">
       <data type="token">
          <param name="pattern">[a-g]</param>
       </data>
+   </define>
+   <define name="tido_data.PLACE">
+      <choice>
+         <value>above</value>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <value>below</value>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+      </choice>
    </define>
    <define name="tido_data.STAFFLOC">
       <data type="integer"/>
@@ -471,6 +484,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <ref name="tido_att.clefshape.attributes"/>
       <ref name="tido_att.lineloc.attributes"/>
       <ref name="tido_att.octave.attributes"/>
+      <ref name="tido_att.octavedisplacement.attributes"/>
    </define>
    <define name="tido_att.clefshape.attributes">
       <ref name="tido_att.clefshape.attribute.shape"/>
@@ -523,7 +537,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata">
+                context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata|mei:octave">
                   <sch:assert test="ancestor-or-self::*[name()='staff' or @staff]">The element or one of its ancestors must be a staff or contain a @staff attribute.</sch:assert>
                 </sch:rule>
    </pattern>
@@ -541,7 +555,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                context="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]">
+                context="mei:*[not(name() = ('slur', 'tie', 'note', 'octave'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@place)">@place must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>
@@ -845,6 +859,26 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <attribute name="oct">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Captures written octave information.</a:documentation>
             <ref name="tido_data.OCTAVE"/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.octavedisplacement.attributes">
+      <ref name="tido_att.octavedisplacement.attribute.dis"/>
+      <ref name="tido_att.octavedisplacement.attribute.dis.place"/>
+   </define>
+   <define name="tido_att.octavedisplacement.attribute.dis">
+      <optional>
+         <attribute name="dis">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the amount of octave displacement.</a:documentation>
+            <ref name="tido_data.OCTAVE.DIS"/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.octavedisplacement.attribute.dis.place">
+      <optional>
+         <attribute name="dis.place">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the direction of octave displacement.</a:documentation>
+            <ref name="tido_data.PLACE"/>
          </attribute>
       </optional>
    </define>
@@ -2963,6 +2997,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <empty/>
    </define>
    <define name="tido_att.octave.log.attributes">
+      <ref name="tido_att.octavedisplacement.req.attributes"/>
       <ref name="tido_att.controlevent.attributes"/>
       <ref name="tido_att.augmentdots.attributes"/>
       <ref name="tido_att.startendid.attributes"/>
@@ -4108,6 +4143,22 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <ref name="tido_att.typography.attributes"/>
          <empty/>
       </element>
+   </define>
+   <define name="tido_att.octavedisplacement.req.attributes">
+      <ref name="tido_att.octavedisplacement.req.attribute.dis"/>
+      <ref name="tido_att.octavedisplacement.req.attribute.dis.place"/>
+   </define>
+   <define name="tido_att.octavedisplacement.req.attribute.dis">
+      <attribute name="dis">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <ref name="tido_data.OCTAVE.DIS"/>
+      </attribute>
+   </define>
+   <define name="tido_att.octavedisplacement.req.attribute.dis.place">
+      <attribute name="dis.place">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <ref name="tido_data.PLACE"/>
+      </attribute>
    </define>
    <define name="tido_att.ornam.extsym.attributes">
       <ref name="tido_att.ornam.extsym.attribute.glyphname"/>

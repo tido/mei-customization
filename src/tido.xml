@@ -357,6 +357,31 @@
                 must match its closest preceding <gi>pedal</gi> element in its <att>form</att>
                 attribute.</p>
             </div>
+            <div>
+              <head>Octave displacement</head>
+              <p>Octave displacement can be encoded using the <gi>octave</gi> element. Both <att>dis</att>
+                and <att>dis.place</att> attributes are required.</p>
+              <list rend="bulleted">
+                <item>
+                  <label>A valid <gi>octave</gi> element with all required attributes</label>
+                  <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#afterStaff">
+                    <octave staff="1" layer="1" tstamp="2" tstamp2="0m+2" dis="8" dis.place="above" xml:id="d020"/>
+                  </egXML>
+                </item>
+                <item>
+                  <label>An invalid <gi>octave</gi> element without <att>dis</att></label>
+                  <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                    <octave staff="1" layer="1" tstamp="2" tstamp2="0m+2" dis.place="above" xml:id="d020"/>
+                  </egXML>
+                </item>
+                <item>
+                  <label>An invalid <gi>octave</gi> element without <att>dis.place</att></label>
+                  <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="false" rendition="#afterStaff">
+                    <octave staff="1" layer="1" tstamp="2" tstamp2="0m+2" dis="8" xml:id="d020"/>
+                  </egXML>
+                </item>
+              </list>
+            </div>
           </div>
           <div>
             <head>Directives</head>
@@ -766,7 +791,6 @@
           </classSpec>
           <classSpec ident="att.noteheads" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.octavedefault" module="MEI.shared" type="atts" mode="delete"/>
-          <classSpec ident="att.octavedisplacement" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.onelinestaff" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.optimization" module="MEI.shared" type="atts" mode="delete"/>
           <classSpec ident="att.ornam.anl" module="MEI.shared" type="atts" mode="delete"/>
@@ -901,6 +925,10 @@
           <classSpec ident="att.note.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.note.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.octave.log" module="MEI.cmn" type="atts" mode="change">
+            <classes mode="change">
+              <memberOf key="att.octavedisplacement" mode="delete"/>
+              <memberOf key="att.octavedisplacement.req" mode="add"/>
+            </classes>
             <attList>
               <attDef ident="coll" usage="opt" mode="delete"/>
             </attList>
@@ -1180,6 +1208,21 @@
             </exemplum>
           </macroSpec>
           <!-- === NEW ATTRIBUTE CLASSES === -->
+          <!-- New attribute class for required octave displacement attributes -->
+          <classSpec ident="att.octavedisplacement.req" module="MEI.shared" type="atts" mode="add">
+            <attList>
+              <attDef ident="dis" usage="req" mode="change">
+                <datatype>
+                  <rng:ref name="data.OCTAVE.DIS"/>
+                </datatype>
+              </attDef>
+              <attDef ident="dis.place" usage="req" mode="change">
+                <datatype>
+                  <rng:ref name="data.PLACE"/>
+                </datatype>
+              </attDef>
+            </attList>
+          </classSpec>
           <!-- New attribute class for ornament glyphnames -->
           <classSpec ident="att.ornam.extsym" module="MEI.externalsymbols" type="atts" mode="add">
             <desc>Attributes used to associate ornaments with corresponding glyphs in SMuFL.</desc>
@@ -1311,7 +1354,7 @@
             <constraintSpec ident="require_staff_attribute" scheme="isoschematron" mode="add">
               <desc>Require <att>staff</att> or <gi>staff</gi>.</desc>
               <constraint>
-                <sch:rule context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata">
+                <sch:rule context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata|mei:octave">
                   <sch:assert test="ancestor-or-self::*[name()='staff' or @staff]"
                     >The element or one of its ancestors must be a staff or contain a @staff attribute.</sch:assert>
                 </sch:rule>
@@ -1329,7 +1372,7 @@
             <constraintSpec ident="require_place_with_singlevalue_staff" scheme="isoschematron" mode="add">
               <desc>Require <att>place</att> when <att>staff</att> has a single value and the element is not excluded from the rule.</desc>
               <constraint>
-                <sch:rule context="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]">
+                <sch:rule context="mei:*[not(name() = ('slur', 'tie', 'note', 'octave'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@place)"
                     >@place must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>

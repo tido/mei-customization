@@ -5,7 +5,7 @@ namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-19T10:41:28Z. .
+# Schema generated from ODD source 2016-05-19T11:46:29Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
@@ -201,7 +201,15 @@ tido_data.MODE =
     ##
     "locrian"
 tido_data.OCTAVE = xsd:nonNegativeInteger { maxInclusive = "9" }
+tido_data.OCTAVE.DIS = xsd:positiveInteger { pattern = "8|15|22" }
 tido_data.PITCHNAME = xsd:token { pattern = "[a-g]" }
+tido_data.PLACE =
+  
+  ##
+  "above"
+  | 
+    ##
+    "below"
 tido_data.STAFFLOC = xsd:integer
 tido_data.STAFFREL =
   
@@ -440,7 +448,8 @@ tido_att.chord.vis.attribute.cluster =
 tido_att.clef.log.attributes =
   tido_att.clefshape.attributes,
   tido_att.lineloc.attributes,
-  tido_att.octave.attributes
+  tido_att.octave.attributes,
+  tido_att.octavedisplacement.attributes
 tido_att.clefshape.attributes = tido_att.clefshape.attribute.shape
 tido_att.clefshape.attribute.shape =
   
@@ -474,7 +483,7 @@ sch:pattern [
   "      "
   sch:rule [
     context =
-      "mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata"
+      "mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata|mei:octave"
     "\x{a}" ~
     "                  "
     sch:assert [
@@ -514,7 +523,7 @@ sch:pattern [
   "      "
   sch:rule [
     context =
-      "mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]"
+      "mei:*[not(name() = ('slur', 'tie', 'note', 'octave'))][@staff][not(contains(@staff, ' '))]"
     "\x{a}" ~
     "                  "
     sch:assert [
@@ -812,6 +821,17 @@ tido_att.octave.attribute.oct =
   
   ## Captures written octave information.
   attribute oct { tido_data.OCTAVE }?
+tido_att.octavedisplacement.attributes =
+  tido_att.octavedisplacement.attribute.dis,
+  tido_att.octavedisplacement.attribute.dis.place
+tido_att.octavedisplacement.attribute.dis =
+  
+  ## Records the amount of octave displacement.
+  attribute dis { tido_data.OCTAVE.DIS }?
+tido_att.octavedisplacement.attribute.dis.place =
+  
+  ## Records the direction of octave displacement.
+  attribute dis.place { tido_data.PLACE }?
 tido_att.ornam.log.attributes =
   tido_att.controlevent.attributes,
   tido_att.startendid.attributes,
@@ -2488,6 +2508,7 @@ tido_att.note.ges.cmn.attributes = tido_att.graced.attributes
 tido_att.octave.anl.attributes = empty
 tido_att.octave.ges.attributes = empty
 tido_att.octave.log.attributes =
+  tido_att.octavedisplacement.req.attributes,
   tido_att.controlevent.attributes,
   tido_att.augmentdots.attributes,
   tido_att.startendid.attributes,
@@ -3398,6 +3419,17 @@ mei_symbol =
     tido_att.typography.attributes,
     empty
   }
+tido_att.octavedisplacement.req.attributes =
+  tido_att.octavedisplacement.req.attribute.dis,
+  tido_att.octavedisplacement.req.attribute.dis.place
+tido_att.octavedisplacement.req.attribute.dis =
+  
+  ##
+  attribute dis { tido_data.OCTAVE.DIS }
+tido_att.octavedisplacement.req.attribute.dis.place =
+  
+  ##
+  attribute dis.place { tido_data.PLACE }
 tido_att.ornam.extsym.attributes =
   tido_att.ornam.extsym.attribute.glyphname
 tido_att.ornam.extsym.attribute.glyphname =

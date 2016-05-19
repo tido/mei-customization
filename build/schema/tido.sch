@@ -8,7 +8,7 @@
               </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.controlevent-require_staff_attribute-constraint-2">
-      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata">
+      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata|mei:octave">
                   <sch:assert test="ancestor-or-self::*[name()='staff' or @staff]">The element or one of its ancestors must be a staff or contain a @staff attribute.</sch:assert>
                 </sch:rule>
    </pattern>
@@ -18,7 +18,7 @@
                 </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" id="tido-att.controlevent-require_place_with_singlevalue_staff-constraint-4">
-      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]">
+      <sch:rule xmlns="http://www.tei-c.org/ns/1.0" context="mei:*[not(name() = ('slur', 'tie', 'note', 'octave'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@place)">@place must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>

@@ -233,7 +233,7 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata" priority="1000" mode="M3">
+   <xsl:template match="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata|mei:octave" priority="1000" mode="M3">
 
 		<!--ASSERT -->
       <xsl:choose>
@@ -269,7 +269,7 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]" priority="1000" mode="M5">
+   <xsl:template match="mei:*[not(name() = ('slur', 'tie', 'note', 'octave'))][@staff][not(contains(@staff, ' '))]" priority="1000" mode="M5">
 
 		<!--ASSERT -->
       <xsl:choose>
