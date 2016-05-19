@@ -205,6 +205,7 @@
       <xsl:apply-templates select="/" mode="M54"/>
       <xsl:apply-templates select="/" mode="M55"/>
       <xsl:apply-templates select="/" mode="M56"/>
+      <xsl:apply-templates select="/" mode="M57"/>
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
@@ -1014,48 +1015,11 @@
       <xsl:apply-templates select="*" mode="M43"/>
    </xsl:template>
 
-   <!--PATTERN tido-pedal-pedal_style_consistent-constraint-44-->
+   <!--PATTERN tido-octave-octave_start-_and_end-type_attributes_required-constraint-44-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:pedal[@form][@dir=('bounce', 'up')]" priority="1000" mode="M44">
-      <xsl:variable name="form" select="@form"/>
-
-		    <!--ASSERT -->
-      <xsl:choose>
-         <xsl:when test="preceding::mei:pedal[1][@form=$form]"/>
-         <xsl:otherwise>&#x2028;Pedal styles must be consistent between pedal down and pedal up. </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*" mode="M44"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M44"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M44">
-      <xsl:apply-templates select="*" mode="M44"/>
-   </xsl:template>
-
-   <!--PATTERN tido-pedal-pedal_start-type_attributes_required-constraint-45-->
-
-
-	  <!--RULE -->
-   <xsl:template match="mei:pedal" priority="1000" mode="M45">
-
-		<!--ASSERT -->
-      <xsl:choose>
-         <xsl:when test="@startid or @tstamp or @tstamp.ges or @tstamp.real"/>
-         <xsl:otherwise>&#x2028;Must have one of the attributes: startid, tstamp, tstamp.ges or tstamp.real </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*" mode="M45"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M45"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M45">
-      <xsl:apply-templates select="*" mode="M45"/>
-   </xsl:template>
-
-   <!--PATTERN tido-slur-slur_start-_and_end-type_attributes_required-constraint-46-->
-
-
-	  <!--RULE -->
-   <xsl:template match="mei:slur" priority="1000" mode="M46">
+   <xsl:template match="mei:octave" priority="1000" mode="M44">
 
 		<!--ASSERT -->
       <xsl:choose>
@@ -1068,6 +1032,43 @@
          <xsl:when test="@dur or @dur.ges or @endid or @tstamp2"/>
          <xsl:otherwise>&#x2028;Must have one of the attributes: dur, dur.ges, endid, or tstamp2 </xsl:otherwise>
       </xsl:choose>
+      <xsl:apply-templates select="*" mode="M44"/>
+   </xsl:template>
+   <xsl:template match="text()" priority="-1" mode="M44"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M44">
+      <xsl:apply-templates select="*" mode="M44"/>
+   </xsl:template>
+
+   <!--PATTERN tido-pedal-pedal_style_consistent-constraint-45-->
+
+
+	  <!--RULE -->
+   <xsl:template match="mei:pedal[@form][@dir=('bounce', 'up')]" priority="1000" mode="M45">
+      <xsl:variable name="form" select="@form"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="preceding::mei:pedal[1][@form=$form]"/>
+         <xsl:otherwise>&#x2028;Pedal styles must be consistent between pedal down and pedal up. </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*" mode="M45"/>
+   </xsl:template>
+   <xsl:template match="text()" priority="-1" mode="M45"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M45">
+      <xsl:apply-templates select="*" mode="M45"/>
+   </xsl:template>
+
+   <!--PATTERN tido-pedal-pedal_start-type_attributes_required-constraint-46-->
+
+
+	  <!--RULE -->
+   <xsl:template match="mei:pedal" priority="1000" mode="M46">
+
+		<!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="@startid or @tstamp or @tstamp.ges or @tstamp.real"/>
+         <xsl:otherwise>&#x2028;Must have one of the attributes: startid, tstamp, tstamp.ges or tstamp.real </xsl:otherwise>
+      </xsl:choose>
       <xsl:apply-templates select="*" mode="M46"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M46"/>
@@ -1075,11 +1076,11 @@
       <xsl:apply-templates select="*" mode="M46"/>
    </xsl:template>
 
-   <!--PATTERN tido-tie-tie_start-_and_end-type_attributes_required-constraint-47-->
+   <!--PATTERN tido-slur-slur_start-_and_end-type_attributes_required-constraint-47-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:tie" priority="1000" mode="M47">
+   <xsl:template match="mei:slur" priority="1000" mode="M47">
 
 		<!--ASSERT -->
       <xsl:choose>
@@ -1099,16 +1100,22 @@
       <xsl:apply-templates select="*" mode="M47"/>
    </xsl:template>
 
-   <!--PATTERN tido-tie-tie_containing_curve-constraint-48-->
+   <!--PATTERN tido-tie-tie_start-_and_end-type_attributes_required-constraint-48-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:tie[mei:curve[@bezier or @bulge or @curvedir or @lform or @lwidth or             @ho or @startho or @endho or @to or @startto or @endto or @vo or @startvo or             @endvo or @x or @y or @x2 or @y2]]" priority="1000" mode="M48">
+   <xsl:template match="mei:tie" priority="1000" mode="M48">
 
-		<!--ASSERT warning-->
+		<!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="not(@bezier or @bulge or @curvedir or @lform or @lwidth or @ho or @startho or               @endho or @to or @startto or @endto or @vo or @startvo or @endvo or @x or @y or @x2 or @y2)"/>
-         <xsl:otherwise>warning&#x2028;The visual attributes of the tie (@bezier, @bulge, @curvedir, @lform, @lwidth, @ho, @startho, @endho, @to, @startto, @endto, @vo, @startvo, @endvo, @x, @y, @x2, and @y2) will be overridden by visual attributes of the contained curve elements. </xsl:otherwise>
+         <xsl:when test="@startid or @tstamp or @tstamp.ges or @tstamp.real"/>
+         <xsl:otherwise>&#x2028;Must have one of the attributes: startid, tstamp, tstamp.ges or tstamp.real </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="@dur or @dur.ges or @endid or @tstamp2"/>
+         <xsl:otherwise>&#x2028;Must have one of the attributes: dur, dur.ges, endid, or tstamp2 </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="*" mode="M48"/>
    </xsl:template>
@@ -1117,16 +1124,16 @@
       <xsl:apply-templates select="*" mode="M48"/>
    </xsl:template>
 
-   <!--PATTERN tido-mordent-mordent_start-type_attributes_required-constraint-49-->
+   <!--PATTERN tido-tie-tie_containing_curve-constraint-49-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:mordent" priority="1000" mode="M49">
+   <xsl:template match="mei:tie[mei:curve[@bezier or @bulge or @curvedir or @lform or @lwidth or             @ho or @startho or @endho or @to or @startto or @endto or @vo or @startvo or             @endvo or @x or @y or @x2 or @y2]]" priority="1000" mode="M49">
 
-		<!--ASSERT -->
+		<!--ASSERT warning-->
       <xsl:choose>
-         <xsl:when test="@startid or @tstamp or @tstamp.ges or @tstamp.real"/>
-         <xsl:otherwise>&#x2028;Must have one of the attributes: startid, tstamp, tstamp.ges or tstamp.real </xsl:otherwise>
+         <xsl:when test="not(@bezier or @bulge or @curvedir or @lform or @lwidth or @ho or @startho or               @endho or @to or @startto or @endto or @vo or @startvo or @endvo or @x or @y or @x2 or @y2)"/>
+         <xsl:otherwise>warning&#x2028;The visual attributes of the tie (@bezier, @bulge, @curvedir, @lform, @lwidth, @ho, @startho, @endho, @to, @startto, @endto, @vo, @startvo, @endvo, @x, @y, @x2, and @y2) will be overridden by visual attributes of the contained curve elements. </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="*" mode="M49"/>
    </xsl:template>
@@ -1135,11 +1142,11 @@
       <xsl:apply-templates select="*" mode="M49"/>
    </xsl:template>
 
-   <!--PATTERN tido-trill-trill_start-type_attributes_required-constraint-50-->
+   <!--PATTERN tido-mordent-mordent_start-type_attributes_required-constraint-50-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:trill" priority="1000" mode="M50">
+   <xsl:template match="mei:mordent" priority="1000" mode="M50">
 
 		<!--ASSERT -->
       <xsl:choose>
@@ -1153,11 +1160,11 @@
       <xsl:apply-templates select="*" mode="M50"/>
    </xsl:template>
 
-   <!--PATTERN tido-turn-turn_start-type_attributes_required-constraint-51-->
+   <!--PATTERN tido-trill-trill_start-type_attributes_required-constraint-51-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:turn" priority="1000" mode="M51">
+   <xsl:template match="mei:trill" priority="1000" mode="M51">
 
 		<!--ASSERT -->
       <xsl:choose>
@@ -1171,16 +1178,16 @@
       <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
 
-   <!--PATTERN tido-fing-stack_exclusion-constraint-52-->
+   <!--PATTERN tido-turn-turn_start-type_attributes_required-constraint-52-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:fing" priority="1000" mode="M52">
+   <xsl:template match="mei:turn" priority="1000" mode="M52">
 
 		<!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="not(descendant::mei:stack)"/>
-         <xsl:otherwise>&#x2028;The stack element is not allowed anywhere in fing. </xsl:otherwise>
+         <xsl:when test="@startid or @tstamp or @tstamp.ges or @tstamp.real"/>
+         <xsl:otherwise>&#x2028;Must have one of the attributes: startid, tstamp, tstamp.ges or tstamp.real </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
@@ -1189,16 +1196,16 @@
       <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
 
-   <!--PATTERN tido-fingGrp-require_fingeringLike_children-constraint-53-->
+   <!--PATTERN tido-fing-stack_exclusion-constraint-53-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:fingGrp" priority="1000" mode="M53">
+   <xsl:template match="mei:fing" priority="1000" mode="M53">
 
 		<!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="count(mei:fing) + count(mei:fingGrp) &gt; 1"/>
-         <xsl:otherwise>&#x2028;At least 2 fing or fingGrp elements are required. </xsl:otherwise>
+         <xsl:when test="not(descendant::mei:stack)"/>
+         <xsl:otherwise>&#x2028;The stack element is not allowed anywhere in fing. </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="*" mode="M53"/>
    </xsl:template>
@@ -1207,27 +1214,16 @@
       <xsl:apply-templates select="*" mode="M53"/>
    </xsl:template>
 
-   <!--PATTERN -->
+   <!--PATTERN tido-fingGrp-require_fingeringLike_children-constraint-54-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:fingGrp[not(ancestor::mei:fingGrp)][@tstamp or @startid]" priority="1001" mode="M54">
+   <xsl:template match="mei:fingGrp" priority="1000" mode="M54">
 
 		<!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="not(child::mei:*[@tstamp or @startid])"/>
-         <xsl:otherwise>&#x2028;When @tstamp or @startid is present on fingGrp, its child elements cannot have a @tstamp or @startid attribute. </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*" mode="M54"/>
-   </xsl:template>
-
-	  <!--RULE -->
-   <xsl:template match="mei:fingGrp[not(ancestor::mei:fingGrp)][not(@tstamp or @startid)]" priority="1000" mode="M54">
-
-		<!--ASSERT -->
-      <xsl:choose>
-         <xsl:when test="count(descendant::mei:*[@tstamp or @startid]) = count(child::mei:*[local-name()='fing' or local-name()='fingGrp'])"/>
-         <xsl:otherwise>&#x2028;When @tstamp or @startid is not present on fingGrp, each of its child elements must have a @tstamp or @startid attribute. </xsl:otherwise>
+         <xsl:when test="count(mei:fing) + count(mei:fingGrp) &gt; 1"/>
+         <xsl:otherwise>&#x2028;At least 2 fing or fingGrp elements are required. </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="*" mode="M54"/>
    </xsl:template>
@@ -1236,16 +1232,27 @@
       <xsl:apply-templates select="*" mode="M54"/>
    </xsl:template>
 
-   <!--PATTERN tido-att.spanning.req-require_precisely_one_start_spec-constraint-56-->
+   <!--PATTERN -->
 
 
 	  <!--RULE -->
-   <xsl:template match="mei:slur" priority="1000" mode="M55">
+   <xsl:template match="mei:fingGrp[not(ancestor::mei:fingGrp)][@tstamp or @startid]" priority="1001" mode="M55">
 
 		<!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(@tstamp and not(@startid)) or (not(@tstamp) and @startid)"/>
-         <xsl:otherwise>&#x2028;precisely one of @tstamp or @startid must be defined </xsl:otherwise>
+         <xsl:when test="not(child::mei:*[@tstamp or @startid])"/>
+         <xsl:otherwise>&#x2028;When @tstamp or @startid is present on fingGrp, its child elements cannot have a @tstamp or @startid attribute. </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*" mode="M55"/>
+   </xsl:template>
+
+	  <!--RULE -->
+   <xsl:template match="mei:fingGrp[not(ancestor::mei:fingGrp)][not(@tstamp or @startid)]" priority="1000" mode="M55">
+
+		<!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="count(descendant::mei:*[@tstamp or @startid]) = count(child::mei:*[local-name()='fing' or local-name()='fingGrp'])"/>
+         <xsl:otherwise>&#x2028;When @tstamp or @startid is not present on fingGrp, each of its child elements must have a @tstamp or @startid attribute. </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="*" mode="M55"/>
    </xsl:template>
@@ -1254,7 +1261,7 @@
       <xsl:apply-templates select="*" mode="M55"/>
    </xsl:template>
 
-   <!--PATTERN tido-att.spanning.req-require_precisely_one_end_spec-constraint-57-->
+   <!--PATTERN tido-att.spanning.req-require_precisely_one_start_spec-constraint-57-->
 
 
 	  <!--RULE -->
@@ -1262,13 +1269,31 @@
 
 		<!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(@tstamp2 and not(@endid)) or (not(@tstamp2) and @endid)"/>
-         <xsl:otherwise>&#x2028;precisely one of @tstamp2 or @endid must be defined </xsl:otherwise>
+         <xsl:when test="(@tstamp and not(@startid)) or (not(@tstamp) and @startid)"/>
+         <xsl:otherwise>&#x2028;precisely one of @tstamp or @startid must be defined </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="*" mode="M56"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M56"/>
    <xsl:template match="@*|node()" priority="-2" mode="M56">
       <xsl:apply-templates select="*" mode="M56"/>
+   </xsl:template>
+
+   <!--PATTERN tido-att.spanning.req-require_precisely_one_end_spec-constraint-58-->
+
+
+	  <!--RULE -->
+   <xsl:template match="mei:slur" priority="1000" mode="M57">
+
+		<!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(@tstamp2 and not(@endid)) or (not(@tstamp2) and @endid)"/>
+         <xsl:otherwise>&#x2028;precisely one of @tstamp2 or @endid must be defined </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*" mode="M57"/>
+   </xsl:template>
+   <xsl:template match="text()" priority="-1" mode="M57"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M57">
+      <xsl:apply-templates select="*" mode="M57"/>
    </xsl:template>
 </xsl:stylesheet>

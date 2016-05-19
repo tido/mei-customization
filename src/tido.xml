@@ -619,7 +619,7 @@
             samplingDecl scoreFormat segmentation soundChan source sourceDesc specRepro stdVals
             sysReq term termList trackConfig treatHist treatSched unpub watermark work workDesc"/>
           <moduleRef key="MEI.cmn" except=" arpeg beamSpan beatRpt bend breath bTrem fTrem
-            gliss halfmRpt harpPedal meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt octave ossia
+            gliss halfmRpt harpPedal meterSigGrp mRpt mRpt2 mSpace multiRest multiRpt ossia
             phrase reh tuplet tupletSpan"/>
           <moduleRef key="MEI.cmnOrnaments"/>
           <moduleRef key="MEI.critapp" except="app lem rdg"/>
@@ -900,6 +900,11 @@
           </classSpec>
           <classSpec ident="att.note.log.cmn" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.note.vis.cmn" module="MEI.cmn" type="atts" mode="delete"/>
+          <classSpec ident="att.octave.log" module="MEI.cmn" type="atts" mode="change">
+            <attList>
+              <attDef ident="coll" usage="opt" mode="delete"/>
+            </attList>
+          </classSpec>
           <classSpec ident="att.pedal.anl" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.pedal.ges" module="MEI.cmn" type="atts" mode="delete"/>
           <classSpec ident="att.pianopedals" module="MEI.cmn" type="atts" mode="delete"/>

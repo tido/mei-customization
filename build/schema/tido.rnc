@@ -5,7 +5,7 @@ namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-18T10:09:41Z. .
+# Schema generated from ODD source 2016-05-19T10:41:28Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
@@ -2485,6 +2485,14 @@ tido_att.mRest.vis.attributes =
   tido_att.staffloc.attributes,
   tido_att.typography.attributes
 tido_att.note.ges.cmn.attributes = tido_att.graced.attributes
+tido_att.octave.anl.attributes = empty
+tido_att.octave.ges.attributes = empty
+tido_att.octave.log.attributes =
+  tido_att.controlevent.attributes,
+  tido_att.augmentdots.attributes,
+  tido_att.startendid.attributes,
+  tido_att.timestamp2.musical.attributes
+tido_att.octave.vis.attributes = empty
 tido_att.pedal.log.attributes =
   tido_att.controlevent.attributes,
   tido_att.startendid.attributes,
@@ -2533,6 +2541,7 @@ tido_att.tie.log.attributes =
 tido_model.controleventLike.cmn =
   tido_fermata
   | tido_hairpin
+  | tido_octave
   | tido_pedal
   | tido_slur
   | tido_tie
@@ -2540,6 +2549,7 @@ tido_model.controleventLike.cmn =
 tido_model.controleventLike.cmn_alternation =
   tido_fermata
   | tido_hairpin
+  | tido_octave
   | tido_pedal
   | tido_slur
   | tido_tie
@@ -2547,6 +2557,7 @@ tido_model.controleventLike.cmn_alternation =
 tido_model.controleventLike.cmn_sequence =
   tido_fermata,
   tido_hairpin,
+  tido_octave,
   tido_pedal,
   tido_slur,
   tido_tie,
@@ -2554,6 +2565,7 @@ tido_model.controleventLike.cmn_sequence =
 tido_model.controleventLike.cmn_sequenceOptional =
   tido_fermata?,
   tido_hairpin?,
+  tido_octave?,
   tido_pedal?,
   tido_slur?,
   tido_tie?,
@@ -2561,6 +2573,7 @@ tido_model.controleventLike.cmn_sequenceOptional =
 tido_model.controleventLike.cmn_sequenceOptionalRepeatable =
   tido_fermata*,
   tido_hairpin*,
+  tido_octave*,
   tido_pedal*,
   tido_slur*,
   tido_tie*,
@@ -2568,6 +2581,7 @@ tido_model.controleventLike.cmn_sequenceOptionalRepeatable =
 tido_model.controleventLike.cmn_sequenceRepeatable =
   tido_fermata+,
   tido_hairpin+,
+  tido_octave+,
   tido_pedal+,
   tido_slur+,
   tido_tie+,
@@ -2748,13 +2762,53 @@ tido_mRest =
     tido_att.mRest.anl.attributes,
     empty
   }
+tido_octave =
+  
+  ## An indication that a passage should be performed one or more octaves above or below its written pitch.
+  element octave {
+    ((text | tido_model.textphraseLike.limited)*)
+    >> sch:pattern [
+         id =
+           "tido-octave-octave_start-_and_end-type_attributes_required-constraint-44"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "mei:octave"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@startid or @tstamp or @tstamp.ges or @tstamp.real"
+             "Must have one of\x{a}" ~
+             "              the attributes: startid, tstamp, tstamp.ges or tstamp.real"
+           ]
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test = "@dur or @dur.ges or @endid or @tstamp2"
+             "Must have one of the\x{a}" ~
+             "              attributes: dur, dur.ges, endid, or tstamp2"
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tido_att.common.attributes,
+    tido_att.octave.log.attributes,
+    tido_att.octave.vis.attributes,
+    tido_att.octave.ges.attributes,
+    tido_att.octave.anl.attributes,
+    tido_att.typed.attributes,
+    empty
+  }
 tido_pedal =
   
   ## Piano pedal mark.
   element pedal {
     empty
     >> sch:pattern [
-         id = "tido-pedal-pedal_style_consistent-constraint-44"
+         id = "tido-pedal-pedal_style_consistent-constraint-45"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2777,7 +2831,7 @@ tido_pedal =
        ]
     >> sch:pattern [
          id =
-           "tido-pedal-pedal_start-type_attributes_required-constraint-45"
+           "tido-pedal-pedal_start-type_attributes_required-constraint-46"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2807,7 +2861,7 @@ tido_slur =
   [
     sch:pattern [
       id =
-        "tido-slur-slur_start-_and_end-type_attributes_required-constraint-46"
+        "tido-slur-slur_start-_and_end-type_attributes_required-constraint-47"
       "\x{a}" ~
       "            "
       sch:rule [
@@ -2845,7 +2899,7 @@ tido_tie =
   [
     sch:pattern [
       id =
-        "tido-tie-tie_start-_and_end-type_attributes_required-constraint-47"
+        "tido-tie-tie_start-_and_end-type_attributes_required-constraint-48"
       "\x{a}" ~
       "            "
       sch:rule [
@@ -2871,7 +2925,7 @@ tido_tie =
       "         "
     ]
     sch:pattern [
-      id = "tido-tie-tie_containing_curve-constraint-48"
+      id = "tido-tie-tie_containing_curve-constraint-49"
       "\x{a}" ~
       "            "
       sch:rule [
@@ -2976,7 +3030,7 @@ tido_mordent =
     empty
     >> sch:pattern [
          id =
-           "tido-mordent-mordent_start-type_attributes_required-constraint-49"
+           "tido-mordent-mordent_start-type_attributes_required-constraint-50"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3007,7 +3061,7 @@ tido_trill =
     empty
     >> sch:pattern [
          id =
-           "tido-trill-trill_start-type_attributes_required-constraint-50"
+           "tido-trill-trill_start-type_attributes_required-constraint-51"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3038,7 +3092,7 @@ tido_turn =
     empty
     >> sch:pattern [
          id =
-           "tido-turn-turn_start-type_attributes_required-constraint-51"
+           "tido-turn-turn_start-type_attributes_required-constraint-52"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3164,7 +3218,7 @@ tido_fing =
       | tido_model.editLike
       | tido_model.transcriptionLike)*)
     >> sch:pattern [
-         id = "tido-fing-stack_exclusion-constraint-52"
+         id = "tido-fing-stack_exclusion-constraint-53"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3197,7 +3251,7 @@ tido_fingGrp =
       | tido_model.transcriptionLike)*)
     >> sch:pattern [
          id =
-           "tido-fingGrp-require_fingeringLike_children-constraint-53"
+           "tido-fingGrp-require_fingeringLike_children-constraint-54"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3422,7 +3476,7 @@ tido_att.spanning.req.attributes =
   tido_att.layerident.attributes
 sch:pattern [
   id =
-    "tido-att.spanning.req-require_precisely_one_start_spec-constraint-56"
+    "tido-att.spanning.req-require_precisely_one_start_spec-constraint-57"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -3442,7 +3496,7 @@ sch:pattern [
 ]
 sch:pattern [
   id =
-    "tido-att.spanning.req-require_precisely_one_end_spec-constraint-57"
+    "tido-att.spanning.req-require_precisely_one_end_spec-constraint-58"
   "\x{a}" ~
   "      "
   sch:rule [
