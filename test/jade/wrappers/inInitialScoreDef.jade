@@ -1,5 +1,11 @@
 extends ../mei
 
+include ../mixins/layer
+
 block section
   scoreDef(xml:id=_.uniqueId('j'))
     != data
+
+  measure(n=1, xml:id=_.uniqueId('j'))
+    staff(n=1, xml:id=_.uniqueId('j'))
+      +layer({ $has: { $: 'note', dur: 1 } })

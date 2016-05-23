@@ -74,6 +74,9 @@
         <rendition xml:id="inScoreinSection" scheme="free">
           <ptr target="../test/jade/wrappers/inScoreinSection.jade"/>
         </rendition>
+        <rendition xml:id="inStaffDefBetweenMeasures" scheme="free">
+          <ptr target="../test/jade/wrappers/inStaffDefBetweenMeasures.jade"/>
+        </rendition>
         <rendition xml:id="inStaffDefAfterLastMeasure" scheme="free">
           <ptr target="../test/jade/wrappers/inStaffDefAfterLastMeasure.jade"/>
         </rendition>
@@ -143,17 +146,13 @@
           <p>To define a time signature, the customization uses <att>unit</att> and <att>count</att> on
               <gi>meterSig</gi>. Both attributes are required.</p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-            rendition="#inSection">
-            <staffDef n="1" xml:id="d001">
-              <meterSig count="4" unit="4" xml:id="d002"/>
-            </staffDef>
+            rendition="#inStaffDefBetweenMeasures">
+            <meterSig count="4" unit="4" xml:id="d002"/>
           </egXML>
           <p>The optional <att>sym</att> attribute can be used to express cut or common time.</p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-            rendition="#inSection">
-            <staffDef n="1" xml:id="d003">
-              <meterSig count="4" unit="4" sym="cut" xml:id="d004"/>
-            </staffDef>
+            rendition="#inStaffDefBetweenMeasures">
+            <meterSig count="4" unit="4" sym="cut" xml:id="d004"/>
           </egXML>
           <p>Attributes for encoding time signatures on <gi>scoreDef</gi> and <gi>staffDef</gi> are
             excluded from the schema.</p>
@@ -166,10 +165,8 @@
               <att>mode</att> attributes of <gi>keySig</gi>. <att>pname</att> and <att>mode</att>
             <emph>must</emph> occur together, <att>accid</att> is optional.</p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-            rendition="#inSection">
-            <staffDef n="1" xml:id="d005">
-              <keySig pname="f" accid="s" mode="major" xml:id="d006"/>
-            </staffDef>
+            rendition="#inStaffDefBetweenMeasures">
+            <keySig pname="f" accid="s" mode="major" xml:id="d006"/>
           </egXML>
           <p>Attributes for encoding key signatures on <gi>scoreDef</gi> and <gi>staffDef</gi> are
             excluded from the schema.</p>
@@ -180,10 +177,8 @@
           <p>To define a clef, the customization uses <att>shape</att> and <att>line</att>, which
               <emph>must</emph> occur together.</p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true"
-            rendition="#inSection">
-            <staffDef lines="5" n="1" xml:id="d007">
-              <clef shape="G" line="2" xml:id="d008"/>
-            </staffDef>
+            rendition="#inStaffDefBetweenMeasures">
+            <clef shape="G" line="2" xml:id="d008"/>
           </egXML>
           <p>Attributes for encoding clefs on <gi>scoreDef</gi> and <gi>staffDef</gi> are excluded
             from the schema.</p>
@@ -2019,6 +2014,14 @@
           </elementSpec>
           <!-- === METER SIG === -->
           <elementSpec ident="meterSig" module="MEI.cmn" mode="change">
+            <constraintSpec ident="timesig_require_following_measure" scheme="isoschematron" mode="add">
+              <desc>Time signature requires a following measure.</desc>
+              <constraint>
+                <sch:rule context="mei:meterSig">
+                  <sch:assert test="exists(following::mei:measure)">Time signature must be followed by a measure.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <constraintSpec ident="meter_att_pair" scheme="isoschematron" mode="add">
               <desc>@count and @unit must occur together.</desc>
               <constraint>
@@ -2058,6 +2061,14 @@
           </elementSpec>
           <!-- === KEY SIG === -->
           <elementSpec ident="keySig" module="MEI.shared" mode="change">
+            <constraintSpec ident="keysig_require_following_measure" scheme="isoschematron" mode="add">
+              <desc>Key signature requires a following measure.</desc>
+              <constraint>
+                <sch:rule context="mei:keySig">
+                  <sch:assert test="exists(following::mei:measure)">Key signature must be followed by a measure.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <constraintSpec ident="key_att_pair" scheme="isoschematron" mode="add">
               <desc>@pname and @mode must occur together.</desc>
               <constraint>
