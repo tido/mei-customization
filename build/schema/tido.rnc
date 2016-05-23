@@ -5,7 +5,7 @@ namespace rng = "http://relaxng.org/ns/structure/1.0"
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-05-19T11:46:29Z. .
+# Schema generated from ODD source 2016-05-23T12:15:27Z. .
 # TEI Edition: Version 3.0.0
 # TEI Edition Location: http://www.tei-c.org/Vault/P5//
 #
@@ -1138,9 +1138,7 @@ tido_model.editorialLike_sequenceOptionalRepeatable = empty
 tido_model.editorialLike_sequenceRepeatable = notAllowed
 tido_model.endingLike = tido_ending
 tido_model.eventLike =
-  tido_model.keySigLike
-  | tido_model.meterSigLike
-  | tido_chord
+  tido_chord
   | tido_clef
   | tido_note
   | tido_rest
@@ -1155,11 +1153,6 @@ tido_model.identifierLike_sequenceRepeatable = notAllowed
 tido_model.instrDefLike = notAllowed
 tido_model.keyAccidLike = notAllowed
 tido_model.keySigLike = tido_keySig
-tido_model.keySigLike_alternation = tido_keySig
-tido_model.keySigLike_sequence = tido_keySig
-tido_model.keySigLike_sequenceOptional = tido_keySig?
-tido_model.keySigLike_sequenceOptionalRepeatable = tido_keySig*
-tido_model.keySigLike_sequenceRepeatable = tido_keySig+
 tido_model.labelLike = notAllowed
 tido_model.layerDefLike = notAllowed
 tido_model.layerLike = tido_layer
@@ -1181,11 +1174,6 @@ tido_model.measurementLike_sequenceOptionalRepeatable =
 tido_model.measurementLike_sequenceRepeatable =
   tido_model.numLike_sequenceRepeatable+
 tido_model.meterSigLike = tido_meterSig
-tido_model.meterSigLike_alternation = tido_meterSig
-tido_model.meterSigLike_sequence = tido_meterSig
-tido_model.meterSigLike_sequenceOptional = tido_meterSig?
-tido_model.meterSigLike_sequenceOptionalRepeatable = tido_meterSig*
-tido_model.meterSigLike_sequenceRepeatable = tido_meterSig+
 tido_model.milestoneLike.music = tido_model.pbLike
 tido_model.nameLike =
   tido_model.nameLike.agent | tido_model.nameLike.place

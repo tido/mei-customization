@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.music-encoding.org/ns/mei"><!--
-Schema generated from ODD source 2016-05-19T11:46:28Z. .
+Schema generated from ODD source 2016-05-23T12:15:26Z. .
 TEI Edition: Version 3.0.0
 TEI Edition Location: http://www.tei-c.org/Vault/P5//
   
@@ -1342,8 +1342,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    </define>
    <define name="tido_model.eventLike">
       <choice>
-         <ref name="tido_model.keySigLike"/>
-         <ref name="tido_model.meterSigLike"/>
          <ref name="tido_chord"/>
          <ref name="tido_clef"/>
          <ref name="tido_note"/>
@@ -1380,29 +1378,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <choice>
          <ref name="tido_keySig"/>
       </choice>
-   </define>
-   <define name="tido_model.keySigLike_alternation">
-      <choice>
-         <ref name="tido_keySig"/>
-      </choice>
-   </define>
-   <define name="tido_model.keySigLike_sequence">
-      <ref name="tido_keySig"/>
-   </define>
-   <define name="tido_model.keySigLike_sequenceOptional">
-      <optional>
-         <ref name="tido_keySig"/>
-      </optional>
-   </define>
-   <define name="tido_model.keySigLike_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="tido_keySig"/>
-      </zeroOrMore>
-   </define>
-   <define name="tido_model.keySigLike_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="tido_keySig"/>
-      </oneOrMore>
    </define>
    <define name="tido_model.labelLike">
       <notAllowed/>
@@ -1476,29 +1451,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <choice>
          <ref name="tido_meterSig"/>
       </choice>
-   </define>
-   <define name="tido_model.meterSigLike_alternation">
-      <choice>
-         <ref name="tido_meterSig"/>
-      </choice>
-   </define>
-   <define name="tido_model.meterSigLike_sequence">
-      <ref name="tido_meterSig"/>
-   </define>
-   <define name="tido_model.meterSigLike_sequenceOptional">
-      <optional>
-         <ref name="tido_meterSig"/>
-      </optional>
-   </define>
-   <define name="tido_model.meterSigLike_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="tido_meterSig"/>
-      </zeroOrMore>
-   </define>
-   <define name="tido_model.meterSigLike_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="tido_meterSig"/>
-      </oneOrMore>
    </define>
    <define name="tido_model.milestoneLike.music">
       <choice>
