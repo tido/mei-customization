@@ -9,13 +9,13 @@
     "url": "https://github.com/tido/mei-customization.git"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require babel-polyfill",
+    "test": "node ./test",
     "schema": "ant -lib vendor/stylesheets/lib schema",
     "html-guidelines": "ant -lib vendor/stylesheets/lib html-guidelines",
     "refresh": "npm run schema && npm run html-guidelines && npm run test"
   },
   "devDependencies": {
-    "lodash": "4.6.1",
+    "lodash": "4.13.1",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.1",
     "babel-eslint": "^6.0.0-beta.6",
@@ -34,6 +34,7 @@
     "eslint-plugin-react": "^4.2.0",
     "jade": "^1.11.0",
     "mocha": "^2.2.5",
+    "odd-tests": "file:../odd-tests",
     "tido-mei-validation": "^1.0.0",
     "xmldom": "^0.1.22"
   },
