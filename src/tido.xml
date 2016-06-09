@@ -35,50 +35,23 @@
     </fileDesc>
     <encodingDesc>
       <tagsDecl>
-        <rendition xml:id="afterStaff" scheme="free">
-          <ptr target="../test/jade/wrappers/afterStaff.jade"/>
-        </rendition>
-        <rendition xml:id="afterTwoStaves" scheme="free">
-          <ptr target="../test/jade/wrappers/afterTwoStaves.jade"/>
-        </rendition>
-        <rendition xml:id="inInitialScoreDef" scheme="free">
-          <ptr target="../test/jade/wrappers/inInitialScoreDef.jade"/>
-        </rendition>
-        <rendition xml:id="inInitialStaffGrp" scheme="free">
-          <ptr target="../test/jade/wrappers/inInitialStaffGrp.jade"/>
-        </rendition>
-        <rendition xml:id="inInitialStaffDefGrp" scheme="free">
-          <ptr target="../test/jade/wrappers/inInitialStaffDefGrp.jade"/>
-        </rendition>
-        <rendition xml:id="inLayer" scheme="free">
-          <ptr target="../test/jade/wrappers/inLayer.jade"/>
-        </rendition>
         <rendition xml:id="inSection" scheme="free">
-          <ptr target="../test/jade/wrappers/inSection.jade"/>
-        </rendition>
-        <rendition xml:id="inLayerAfterMeasureWithFourQuarters" scheme="free">
-          <ptr target="../test/jade/wrappers/inLayerAfterMeasureWithFourQuarters.jade"/>
-        </rendition>
-        <rendition xml:id="inLayerBeforeMeasureWithFourQuarters" scheme="free">
-          <ptr target="../test/jade/wrappers/inLayerBeforeMeasureWithFourQuarters.jade"/>
+          <ptr target="../test/jsx/templates/InSection.js"/>
         </rendition>
         <rendition xml:id="inMeasure" scheme="free">
-          <ptr target="../test/jade/wrappers/inMeasure.jade"/>
+          <ptr target="../test/jsx/templates/InMeasure.js"/>
         </rendition>
-        <rendition xml:id="inScore" scheme="free">
-          <ptr target="../test/jade/wrappers/inScore.jade"/>
+        <rendition xml:id="inLayer" scheme="free">
+          <ptr target="../test/jsx/templates/InLayer.js"/>
         </rendition>
-        <rendition xml:id="inScoreDef" scheme="free">
-          <ptr target="../test/jade/wrappers/inScoreDef.jade"/>
+        <rendition xml:id="afterStaff" scheme="free">
+          <ptr target="../test/jsx/templates/AfterStaff.js"/>
         </rendition>
-        <rendition xml:id="inScoreinSection" scheme="free">
-          <ptr target="../test/jade/wrappers/inScoreinSection.jade"/>
+        <rendition xml:id="afterTwoStaves" scheme="free">
+          <ptr target="../test/jsx/templates/AfterTwoStaves.js"/>
         </rendition>
-        <rendition xml:id="inStaffDefAfterLastMeasure" scheme="free">
-          <ptr target="../test/jade/wrappers/inStaffDefAfterLastMeasure.jade"/>
-        </rendition>
-        <rendition xml:id="twoStavesInSection" scheme="free">
-          <ptr target="../test/jade/wrappers/twoStavesInSection.jade"/>
+        <rendition xml:id="inInitialStaffGrp" scheme="free">
+          <ptr target="../test/jsx/templates/InInitialStaffGrp.js"/>
         </rendition>
       </tagsDecl>
     </encodingDesc>
@@ -150,7 +123,7 @@
               <att>mode</att> attributes of <gi>keySig</gi>. <att>pname</att> and <att>mode</att>
             <emph>must</emph> occur together, <att>accid</att> is optional.</p>
           <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="feasible"
-            rendition="#inInitialStaffDefGrp">
+            rendition="#inInitialStaffGrp">
             <staffDef xml:id="d003">
               <keySig pname="f" accid="s" mode="major" xml:id="d004"/>
             </staffDef>

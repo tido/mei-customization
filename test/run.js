@@ -1,7 +1,10 @@
+/** @jsx h */
 
 import path from 'path';
 import jade from 'jade';
 import _ from 'lodash';
+import { h } from 'preact';
+import render from 'preact-render-to-string';
 import { validateSync } from 'tido-mei-validation';
 import { run as runOddTests } from 'odd-tests';
 
@@ -16,8 +19,19 @@ runOddTests({
   oddPath: path.join(__dirname, '../src/tido.xml'),
 
   wrapFragment(templatePath, fragment) {
-    const jadeOptions = { _, pretty: true, data: fragment };
-    return jade.renderFile(templatePath, jadeOptions);
+    const suffixMatch = templatePath.match(/\.(\w+)$/);
+    if (!suffixMatch) {
+      throw new Error(`Could not get suffix from "${templatePath}"`);
+    }
+    const suffix = suffixMatch[1];
+    if (suffix !== 'js') {
+      throw new Error(`Cannot process template with suffix "${suffix}"`);
+    }
+
+    const Template = require(templatePath).default;
+    const xmlString = render(h(Template, { fragment }));
+    delete require.cache[require.resolve(templatePath)];
+    return xmlString;
   },
 
   validate(xmlString, schemaSpecName) {
