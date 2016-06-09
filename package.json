@@ -34,7 +34,7 @@
     "eslint-plugin-react": "^4.2.0",
     "lodash": "4.13.1",
     "mocha": "^2.2.5",
-    "odd-tests": "file:../odd-tests",
+    "odd-tests": "https://github.com/tido/odd-tests",
     "preact": "^4.8.0",
     "preact-render-to-string": "^2.5.0",
     "tido-mei-validation": "^1.0.0",

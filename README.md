@@ -54,9 +54,9 @@ The output of this will be placed in `build/guidelines`
 ## Test environment for Node
 
 In addition to providing documentation, the provided examples also serve validation
-test for the schema. A [node](https://nodejs.org) test environment is included in order to make sure
-that provided examples (or counter-examples) are indeed validated (or invalidated)
-by the compiled schema.
+test for the schema. A [node](https://nodejs.org) test environment based on the [odd-tests](https://github.com/tido/odd-tests) and
+[mei-validation](https://github.com/tido/mei-validation) packages is
+included in order to make sure that provided examples (or counter-examples) are indeed validated (or invalidated) by the compiled schema.
 
 ### Run the tests
 
@@ -94,11 +94,11 @@ invalid but could be made valid by providing additional attributes are marked
 with `@valid="feasible"`. In that case, its content will be skipped when running
 the validation tests.
 
-The test environment uses the `jade` template library to construct complete MEI
-documents from the MEI fragments in `<egXML>`. The `test/jade` folder contains
-wrappers and mixins that help to contextualise the provided examples. In order to
-assign a wrapper to a fragment, the `<egXML>` elements link to `<rendition>`
-declarations in the `<teiHeader>` which point to the Jade template files in concern.
+The test environment uses the `preact` library to construct complete MEI
+documents from the MEI fragments in `<egXML>`. The `test/jsx` folder contains
+templates that help to contextualise the provided examples. In order to
+assign a template to a fragment, the `<egXML>` elements link to `<rendition>`
+declarations in the `<teiHeader>` which point to the Preact template files in concern.
 
 Here's a full example of a class specification with a single test case:
 
