@@ -35,53 +35,35 @@
     </fileDesc>
     <encodingDesc>
       <tagsDecl>
-        <rendition xml:id="afterStaff" scheme="free">
-          <ptr target="../test/jade/wrappers/afterStaff.jade"/>
-        </rendition>
-        <rendition xml:id="afterTwoStaves" scheme="free">
-          <ptr target="../test/jade/wrappers/afterTwoStaves.jade"/>
-        </rendition>
-        <rendition xml:id="inInitialScoreDef" scheme="free">
-          <ptr target="../test/jade/wrappers/inInitialScoreDef.jade"/>
-        </rendition>
-        <rendition xml:id="inInitialStaffGrp" scheme="free">
-          <ptr target="../test/jade/wrappers/inInitialStaffGrp.jade"/>
-        </rendition>
-        <rendition xml:id="inInitialStaffDefGrp" scheme="free">
-          <ptr target="../test/jade/wrappers/inInitialStaffDefGrp.jade"/>
-        </rendition>
-        <rendition xml:id="inLayer" scheme="free">
-          <ptr target="../test/jade/wrappers/inLayer.jade"/>
-        </rendition>
         <rendition xml:id="inSection" scheme="free">
-          <ptr target="../test/jade/wrappers/inSection.jade"/>
-        </rendition>
-        <rendition xml:id="inLayerAfterMeasureWithFourQuarters" scheme="free">
-          <ptr target="../test/jade/wrappers/inLayerAfterMeasureWithFourQuarters.jade"/>
-        </rendition>
-        <rendition xml:id="inLayerBeforeMeasureWithFourQuarters" scheme="free">
-          <ptr target="../test/jade/wrappers/inLayerBeforeMeasureWithFourQuarters.jade"/>
+          <ptr target="../test/jsx/templates/InSection.js"/>
         </rendition>
         <rendition xml:id="inMeasure" scheme="free">
-          <ptr target="../test/jade/wrappers/inMeasure.jade"/>
+          <ptr target="../test/jsx/templates/InMeasure.js"/>
         </rendition>
-        <rendition xml:id="inScore" scheme="free">
-          <ptr target="../test/jade/wrappers/inScore.jade"/>
+        <rendition xml:id="inLayer" scheme="free">
+          <ptr target="../test/jsx/templates/InLayer.js"/>
         </rendition>
-        <rendition xml:id="inScoreDef" scheme="free">
-          <ptr target="../test/jade/wrappers/inScoreDef.jade"/>
+        <rendition xml:id="afterStaff" scheme="free">
+          <ptr target="../test/jsx/templates/AfterStaff.js"/>
         </rendition>
-        <rendition xml:id="inScoreinSection" scheme="free">
-          <ptr target="../test/jade/wrappers/inScoreinSection.jade"/>
+        <rendition xml:id="afterTwoStaves" scheme="free">
+          <ptr target="../test/jsx/templates/AfterTwoStaves.js"/>
+        </rendition>
+        <rendition xml:id="inInitialStaffGrp" scheme="free">
+          <ptr target="../test/jsx/templates/InInitialStaffGrp.js"/>
+        </rendition>
+        <rendition xml:id="inInitialScoreDef" scheme="free">
+          <ptr target="../test/jsx/templates/InInitialScoreDef.js"/>
         </rendition>
         <rendition xml:id="inStaffDefBetweenMeasures" scheme="free">
-          <ptr target="../test/jade/wrappers/inStaffDefBetweenMeasures.jade"/>
+          <ptr target="../test/jsx/templates/InStaffDefBetweenMeasures.js"/>
         </rendition>
         <rendition xml:id="inStaffDefAfterLastMeasure" scheme="free">
-          <ptr target="../test/jade/wrappers/inStaffDefAfterLastMeasure.jade"/>
+          <ptr target="../test/jsx/templates/InStaffDefAfterLastMeasure.js"/>
         </rendition>
-        <rendition xml:id="twoStavesInMeasure" scheme="free">
-          <ptr target="../test/jade/wrappers/twoStavesInMeasure.jade"/>
+        <rendition xml:id="inSectionWithTwoStaves" scheme="free">
+          <ptr target="../test/jsx/templates/InSectionWithTwoStaves.js"/>
         </rendition>
       </tagsDecl>
     </encodingDesc>
@@ -221,7 +203,7 @@
           <head>Chords</head>
           <p>Cross-staff chords can be encoded by adding a <att>staff</att> attribute to each note that
             should get rendered in a different staff.</p>
-            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#twoStavesInMeasure">
+            <egXML xmlns="http://www.tei-c.org/ns/Examples" valid="true" rendition="#inSectionWithTwoStaves">
               <measure n="1" xml:id="d016">
                 <staff n="1" xml:id="d017">
                   <layer n="1" xml:id="d018">
