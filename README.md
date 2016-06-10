@@ -35,7 +35,7 @@ In order to build the schema and guidelines you will need
 - `ANT`
 
 ## MEI and TEI dependencies
-The Tido MEI Customization project contains copies of `https://github.com/music-encoding/music-encoding` and `https://github.com/TEIC/Stylesheets` in the `vendor` folder. In case these dependencies need to be updated, run `./update-git-dependencies.sh` and commit the updated project.
+The Tido MEI Customization project contains copies of https://github.com/music-encoding/music-encoding and https://github.com/TEIC/Stylesheets in the `vendor` folder. In case these dependencies need to be updated, run `./update-git-dependencies.sh` and commit the updated project.
 
 ## Build commands
 
