@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.music-encoding.org/ns/mei"><!--
-Schema generated from ODD source 2016-05-13T13:12:57Z. .
+Schema generated from ODD source 2016-05-23T13:15:55Z. .
 TEI Edition: Version 3.0.0
 TEI Edition Location: http://www.tei-c.org/Vault/P5//
   
@@ -209,10 +209,23 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <param name="maxInclusive">9</param>
       </data>
    </define>
+   <define name="tido_data.OCTAVE.DIS">
+      <data type="positiveInteger">
+         <param name="pattern">8|15|22</param>
+      </data>
+   </define>
    <define name="tido_data.PITCHNAME">
       <data type="token">
          <param name="pattern">[a-g]</param>
       </data>
+   </define>
+   <define name="tido_data.PLACE">
+      <choice>
+         <value>above</value>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <value>below</value>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+      </choice>
    </define>
    <define name="tido_data.STAFFLOC">
       <data type="integer"/>
@@ -455,6 +468,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    </define>
    <define name="tido_att.chord.vis.attributes">
       <ref name="tido_att.stemdir.req.attributes"/>
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.typography.attributes"/>
       <ref name="tido_att.chord.vis.attribute.cluster"/>
    </define>
@@ -470,6 +484,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <ref name="tido_att.clefshape.attributes"/>
       <ref name="tido_att.lineloc.attributes"/>
       <ref name="tido_att.octave.attributes"/>
+      <ref name="tido_att.octavedisplacement.attributes"/>
    </define>
    <define name="tido_att.clefshape.attributes">
       <ref name="tido_att.clefshape.attribute.shape"/>
@@ -522,7 +537,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata">
+                context="mei:dynam|mei:fing|mei:fingGrp|mei:mordent|mei:ornam|mei:pedal|mei:tie|mei:trill|mei:turn|mei:fermata|mei:octave">
                   <sch:assert test="ancestor-or-self::*[name()='staff' or @staff]">The element or one of its ancestors must be a staff or contain a @staff attribute.</sch:assert>
                 </sch:rule>
    </pattern>
@@ -531,7 +546,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
+                context="mei:*[not(name() = ('slur', 'tie', 'note'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@layer)">@layer must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>
@@ -540,7 +555,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                context="mei:*[not(name() = ('slur', 'tie'))][@staff][not(contains(@staff, ' '))]">
+                context="mei:*[not(name() = ('slur', 'tie', 'note', 'octave'))][@staff][not(contains(@staff, ' '))]">
                   <sch:assert test="exists(@place)">@place must be present when @staff contains a single value.</sch:assert>
                 </sch:rule>
    </pattern>
@@ -562,6 +577,21 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
                   <sch:assert test="not(contains(@staff, ' ') and @place)">@place must be absent when @staff contains multiple values.</sch:assert>
                 </sch:rule>
    </pattern>
+   <define name="tido_att.dir.anl.attributes">
+      <empty/>
+   </define>
+   <define name="tido_att.dir.ges.attributes">
+      <empty/>
+   </define>
+   <define name="tido_att.dir.log.attributes">
+      <ref name="tido_att.controlevent.attributes"/>
+      <ref name="tido_att.augmentdots.attributes"/>
+      <ref name="tido_att.startendid.attributes"/>
+      <ref name="tido_att.timestamp2.musical.attributes"/>
+   </define>
+   <define name="tido_att.dir.vis.attributes">
+      <ref name="tido_att.placement.attributes"/>
+   </define>
    <define name="tido_att.duration.musical.attributes">
       <ref name="tido_att.duration.musical.attribute.dur"/>
    </define>
@@ -816,6 +846,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
                 </sch:rule>
    </pattern>
    <define name="tido_att.note.vis.attributes">
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.staffloc.attributes"/>
       <ref name="tido_att.stems.attributes"/>
       <ref name="tido_att.typography.attributes"/>
@@ -828,6 +859,26 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <attribute name="oct">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Captures written octave information.</a:documentation>
             <ref name="tido_data.OCTAVE"/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.octavedisplacement.attributes">
+      <ref name="tido_att.octavedisplacement.attribute.dis"/>
+      <ref name="tido_att.octavedisplacement.attribute.dis.place"/>
+   </define>
+   <define name="tido_att.octavedisplacement.attribute.dis">
+      <optional>
+         <attribute name="dis">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the amount of octave displacement.</a:documentation>
+            <ref name="tido_data.OCTAVE.DIS"/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tido_att.octavedisplacement.attribute.dis.place">
+      <optional>
+         <attribute name="dis.place">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Records the direction of octave displacement.</a:documentation>
+            <ref name="tido_data.PLACE"/>
          </attribute>
       </optional>
    </define>
@@ -1059,6 +1110,19 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    <define name="tido_att.syl.vis.attributes">
       <ref name="tido_att.typography.attributes"/>
    </define>
+   <define name="tido_att.tempo.anl.attributes">
+      <empty/>
+   </define>
+   <define name="tido_att.tempo.ges.attributes">
+      <empty/>
+   </define>
+   <define name="tido_att.tempo.log.attributes">
+      <ref name="tido_att.controlevent.attributes"/>
+      <ref name="tido_att.startid.attributes"/>
+   </define>
+   <define name="tido_att.tempo.vis.attributes">
+      <ref name="tido_att.placement.attributes"/>
+   </define>
    <define name="tido_att.timestamp.musical.attributes">
       <ref name="tido_att.timestamp.musical.attribute.tstamp"/>
    </define>
@@ -1227,8 +1291,10 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    </define>
    <define name="tido_model.controleventLike">
       <choice>
+         <ref name="tido_dir"/>
          <ref name="tido_dynam"/>
          <ref name="tido_ornam"/>
+         <ref name="tido_tempo"/>
          <ref name="tido_model.controleventLike.cmn"/>
          <ref name="tido_model.fingeringLike"/>
       </choice>
@@ -1276,8 +1342,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
    </define>
    <define name="tido_model.eventLike">
       <choice>
-         <ref name="tido_model.keySigLike"/>
-         <ref name="tido_model.meterSigLike"/>
          <ref name="tido_chord"/>
          <ref name="tido_clef"/>
          <ref name="tido_note"/>
@@ -1314,29 +1378,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <choice>
          <ref name="tido_keySig"/>
       </choice>
-   </define>
-   <define name="tido_model.keySigLike_alternation">
-      <choice>
-         <ref name="tido_keySig"/>
-      </choice>
-   </define>
-   <define name="tido_model.keySigLike_sequence">
-      <ref name="tido_keySig"/>
-   </define>
-   <define name="tido_model.keySigLike_sequenceOptional">
-      <optional>
-         <ref name="tido_keySig"/>
-      </optional>
-   </define>
-   <define name="tido_model.keySigLike_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="tido_keySig"/>
-      </zeroOrMore>
-   </define>
-   <define name="tido_model.keySigLike_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="tido_keySig"/>
-      </oneOrMore>
    </define>
    <define name="tido_model.labelLike">
       <notAllowed/>
@@ -1410,29 +1451,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
       <choice>
          <ref name="tido_meterSig"/>
       </choice>
-   </define>
-   <define name="tido_model.meterSigLike_alternation">
-      <choice>
-         <ref name="tido_meterSig"/>
-      </choice>
-   </define>
-   <define name="tido_model.meterSigLike_sequence">
-      <ref name="tido_meterSig"/>
-   </define>
-   <define name="tido_model.meterSigLike_sequenceOptional">
-      <optional>
-         <ref name="tido_meterSig"/>
-      </optional>
-   </define>
-   <define name="tido_model.meterSigLike_sequenceOptionalRepeatable">
-      <zeroOrMore>
-         <ref name="tido_meterSig"/>
-      </zeroOrMore>
-   </define>
-   <define name="tido_model.meterSigLike_sequenceRepeatable">
-      <oneOrMore>
-         <ref name="tido_meterSig"/>
-      </oneOrMore>
    </define>
    <define name="tido_model.milestoneLike.music">
       <choice>
@@ -1968,6 +1986,47 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <empty/>
       </element>
    </define>
+   <define name="tido_dir">
+      <element name="dir">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(directive) – An instruction expressed as a combination of text and symbols — such as segno and coda symbols, fermatas over a bar line, etc., typically above, below, or between staves, but not on the staff — that is not encoded elsewhere in more specific elements, like &lt;tempo&gt; or &lt;dynam&gt;.</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="tido_model.textphraseLike.limited"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
+            </choice>
+         </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-dir-dir_type_required_closed_list-constraint-18">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:dir">
+                  <sch:assert test="@type=('expression', 'technique')">Must have a @type of 'expression' or 'technique'</sch:assert>
+                </sch:rule>
+         </pattern>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-dir-dir_start-type_attributes_required-constraint-19">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:dir[not(ancestor::mei:syllable)]">
+               <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
+              the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.dir.log.attributes"/>
+         <ref name="tido_att.dir.vis.attributes"/>
+         <ref name="tido_att.dir.ges.attributes"/>
+         <ref name="tido_att.dir.anl.attributes"/>
+         <ref name="tido_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tido_dynam">
       <element name="dynam">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(dynamic) – Indication of the volume of a note, phrase, or section of music.</a:documentation>
@@ -1980,7 +2039,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-dynam-dynam_start-type_attributes_required-constraint-18">
+                  id="tido-dynam-dynam_start-type_attributes_required-constraint-20">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -1991,7 +2050,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-dynam-dynam_end-type_attributes-constraint-19">
+                  id="tido-dynam-dynam_end-type_attributes-constraint-21">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2039,7 +2098,16 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             <ref name="tido_model.keyAccidLike"/>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-keySig-key_att_pair-constraint-20">
+                  id="tido-keySig-keysig_require_following_measure-constraint-22">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:keySig">
+                  <sch:assert test="exists(following::mei:measure)">Key signature must be followed by a measure.</sch:assert>
+                </sch:rule>
+         </pattern>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-keySig-key_att_pair-constraint-23">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -2103,7 +2171,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <ref name="tido_meiHead"/>
          <ref name="tido_music"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-mei-Check_staff-constraint-21">
+                  id="tido-mei-Check_staff-constraint-24">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2163,7 +2231,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-ornam-ornam_start-type_attributes_required-constraint-22">
+                  id="tido-ornam-ornam_start-type_attributes_required-constraint-25">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2267,7 +2335,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A non-sounding event found in the source being transcribed.</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-rest-Check_restline-constraint-23">
+                  id="tido-rest-Check_restline-constraint-26">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2330,7 +2398,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-section-Check_sectionexpansion-constraint-24">
+                  id="tido-section-Check_sectionexpansion-constraint-27">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2391,7 +2459,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-staffDef-Check_staffDefn-constraint-25">
+                  id="tido-staffDef-Check_staffDefn-constraint-28">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2406,7 +2474,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-staffDef-Check_ancestor_staff-constraint-26">
+                  id="tido-staffDef-Check_ancestor_staff-constraint-29">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2418,7 +2486,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-staffDef-Check_clef_position_staffDef-constraint-27">
+                  id="tido-staffDef-Check_clef_position_staffDef-constraint-30">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2429,7 +2497,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-staffDef-Check_clef_position_staffDef_nolines-constraint-28">
+                  id="tido-staffDef-Check_clef_position_staffDef_nolines-constraint-31">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2443,7 +2511,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-staffDef-Check_tab_strings_lines-constraint-29">
+                  id="tido-staffDef-Check_tab_strings_lines-constraint-32">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2456,7 +2524,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-staffDef-Check_tab_strings_nolines-constraint-30">
+                  id="tido-staffDef-Check_tab_strings_nolines-constraint-33">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2535,7 +2603,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
             </choice>
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-staffGrp-Check_staffGrp_unique_staff_n_values-constraint-35">
+                  id="tido-staffGrp-Check_staffGrp_unique_staff_n_values-constraint-38">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2567,6 +2635,49 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5//
          <ref name="tido_att.common.attributes"/>
          <ref name="tido_att.syl.log.attributes"/>
          <ref name="tido_att.syl.vis.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tido_tempo">
+      <element name="tempo">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Text and symbols descriptive of tempo, mood, or style, e.g., "allarg.", "a tempo", "cantabile", "Moderato", "♩=60", "Moderato ♩ =60").</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="tido_model.textphraseLike.limited"/>
+               <ref name="tido_model.graphicprimitiveLike"/>
+               <ref name="tido_model.editLike"/>
+               <ref name="tido_model.transcriptionLike"/>
+            </choice>
+         </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-tempo-tempo_in_header_disallow_most_attrs-constraint-39">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:tempo[ancestor::mei:meiHead]">
+               <sch:assert test="not(@*[name() != 'label' and name() != 'n' and name() != 'xml:base' and name() != 'xml:id' and name() != 'xml:lang'])">Only label, n, xml:base, xml:id, and xml:lang attributes allowed when this element
+              occurs in the header.</sch:assert>
+            </sch:rule>
+         </pattern>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-tempo-tempo_start-type_attributes_required-constraint-40">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:tempo[not(ancestor::mei:syllable) and not(ancestor::mei:work) and not(ancestor::mei:expression) and not(count(ancestor::mei:*) = 0)]">
+               <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
+              the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.tempo.log.attributes"/>
+         <ref name="tido_att.tempo.vis.attributes"/>
+         <ref name="tido_att.tempo.ges.attributes"/>
+         <ref name="tido_att.tempo.anl.attributes"/>
+         <ref name="tido_att.typed.attributes"/>
          <empty/>
       </element>
    </define>
@@ -2789,6 +2900,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <ref name="tido_att.startendid.attributes"/>
    </define>
    <define name="tido_att.fermata.vis.attributes">
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.placement.attributes"/>
    </define>
    <define name="tido_att.graced.attributes">
@@ -2832,11 +2944,28 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
    </define>
    <define name="tido_att.mRest.vis.attributes">
       <ref name="tido_att.cutout.attributes"/>
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.staffloc.attributes"/>
       <ref name="tido_att.typography.attributes"/>
    </define>
    <define name="tido_att.note.ges.cmn.attributes">
       <ref name="tido_att.graced.attributes"/>
+   </define>
+   <define name="tido_att.octave.anl.attributes">
+      <empty/>
+   </define>
+   <define name="tido_att.octave.ges.attributes">
+      <empty/>
+   </define>
+   <define name="tido_att.octave.log.attributes">
+      <ref name="tido_att.octavedisplacement.req.attributes"/>
+      <ref name="tido_att.controlevent.attributes"/>
+      <ref name="tido_att.augmentdots.attributes"/>
+      <ref name="tido_att.startendid.attributes"/>
+      <ref name="tido_att.timestamp2.musical.attributes"/>
+   </define>
+   <define name="tido_att.octave.vis.attributes">
+      <empty/>
    </define>
    <define name="tido_att.pedal.log.attributes">
       <ref name="tido_att.controlevent.attributes"/>
@@ -2859,6 +2988,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       </attribute>
    </define>
    <define name="tido_att.pedal.vis.attributes">
+      <ref name="tido_att.extsym.attributes"/>
       <ref name="tido_att.placement.attributes"/>
       <ref name="tido_att.typography.attributes"/>
       <ref name="tido_att.pedal.vis.attribute.form"/>
@@ -2890,6 +3020,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <choice>
          <ref name="tido_fermata"/>
          <ref name="tido_hairpin"/>
+         <ref name="tido_octave"/>
          <ref name="tido_pedal"/>
          <ref name="tido_slur"/>
          <ref name="tido_tie"/>
@@ -2900,6 +3031,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <choice>
          <ref name="tido_fermata"/>
          <ref name="tido_hairpin"/>
+         <ref name="tido_octave"/>
          <ref name="tido_pedal"/>
          <ref name="tido_slur"/>
          <ref name="tido_tie"/>
@@ -2909,6 +3041,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
    <define name="tido_model.controleventLike.cmn_sequence">
       <ref name="tido_fermata"/>
       <ref name="tido_hairpin"/>
+      <ref name="tido_octave"/>
       <ref name="tido_pedal"/>
       <ref name="tido_slur"/>
       <ref name="tido_tie"/>
@@ -2920,6 +3053,9 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       </optional>
       <optional>
          <ref name="tido_hairpin"/>
+      </optional>
+      <optional>
+         <ref name="tido_octave"/>
       </optional>
       <optional>
          <ref name="tido_pedal"/>
@@ -2942,6 +3078,9 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <ref name="tido_hairpin"/>
       </zeroOrMore>
       <zeroOrMore>
+         <ref name="tido_octave"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tido_pedal"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -2960,6 +3099,9 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       </oneOrMore>
       <oneOrMore>
          <ref name="tido_hairpin"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tido_octave"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="tido_pedal"/>
@@ -3091,7 +3233,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-beam-When_not_copyof_beam_content-constraint-36">
+                  id="tido-beam-When_not_copyof_beam_content-constraint-41">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3110,7 +3252,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An indication placed over a note or rest to indicate that it should be held longer than its written value. May also occur over a bar line to indicate the end of a phrase or section. Sometimes called a 'hold' or 'pause'.</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-fermata-fermata_start-type_attributes_required-constraint-37">
+                  id="tido-fermata-fermata_start-type_attributes_required-constraint-42">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3131,7 +3273,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indicates continuous dynamics expressed on the score as wedge-shaped graphics, e.g. &lt; and &gt;.</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-hairpin-hairpin_place_required_with_single_staff-constraint-38">
+                  id="tido-hairpin-hairpin_place_required_with_single_staff-constraint-43">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -3173,7 +3315,16 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(meter signature) – Written meter signature.</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-meterSig-meter_att_pair-constraint-39">
+                  id="tido-meterSig-timesig_require_following_measure-constraint-44">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:meterSig">
+                  <sch:assert test="exists(following::mei:measure)">Time signature must be followed by a measure.</sch:assert>
+                </sch:rule>
+         </pattern>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-meterSig-meter_att_pair-constraint-45">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -3199,12 +3350,43 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <empty/>
       </element>
    </define>
+   <define name="tido_octave">
+      <element name="octave">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An indication that a passage should be performed one or more octaves above or below its written pitch.</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="tido_model.textphraseLike.limited"/>
+            </choice>
+         </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="tido-octave-octave_start-_and_end-type_attributes_required-constraint-46">
+            <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="mei:octave">
+               <sch:assert test="@startid or @tstamp or @tstamp.ges or @tstamp.real">Must have one of
+              the attributes: startid, tstamp, tstamp.ges or tstamp.real</sch:assert>
+               <sch:assert test="@dur or @dur.ges or @endid or @tstamp2">Must have one of the
+              attributes: dur, dur.ges, endid, or tstamp2</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.octave.log.attributes"/>
+         <ref name="tido_att.octave.vis.attributes"/>
+         <ref name="tido_att.octave.ges.attributes"/>
+         <ref name="tido_att.octave.anl.attributes"/>
+         <ref name="tido_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tido_pedal">
       <element name="pedal">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Piano pedal mark.</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-pedal-pedal_style_consistent-constraint-40">
+                  id="tido-pedal-pedal_style_consistent-constraint-47">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -3215,7 +3397,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
                 </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-pedal-pedal_start-type_attributes_required-constraint-41">
+                  id="tido-pedal-pedal_start-type_attributes_required-constraint-48">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3236,7 +3418,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <element name="slur">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Indication of 1) a "unified melodic idea" or 2) performance technique.</a:documentation>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-slur-slur_start-_and_end-type_attributes_required-constraint-42">
+                  id="tido-slur-slur_start-_and_end-type_attributes_required-constraint-49">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3258,7 +3440,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <element name="tie">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An indication that two notes of the same pitch form a single note with their combined rhythmic values.</a:documentation>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-tie-tie_start-_and_end-type_attributes_required-constraint-43">
+                  id="tido-tie-tie_start-_and_end-type_attributes_required-constraint-50">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3271,7 +3453,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-tie-tie_containing_curve-constraint-44">
+                  id="tido-tie-tie_containing_curve-constraint-51">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3422,7 +3604,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An ornament indicating rapid alternation of the main note with a secondary note, usually a step below, but sometimes a step above. </a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-mordent-mordent_start-type_attributes_required-constraint-45">
+                  id="tido-mordent-mordent_start-type_attributes_required-constraint-52">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3444,7 +3626,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Rapid alternation of a note with another (usually at the interval of a second above).</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-trill-trill_start-type_attributes_required-constraint-46">
+                  id="tido-trill-trill_start-type_attributes_required-constraint-53">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3466,7 +3648,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">An ornament consisting of four notes — the upper neighbor of the written note, the written note, the lower neighbor, and the written note.</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-turn-turn_start-type_attributes_required-constraint-47">
+                  id="tido-turn-turn_start-type_attributes_required-constraint-54">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3566,6 +3748,17 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <empty/>
       </element>
    </define>
+   <define name="tido_att.extsym.attributes">
+      <ref name="tido_att.extsym.attribute.glyphname"/>
+   </define>
+   <define name="tido_att.extsym.attribute.glyphname">
+      <optional>
+         <attribute name="glyphname">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Glyph name.</a:documentation>
+            <data type="string"/>
+         </attribute>
+      </optional>
+   </define>
    <define name="tido_att.fing.log.attributes">
       <ref name="tido_att.controlevent.attributes"/>
       <ref name="tido_att.augmentdots.attributes"/>
@@ -3583,19 +3776,17 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <ref name="tido_att.fingGrp.log.attribute.form"/>
    </define>
    <define name="tido_att.fingGrp.log.attribute.form">
-      <optional>
-         <attribute name="form">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-            <choice>
-               <value>alter</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">alternation of fingers.</a:documentation>
-               <value>combi</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">combination of fingers.</a:documentation>
-               <value>subst</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">substitution of fingers.</a:documentation>
-            </choice>
-         </attribute>
-      </optional>
+      <attribute name="form">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <choice>
+            <value>alter</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">alternation of fingers.</a:documentation>
+            <value>combi</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">combination of fingers.</a:documentation>
+            <value>subst</value>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">substitution of fingers.</a:documentation>
+         </choice>
+      </attribute>
    </define>
    <define name="tido_att.fingGrp.vis.attributes">
       <ref name="tido_att.placement.attributes"/>
@@ -3652,7 +3843,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-fing-stack_exclusion-constraint-48">
+                  id="tido-fing-stack_exclusion-constraint-55">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3680,7 +3871,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tido-fingGrp-require_fingeringLike_children-constraint-49">
+                  id="tido-fingGrp-require_fingeringLike_children-constraint-56">
             <sch:rule xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3729,7 +3920,9 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Lyric verse.</a:documentation>
          <zeroOrMore>
             <choice>
+               <ref name="tido_dir"/>
                <ref name="tido_dynam"/>
+               <ref name="tido_tempo"/>
                <ref name="tido_space"/>
             </choice>
          </zeroOrMore>
@@ -3914,11 +4107,28 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A reference to a previously defined symbol.</a:documentation>
          <empty/>
          <ref name="tido_att.common.attributes"/>
+         <ref name="tido_att.extsym.attributes"/>
          <ref name="tido_att.startid.attributes"/>
          <ref name="tido_att.typed.attributes"/>
          <ref name="tido_att.typography.attributes"/>
          <empty/>
       </element>
+   </define>
+   <define name="tido_att.octavedisplacement.req.attributes">
+      <ref name="tido_att.octavedisplacement.req.attribute.dis"/>
+      <ref name="tido_att.octavedisplacement.req.attribute.dis.place"/>
+   </define>
+   <define name="tido_att.octavedisplacement.req.attribute.dis">
+      <attribute name="dis">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <ref name="tido_data.OCTAVE.DIS"/>
+      </attribute>
+   </define>
+   <define name="tido_att.octavedisplacement.req.attribute.dis.place">
+      <attribute name="dis.place">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+         <ref name="tido_data.PLACE"/>
+      </attribute>
    </define>
    <define name="tido_att.ornam.extsym.attributes">
       <ref name="tido_att.ornam.extsym.attribute.glyphname"/>
@@ -4002,7 +4212,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
       <ref name="tido_att.layerident.attributes"/>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tido-att.spanning.req-require_precisely_one_start_spec-constraint-52">
+            id="tido-att.spanning.req-require_precisely_one_start_spec-constraint-59">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4011,7 +4221,7 @@ Suggested values include: 1] main; 2] subordinate; 3] abbreviated; 4] alternativ
                 </sch:rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tido-att.spanning.req-require_precisely_one_end_spec-constraint-53">
+            id="tido-att.spanning.req-require_precisely_one_end_spec-constraint-60">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"

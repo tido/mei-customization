@@ -1,0 +1,12 @@
+!build/
+!.package.json
+!README.md
+src
+test
+tmp
+vendor
+xsl
+.*
+build.default.properties
+build.xml
+update-git-dependencies.sh
