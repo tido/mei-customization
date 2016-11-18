@@ -35,7 +35,7 @@
     "eslint-plugin-react": "^4.2.0",
     "jade": "^1.11.0",
     "mocha": "^2.2.5",
-    "mei-validation-js": "git+ssh://github.com/tido/mei-validation-js",
+    "tido-mei-validation": "^1.0.0",
     "xmldom": "^0.1.22"
   },
   "bugs": {
