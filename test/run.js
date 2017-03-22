@@ -1,8 +1,6 @@
 /** @jsx h */
 
 import path from 'path';
-import jade from 'jade';
-import _ from 'lodash';
 import { h } from 'preact';
 import render from 'preact-render-to-string';
 import { validateSync } from 'tido-mei-validation';
