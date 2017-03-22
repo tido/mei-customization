@@ -1,9 +1,0 @@
-
-mixin accid(data)
-  -
-    data = _.omit(data, '$')
-    data = _.assign({}, {
-      'xml:id': _.uniqueId('j')
-    }, data);
-
-  accid()&attributes(data)
