@@ -12,7 +12,8 @@
     "test": "node ./test",
     "schema": "ant -lib vendor/stylesheets/lib schema",
     "html-guidelines": "ant -lib vendor/stylesheets/lib html-guidelines",
-    "refresh": "npm run schema && npm run html-guidelines && npm run test"
+    "update-mei-cmn": "mkdir -p build/schema/mei/2.1.1 ; cp ./vendor/mei-archive/schema/2.1.1/mei-CMN.rng ./build/schema/mei/2.1.1/",
+    "refresh": "npm run schema && npm run html-guidelines && npm run update-mei-cmn && npm run test"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
